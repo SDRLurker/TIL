@@ -90,7 +90,9 @@ int main()
 		if(i==size)
 			break;
 
-		if(elements[0].curidx == elements[0].to)
+		if(elements[0].curidx<elements[0].to)
+			elements[0].curidx++;
+		else
 		{
 			while(elements[fidx].curidx == elements[fidx].to)
 				if(fidx < size)		fidx++;
@@ -101,12 +103,7 @@ int main()
 			for(bidx=--fidx;bidx>=0;bidx--)
 				elements[bidx].curidx = elements[bidx].from;
 			fidx = 0;
-				
-			continue;
 		}
-
-		if(elements[0].curidx<elements[0].to)
-			elements[0].curidx++;
 	} 
 	/* 알고리즘 끝 */
 
