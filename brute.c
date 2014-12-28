@@ -92,21 +92,17 @@ int main()
 
 		if(elements[0].curidx == elements[0].to)
 		{
-			if(elements[fidx].curidx == elements[fidx].to)
-			{
+			while(elements[fidx].curidx == elements[fidx].to)
 				if(fidx < size)		fidx++;
-				while(elements[fidx].curidx == elements[fidx].to)
-					if(fidx < size)		fidx++;
 
-				if(elements[fidx].curidx<elements[fidx].to)
-					elements[fidx].curidx++;
+			if(elements[fidx].curidx<elements[fidx].to)
+				elements[fidx].curidx++;
 
-				for(bidx=--fidx;bidx>=0;bidx--)
-					elements[bidx].curidx = elements[bidx].from;
-				fidx = 0;
+			for(bidx=--fidx;bidx>=0;bidx--)
+				elements[bidx].curidx = elements[bidx].from;
+			fidx = 0;
 				
-				continue;
-			}
+			continue;
 		}
 
 		if(elements[0].curidx<elements[0].to)
