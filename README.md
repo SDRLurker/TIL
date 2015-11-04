@@ -89,3 +89,16 @@ If the env GROUP="GROUP" and GROUPPORT="22" in the ssend.sh, ssend.sh file on th
 
 ssend.sh의 환경변수 GROUP="GROUP"이고 GROUPPORT="22"라면 현재 디렉터리의 ssend.sh 파일을 GROUP1, GROUP2로 원격복사합니다.
 GROUP1, GROUP2에 22번 포트로 ssh를 접속하여 원격실행을 하게 됩니다.
+
+## automv.sh
+**Usage - 사용법**
+
+automv.sh file
+
+automv.sh 파일
+
+**Description - 설명**
+
+If the file size is equal or greater than LIMIT bytes, mv file file.HHMM
+
+파일이 LIMIT 바이트 이상이 되면 그 파일을 파일.시분로 이동(move) 합니다.
