@@ -23,11 +23,14 @@ fi
 
 while true;
 do
-SIZE=`ls -lrt ${TARGET} | awk '{print $5}'`
-echo $SIZE
-if [ "$SIZE" -ge "$LIMIT" ]; then   # 현재 파일이 LIMIT 바이트 이상이면
-NOW=`date '+%H%M'`
-mv ${TARGET} ${TARGET}.${NOW}
+if [ -f ${TARGET} ];    # 현재 파일이 있는지 확인
+then
+    SIZE=`ls -lrt ${TARGET} | awk '{print $5}'`
+    echo $SIZE
+    if [ "$SIZE" -ge "$LIMIT" ]; then   # 현재 파일이 LIMIT 바이트 이상이면
+        NOW=`date '+%H%M'`
+        mv ${TARGET} ${TARGET}.${NOW}
+    fi
 fi
 sleep 1
 done
