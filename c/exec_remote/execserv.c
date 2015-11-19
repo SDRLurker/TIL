@@ -30,6 +30,36 @@ int daemon_init(void)
 }
 #endif
 
+int WildcardMatch(const char *psString, const char* psMatch)
+{
+	while(*psMatch)
+	{
+		if(*psMatch == '?')
+		{
+			if(!*psString)
+				return 0;
+			++psString;
+			++psMatch;
+		}
+		else if(*psMatch == '*')
+		{
+			if(WildcardMatch(psString, psMatch+1))
+				return 1;
+
+			if(*psString && WildcardMatch(psString+1, psMatch))
+				return 1;
+
+			return 0;
+		}
+		else
+		{
+			if(*psString++ != *psMatch++)
+				return 0;
+		}
+	}
+	return !*psString && !*psMatch;
+}
+
 int main(int argc, char **argv)
 {
 	int serv_sock, clnt_sock;
@@ -153,7 +183,8 @@ int main(int argc, char **argv)
         for(i=0;i<num;i++)
         {
             fgets(line,1024,fp);
-            if(strncmp(line,read_cmd,strlen(read_cmd))==0)
+			strtok(line, "\r\n");
+            if(WildcardMatch(read_cmd,line))
             {
                 cmdNone = 1;
 				break;
