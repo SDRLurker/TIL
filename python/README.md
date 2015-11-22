@@ -12,6 +12,12 @@ src 패턴의 파일을 desc 패턴의 파일로 이동(rename) 합니다.
 
 A라는 글자가 나오는 모든 패턴의 파일을 B라는 패턴의 파일로 이동 합니다.
 
+##### ping.py
+
+ping several hosts in $HOME/conf/ping.conf.
+
+$HOME/ping.conf에 설정된 몇 개의 host의 ping을 검사합니다.
+
 
 ### 배운 내용
 
