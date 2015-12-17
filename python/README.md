@@ -18,6 +18,12 @@ ping several hosts in $HOME/conf/ping.conf.
 
 $HOME/ping.conf에 설정된 몇 개의 host의 ping을 검사합니다.
 
+##### slice.py {rfile} {wfile} {n}
+
+slice {rfile} every {n}th character. all results will be saved to {wfile}.
+
+{rfile} 파일을 {n}번째 문자마다 자릅니다. 모든 결과는 {wfile}에 저장 됩니다.
+
 
 ### 배운 내용
 
