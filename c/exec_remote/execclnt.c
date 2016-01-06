@@ -10,6 +10,8 @@
 #include<errno.h>
 #include<string.h>
 #include<stdlib.h>
+#include<stdlib.h>
+#include<string.h>
 
 void error_handling(char *message);
 
@@ -160,19 +162,21 @@ int main(int argc, char **argv)
                 total = htonl(total);
 	message = (char*)malloc(sizeof(char)*(total));
 	memset(message,0,total);
-	while(total>0)
+	do
 	{
 		rcv_len = read(sock, message+accu, total);
-		if(rcv_len<=0)		
+		if(rcv_len < 0 && errno == EINTR)
+			continue;
+		if(rcv_len <= 0)
 		{
 			printf("%s :\n",argv[1]);
 			printf("connect error!\n");
 			close(sock);
-			return 1;
+			exit(1);
 		}
 		total -= rcv_len;
 		accu += rcv_len;
-	}
+	} while(total > 0);
 	printf("%s\n",message);
 	close(sock);
 		
