@@ -24,6 +24,12 @@ slice {rfile} every {n}th character. all results will be saved to {wfile}.
 
 {rfile} 파일을 {n}번째 문자마다 자릅니다. 모든 결과는 {wfile}에 저장 됩니다.
 
+##### top.py
+
+execute top program in Linux, and then show total CPU usage percentage and top 3 program of using CPU.
+
+Linux에서 top을 실행하여 CPU 전체 사용률 및 CPU 사용률이 높은 상위 3개 프로그램을 보여줍니다.
+
 
 ### 배운 내용
 
