@@ -6,7 +6,7 @@
 #
 # Prints the tree structure for the path specified on the command line
 
-from os import listdir, sep
+from os import listdir, sep, getcwd
 from os.path import abspath, basename, isdir
 from sys import argv
 
@@ -38,23 +38,29 @@ Options:
 -f      Print files as well as directories
 PATH    Path to process''' % basename(argv[0])
 
+def print_if_dir(path, print_files=False):
+    if isdir(path):
+        tree(path, ' ')
+    else:
+        print('ERROR: \'' + path + '\' is not a directory')
+
 def main():
     if len(argv) == 1:
-        print(usage())
+        path = getcwd()
+        print_if_dir(path)
     elif len(argv) == 2:
         # print just directories
-        path = argv[1]
-        if isdir(path):
-            tree(path, ' ')
+        print_files = False
+        if argv[1] == '-f':
+            path = getcwd()
+            print_files = True
         else:
-            print('ERROR: \'' + path + '\' is not a directory')
+            path = argv[1]
+        print_if_dir(path, print_files)
     elif len(argv) == 3 and argv[1] == '-f':
         # print directories and files
         path = argv[2]
-        if isdir(path):
-            tree(path, ' ', True)
-        else:
-            print('ERROR: \'' + path + '\' is not a directory')
+        print_if_dir(path, True)
     else:
         print(usage())
 
