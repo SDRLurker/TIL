@@ -31,6 +31,20 @@ execute top program in Linux, and then show total CPU usage percentage and top 3
 Linux에서 top을 실행하여 CPU 전체 사용률 및 CPU 사용률이 높은 상위 3개 프로그램을 보여줍니다.
 
 
+##### tree.py
+
+GRAPHICALLY DISPLAYS THE DIRECTORY STRUCTURE OF A SPECIFIED PATH
+
+This refers to http://code.activestate.com/recipes/217212-treepy-graphically-displays-the-directory-structure/
+
+and then I modified this code.
+
+특정 경로의 디렉터리 구조를 그래픽으로 보여준다.
+
+이는 다음 http://code.activestate.com/recipes/217212-treepy-graphically-displays-the-directory-structure/ 을 참조했습니다.
+
+그리고 나서 수정하였습니다.
+
 ### 배운 내용
 
 ##### shebang
