@@ -1,4 +1,4 @@
-# Ryan Shell Collection(쉘 모음)
+﻿# Ryan Shell Collection(쉘 모음)
 ## mrsh.sh
 **Usage - 사용법**
 
@@ -89,6 +89,20 @@ If the env GROUP="GROUP" and GROUPPORT="22" in the ssend.sh, ssend.sh file on th
 
 ssend.sh의 환경변수 GROUP="GROUP"이고 GROUPPORT="22"라면 현재 디렉터리의 ssend.sh 파일을 GROUP1, GROUP2로 원격복사합니다.
 GROUP1, GROUP2에 22번 포트로 ssh를 접속하여 원격실행을 하게 됩니다.
+
+## ssend2.sh
+**Usage - 사용법**
+
+ssend2.sh hosts file [path]
+
+ssend2.sh 넘길서버 넘길파일 [넘길위치]
+
+**Description - 설명**
+
+When you can log into B as b from A as a without password, you can use this script for scp files.
+
+A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 이 스크립트를 scp로 원격복사에 사용할 수 있습니다.
+
 
 ## automv.sh
 **Usage - 사용법**
