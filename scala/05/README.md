@@ -78,7 +78,7 @@ def find(p: A => Boolean): Maybe[A] = ???
 ```scala
 val l = LinkedList(1, 2, 3, 4, 5)
 assert(l.find(_ % 2 == 0) == Just(2))
-assert(l.find(_ % 6 == 0) == Emppty)
+assert(l.find(_ % 6 == 0) == Empty)
 ```
 
 --
@@ -91,7 +91,7 @@ def filter(p: A => Boolean): LinkedList[A] = ???
 
 ```scala
 val l = LinkedList(1, 2, 3, 4, 5)
-assert(l.find(_ % 2 == 0) == LinkedList(2, 4))
+assert(l.filter(_ % 2 == 0) == LinkedList(2, 4))
 ```
 
 --
