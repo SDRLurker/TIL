@@ -414,3 +414,272 @@ InputFormat이 단순히 Hadoop 설정 및  입력 경로에 의존하고 위의
 (Cassandra / HBase에서 데이터를 로드하는 것과 같이) 사용자가 정의한 직렬화된 이진 데이터가 있는 경우 먼저 Scala / Java 측의 해당 데이터를 Pyrolite의 pickler가 처리 할 수 있는 데이터로 변환해야 합니다. 이것을 위해 Converter trait이 제공됩니다. 이 trait을 확장하고 convert 메소드에서 변환 코드를 구현(implement)하기만 하면 됩니다. InputFormat에 접근하는 데 필요한 의존성과 함께 이 클래스가 Spark 작업 항아리에 패키징되고 PySpark 클래스 패스에 포함되는지 확인하십시오.
 
 Cassandra / HBase InputFormat과 OutputFormat을 커스텀 컨버터와 함께 사용하는 예제는 [Python 예제](https://github.com/apache/spark/tree/master/examples/src/main/python)와 [Converter 예제](https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/pythonconverters)를 참조하십시오.
+
+# RDD 연산
+
+RDD는 두 가지 유형의 연산, 즉 기존 데이터 집합에서 새 데이터 집합을 만드는 transformation(변환)과 데이터 집합에서 계산을 실행 한 후 값을 드라이버 프로그램에 반환하는 action을 지원합니다. 예를 들어, map은 함수를 통해 각 데이터 집합 요소를 전달하고 결과를 나타내는 새로운 RDD를 반환하는 transformation(변환) 유형입니다. 반면에 reduce는 일부 함수를 사용하여 RDD의 모든 요소를 ​​집계하고 최종 결과를 드라이버 프로그램에 반환하는 action 유형입니다. (분산된 데이터 집합을 반환하는 병렬 reduceByKey도 있습니다.)
+
+Spark의 모든 변환(transformation)은 lazy합니다. 그래서 변환은 바로 결과를 계산하지 않습니다. 대신에, 변환은 몇 가지 기본 데이터셋에 적용합니다. (예: 파일) 그 변환은 action이 드라이버 프로그램에 리턴될 때만 계산됩니다. 이 설계는 Spark를 더 효율적으로 실행하게 합니다. 예를 들어, 맵을 통해 생성 된 데이터 세트는 reduce에서 사용되며 맵핑된 더 큰 데이터 세트가 아니라 드라이버의 reduce 결과 만을 리턴함으로서 효율적임을 알 수 있습니다.
+
+기본적으로 각 변환된 RDD는 action을 실행할 때마다 재계산 됩니다. 그러나 persist (혹은 cache) 메소드를 사용하여 RDD를 보관할 수 있고 이 경우 Spark는 다음에 이 결과를 질의했을 때 더 빠르게 접근할 수 있도록 클러스터에서 RDD의 값들을 보관할 것입니다. 또한 디스크에 RDD를 지속적으로 저장하게 지원하거나 여러 노드에 걸쳐 복제 할 수 있습니다.
+
+# 기초
+
+## Scala
+
+RDD 기초에서 설명했듯이 아래 간단한 프로그램을 생각해 봅시다.
+
+```Scala
+val lines = sc.textFile("data.txt")
+val lineLengths = lines.map(s => s.length)
+val totalLength = lineLengths.reduce((a, b) => a + b)
+```
+
+첫 번째 줄은 외부 파일에서부터 기본 RDD를 정의합니다. 이 데이터셋은 메모리에 로드되지 않고 행위도 없습니다. lines는 단지 파일의 포인터입니다. 두 번째 줄은 map 변환(transformation) 의 결과로 lineLengths를 정의합니다. 다시 말하지만 lineLengths는 lazy 때문에 바로 계산되지 않습니다. 마지막으로 우리가 action인 reduce를 실행합니다. 이 지점에서 Spark는 분리된 머신에서 실행하기 위해 작업들을 계산하고 각 머신은 map과 local reduce의 일부분을 실행합니다. 드라이버 프로그램에게는 그 답변만 리턴합니다.
+
+If we also wanted to use lineLengths again later, we could add:
+만약 우리가 lineLengths를 나중에 다시 사용하고 싶다면 다음을 추가할 수 있습니다.
+
+```scala
+lineLengths.persist()
+```
+
+reduce 전에 lineLength가 처음 계산 된 후 메모리에 저장됩니다.
+
+## Java
+
+RDD 기초에서 설명했듯이 아래 간단한 프로그램을 생각해 봅시다.
+
+```Java
+JavaRDD<String> lines = sc.textFile("data.txt");
+JavaRDD<Integer> lineLengths = lines.map(s -> s.length());
+int totalLength = lineLengths.reduce((a, b) -> a + b);
+```
+
+첫 번째 줄은 외부 파일에서부터 기본 RDD를 정의합니다. 이 데이터셋은 메모리에 로드되지 않고 행위도 없습니다. lines는 단지 파일의 포인터입니다. 두 번째 줄은 map 변환(transformation) 의 결과로 lineLengths를 정의합니다. 다시 말하지만 lineLengths는 lazy 때문에 바로 계산되지 않습니다. 마지막으로 우리가 action인 reduce를 실행합니다. 이 지점에서 Spark는 분리된 머신에서 실행하기 위해 작업들을 계산하고 각 머신은 map과 local reduce의 일부분을 실행합니다. 드라이버 프로그램에게는 그 답변만 리턴합니다.
+
+If we also wanted to use lineLengths again later, we could add:
+만약 우리가 lineLengths를 나중에 다시 사용하고 싶다면 다음을 추가할 수 있습니다.
+
+```Java
+lineLengths.persist(StorageLevel.MEMORY_ONLY());
+```
+
+reduce 전에 lineLength가 처음 계산 된 후 메모리에 저장됩니다.
+
+## Python
+
+RDD 기초에서 설명했듯이 아래 간단한 프로그램을 생각해 봅시다.
+
+```Python
+lines = sc.textFile("data.txt")
+lineLengths = lines.map(lambda s: len(s))
+totalLength = lineLengths.reduce(lambda a, b: a + b)
+```
+
+첫 번째 줄은 외부 파일에서부터 기본 RDD를 정의합니다. 이 데이터셋은 메모리에 로드되지 않고 행위도 없습니다. lines는 단지 파일의 포인터입니다. 두 번째 줄은 map 변환(transformation) 의 결과로 lineLengths를 정의합니다. 다시 말하지만 lineLengths는 lazy 때문에 바로 계산되지 않습니다. 마지막으로 우리가 action인 reduce를 실행합니다. 이 지점에서 Spark는 분리된 머신에서 실행하기 위해 작업들을 계산하고 각 머신은 map과 local reduce의 일부분을 실행합니다. 드라이버 프로그램에게는 그 답변만 리턴합니다.
+
+If we also wanted to use lineLengths again later, we could add:
+만약 우리가 lineLengths를 나중에 다시 사용하고 싶다면 다음을 추가할 수 있습니다.
+
+```Python
+lineLengths.persist()
+```
+
+reduce 전에 lineLength가 처음 계산 된 후 메모리에 저장됩니다.
+
+# Spark에 함수 전달하기
+
+## Scala
+
+Spark의 API는 드라이버 프로그램에서 함수를 전달하여 클러스터에서 실행하는 것에 크게 의존합니다. 이 작업을 수행하는 두 가지 권장 방법이 있습니다.
+
+* [익명 함수 구문](http://docs.scala-lang.org/tour/basics.html#functions) : 짧은 코드 조각에 사용할 수 있습니다.
+* 전역 싱글톤 객체(object)의 정적 메소드. 예를 들어 다음처럼 MyFunctions object를 정의하고 MyFunctions를 전달할 수 있습니다.
+
+```Scala
+object MyFunctions {
+  def func1(s: String): String = { ... }
+}
+
+myRdd.map(MyFunctions.func1)
+```
+
+클래스 인스턴스 (싱글톤 객체가 아닌)에서 메소드에 대한 참조를 전달하는 것도 가능하지만,이 경우 메소드와 함께 해당 클래스가 포함된 객체를 보내야합니다. 예를 들어 다음을 고려하십시오.
+
+```Scala
+class MyClass {
+  def func1(s: String): String = { ... }
+  def doStuff(rdd: RDD[String]): RDD[String] = { rdd.map(func1) }
+}
+```
+
+여기서 새로운 MyClass 인스턴스를 만들고 그것에 doStuff를 호출하면 그 안에있는 맵이 해당 MyClass 인스턴스의 func1 메소드를 참조하므로 전체 객체를 클러스터로 보내야합니다. rdd.map (x => this.func1 (x))을 작성하는 것과 유사합니다.
+
+비슷한 방법으로 외부 객체의 필드에 액세스하면 전체 객체를 참조하게됩니다.
+
+```Scala
+class MyClass {
+  val field = "Hello"
+  def doStuff(rdd: RDD[String]): RDD[String] = { rdd.map(x => field + x) }
+}
+```
+
+이는 rdd.map(x => this.field + x)를 작성하는 것과 같으며 this 전체를 참조하게 됩니다. 이를 피하기 위해 간단한 방법은 메소드 외부의 값을 접근하는 것이 아니고 local 변수로 외부 field를 복사하는 것입니다.
+
+```Scala
+def doStuff(rdd: RDD[String]): RDD[String] = {
+  val field_ = this.field
+  rdd.map(x => field_ + x)
+}
+```
+
+## Java
+
+Spark의 API는 드라이버 프로그램에서 함수를 전달하여 클러스터에서 실행하는 것에 크게 의존합니다. Java에서 함수는 [org.apache.spark.api.java.function](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/function/package-summary.html) 패키지의 인터페이스를 구현한 클래스에 의해 표현됩니다. 이 함수를 생성하는 두 가지 방법이 있습니다.
+
+* 자신의 클래스에 익명의 내부 클래스 또는 명명된(named) 클래스로 Function 인터페이스를 구현하고 그 인스턴스를 Spark에 전달합니다.
+* lambda 표현식을 사용하여 구현을 간결하게 정의하십시오.
+
+이 가이드의 대부분은 간결성을 위해 람다 구문을 사용하지만 긴 형식의 모든 동일한 API를 사용하는 것은 쉽습니다. 예를 들어 위 코드를 다음과 같이 작성할 수 있습니다.
+
+```Java
+JavaRDD<String> lines = sc.textFile("data.txt");
+JavaRDD<Integer> lineLengths = lines.map(new Function<String, Integer>() {
+  public Integer call(String s) { return s.length(); }
+});
+int totalLength = lineLengths.reduce(new Function2<Integer, Integer, Integer>() {
+  public Integer call(Integer a, Integer b) { return a + b; }
+});
+```
+
+또는, 함수를 인라인으로 작성하는 것이 어렵다면
+
+```Java
+class GetLength implements Function<String, Integer> {
+  public Integer call(String s) { return s.length(); }
+}
+class Sum implements Function2<Integer, Integer, Integer> {
+  public Integer call(Integer a, Integer b) { return a + b; }
+}
+
+JavaRDD<String> lines = sc.textFile("data.txt");
+JavaRDD<Integer> lineLengths = lines.map(new GetLength());
+int totalLength = lineLengths.reduce(new Sum());
+```
+
+Java의 익명 내부 클래스는 final로 표시된 경우 enclosing(중괄호로 묶인) 범위의 변수에도 액세스 할 수 있습니다. Spark은 다른 언어와 마찬가지로 이러한 변수의 복사본을 각 작업자 노드에 제공합니다.
+
+## Python
+
+Spark의 API는 드라이버 프로그램에서 함수를 전달하여 클러스터에서 실행하는 것에 크게 의존합니다. 이 작업을 수행하는 세 가지 권장 방법이 있습니다.
+
+* [lambda 표현식](https://docs.python.org/2/tutorial/controlflow.html#lambda-expressions)을 사용하여 구현을 간결하게 정의하십시오. (lambda는 여러 문장의 함수나 값을 리턴하지 않는 문장은 지원하지 않습니다.)
+* 더 긴 코드를 위해 Spark로 호출할 함수 안에 local def(함수)를 정의합니다.
+* 모듈에서 최상위 함수를 정의합니다.
+
+예를 들어 람다를 사용하여 지원할 수있는 것보다 긴 함수를 전달하려면 아래 코드를 고려하십시오.
+
+```Python
+"""MyScript.py"""
+if __name__ == "__main__":
+    def myFunc(s):
+        words = s.split(" ")
+        return len(words)
+
+    sc = SparkContext(...)
+    sc.textFile("file.txt").map(myFunc)
+```
+
+클래스 인스턴스 (싱글톤 객체가 아닌)에서 메소드에 대한 참조를 전달하는 것도 가능하지만,이 경우 메소드와 함께 해당 클래스가 포함된 객체를 보내야합니다. 예를 들어 다음을 고려하십시오.
+
+```Python
+class MyClass(object):
+    def func(self, s):
+        return s
+    def doStuff(self, rdd):
+        return rdd.map(self.func)
+```
+
+여기서 새로운 MyClass 인스턴스를 만들고 그것에 doStuff를 호출하면 그 안에있는 맵이 해당 MyClass 인스턴스의 func1 메소드를 참조하므로 전체 객체를 클러스터로 보내야합니다.
+
+비슷한 방법으로 외부 객체의 필드에 액세스하면 전체 객체를 참조하게됩니다.
+
+```Python
+class MyClass(object):
+    def __init__(self):
+        self.field = "Hello"
+    def doStuff(self, rdd):
+        return rdd.map(lambda s: self.field + s)
+```
+
+이를 피하기 위해 간단한 방법은 메소드 외부의 값을 접근하는 것이 아니고 local 변수로 외부 field를 복사하는 것입니다.
+
+```Python
+def doStuff(self, rdd):
+    field = self.field
+    return rdd.map(lambda s: field + s)
+```
+
+# 클로저 이해하기
+
+Spark에 관한 더 어려운 것 중 하나는 클러스터 간에 코드를 실행할 때 변수와 메소드의 범위와 수명주기를 이해하는 것입니다. 범위 밖의 변수를 수정하는 RDD 연산은 자주 혼란을 일으킬 수 있습니다. 아래 예제에서는 foreach ()를 사용하여 카운터를 증가시키는 코드를 살펴 보지만 다른 작업에서도 비슷한 문제가 발생할 수 있습니다.
+
+# 예시
+
+아래의 단순한 RDD 요소 합계를 고려해보십시오. 실행은 동일한 JVM 내에서 발생하는지 여부에 따라 다르게 동작 할 수 있습니다. 이에 대한 일반적인 예는 지역 모드 (--master = local [n])에서 Spark 애플리케이션을 클러스터에 배포하는 경우 (예 : YARN에 대한 spark-submit을 통해)입니다.
+
+## Scala
+
+```Scala
+var counter = 0
+var rdd = sc.parallelize(data)
+
+// 틀렸음: 이렇게 하지 마세요!!
+rdd.foreach(x => counter += x)
+
+println("Counter value: " + counter)
+```
+
+## Java
+
+```Java
+int counter = 0;
+JavaRDD<Integer> rdd = sc.parallelize(data);
+
+// 틀렸음: 이렇게 하지 마세요!!
+rdd.foreach(x -> counter += x);
+
+println("Counter value: " + counter);
+```
+
+## Python
+
+```Python
+counter = 0
+rdd = sc.parallelize(data)
+
+# 틀렸음: 이렇게 하지 마세요!!
+def increment_counter(x):
+    global counter
+    counter += x
+rdd.foreach(increment_counter)
+
+print("Counter value: ", counter)
+```
+
+# 로컬 모드와 클러스터 모드 비교
+
+위 코드의 동작은 정의되지 않았으므로 의도한 대로 작동하지 않을 수 있습니다. 작업을 실행하기 위해 Spark는 RDD 작업 처리를 작업으로 분리합니다. 각 작업은 실행 프로그램에 의해 실행됩니다. Spark은 실행 전에 작업의 클로저(closure)를 계산합니다. 클로저는 Executor가 RDD (이 경우 foreach ())에서 계산을 수행 할 수 있도록 표시되어야하는 변수 및 메소드입니다. 이 클로저는 직렬화되어 각 실행자에게 전송됩니다.
+
+각 실행자에게 전송 된 클로저 내의 변수는 이제 복사되므로 foreach 함수 내에서 카운터가 참조되면 더 이상 드라이버 노드의 카운터가 아닙니다. 드라이버 노드의 메모리에는 여전히 카운터가 있지만 실행 프로그램에서는 더 이상 볼 수 없습니다! 집행자는 일련 화 된 클로저의 복사본 만 봅니다. 따라서 카운터의 모든 연산이 직렬화 된 클로저 내의 값을 참조하기 때문에 카운터의 최종 값은 여전히 ​​0이됩니다.
+
+로컬 모드에서는 foreach 함수가 실제로 드라이버와 동일한 JVM 내에서 실행되며 동일한 원래 카운터를 참조하고 실제로 업데이트 할 수 있습니다.
+
+이러한 종류의 시나리오에서 잘 정의 된 동작을 보장하려면 Accumulator를 사용해야합니다. Spark에서 Accumulator는 클러스터의 작업자 노드에서 실행이 분리 될 때 변수를 안전하게 업데이트하기위한 메커니즘을 제공하기 위해 특별히 사용됩니다. 이 가이드의 Accumulators 섹션에서 이에 대해 자세히 설명합니다.
+
+일반적으로 루프와 같은 구조 또는 로컬 정의된 메소드는 일부 전역 상태를 변경하는 데 사용하면 안됩니다. Spark은 클로저 외부에서 참조 된 객체에 대한 돌연변이의 동작을 정의하거나 보장하지 않습니다. 이 작업을 수행하는 일부 코드는 로컬 모드에서 작동하지만 실수로 인해 이러한 코드는 분산 모드에서 예상대로 작동하지 않습니다. 일부 글로벌 집계가 필요한 경우 Accumulator를 사용하십시오.
+
+# RDD의 요소 출력하기
+
+또 다른 공통 관용구는 rdd.foreach (println) 또는 rdd.map (println)을 사용하여 RDD 요소를 인쇄하려고합니다. 단일 시스템에서는 예상 출력을 생성하고 모든 RDD의 요소를 인쇄합니다. 그러나 클러스터 모드에서 executor에 의해 호출되는 stdout에 대한 출력이 이제는 실행 프로그램의 stdout이 아닌 executor의 stdout에 쓰여지므로 드라이버의 stdout은이를 표시하지 않습니다! 드라이버의 모든 요소를 ​​인쇄하려면 collect () 메서드를 사용하여 먼저 RDD를 드라이버 노드에 가져옵니다. rdd.collect (). foreach (println). 그러나 collect ()는 전체 RDD를 단일 시스템으로 가져 오기 때문에 드라이버에서 메모리가 부족해질 수 있습니다. RDD의 일부 요소만 출력해야하는 경우 안전한 방법은 다음처럼 take()를 사용하는 것입니다. rdd.take(100).foreach(println)
