@@ -682,4 +682,60 @@ print("Counter value: ", counter)
 
 # RDD의 요소 출력하기
 
-또 다른 공통 관용구는 rdd.foreach (println) 또는 rdd.map (println)을 사용하여 RDD 요소를 인쇄하려고합니다. 단일 시스템에서는 예상 출력을 생성하고 모든 RDD의 요소를 인쇄합니다. 그러나 클러스터 모드에서 executor에 의해 호출되는 stdout에 대한 출력이 이제는 실행 프로그램의 stdout이 아닌 executor의 stdout에 쓰여지므로 드라이버의 stdout은이를 표시하지 않습니다! 드라이버의 모든 요소를 ​​인쇄하려면 collect () 메서드를 사용하여 먼저 RDD를 드라이버 노드에 가져옵니다. rdd.collect (). foreach (println). 그러나 collect ()는 전체 RDD를 단일 시스템으로 가져 오기 때문에 드라이버에서 메모리가 부족해질 수 있습니다. RDD의 일부 요소만 출력해야하는 경우 안전한 방법은 다음처럼 take()를 사용하는 것입니다. rdd.take(100).foreach(println)
+또 다른 공통 관용구는 rdd.foreach (println) 또는 rdd.map (println)을 사용하여 RDD 요소를 출력하려고 합니다. 단일 시스템에서는 예상 출력을 생성하고 모든 RDD의 요소를 출력합니다. 그러나 클러스터 모드에서 executor에 의해 호출되는 stdout에 대한 출력이 이제는 실행 프로그램의 stdout이 아닌 executor의 stdout에 쓰여지므로 드라이버의 stdout은 이를 표시하지 않습니다! 드라이버의 모든 요소를 ​​출력 하려면 collect() 메서드를 사용하여 먼저 RDD를 드라이버 노드에 가져옵니다. rdd.collect().foreach(println). 그러나 collect()는 전체 RDD를 단일 시스템으로 가져 오기 때문에 드라이버에서 메모리가 부족해질 수 있습니다. RDD의 일부 요소만 출력해야 하는 경우 안전한 방법은 다음처럼 take()를 사용하는 것입니다. rdd.take(100).foreach(println)
+
+# 키 - 값 쌍을 사용한 작업
+
+## Scala
+
+대부분 Spark 연산은 객체 타입을 포함하는 RDD로 작동하지만 몇 가지 특별한 연산은 키 - 값 쌍의 RDD에서만 사용할 수 있습니다. 공통점은 키에 의해 요소들을 그룹화하거나 집계하는 것과 같은 분산된 "shuffle" 연산입니다.
+
+Scala에서 이 연산은 [Tuple2](http://www.scala-lang.org/api/2.11.8/index.html#scala.Tuple2) 객체를 포함한 RDD로 자동으로 사용할 수 있습니다(언어의 build-in 튜플로 간단하게 (a, b)로 작성하여 생성됩니다). 키 - 값 쌍 연산은 자동으로 tuple의 RDD로 wrapping한 [PairRDDFunctions](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions) class에서 사용 가능합니다.
+
+예를 들어, 다음 코드는 키 - 값 쌍에 reduceByKey 연산을 사용하여 파일에서 각 텍스트 행이 몇 번 발생하는지 계산합니다.
+
+```Scala
+val lines = sc.textFile("data.txt")
+val pairs = lines.map(s => (s, 1))
+val counts = pairs.reduceByKey((a, b) => a + b)
+```
+
+예를 들어, counts.sortByKey ()를 사용하여 쌍을 사전 순으로 정렬하고 마지막으로 counts.collect ()를 사용하여 객체 배열로 드라이버 프로그램에 다시 가져올 수 있습니다.
+
+참고 : 키 - 값 쌍 작업에서 사용자 지정 개체를 키로 사용하는 경우 사용자 지정 equals () 메서드와 일치하는 hashCode () 메서드가 있어야합니다. 자세한 것은, [Object.hashCode () 문서](http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode())로 설명되고 있는 규약을 참조하십시오.
+
+## Java
+
+대부분 Spark 연산은 객체 타입을 포함하는 RDD로 작동하지만 몇 가지 특별한 연산은 키 - 값 쌍의 RDD에서만 사용할 수 있습니다. 공통점은 키에 의해 요소들을 그룹화하거나 집계하는 것과 같은 분산된 "shuffle" 연산입니다.
+
+Java에서 키 - 값 쌍은 Scala 표준 라이브러리의 [scala.Tuple2](http://www.scala-lang.org/api/2.11.8/index.html#scala.Tuple2) 클래스를 사용하여 표현됩니다. 새 Tuple2 (a, b)를 호출하여 튜플을 만들고 나중에 tuple._ 1 () 및 tuple._ 2 ()를 사용하여 해당 필드에 액세스 할 수 있습니다.
+
+키 - 값 쌍의 RDD는 [JavaPairRDD](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/JavaPairRDD.html) 클래스로 표시됩니다. mapToPair 및 flatMapToPair와 같은 map 연의 특수 버전을 사용하여 JavaRDD에서 JavaPairRDD를 생성 할 수 있습니다. JavaPairRDD는 표준 RDD 기능과 특수 키 - 값 기능을 모두 갖습니다.
+
+예를 들어, 다음 코드는 키 - 값 쌍에 reduceByKey 연산을 사용하여 파일에서 각 텍스트 행이 몇 번 발생하는지 계산합니다.
+
+```Java
+JavaRDD<String> lines = sc.textFile("data.txt");
+JavaPairRDD<String, Integer> pairs = lines.mapToPair(s -> new Tuple2(s, 1));
+JavaPairRDD<String, Integer> counts = pairs.reduceByKey((a, b) -> a + b);
+```
+
+예를 들어, counts.sortByKey ()를 사용하여 쌍을 사전 순으로 정렬하고 마지막으로 counts.collect ()를 사용하여 객체 배열로 드라이버 프로그램에 다시 가져올 수 있습니다.
+
+참고 : 키 - 값 쌍 작업에서 사용자 지정 개체를 키로 사용하는 경우 사용자 지정 equals () 메서드와 일치하는 hashCode () 메서드가 있어야합니다. 자세한 것은, [Object.hashCode () 문서](http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#hashCode())로 설명되고 있는 규약을 참조하십시오.
+
+## Python
+
+대부분 Spark 연산은 객체 타입을 포함하는 RDD로 작동하지만 몇 가지 특별한 연산은 키 - 값 쌍의 RDD에서만 사용할 수 있습니다. 공통점은 키에 의해 요소들을 그룹화하거나 집계하는 것과 같은 분산된 "shuffle" 연산입니다.
+
+Python에서 이러한 연산은 (1,2)와 같은 built-in Python 튜플을 포함하는 RDD에서 작동합니다. 이러한 튜플을 만든 다음 원하는 연산을 호출하면 됩니다.
+
+예를 들어, 다음 코드는 키 - 값 쌍에 reduceByKey 연산을 사용하여 파일에서 각 텍스트 행이 몇 번 발생하는지 계산합니다.
+
+```Python
+lines = sc.textFile("data.txt")
+pairs = lines.map(lambda s: (s, 1))
+counts = pairs.reduceByKey(lambda a, b: a + b)
+```
+
+예를 들어, counts.sortByKey ()를 사용하여 쌍을 사전 순으로 정렬하고 마지막으로 counts.collect ()를 사용하여 객체 배열로 드라이버 프로그램에 다시 가져올 수 있습니다.
