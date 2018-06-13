@@ -16,7 +16,7 @@
     - 키 - 값 쌍을 사용한 작업
     - 변환(Transformation)
     - 행위(Action)
-    - 셔플 연산
+    - 셔플(shuffle) 연산
       - 배경
       - 성능 영향
   + RDD 지속성
@@ -739,3 +739,21 @@ counts = pairs.reduceByKey(lambda a, b: a + b)
 ```
 
 예를 들어, counts.sortByKey ()를 사용하여 쌍을 사전 순으로 정렬하고 마지막으로 counts.collect ()를 사용하여 객체 배열로 드라이버 프로그램에 다시 가져올 수 있습니다.
+
+# 셔플(shuffle) 연산
+
+Spark 내의 특정 작업은 셔플(shuffle)이라는 이벤트를 발생(trigger)합니다. 셔플은 파티션 간에 그룹화되도록 데이터를 다시 배포하는 Spark의 메커니즘입니다. 이것은 일반적으로 executor와 기계간에 데이터를 복사하여 셔플을 복잡하고 값 비싼 작업으로 만듭니다.
+
+# 배경
+
+셔플하는 동안 무슨 일이 일어나는지 이해하려면 reduceByKey 작업의 예를 생각해 볼 수 있습니다. reduceByKey 연산은 하나의 키에 대한 모든 값이 하나의 튜플로 결합된 새로운 RDD를 생성합니다. 이 튜플은 해당 키와 관련된 모든 값에 대해 reduce 함수를 실행한 결과입니다. 도전할 문제는 하나의 키에 대한 모든 값이 동일한 파티션이나 동일한 시스템에 있어야 하는 것은 아니지만 결과를 계산하기 위해 같은 위치에 있어야한다는 것입니다.
+
+Spark에서 데이터는 일반적으로 특정 작업을 수행하는 데 필요한 위치에 있도록 여러 파티션에 분산되어 있지 않습니다. 계산 중에 단일 작업이 단일 파티션에서 작동하므로 하나의 reduceByKey에서 reduce 작업을 실행하기 위한 모든 데이터를 구성하려면 Spark가 all-to-all 작업을 수행해야 합니다. 모든 파티션의 모든 값을 찾아 모든 파티션의 값을 모아 각 키의 최종 결과를 계산해야합니다. 이것을 셔플이라고 합니다.
+
+새로 shuffle된 데이터의 각 파티션에있는 요소 집합이 결정적 일 수는 있지만 파티션 자체의 순서도 동일하지만 이러한 요소의 순서는 다릅니다. shuffle 후에 정렬한 데이터가 필요하다면 다음을 사용할 수 있습니다.
+
+* 예를 들어 .sorted를 사용하여 각 파티션(partition)을 정렬하기 위해 mapPartitions을 사용합니다.
+* 동시에 repartition하는 동안 partition을 효율적으로 정렬하기 위해 repartitionAndSortWithinPartitions을 사용합니다.
+* 전체가 정렬된 RDD를 만들기 위해 sortBy를 사용합니다.
+
+셔플을 발생하는 연산은 [repartition](https://spark.apache.org/docs/latest/rdd-programming-guide.html#RepartitionLink)과 [coalesce](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CoalesceLink)와 같은 **repartition** 연산, [groupByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#GroupByLink)와 [reduceByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#ReduceByLink) 같은 **ByKey** 연산(세는 연산 제외) 그리고 [cogroup](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CogroupLink)과 [join](https://spark.apache.org/docs/latest/rdd-programming-guide.html#JoinLink) 같은 join 연산을 포함합니다. 
