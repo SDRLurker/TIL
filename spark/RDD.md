@@ -19,11 +19,11 @@
     - 셔플(shuffle) 연산
       - 배경
       - 성능 영향
-  + RDD 지속성
+  + RDD 영속성(persistence)
     - 어떤 스토리지 레벨을 선택해야합니까?
     - 데이터 제거
 * 공유 변수
-  + 브로드 캐스트 변수
+  + 브로드캐스트(Broadcast) 변수
   + Accumulators
 * 클러스터에 배포
 * 자바 / 스칼라에서 Spark 작업 시작하기
@@ -756,4 +756,58 @@ Spark에서 데이터는 일반적으로 특정 작업을 수행하는 데 필�
 * 동시에 repartition하는 동안 partition을 효율적으로 정렬하기 위해 repartitionAndSortWithinPartitions을 사용합니다.
 * 전체가 정렬된 RDD를 만들기 위해 sortBy를 사용합니다.
 
-셔플을 발생하는 연산은 [repartition](https://spark.apache.org/docs/latest/rdd-programming-guide.html#RepartitionLink)과 [coalesce](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CoalesceLink)와 같은 **repartition** 연산, [groupByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#GroupByLink)와 [reduceByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#ReduceByLink) 같은 **ByKey** 연산(세는 연산 제외) 그리고 [cogroup](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CogroupLink)과 [join](https://spark.apache.org/docs/latest/rdd-programming-guide.html#JoinLink) 같은 join 연산을 포함합니다. 
+셔플을 발생하는 연산은 [repartition](https://spark.apache.org/docs/latest/rdd-programming-guide.html#RepartitionLink)과 [coalesce](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CoalesceLink)와 같은 **repartition** 연산, [groupByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#GroupByLink)와 [reduceByKey](https://spark.apache.org/docs/latest/rdd-programming-guide.html#ReduceByLink) 같은 **ByKey** 연산(세는 연산 제외) 그리고 [cogroup](https://spark.apache.org/docs/latest/rdd-programming-guide.html#CogroupLink)과 [join](https://spark.apache.org/docs/latest/rdd-programming-guide.html#JoinLink) 같은 join 연산을 포함합니다.
+
+# 성능 영향
+
+**셔플** 은 디스크 입출력, 데이터 직렬화, 네트워크 입출력을 포함하기 때문에 비싼 연산입니다. 셔플에 대한 데이터를 구성하기 위해 Spark는 데이터를 구성하기 위한 map 작업과 이를 집계하는 reduce 작업 세트를 생성합니다. 이 명명법은 MapReduce에서 왔지만 Spark의 map과 reduce 연산과는 직접적인 관련은 없습니다.
+
+내부적으로 각 map 작업의 결과는 적합하지 않을 때까지 메모리에 보관됩니다. 그런 다음 대상 파티션을 기반으로 정렬되고 단일 파일에 기록됩니다. reduce 측면에서 작업은 관련하여 정렬된 블록을 읽습니다.
+
+특정 셔플 작업은 메모리 내 데이터 구조를 사용하여 레코드를 전송하기 전 또는 후에 레코드를 구성하기 때문에 상당한 양의 힙 메모리를 사용할 수 있습니다. 특히, reduceByKey 및 aggregateByKey는 map 측면에서 이러한 구조를 만들고 'ByKey 연산은 reduce 측면에서 이러한 구조를 생성합니다. 데이터가 메모리보다 크다면 Spark는 디스크에 이러한 테이블을 쏟아 부어 디스크 입출력 및 가비지 수집의 추가 오버 헤드를 초래합니다.
+
+Shuffle은 또한 디스크에 많은 수의 중간 파일을 생성합니다. Spark 1.3부터 이 파일들은 해당 RDD가 더 이상 사용되지 않고 가비지 수집 될 때까지 보존됩니다. lineage(계보)를 다시 계산할 때 셔플 파일을 다시 만들 필요가 없도록 이 작업이 수행됩니다. 가비지 수집은 응용 프로그램이 이러한 RDD에 대한 참조를 유지하거나 GC가 자주 시작하지 않는 경우 오랜 시간이 지나야 만 발생할 수 있습니다. 이는 장기적으로 실행하는 Spark 작업이 많은 양의 디스크 공간을 소비 할 수 있음을 의미합니다. 임시 저장소 디렉토리는 Spark 컨텍스트를 구성 할 때 spark.local.dir 구성 매개 변수에 의해 지정됩니다.
+
+셔플 동작은 다양한 구성 매개 변수를 통해 조정할 수 있습니다. [Spark Configuration Guide](https://spark.apache.org/docs/latest/configuration.html)의 'Shuffle Behavior'섹션을 참조하십시오.
+
+# RDD 영속성(persistence)
+
+Spark에서 가장 중요한 기능 중 하나는 작업 전반에 걸쳐 메모리에 데이터 집합을 유지 (또는 캐싱)하는 것입니다. RDD를 유지하면 각 노드는 메모리에 계산 된 모든 파티션을 저장하고 해당 데이터 세트 (또는 그로 부터 파생 된 데이터 세트)의 다른 작업에서 다시 사용합니다. 이렇게 하면 향후 작업을 훨씬 빠르게 (종종 10배 이상) 수행 할 수 있습니다. 캐싱은 반복 알고리즘 및 빠른 대화식 사용을 위한 핵심 도구입니다.
+
+persist() 또는 cache() 메소드를 사용하여 RDD에 유지되도록 표시 할 수 있습니다. 처음 action에서 계산되면 노드의 메모리에 유지됩니다. Spark의 캐시는 내결함성이 있습니다. RDD의 파티션이 손실되면 원래 만든 transformation을 사용하여 자동으로 다시 계산됩니다.
+
+또한 유지된 각 RDD는 다른 저장소 레벨을 사용하여 저장할 수 있으므로 디스크에 데이터 집합을 유지하거나 메모리에 보관할 수 있지만 (공간을 절약하기 위해) 직렬화된 Java 객체로 노드간에 복제 할 수 있습니다. 이 레벨은 StorageLevel 객체 ([Scala](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.storage.StorageLevel), [Java](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/storage/StorageLevel.html), [Python](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/storage/StorageLevel.html))를 persist ()로 전달하여 설정합니다. cache () 메서드는 기본 저장소 수준 인 StorageLevel.MEMORY_ONLY (메모리에 deserialize 된 개체 저장)를 사용하는 것을 의미합니다. 전체 저장소 레벨은 다음과 같습니다.
+
+|저장소 레벨|의미|
+|---------------|-----------|
+|MEMORY_ONLY|RDD는 JVM에 직렬화 되지 않은 Java 객체로 저장합니다. RDD가 메모리에 저장되지 못할 경우 일부 파티션은 캐시되지 않으며 필요할 때마다 즉시 다시 계산됩니다. 이것은 default 입니다.|
+|MEMORY_AND_DISK|RDD는 JVM에 직렬화 되지 않은 Java 객체로 저장합니다. RDD가 메모리에 저장되지 못할 경우 디스크에 맞지 않는 파티션을 저장하고 필요할 때 읽을 수 있습니다.|
+|MEMORY_ONLY_SER<br>(Java and Scala)|직렬화된 Java 객체(파티션 당 바이트 배열)로 RDD를 저장합니다. 이것은 일반적으로 고속 serializer를 사용하는 경우에는 deserialize 된 객체보다 공간에 효율적입니다. 그러나 읽는데 CPU를 더 많이 사용합니다.|
+|MEMORY_AND_DISK_SER<br>(Java and Scala)|MEMORY_ONLY_SER와 비슷하지만 파티션이 필요할 때마다 재계산하는 대신에 디스크에 있고 메모리에 저장되지 못하는 파티션을 넣습니다.|
+|DISK_ONLY|RDD를 디스크에만 저장합니다.|
+|MEMORY_ONLY_2, MEMORY_AND_DISK_2, 기타등등|위의 레벨과 같지만, 2개의 클러스터 노드로 각 파티션을 복제합니다.|
+|OFF_HEAP(실험중)|MEMORY_ONLY_SER와 비슷하지만 데이터를 [off-heap 메모리](https://spark.apache.org/docs/latest/configuration.html#memory-management)에 저장합니다.이는 off-heap 메모리가 사용 가능해야 설정할 수 있습니다.|
+
+참고 : 파이썬에서는 저장된 객체가 항상 Pickle 라이브러리로 직렬화되므로 직렬화된 레벨을 선택했는지 여부는 중요하지 않습니다. 파이썬에서 사용 가능한 저장소 레에는 MEMORY_ONLY, MEMORY_ONLY_2, MEMORY_AND_DISK, MEMORY_AND_DISK_2, DISK_ONLY 및 DISK_ONLY_2가 있습니다.
+
+Spark은 사용자가 persist를 호출하지 않아도 셔플 작업(예 : reduceByKey)에서 중간 데이터를 자동으로 유지합니다. 이는 셔플 중에 노드가 실패 할 경우 전체 입력을 다시 계산하는 것을 피하기 위해 수행됩니다. 재사용을 계획하고있는 사용자는 결과 RDD에서 persist를 호출하는 것이 좋습니다.
+
+# 어떤 스토리지 레벨을 선택해야합니까?
+
+Spark의 스토리지 레벨은 메모리 사용량과 CPU 효율성 간에 서로 다른 절충점을 제공합니다. 다음 과정을 거쳐 하나를 선택하는 것이 좋습니다.
+
+* RDD가 기본 저장소 수준(MEMORY_ONLY)에 잘 맞으면 그대로 두십시오. 이것은 CPU 효율이 가장 높은 옵션으로, RDD 작업을 가능한 한 빨리 실행할 수 있습니다.
+
+* 그렇지 않다면, MEMORY_ONLY_SER를 사용하고 객체를 훨씬 공간 효율적으로 만들 수 있는 [빠른 직렬화 라이브러리를 선택](https://spark.apache.org/docs/latest/tuning.html)하십시오. (자바와 스칼라)
+
+* 데이터 집합을 계산하는 함수의 비용이 비싸지 않거나 대용량의 데이터를 필터링하지 않으면 디스크에 데이터를 유출하지 마십시오. 파티션을 다시 계산하는 것이 디스크에서 읽는 것보다 빠릅니다.
+
+* 신속한 장애 복구 (예 : Spark를 사용하여 웹 응용 프로그램의 요청을 처리하는 경우)를 원할 경우 복제된 저장소 수준을 사용하십시오. 모든 스토리지 레벨은 손실 된 데이터를 다시 계산하여 완벽한 내결함성을 제공하지만 복제된 파티션은 손실된 파티션을 다시 계산하지 않고 RDD에서 작업을 계속 실행할 수 있습니다
+
+# 데이터 제거
+
+Spark은 각 노드의 캐시 사용을 자동으로 모니터링하고 LRU (least-recently-used) 방식으로 이전 데이터 파티션을 제거합니다. RDD를 캐시에서 빠져 나오기를 기다리지 않고 수동으로 제거하려면 RDD.unpersist () 메소드를 사용하십시오.
+
+# 공유 변수
+
+일반적으로 Spark 연산에 전달 된 함수 (예 : map 또는 reduce)가 원격 클러스터 노드에서 실행되면 함수에서 사용되는 모든 변수의 개별적인 복사본이 작동합니다. 이러한 변수는 각 시스템에 복사되며 원격 시스템의 변수에 대한 업데이트는 드라이버 프로그램에 전파되지 않습니다. 태스크간에 일반적인 읽기 - 쓰기 공유 변수를 지원하는 것은 비효율적입니다. 그러나 Spark는 두 가지 공통 사용 패턴, 즉 broadcast 변수 및 accumulator에 대해 두 가지 제한된 유형의 공유 변수를 제공합니다.
