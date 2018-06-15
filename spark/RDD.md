@@ -811,3 +811,204 @@ Spark은 각 노드의 캐시 사용을 자동으로 모니터링하고 LRU (lea
 # 공유 변수
 
 일반적으로 Spark 연산에 전달 된 함수 (예 : map 또는 reduce)가 원격 클러스터 노드에서 실행되면 함수에서 사용되는 모든 변수의 개별적인 복사본이 작동합니다. 이러한 변수는 각 시스템에 복사되며 원격 시스템의 변수에 대한 업데이트는 드라이버 프로그램에 전파되지 않습니다. 태스크간에 일반적인 읽기 - 쓰기 공유 변수를 지원하는 것은 비효율적입니다. 그러나 Spark는 두 가지 공통 사용 패턴, 즉 broadcast 변수 및 accumulator에 대해 두 가지 제한된 유형의 공유 변수를 제공합니다.
+
+# 브로드캐스트(Broadcast) 변수
+
+브로드캐스트 변수를 사용하면 프로그래머는 작업의 사본을 전송하는 대신 각 기계에 캐시된 읽기 전용 변수를 보존 할 수 있습니다. 예를 들어, 모든 노드에 효율적인 방식으로 큰 입력 데이터 세트의 사본을 제공하는 데 사용할 수 있습니다. Spark은 효율적인 브로드캐스트 알고리즘을 사용하여 브로드캐스트 비용을 줄이기 위해 브로드캐스트 변수를 배포하려고 시도합니다.
+
+스파크 동작은 분산된 "셔플" 동작으로 구분된 일련의 단계를 통해 실행됩니다. Spark는 각 단계의 작업에 필요한 공통 데이터를 자동으로 브로드캐스팅 합니다. 이런 식으로 브로드캐스팅 된 데이터는 직렬화된(serialized) 형식으로 캐시되고 각 작업을 실행하기 전에 역직렬화(deserialized) 됩니다. 즉, 브로드캐스트 변수를 명시적으로 만드는 것은 여러 단계의 작업이 동일한 데이터를 필요로 하거나 데이터를 역직렬화 형식으로 캐싱하는 것이 중요한 경우에만 유용합니다.
+
+브로드캐스트 변수는 SparkContext.broadcast (v)를 호출하여 변수 v에 생성됩니다. 브로드캐스트 변수는 v에 대한 래퍼이며 value 메서드를 호출하여 해당 값에 접근할 수 있습니다. 아래 코드는 이것을 보여줍니다.
+
+## Scala
+
+```Scala
+scala> val broadcastVar = sc.broadcast(Array(1, 2, 3))
+broadcastVar: org.apache.spark.broadcast.Broadcast[Array[Int]] = Broadcast(0)
+
+scala> broadcastVar.value
+res0: Array[Int] = Array(1, 2, 3)
+```
+
+## Java
+
+```Java
+Broadcast<int[]> broadcastVar = sc.broadcast(new int[] {1, 2, 3});
+
+broadcastVar.value();
+// returns [1, 2, 3]
+```
+
+## Python
+
+```Python
+>>> broadcastVar = sc.broadcast([1, 2, 3])
+<pyspark.broadcast.Broadcast object at 0x102789f10>
+
+>>> broadcastVar.value
+[1, 2, 3]
+```
+
+브로드캐스트 변수를 만든 후에는 클러스터에서 실행되는 모든 함수에서 값 v 대신 v가 노드에 두 번 이상 전달되지 않도록 브로드캐스트 변수를 사용해야 합니다. 또한, 브로드캐스트 된 후에 객체 v를 수정해서는 안 되며, 모든 노드가 브로드캐스트 변수의 동일한 값을 얻도록 해야 합니다. (예 : 변수가 나중에 새 노드로 전달되는 경우).
+
+# Accumulators
+
+Accumulator는 결합법칙과 교환법칙을 만족하는 연산을 통해서만 "추가"되는 변수이고 결국 효율적으로 병렬처리를 지원할 수 있습니다. 그것들은 (MapReduce에서와 같이) 카운터 또는 합계를 구현하는 데 사용될 수 있습니다. Spark은 숫자 타입의 accumulator를 기본적으로 지원하며 프로그래머는 새로운 타입에 대한 지원을 추가 할 수 있습니다.
+
+사용자는 이름이 지정된 또는 이름이 지정되지 않은 accumulator를 만들 수 있습니다. 아래 이미지에서 알 수 있듯이 이름이 지정된 accumulator (이 경우 counter)가 accumulator를 수정하는 스테이지의 웹 UI로 표시됩니다. Spark는 "작업"테이블에서 작업에 의해 수정된 각 accumulator의 값을 표시합니다.
+
+![Spark UI 의 accumulator](https://spark.apache.org/docs/latest/img/spark-webui-accumulators.png)
+
+UI의 accumulator 추적은 실행 단계의 진행 상황을 이해하는 데 유용 할 수 있습니다 (참고 : 아직 Python에서는 지원되지 않습니다).
+
+## Scala
+
+SparkContext.longAccumulator() 또는 SparkContext.doubleAccumulator()를 호출하여 Long 또는 Double 유형의 값을 각각 누적하여 숫자 accumulator를 만들 수 있습니다. 그런 다음 클러스터에서 실행 중인 작업을 add 메소드를 사용하여 추가 할 수 있습니다. 그러나 그들은 그 값을 읽을 수 없습니다. 드라이버 프로그램 만이 value 메서드를 사용하여 accumulator의 값을 읽을 수 있습니다.
+
+아래 코드는 배열 요소를 더하는 데 사용되는 accumulator를 보여줍니다.
+
+```Scala
+scala> val accum = sc.longAccumulator("My Accumulator")
+accum: org.apache.spark.util.LongAccumulator = LongAccumulator(id: 0, name: Some(My Accumulator), value: 0)
+
+scala> sc.parallelize(Array(1, 2, 3, 4)).foreach(x => accum.add(x))
+...
+10/09/29 18:41:08 INFO SparkContext: Tasks finished in 0.317106 s
+
+scala> accum.value
+res2: Long = 10
+```
+
+이 코드는 Long 형식의 축약 형에 대한 기본 제공 지원을 사용했지만 프로그래머는 [AccumulatorV2](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.util.AccumulatorV2)를 서브 클래싱하여 고유한 형식을 만들 수도 있습니다. AccumulatorV2 추상 클래스에는 재정의해야 할 몇 가지 방법이 있습니다. accumulator를 0으로 재설정하고, accumulator에 다른 값을 추가하고, 다른 동일한 유형의 accumulator를 이 항목에 병합합니다. override 하는 다른 메소드는 [API 문서](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.util.AccumulatorV2)에 포함되어 있습니다. 예를 들어 수학 벡터를 나타내는 MyVector 클래스가 있다고 가정하면 다음과 같이 쓸 수 있습니다.
+
+```Scala
+class VectorAccumulatorV2 extends AccumulatorV2[MyVector, MyVector] {
+
+  private val myVector: MyVector = MyVector.createZeroVector
+
+  def reset(): Unit = {
+    myVector.reset()
+  }
+
+  def add(v: MyVector): Unit = {
+    myVector.add(v)
+  }
+  ...
+}
+
+// 그리고 나서 이 타입으로 Accumulator를 생성합니다.
+val myVectorAcc = new VectorAccumulatorV2
+// 그리고 나서 spark context로 이를 등록합니다.
+sc.register(myVectorAcc, "MyVectorAcc1")
+```
+
+프로그래머가 자신의 타입의 AccumulatorV2를 정의하면 결과 타입은 추가된 요소의 타입과 다를 수 있습니다.
+
+**action 내에서만** 수행되는 accumulator 업데이트의 경우 Spark는 accumulator에 대한 각 작업의 업데이트가 한 번만 적용되도록 합니다. 다시 시작한 작업은 값을 업데이트하지 않습니다. transformation에서 사용자는 작업이나 작업 단계를 다시 실행하면 각 작업의 업데이트가 두 번 이상 적용될 수 있음을 인식해야합니다.
+
+Accumulators는 Spark의 게으른 평가 모델을 변경하지 않습니다. RDD에서 연산 중에 업데이트되는 경우 해당 값은 RDD가 action의 일부로 계산 된 후에만 ​​업데이트됩니다. 결과적으로 Accumulator 업데이트는 map()과 같은 지연 transformation 내에서 수행 될 때 보장되지 않습니다. 아래 코드는 이 속성을 보여줍니다.
+
+```Scala
+val accum = sc.longAccumulator
+data.map { x => accum.add(x); x }
+// 여기, map 연산이 계산될 action이 없기 때문에 accum은 아직 0입니다.
+```
+
+## Java
+
+SparkContext.longAccumulator() 또는 SparkContext.doubleAccumulator()를 호출하여 Long 또는 Double 유형의 값을 각각 누적하여 숫자 accumulator를 만들 수 있습니다. 그런 다음 클러스터에서 실행 중인 작업을 add 메소드를 사용하여 추가 할 수 있습니다. 그러나 그들은 그 값을 읽을 수 없습니다. 드라이버 프로그램 만이 value 메서드를 사용하여 accumulator의 값을 읽을 수 있습니다.
+
+아래 코드는 배열 요소를 더하는 데 사용되는 accumulator를 보여줍니다.
+
+```Java
+LongAccumulator accum = jsc.sc().longAccumulator();
+
+sc.parallelize(Arrays.asList(1, 2, 3, 4)).foreach(x -> accum.add(x));
+// ...
+// 10/09/29 18:41:08 INFO SparkContext: Tasks finished in 0.317106 s
+
+accum.value();
+// returns 10
+```
+
+이 코드는 Long 형식의 축약 형에 대한 기본 제공 지원을 사용했지만 프로그래머는 [AccumulatorV2](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.util.AccumulatorV2)를 서브 클래싱하여 고유한 형식을 만들 수도 있습니다. AccumulatorV2 추상 클래스에는 재정의해야 할 몇 가지 방법이 있습니다. accumulator를 0으로 재설정하고, accumulator에 다른 값을 추가하고, 다른 동일한 유형의 accumulator를 이 항목에 병합합니다. override 하는 다른 메소드는 [API 문서](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.util.AccumulatorV2)에 포함되어 있습니다. 예를 들어 수학 벡터를 나타내는 MyVector 클래스가 있다고 가정하면 다음과 같이 쓸 수 있습니다.
+
+```Java
+class VectorAccumulatorV2 implements AccumulatorV2<MyVector, MyVector> {
+
+  private MyVector myVector = MyVector.createZeroVector();
+
+  public void reset() {
+    myVector.reset();
+  }
+
+  public void add(MyVector v) {
+    myVector.add(v);
+  }
+  ...
+}
+
+// 그리고 나서 이 타입으로 Accumulator를 생성합니다.
+VectorAccumulatorV2 myVectorAcc = new VectorAccumulatorV2();
+// 그리고 나서 spark context로 이를 등록합니다.
+jsc.sc().register(myVectorAcc, "MyVectorAcc1");
+```
+
+프로그래머가 자신의 타입의 AccumulatorV2를 정의하면 결과 타입은 추가된 요소의 타입과 다를 수 있습니다.
+
+**action 내에서만** 수행되는 accumulator 업데이트의 경우 Spark는 accumulator에 대한 각 작업의 업데이트가 한 번만 적용되도록 합니다. 다시 시작한 작업은 값을 업데이트하지 않습니다. transformation에서 사용자는 작업이나 작업 단계를 다시 실행하면 각 작업의 업데이트가 두 번 이상 적용될 수 있음을 인식해야합니다.
+
+Accumulators는 Spark의 게으른 평가 모델을 변경하지 않습니다. RDD에서 연산 중에 업데이트되는 경우 해당 값은 RDD가 action의 일부로 계산 된 후에만 ​​업데이트됩니다. 결과적으로 Accumulator 업데이트는 map()과 같은 지연 transformation 내에서 수행 될 때 보장되지 않습니다. 아래 코드는 이 속성을 보여줍니다.
+
+```Java
+LongAccumulator accum = jsc.sc().longAccumulator();
+data.map(x -> { accum.add(x); return f(x); });
+// 여기, map 연산이 계산될 action이 없기 때문에 accum은 아직 0입니다.
+```
+
+## Python
+
+Accumulator는 SparkContext.accumulator(v)를 호출하여 초기값 v에서 생성됩니다. 클러스터에서 실행중인 작업은 add 메소드 또는 += 연산자를 사용하여 추가 할 수 있습니다. 그러나 그들은 그 값을 읽을 수 없습니다. 드라이버 프로그램만 value 메서드를 사용하여 accumulator의 값을 읽을 수 있습니다.
+
+아래 코드는 배열 요소를 더하는 데 사용되는 accumulator를 보여줍니다.
+
+```Python
+>>> accum = sc.accumulator(0)
+>>> accum
+Accumulator<id=0, value=0>
+
+>>> sc.parallelize([1, 2, 3, 4]).foreach(lambda x: accum.add(x))
+...
+10/09/29 18:41:08 INFO SparkContext: Tasks finished in 0.317106 s
+
+>>> accum.value
+10
+```
+
+이 코드는 Int 타입의 accumulator에 내장된 지원을 사용했지만 프로그래머는 AccumulatorParam을 서브 클래스화하여 고유한 유형을 만들 수도 있습니다. AccumulatorParam 인터페이스에는 두 가지 메소드가 있습니다. 데이터 타입에 "0값"을 제공하는 경우 zero이고 두 값을 함께 추가하는 경우에는 addInPlace입니다. 예를 들어, 수학적 벡터를 나타내는 Vector 클래스가 있다고 가정하면 다음과 같이 작성할 수 있습니다.
+
+```Python
+class VectorAccumulatorParam(AccumulatorParam):
+    def zero(self, initialValue):
+        return Vector.zeros(initialValue.size)
+
+    def addInPlace(self, v1, v2):
+        v1 += v2
+        return v1
+
+# 그리고 나서 이 타입의 accumulator를 생성합니다.
+vecAccum = sc.accumulator(Vector(...), VectorAccumulatorParam())
+```
+
+**action 내에서만** 수행되는 accumulator 업데이트의 경우 Spark는 accumulator에 대한 각 작업의 업데이트가 한 번만 적용되도록 합니다. 다시 시작한 작업은 값을 업데이트하지 않습니다. transformation에서 사용자는 작업이나 작업 단계를 다시 실행하면 각 작업의 업데이트가 두 번 이상 적용될 수 있음을 인식해야합니다.
+
+Accumulators는 Spark의 게으른 평가 모델을 변경하지 않습니다. RDD에서 연산 중에 업데이트되는 경우 해당 값은 RDD가 action의 일부로 계산 된 후에만 ​​업데이트됩니다. 결과적으로 Accumulator 업데이트는 map()과 같은 지연 transformation 내에서 수행 될 때 보장되지 않습니다. 아래 코드는 이 속성을 보여줍니다.
+
+```Python
+accum = sc.accumulator(0)
+def g(x):
+    accum.add(x)
+    return f(x)
+data.map(g)
+# 여기, map 연산이 계산될 action이 없기 때문에 accum은 아직 0입니다.
+```
