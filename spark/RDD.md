@@ -27,7 +27,7 @@
   + Accumulators
 * 클러스터에 배포
 * 자바 / 스칼라에서 Spark 작업 시작하기
-* 단위 테스트
+* 유닛(unit) 테스트
 * 여기에서 가야할 방향
 
 # 개요
@@ -766,7 +766,7 @@ Spark에서 데이터는 일반적으로 특정 작업을 수행하는 데 필�
 
 특정 셔플 작업은 메모리 내 데이터 구조를 사용하여 레코드를 전송하기 전 또는 후에 레코드를 구성하기 때문에 상당한 양의 힙 메모리를 사용할 수 있습니다. 특히, reduceByKey 및 aggregateByKey는 map 측면에서 이러한 구조를 만들고 'ByKey 연산은 reduce 측면에서 이러한 구조를 생성합니다. 데이터가 메모리보다 크다면 Spark는 디스크에 이러한 테이블을 쏟아 부어 디스크 입출력 및 가비지 수집의 추가 오버 헤드를 초래합니다.
 
-Shuffle은 또한 디스크에 많은 수의 중간 파일을 생성합니다. Spark 1.3부터 이 파일들은 해당 RDD가 더 이상 사용되지 않고 가비지 수집 될 때까지 보존됩니다. lineage(계보)를 다시 계산할 때 셔플 파일을 다시 만들 필요가 없도록 이 작업이 수행됩니다. 가비지 수집은 응용 프로그램이 이러한 RDD에 대한 참조를 유지하거나 GC가 자주 시작하지 않는 경우 오랜 시간이 지나야 만 발생할 수 있습니다. 이는 장기적으로 실행하는 Spark 작업이 많은 양의 디스크 공간을 소비 할 수 있음을 의미합니다. 임시 저장소 디렉토리는 Spark 컨텍스트를 구성 할 때 spark.local.dir 구성 매개 변수에 의해 지정됩니다.
+Shuffle은 또한 디스크에 많은 수의 중간 파일을 생성합니다. Spark 1.3부터 이 파일들은 해당 RDD가 더 이상 사용되지 않고 가비지 수집 될 때까지 보존됩니다. lineage(계보)를 다시 계산할 때 셔플 파일을 다시 만들 필요가 없도록 이 작업이 수행됩니다. 가비지 수집은 응용 프로그램이 이러한 RDD에 대한 참조를 유지하거나 GC가 자주 시작하지 않는 경우 오랜 시간이 지나야 만 발생할 수 있습니다. 이는 장기적으로 실행하는 Spark 작업이 많은 양의 디스크 공간을 소비 할 수 있음을 의미합니다. 임시 저장소 디렉토리는 Spark context를 구성 할 때 spark.local.dir 구성 매개 변수에 의해 지정됩니다.
 
 셔플 동작은 다양한 구성 매개 변수를 통해 조정할 수 있습니다. [Spark Configuration Guide](https://spark.apache.org/docs/latest/configuration.html)의 'Shuffle Behavior'섹션을 참조하십시오.
 
@@ -849,7 +849,7 @@ broadcastVar.value();
 [1, 2, 3]
 ```
 
-브로드캐스트 변수를 만든 후에는 클러스터에서 실행되는 모든 함수에서 값 v 대신 v가 노드에 두 번 이상 전달되지 않도록 브로드캐스트 변수를 사용해야 합니다. 또한, 브로드캐스트 된 후에 객체 v를 수정해서는 안 되며, 모든 노드가 브로드캐스트 변수의 동일한 값을 얻도록 해야 합니다. (예 : 변수가 나중에 새 노드로 전달되는 경우).
+브로드캐스트 변수를 만든 후에는 값 v(1,2,3)rk 노드에 두 번 이상 전달되지 않도록 모든 함수에서 값 v 대신 브로드캐스트 변수(broadcastVar)를 사용해야 합니다.
 
 # Accumulators
 
@@ -1012,3 +1012,39 @@ def g(x):
 data.map(g)
 # 여기, map 연산이 계산될 action이 없기 때문에 accum은 아직 0입니다.
 ```
+
+# 클러스터에 배포
+
+[응용 프로그램 제출 가이드](https://spark.apache.org/docs/latest/submitting-applications.html)는 응용 프로그램을 클러스터에 제출하는 방법을 설명합니다. 즉, 애플리케이션을 JAR (Java / Scala의 경우) 또는 .py 또는 .zip 파일 (Python의 경우)로 패키지하면 bin / spark-submit 스크립트를 통해 지원되는 모든 클러스터 관리자에게 제출할 수 있습니다.
+
+# 자바 / 스칼라에서 Spark 작업 시작하기
+
+[org.apache.spark.launcher](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/launcher/package-summary.html) 패키지는 간단한 Java API를 사용하여 자식 프로세스로 Spark 작업을 시작하기 위한 클래스를 제공합니다.
+
+# 유닛(unit) 테스트
+
+Spark는 인기있는 유닛(unit) 테스트 프레임 워크와 유닛 테스트 하기에 좋습니다. 마스터 URL을 local로 설정하여 테스트에서 SparkContext를 만들고 연산을 실행한 다음 SparkContext.stop()을 호출하여 종료(tear down) 시킵니다. Spark은 동일한 프로그램에서 동시에 실행되는 두 개의 context를 지원하지 않으므로 finally 블록 또는 테스트 프레임 워크의 tearDown 메서드 내에서 context를 중지해야합니다.
+
+# 여기에서 가야할 방향
+
+Spark 웹 사이트에서 [Spark 프로그램 예제](http://spark.apache.org/examples.html)를 볼 수 있습니다. 또한 Spark는 examples 디렉토리 ([Scala](https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples), [Java](https://github.com/apache/spark/tree/master/examples/src/main/java/org/apache/spark/examples), [Python](https://github.com/apache/spark/tree/master/examples/src/main/python), [R](https://github.com/apache/spark/tree/master/examples/src/main/r))에 몇 개의 샘플을 포함합니다. Spark의 bin / run-example 스크립트에 클래스 이름을 전달하여 Java 및 Scala 예제를 실행할 수 있습니다.
+
+```
+./bin/run-example SparkPi
+```
+
+파이썬 예제의 경우 spark-submit을 대신 사용합니다.
+
+```
+./bin/spark-submit examples/src/main/python/pi.py
+```
+
+R 예제의 경우도 spark-submit을 대신 사용하십시오.
+
+```
+./bin/spark-submit examples/src/main/r/dataframe.R
+```
+
+프로그램 최적화에 대한 도움말을 보려면 [구성](https://spark.apache.org/docs/latest/configuration.html) 및 [조정](https://spark.apache.org/docs/latest/tuning.html) 가이드에서 모범 사례에 대한 정보를 제공합니다. 이는 데이터가 효율적인 형식으로 메모리에 저장되도록 하는데 특히 중요합니다. 배포에 대한 도움말은 [클러스터 모드](https://spark.apache.org/docs/latest/cluster-overview.html) 개요에서 분산 작업 및 지원되는 클러스터 관리자와 관련된 구성 요소에 대해 설명합니다.
+
+마지막으로 전체 API 문서는 [Scala](https://spark.apache.org/docs/latest/api/scala/#org.apache.spark.package), [Java](https://spark.apache.org/docs/latest/api/java/), [Python](https://spark.apache.org/docs/latest/api/python/) 및 [R](https://spark.apache.org/docs/latest/api/R/)에서 사용할 수 있습니다.
