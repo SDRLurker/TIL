@@ -72,7 +72,6 @@ import org.apache.spark.SparkConf
 
 Spark 2.3.0은 정확한 함수 작성을 위해 [람다 표현식](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)을 지원합니다. 그렇지 않으면 [org.apache.spark.api.java.function](http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/api/java/function/package-summary.html) 패키지를 사용할 수 있습니다.
 
-Note that support for Java 7 was removed in Spark 2.2.0.
 Java 7에 대한 지원은 Spark 2.2.0에서 제거되었습니다.
 
 Java에서 Spark 응용프로그램을 작성하려면 당신은 Spark의 의존성을 추가해야 합니다. Spark는 Maven Central을 통해 사용할 수 있습니다.
@@ -136,9 +135,7 @@ $ PYSPARK_PYTHON=/opt/pypy-2.5/bin/pypy bin/spark-submit examples/src/main/pytho
 
 Spark 프로그램에서 반드시 해야할 첫번째는 클러스터에게 접근하는 방법을 Spark에게 말하는 [SparkContext](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkContext) 객체를 생성하는 것입니다. [SparkContext](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.SparkConf)를 생성하기 위해 당신은 당신의 응용프로그램에 관한 정보를 포함하는 SpackConf 객체를 만들어야 합니다.
 
-Only one SparkContext may be active per JVM. You must stop() the active SparkContext before creating a new one.
 JVM 당 하나의 SparkContext만 활성화될 수 있습니다. 당신은 새로 만들기 전에 활성화된 SparkContext를 stop() 해야 합니다.
-
 
 ```spark
 val conf = new SparkConf().setAppName(appName).setMaster(master)
