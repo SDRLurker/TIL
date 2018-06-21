@@ -1,4 +1,4 @@
-#python
+# python
 
 ### 목록(list)
 
@@ -53,7 +53,7 @@ mv.py 파일 내용
 
 \#!/usr/bin/python
 
-위에처럼 shebang을 사용하면 
+위에처럼 shebang을 사용하면
 
 mv.py A B
 
