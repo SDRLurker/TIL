@@ -1,0 +1,99 @@
+# Spark SQL, DataFrames 및 Datasets 가이드
+* 개요
+  + SQL
+  + DataSets 및 DataFrames
+* 시작하기
+  + 시작점 : SparkSession
+  + DataFrame 만들기
+  + 타입이 지정되지 않은 DataSet 연산 (DataFrame 연산)
+  + 프로그래밍 방식으로 SQL 쿼리 실행
+  + 전역 임시(Temporary) View
+  + DataSet 만들기
+  + RDD와 상호 연산
+    - 리플렉션을 사용하여 스키마 추론하기
+    - 프로그래밍 방식으로 스키마 지정
+  + Aggregations
+    - 타입이 지정되지 않은 사용자 정의 Aggregate 함수
+    - 타입에 안전한 사용자 정의 Aggregate 함수
+* 데이터 소스
+  + 일반적인 로드 / 저장 함수
+    - 수동으로 옵션 지정
+    - 파일에 직접 SQL 실행
+    - 모드 저장
+    - 영구 테이블에 저장
+    - Bucketing, 분류 및 파티셔닝
+  + Parquet 파일
+    - 프로그래밍 방식으로 데이터 로드
+    - 파티션 검색
+    - 스키마 병합
+    - Hive metastore Parquet 테이블 변환
+      - Hive / Parquet 스키마 조정
+      - 메타 데이터 새로 고침
+    - 구성
+  + ORC 파일
+  + JSON 데이터 세트
+  + Hive 테이블
+    - Hive 테이블의 저장소 형식 지정
+    - 다양한 버전의 Hive Metastore와 상호 작용
+  + 다른 데이터베이스에 JDBC
+  + 문제 해결
+* 성능 튜닝
+  + 메모리에 데이터 캐싱
+  + 기타 구성 옵션
+  + 브로드 캐스트 힌트 SQL 쿼리
+* 분산 SQL 엔진
+  + Thrift JDBC / ODBC 서버 실행
+  + Spark SQL CLI 실행
+* Apache Arrow와 Pandas를 위한 PySpark 사용 가이드
+  + Spark의 Apache Arrow
+    - PyArrow 설치 여부 확인
+  + Pandas로 또는 Pandas로부터 변환 활성화
+  + Pandas UDF (a.k.a. 벡터화 된 UDF)
+    - Scalar
+    - 그룹화된 Map
+  + 사용 메모
+    - 지원되는 SQL 유형
+    - Arrow Batch 크기 설정
+    - Time Zone Semantics와 Timestamp
+* 마이그레이션 가이드
+  + Spark SQL 2.3.0에서 2.3.1 이상으로 업그레이드
+  + Spark SQL 2.2에서 2.3으로 업그레이드
+  + Spark SQL 2.1에서 2.2로 업그레이드
+  + Spark SQL 2.0에서 2.1로 업그레이드
+  + Spark SQL 1.6에서 2.0으로 업그레이드
+  + Spark SQL 1.5에서 1.6으로 업그레이드
+  + Spark SQL 1.4에서 1.5로 업그레이드
+  + Spark SQL 1.3에서 1.4로 업그레이드
+    - DataFrame 데이터 reader / writer 인터페이스
+    - DataFrame.groupBy는 그룹화 열을 유지.
+    - DataFrame.withColumn의 동작 변경
+  + Spark SQL 1.0-1.2에서 1.3으로 업그레이드
+    - SchemaRDD의 이름을 DataFrame으로 변경
+    - Java 및 Scala API의 통합
+    - 암시적 변환 격리 및 dsl 패키지 제거 (스칼라 전용)
+    - DataType을위한 org.apache.spark.sql의 타입 별칭 제거 (스칼라 전용)
+    - sqlContext.udf로 UDF 등록(Java 및 Scala)
+    - 더 이상 싱글톤이 아닌 파이썬 DataTypes
+  + Apache Hive와의 호환성
+    - 기존 Hive Warehouses에 배포
+    - 지원되는 Hive 기능
+    - 지원되지 않는 Hive 기능
+    - 호환되지 않는 Hive UDF
+* 참고
+  + 데이터 유형
+  + NaN 의미
+
+# 개요
+Spark SQL은 구조화된 데이터 처리를 위한 Spark 모듈입니다. 기본 Spark RDD API와는 달리, Spark SQL에서 제공하는 인터페이스는 수행되는 데이터와 계산의 구조에 대해 더 많은 정보를 Spark에 제공합니다. 내부적으로 Spark SQL은이 추가(extra) 정보를 사용하여 추가 최적화를 수행합니다. SQL과 Dataset API를 포함하여 Spark SQL과 상호 작용하는 방법은 여러 가지가 있습니다. 결과를 계산할 때 계산을 표현하는 데 사용하는 API / 언어와 관계없이 동일한 실행 엔진이 사용됩니다. 이 동일함(unification)은 개발자가 주어진 변환을 표현하는 가장 자연스러운 방법을 제공하는 데 있어 다양한 API간에 쉽게 전환 할 수 있음을 의미합니다.
+
+이 페이지의 모든 예제는 Spark 배포판에 포함된 샘플 데이터를 사용하며 spark-shell, pyspark shell 또는 sparkR shell에서 실행할 수 있습니다.
+
+# SQL
+Spark SQL의 한 가지 용도는 SQL 쿼리를 실행하는 것입니다. Spark SQL은 기존 Hive 설치에서 데이터를 읽는 데에도 사용할 수 있습니다. 이 기능을 구성하는 방법에 대한 자세한 내용은 [Hive 테이블](https://spark.apache.org/docs/latest/sql-programming-guide.html#hive-tables) 섹션을 참조하십시오. 다른 프로그래밍 언어에서 SQL을 실행하면 결과가 [DataSet / DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes)으로 반환됩니다. [명령행](https://spark.apache.org/docs/latest/sql-programming-guide.html#running-the-spark-sql-cli) 또는 [JDBC / ODBC](https://spark.apache.org/docs/latest/sql-programming-guide.html#running-the-thrift-jdbcodbc-server)를 사용하여 SQL 인터페이스와 상호 작용할 수도 있습니다.
+
+# DataSets 및 DataFrames
+DataSet은 분산된 데이터 집합입니다. DataSet은 Spark SQL의 최적화된 실행 엔진과 함께 RDD (강력한 타입(typing), 강력한 람다 기능 사용)의 이점을 제공하는 Spark 1.6에서 추가된 새로운 실행 인터페이스입니다. DataSet은 JVM 객체로 [생성될](https://spark.apache.org/docs/latest/sql-programming-guide.html#creating-datasets) 수 있고 transformation(변환) 함수(map, flatMap, filter 등)를 사용하여 조작할 수 있습니다. Dataset API는 [Scala](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)와 [Java](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html)에서 사용할 수 있습니다. Python에는 Dataset API에 대한 지원이 없습니다. 그러나 Python의 동적 특성으로 인해 Dataset API의 많은 이점을 이미 사용할 수 있습니다. (예시. 행의 필드에 이름을 자연스럽게 row.columnName으로 액세스 할 수 있습니다). R의 경우도 비슷합니다.
+
+DataFrame은 이름을 가진 열로 구성된 데이터 집합입니다. 관계형 데이터베이스의 테이블이나 R / Python의 데이터 프레임과 개념적으로는 동일하지만 더 자세한 최적화가 필요합니다. DataFrame은 구조화된 데이터 파일, Hive의 테이블, 외부 데이터베이스 또는 기존 RDD와 같은 다양한 [소스](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-sources)로 구성 할 수 있습니다. DataFrame API는 Scala, Java, [Python](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame) 및 [R](https://spark.apache.org/docs/latest/api/R/index.html)에서 사용할 수 있습니다. Scala 및 Java에서 DataFrame은 행 데이터 집합으로 표시됩니다. [Scala API](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)에서 DataFrame은 단순히 Dataset[Row]의 타입의 별칭(alias)입니다. [Java API](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html)에서 사용자는 DataFrame을 나타내기 위해 Dataset<Row\>을 사용해야 합니다.
+
+이 문서에서 Scala / Java DataSet 의 Row를 DataFrame라고 부르기도 합니다.
