@@ -273,3 +273,229 @@ showDF(df)
 ```
 
 Spark repo의 "examples/src/main/r/RSparkSQLExample.R"에서 전체 예제 코드를 찾아 보십시오.
+
+# 타입이 지정되지 않은 DataSet 연산 (DataFrame 연산)
+
+DataFrame은 [Scala](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset), [Java](http://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html), [Python](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame) 및 [R](http://spark.apache.org/docs/latest/api/R/SparkDataFrame.html)에서 구조화 된 데이터 조작을 위한 도메인 특정 언어를 제공합니다.
+
+위에서 언급했듯이 Spark 2.0에서 DataFrames는 Scala 및 Java API의 Row의 DataSet입니다. 이러한 연산은 강력한 타입의 Scala / Java DataSet과 함께 제공되는 "타입이 지정된 변환(transformation)"과 달리 "타입이 지정되지 않은 변환"이라고도 합니다.
+
+여기에는 DataSet을 사용하여 구조화된 데이터 처리의 몇 가지 기본 예제가 포함됩니다.
+
+## Scala
+
+```Scala
+// 이 import는 $-표기법을 사용하기 위해 필요합니다.
+import spark.implicits._
+// Tree 형식으로 스키마를 출력합니다.
+df.printSchema()
+// root
+// |-- age: long (nullable = true)
+// |-- name: string (nullable = true)
+
+// "name" 열만 선택(select)합니다.
+df.select("name").show()
+// +-------+
+// |   name|
+// +-------+
+// |Michael|
+// |   Andy|
+// | Justin|
+// +-------+
+
+// 모든 내용 age에 1을 더한 값을 선택(select)합니다.
+df.select($"name", $"age" + 1).show()
+// +-------+---------+
+// |   name|(age + 1)|
+// +-------+---------+
+// |Michael|     null|
+// |   Andy|       31|
+// | Justin|       20|
+// +-------+---------+
+
+// 21살보다 나이(age)든 사람을 선택(select)합니다.
+df.filter($"age" > 21).show()
+// +---+----+
+// |age|name|
+// +---+----+
+// | 30|Andy|
+// +---+----+
+
+// 나이(age) 별로 수를 샙니다.
+df.groupBy("age").count().show()
+// +----+-----+
+// | age|count|
+// +----+-----+
+// |  19|    1|
+// |null|    1|
+// |  30|    1|
+// +----+-----+
+```
+
+Spark repo의 "examples/src/main/scala/org/apache/spark/examples/sql/ SparkSQLExample.scala"에서 전체 예제 코드를 찾아보십시오.
+DataSet에서 수행 할 수 있는 연산 type의 전체 목록은 [API 문서](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)를 참조하십시오.
+
+간단한 열 참조 및 표현 이외에도 DataSet에는 문자열 조작, 날짜 계산, 일반적인 수학 연산 등의 풍부한 함수 라이브러리가 있습니다. 전체 목록은 [DataFrame 함수 참조](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)에서 사용할 수 있습니다.
+
+## Java
+
+```Java
+// col("...")이 df.col("...")보다 좋습니다.
+import static org.apache.spark.sql.functions.col;
+
+// Tree 형식으로 스키마를 출력합니다.
+df.printSchema();
+// root
+// |-- age: long (nullable = true)
+// |-- name: string (nullable = true)
+
+// "name" 열만 선택(select)합니다.
+df.select("name").show();
+// +-------+
+// |   name|
+// +-------+
+// |Michael|
+// |   Andy|
+// | Justin|
+// +-------+
+
+// 모든 내용 age에 1을 더한 값을 선택(select)합니다.
+df.select(col("name"), col("age").plus(1)).show();
+// +-------+---------+
+// |   name|(age + 1)|
+// +-------+---------+
+// |Michael|     null|
+// |   Andy|       31|
+// | Justin|       20|
+// +-------+---------+
+
+// 21살보다 나이(age)든 사람을 선택(select)합니다.
+df.filter(col("age").gt(21)).show();
+// +---+----+
+// |age|name|
+// +---+----+
+// | 30|Andy|
+// +---+----+
+
+// 나이(age) 별로 수를 샙니다.
+df.groupBy("age").count().show();
+// +----+-----+
+// | age|count|
+// +----+-----+
+// |  19|    1|
+// |null|    1|
+// |  30|    1|
+// +----+-----+
+```
+
+Spark repo의 "examples/src/main/java/org/apache/spark/examples/sql/JavaSparkSQLExample.java"에서 전체 예제 코드를 찾아보십시오.
+DataSet에서 수행 할 수 있는 연산 type의 전체 목록은 [API 문서](http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html)를 참조하십시오.
+
+간단한 열 참조 및 표현 이외에도 DataSet에는 문자열 조작, 날짜 계산, 일반적인 수학 연산 등의 풍부한 함수 라이브러리가 있습니다. 전체 목록은 [DataFrame 함수 참조](http://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/functions.html)에서 사용할 수 있습니다.
+
+## Python
+
+파이썬에서는 속성(attribute) (df.age) 또는 인덱싱(indexing) (df['age'])을 사용하여 DataFrame의 열에 액세스 할 수 있습니다. 전자는 대화형 데이터 탐색에 편리하지만 사용자는 후자의 형식을 사용하는 것이 좋습니다. 이는 DataFrame 클래스의 속성으로 열 이름이 손상되지 않도록 할 것입니다.
+
+```Python
+# spark의 df는 이전 예시에서 왔습니다.
+# Tree 형식으로 스키마를 출력합니다.
+df.printSchema()
+# root
+# |-- age: long (nullable = true)
+# |-- name: string (nullable = true)
+
+# "name" 열만 선택(select)합니다.
+df.select("name").show()
+# +-------+
+# |   name|
+# +-------+
+# |Michael|
+# |   Andy|
+# | Justin|
+# +-------+
+
+# 모든 내용 age에 1을 더한 값을 선택(select)합니다.
+df.select(df['name'], df['age'] + 1).show()
+# +-------+---------+
+# |   name|(age + 1)|
+# +-------+---------+
+# |Michael|     null|
+# |   Andy|       31|
+# | Justin|       20|
+# +-------+---------+
+
+# 21살보다 나이(age)든 사람을 선택(select)합니다.
+df.filter(df['age'] > 21).show()
+# +---+----+
+# |age|name|
+# +---+----+
+# | 30|Andy|
+# +---+----+
+
+# 나이(age) 별로 수를 샙니다.
+df.groupBy("age").count().show()
+# +----+-----+
+# | age|count|
+# +----+-----+
+# |  19|    1|
+# |null|    1|
+# |  30|    1|
+# +----+-----+
+```
+
+Spark repo의 "examples/src/main/python/sql/basic.py"에서 전체 예제 코드를 찾아보십시오.
+DataSet에서 수행 할 수 있는 연산 type의 전체 목록은 [API 문서](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame)를 참조하십시오.
+
+간단한 열 참조 및 표현 이외에도 DataSet에는 문자열 조작, 날짜 계산, 일반적인 수학 연산 등의 풍부한 함수 라이브러리가 있습니다. 전체 목록은 [DataFrame 함수 참조](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.functions)에서 사용할 수 있습니다.
+
+## R
+
+```R
+# DataFrame을 생성합니다.
+df <- read.json("examples/src/main/resources/people.json")
+
+# DataFrame의 내용을 보여줍니다.
+head(df)
+##   age    name
+## 1  NA Michael
+## 2  30    Andy
+## 3  19  Justin
+
+
+# Tree 형식으로 스키마를 출력합니다.
+printSchema(df)
+## root
+## |-- age: long (nullable = true)
+## |-- name: string (nullable = true)
+
+# "name" 열만 선택(select)합니다.
+head(select(df, "name"))
+##      name
+## 1 Michael
+## 2    Andy
+## 3  Justin
+
+# 모든 내용 age에 1을 더한 값을 선택(select)합니다.
+head(select(df, df$name, df$age + 1))
+##      name (age + 1.0)
+## 1 Michael          NA
+## 2    Andy          31
+## 3  Justin          20
+
+# 21살보다 나이(age)든 사람을 선택(select)합니다.
+head(where(df, df$age > 21))
+##   age name
+## 1  30 Andy
+
+# 나이(age) 별로 수를 샙니다.
+head(count(groupBy(df, "age")))
+##   age count
+## 1  19     1
+## 2  NA     1
+## 3  30     1
+```
+Spark repo의 "examples/src/main/r/RSparkSQLExample.R"에서 전체 예제 코드를 찾아보십시오.
+DataSet에서 수행 할 수 있는 연산 type의 전체 목록은 [API 문서](http://spark.apache.org/docs/latest/api/R/index.html)를 참조하십시오.
+
+간단한 열 참조 및 표현 이외에도 DataSet에는 문자열 조작, 날짜 계산, 일반적인 수학 연산 등의 풍부한 함수 라이브러리가 있습니다. 전체 목록은 [DataFrame 함수 참조](http://spark.apache.org/docs/latest/api/R/SparkDataFrame.html)에서 사용할 수 있습니다.
