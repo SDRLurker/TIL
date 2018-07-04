@@ -45,6 +45,16 @@ and then I modified this code.
 
 그리고 나서 수정하였습니다.
 
+##### zip.py
+
+Zip every file whose size is more than 2G(default) in the specified directory and then remove it.
+
+지정한 디렉터리에서 2기가(디폴트)가 넘는 모든 파일을 압축한 뒤 삭제합니다.
+
+This program is used to get more free hard disk space.
+
+이 프로그램은 하드 디스크의 여유 공간을 확보하는 데 사용됩니다.
+
 ### 배운 내용
 
 ##### shebang
