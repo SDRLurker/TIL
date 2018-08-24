@@ -10,6 +10,8 @@ def zip_and_rm(dir, thres = 1024*1024*1024*2, ago=1):
     for root, dirs, files in list_dirs:
         if root == dir:
             for f in files:
+                if f.endswith('.tar.gz'):
+                    continue
                 path = os.path.join(root, f)
                 stat = os.stat(path)
                 file_stamp = datetime.datetime.fromtimestamp(stat.st_mtime)
