@@ -2,8 +2,7 @@
 
 각 칸에는 아래와 같이 위에서부터 차례대로 번호를 매깁니다. (N=4일 경우의 예)
 
-![Image of img_recruit2015_quiz_01]
-(img_recruit2015_quiz_01.jpg)
+![Image of img_recruit2015_quiz_01](img_recruit2015_quiz_01.jpg)
 
 이제 가장 우하단의 칸인 16부터 시작하여 반시계방향으로 감아 들어가는 나선 모양으로 각 칸을 방문한다고 하면,
 
@@ -11,8 +10,7 @@
 
 16, 12, 8, 4, 3, 2, 1, 5, 9, 13, 14, 15, 11, 7, 6, 10
 
-![Image of img_recruit2015_quiz_02]
-(img_recruit2015_quiz_02.jpg)
+![Image of img_recruit2015_quiz_02](img_recruit2015_quiz_02.jpg)
 
 **[문제]** 사용자로부터 N 값을 입력받아서, N x N 격자의 칸들을 위와 같은 순서로 방문한 결과를 출력하는 프로그램을 작성하세요. (단, N은 1부터 100 사이의 자연수)
 
