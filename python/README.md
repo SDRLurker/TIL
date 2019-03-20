@@ -55,6 +55,12 @@ This program is used to get more free hard disk space.
 
 이 프로그램은 하드 디스크의 여유 공간을 확보하는 데 사용됩니다.
 
+##### mul_conn.py IP PORT (NUM)
+
+NUM client threads connect with IP:PORT.
+
+NUM개의 클라이언트 쓰레드는 IP:PORT로 접속합니다.
+
 ### 배운 내용
 
 ##### shebang
