@@ -116,3 +116,16 @@ automv.sh 파일
 If the file size is equal or greater than LIMIT bytes, mv file file.HHMM
 
 파일이 LIMIT 바이트 이상이 되면 그 파일을 파일.시분로 이동(move) 합니다.
+
+## sdiff.sh
+**Usage - 사용법**
+
+sdiff.sh host file 
+
+sdiff.sh 원격서버 비교할파일
+
+**Description - 설명**
+
+When you can log into B as b from A as a without password, you can diff a local file from a remote(host) file.
+
+A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 원격서버의 파일과 비교할 수 있습니다.
