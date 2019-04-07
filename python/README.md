@@ -8,6 +8,12 @@
 
 https://www.metachris.com/2016/04/python-threadpool/
 
+### Jupyter Notebook 문서
+
+##### python basic.ipynb
+
+* 파이썬의 기초 내용에 대한 실습
+
 ##### tensorflow.ipynb
 
 ##### 머신러닝_스터디_lab3_숙제.ipynb
