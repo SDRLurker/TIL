@@ -9,6 +9,82 @@
 
 # 요약 통계
 
+우리는 **Statistics**에서 가능한 함수 **colStats**를 통해 열에 대한 통계를 제공합니다.
+
+## Scala
+
+[colStats()](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.mllib.stat.Statistics$) 은 최대값, 최소값, 평균, 표준 편차, 0이 아닌 데이터 개수 뿐만 아니라 전체 개수를 포함하는 [MultivariateStatisticalSummary](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.mllib.stat.MultivariateStatisticalSummary)의 인스턴스를 리턴합니다.
+API에서 더 자세한 내용 [MultivariateStatisticalSummary Scala docs](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.mllib.stat.MultivariateStatisticalSummary) 을 참조하세요.
+
+```scala
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.stat.{MultivariateStatisticalSummary, Statistics}
+
+val observations = sc.parallelize(
+  Seq(
+    Vectors.dense(1.0, 10.0, 100.0),
+    Vectors.dense(2.0, 20.0, 200.0),
+    Vectors.dense(3.0, 30.0, 300.0)
+  )
+)
+
+// 요약 통계에 대해 계산합니다.
+val summary: MultivariateStatisticalSummary = Statistics.colStats(observations)
+println(summary.mean)  // 각 컬럼의 평균 값을 포함한 벡터
+println(summary.variance)  // 컬럼 단위의 분산
+println(summary.numNonzeros)  // 각 컬럼의 0이 아닌 데이터의 개수
+```
+
+## Java
+
+[colStats()](https://spark.apache.org/docs/latest/api/java/org/apache/spark/mllib/stat/Statistics.html) 은 최대값, 최소값, 평균, 표준 편차, 0이 아닌 데이터 개수 뿐만 아니라 전체 개수를 포함하는 [MultivariateStatisticalSummary](https://spark.apache.org/docs/latest/api/java/org/apache/spark/mllib/stat/MultivariateStatisticalSummary.html)의 인스턴스를 리턴합니다.
+API에서 더 자세한 내용 [MultivariateStatisticalSummary Java docs](https://spark.apache.org/docs/latest/api/java/org/apache/spark/mllib/stat/MultivariateStatisticalSummary.html) 을 참조하세요.
+
+```java
+import java.util.Arrays;
+
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.mllib.linalg.Vector;
+import org.apache.spark.mllib.linalg.Vectors;
+import org.apache.spark.mllib.stat.MultivariateStatisticalSummary;
+import org.apache.spark.mllib.stat.Statistics;
+
+JavaRDD<Vector> mat = jsc.parallelize(
+  Arrays.asList(
+    Vectors.dense(1.0, 10.0, 100.0),
+    Vectors.dense(2.0, 20.0, 200.0),
+    Vectors.dense(3.0, 30.0, 300.0)
+  )
+); // 벡터의 RDD
+
+// 요약 통계에 대해 계산합니다.
+MultivariateStatisticalSummary summary = Statistics.colStats(mat.rdd());
+System.out.println(summary.mean());  // 각 컬럼의 평균 값을 포함한 벡터
+System.out.println(summary.variance());  // 컬럼 단위의 분산
+System.out.println(summary.numNonzeros());  // 각 컬럼의 0이 아닌 데이터의 개수
+```
+
+## Python
+
+[colStats()](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.stat.Statistics.colStats) 은 최대값, 최소값, 평균, 표준 편차, 0이 아닌 데이터 개수 뿐만 아니라 전체 개수를 포함하는 [MultivariateStatisticalSummary](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.stat.MultivariateStatisticalSummary)의 인스턴스를 리턴합니다.
+API에서 더 자세한 내용 [MultivariateStatisticalSummary Python docs](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.stat.MultivariateStatisticalSummary) 을 참조하세요.
+
+```python
+import numpy as np
+
+from pyspark.mllib.stat import Statistics
+
+mat = sc.parallelize(
+    [np.array([1.0, 10.0, 100.0]), np.array([2.0, 20.0, 200.0]), np.array([3.0, 30.0, 300.0])]
+)  # 벡터의 RDD
+
+# 요약 통계에 대해 계산합니다.
+summary = Statistics.colStats(mat)
+print(summary.mean())  # 각 컬럼의 평균 값을 포함한 벡터
+print(summary.variance())  # 컬럼 단위의 분산
+print(summary.numNonzeros())  # 각 컬럼의 0이 아닌 데이터의 개수
+```
+
 # 상관 관계
 
 # 계층화된 샘플링
