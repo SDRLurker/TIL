@@ -1,4 +1,13 @@
-﻿# Ryan Shell Collection(쉘 모음)
+# MarkDown 문서
+
+## 2>&1.md
+
+"crontab에 관한 글에서 '>/dev/null 2>&1'의 뜻이 무엇인가요?"를 번역한 내용입니다.
+
+http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-this-article-of-crontab-basics
+
+# Ryan Shell Collection(쉘 모음)
+ 
 ## mrsh.sh
 **Usage - 사용법**
 
