@@ -18,6 +18,12 @@ https://spark.apache.org/docs/latest/sql-programming-guide.html
 
 https://spark.apache.org/docs/latest/mllib-statistics.html
 
+## AmazonS3.md
+
+"아파치 하둡에서 S3 지원"을 번역한 내용입니다.
+
+https://wiki.apache.org/hadoop/AmazonS3
+
 ## spark_20180526.ipynb
 
 http://nbviewer.jupyter.org/github/SDRLurker/TIL/blob/master/spark/spark_20180526.ipynb
