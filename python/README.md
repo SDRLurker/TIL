@@ -87,6 +87,12 @@ NUM client threads connect with IP:PORT.
 
 NUM개의 클라이언트 쓰레드는 IP:PORT로 접속합니다.
 
+##### df.py
+
+Check(find) the disk space on remote hosts.
+
+원격 호스트의 디스크 공간을 확인합니다.
+
 ### 배운 내용
 
 ##### shebang
