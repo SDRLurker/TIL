@@ -93,6 +93,12 @@ Check(find) the disk space on remote hosts.
 
 원격 호스트의 디스크 공간을 확인합니다.
 
+##### multicast.py
+
+Print multicast packets from IP:PORT.
+
+IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
+
 ### 배운 내용
 
 ##### shebang
