@@ -99,7 +99,7 @@ Print multicast packets from IP:PORT.
 
 IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
 
-### Lotto.py
+##### Lotto.py
 
 Lotto Class with the summation of six random numbers between start and end.
 
@@ -113,8 +113,16 @@ mv.py 파일 내용
 
 \#!/usr/bin/python
 
-위에처럼 shebang을 사용하면
+위에처럼 제일 첫 번째 줄에 shebang을 사용한 구문을 추가한 뒤 다음처럼 실행권한을 추가합니다.
 
-mv.py A B
+```shell
+$ chmod +x mv.py
+```
 
-python 명령을 없이 바로 스크립트를 실행할 수 있습니다.
+그렇게 하면 shell에서 python 명령을 없이 바로 스크립트를 실행할 수 있습니다.
+
+```shell
+$ mv.py A B
+```
+
+
