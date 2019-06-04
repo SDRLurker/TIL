@@ -14,6 +14,12 @@ https://www.metachris.com/2016/04/python-threadpool/
 
 http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
+##### non_blocking.md
+
+"python에서 subprocess.PIPE로 non-blocking 읽기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/375427/non-blocking-read-on-a-subprocess-pipe-in-python
+
 ### Jupyter Notebook 문서
 
 ##### python basic.ipynb
