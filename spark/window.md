@@ -1,5 +1,5 @@
 
-### 22.5.1 텀블링 윈도우
+### 텀블링 윈도우
 * 텀블링 윈도우 입력 데이터와 키 기준으로 단순한 합계를 구하는 과정 예시
 ![image](https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/assets/spdg_2202.png)
 
@@ -39,7 +39,6 @@ val withEventTime = streaming.selectExpr("*", "cast(EventTime as timestamp) as e
 ```scala
 val result = withEventTime.groupBy(window(col("event_time"), "10 seconds")).sum().writeStream.format("memory").queryName("t").outputMode("complete").start()
 spark.sql("SELECT window.*,* FROM t ORDER BY window").show()
-scala> spark.sql("SELECT window.*,* FROM t ORDER BY window").show()
 +-------------------+-------------------+--------------------+--------------+------+
 |              start|                end|              window|sum(EventTime)|sum(v)|
 +-------------------+-------------------+--------------------+--------------+------+
@@ -57,7 +56,7 @@ scala> spark.sql("SELECT window.*,* FROM t ORDER BY window").show()
   - 2:10~2:20 : 1970-01-01 00:00:05 Event: (k,1)
   - 2:20~2:30 : 1970-01-01 00:00:15 Event: (k,2), (k,5)
   - 2:30~2:40 : 1970-01-01 00:00:25 Event: (k,200)
-  
+
 ```scala
 val result = withEventTime.groupBy(window(col("event_time"), "30 seconds", "10 seconds")).sum().writeStream.format("memory").queryName("t").outputMode("complete").start()
 spark.sql("SELECT window.*,* FROM t ORDER BY window").show()

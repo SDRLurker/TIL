@@ -24,6 +24,10 @@ https://spark.apache.org/docs/latest/mllib-statistics.html
 
 https://wiki.apache.org/hadoop/AmazonS3
 
+## window.md
+
+Spark Structured Streaming에서 window에 대해 간단히 실습한 내용입니다.
+
 ## spark_20180526.ipynb
 
 http://nbviewer.jupyter.org/github/SDRLurker/TIL/blob/master/spark/spark_20180526.ipynb
