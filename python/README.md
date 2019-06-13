@@ -111,6 +111,27 @@ Lotto Class with the summation of six random numbers between start and end.
 
 임의로 뽑은 6개의 난수의 총합이 start~end 값을 가지는 로또 클래스를 만듭니다.
 
+##### crawl.py
+
+* pool = multiprocessing.Pool(processes=2)
+
+|변수명|작업|배열1|배열2|
+|-|-|-|-|
+|pool|작업을 위한 CPU를 할당|Core-1|Core-2|
+
+* res = pool.map(get_tistory_title, range(s,e+1))
+  - 20, 21을 먼저 Core 2개에 할당 한뒤 먼저 끝난 Core에 22, 23 등 남은 값을 할당합니다.
+
+|변수명|작업|배열1|배열2|...|
+|-|-|-|-|-|
+|range(20,30+1)|배열 할당|20|21|...|
+|pool.map|프로세스를 fork(복제)하여 함수를 실행|get_tistory_title(20)|get_tistory_title(21)|...|
+|...|10개의 작업이 모두 마칠 때까지 blocking(대기)|...|
+|res|함수를 실행한 결과를 리스트로 가져옴|20에 대한 블로그 글 제목|21에 대한 블로그 글 제목|...|
+
+* 참고주소 
+  - https://beomi.github.io/2017/07/05/HowToMakeWebCrawler-with-Multiprocess/
+
 ### 배운 내용
 
 ##### shebang
