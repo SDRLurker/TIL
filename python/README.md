@@ -113,6 +113,10 @@ Lotto Class with the summation of six random numbers between start and end.
 
 ##### crawl.py
 
+Get the title of an tistory(blog) article ID.
+
+티스토리 블로그 글 id의 제목을 얻습니다.
+
 * pool = multiprocessing.Pool(processes=2)
 
 |변수명|작업|배열1|배열2|
