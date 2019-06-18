@@ -20,6 +20,16 @@ http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
 https://stackoverflow.com/questions/375427/non-blocking-read-on-a-subprocess-pipe-in-python
 
+##### reload.md
+
+1. "Python 3.4에서 모듈 다시 불러오기"를 번역한 배용입니다.
+
+https://stackoverflow.com/questions/27387786/reload-a-module-in-python-3-4
+
+2. "“from <module> import *” 이후에 모듈 다시 불러오는 방법?"을 번역한 내용입니다.
+
+https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
+
 ### Jupyter Notebook 문서
 
 ##### python basic.ipynb
