@@ -22,7 +22,7 @@ imp 모듈은 importlib 모듈을 위해 Python 3.4에서 더 이상 사용되�
 ---
 출처 - https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
 
-# “from <module> import *” 이후에 모듈 다시 불러오는 방법?
+# “from \<module\> import *” 이후에 모듈 다시 불러오는 방법?
 
 ## 질문
 
