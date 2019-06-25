@@ -17,13 +17,14 @@ void deletestr(char *str, int count)
 
 void strreplace(char *str, const char *a, const char *b)
 {
-	char *p;
+	char *p = str;
 
 	for(;;) {
-		p = strstr(str,a);
+		p = strstr(p,a);
 		if (p == NULL) return;
 		deletestr(p, strlen(a));
 		insertstr(p,b);
+		p += strlen(b);
 	}
 }
 
@@ -43,7 +44,7 @@ int main()
 	puts(str);
 	
 	puts(str2);
-	strreplace(str2, "기린", "오랑우탄");
+	strreplace(str2, "기린", "기린아들");
 	puts(str2);
 
 	return 0;
