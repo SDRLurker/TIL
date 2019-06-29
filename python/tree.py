@@ -40,7 +40,7 @@ PATH    Path to process''' % basename(argv[0])
 
 def print_if_dir(path, print_files=False):
     if isdir(path):
-        tree(path, ' ')
+        tree(path, ' ', print_files)
     else:
         print('ERROR: \'' + path + '\' is not a directory')
 
