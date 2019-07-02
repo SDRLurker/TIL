@@ -115,6 +115,9 @@ Print multicast packets from IP:PORT.
 
 IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
 
+* 참고주소 
+  - https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+
 ##### Lotto.py
 
 Lotto Class with the summation of six random numbers between start and end.
