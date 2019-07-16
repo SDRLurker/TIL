@@ -103,6 +103,9 @@ NUM client threads connect with IP:PORT.
 
 NUM개의 클라이언트 쓰레드는 IP:PORT로 접속합니다.
 
+* 참고주소
+  - https://www.metachris.com/2016/04/python-threadpool/
+
 ##### df.py
 
 Check(find) the disk space on remote hosts.
