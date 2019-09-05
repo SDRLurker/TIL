@@ -30,6 +30,14 @@ https://stackoverflow.com/questions/27387786/reload-a-module-in-python-3-4
 
 https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
 
+##### ii.md
+
+* 다음 ```[지식in] 허수 i의 i제곱은 몇일까?``` Youtube를 보고 간단한 python 코드를 작성한 내용입니다.
+
+* https://www.youtube.com/watch?v=Tk3PIpcppV0 
+
+* http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/ii.md
+
 ### Jupyter Notebook 문서
 
 ##### python basic.ipynb
