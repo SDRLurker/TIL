@@ -23,8 +23,15 @@ def zip_and_rm(dir, thres = 1024*1024*1024*2, ago=1):
                     os.system(cmd)
 
 if __name__ == "__main__":
-    if len(sys.argv) !=2:
-        print("Usage) %s [dir]" % sys.argv[0])
+    if len(sys.argv) != 2 and len(sys.argv) != 3:
+        print "Usage) %s [dir] (thres(GB))" % sys.argv[0]
         sys.exit(1)
     dir = sys.argv[1]
-    zip_and_rm(dir, 1024*1024*512)
+    thres = 1024*1024*1024*2
+    if len(sys.argv) == 3:
+        try:
+            thres = 1024*1024*1024*int(sys.argv[2])
+        except:
+            thres = 1024*1024*1024*2
+    print("dir=%s, thres = %d" % (dir, thres))
+    zip_and_rm(dir, thres)
