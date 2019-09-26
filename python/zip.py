@@ -13,10 +13,14 @@ def zip_and_rm(dir, thres = 1024*1024*1024*2, ago=1):
                 if f.endswith('.tar.gz'):
                     continue
                 path = os.path.join(root, f)
-                stat = os.stat(path)
+                try:
+                    stat = os.stat(path)
+                except Exception as err:
+                    print("file %s error. err=%s" % (path,err))
+                    continue
                 file_stamp = datetime.datetime.fromtimestamp(stat.st_mtime)
                 if stat.st_size >= thres and file_stamp <= yesterday:
-                    print(yesterday, path, file_stamp, stat.st_size)
+                    print("zip_amd_rm file=%s, stamp=%s, file_size=%d" % (path, file_stamp, stat.st_size))
                     cmd = "tar cvfz %s.tar.gz %s" % (f, f)
                     os.system(cmd)
                     cmd = "\\rm %s" % f
