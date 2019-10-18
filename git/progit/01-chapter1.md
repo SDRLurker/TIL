@@ -37,8 +37,11 @@
 
 ### 차이가 아니라 스냅샷
 * CVS, Subversion : 각 파일의 변화(**델타 기반** 버전 관리 시스템)를 시간순으로 관리하면서 파일들의 집합을 관리. 
+
 ![](https://git-scm.com/book/en/v2/images/deltas.png)
+
 * Git : 버전에 따라 파일이 존재하는 그 순간(스냅샷)을 중요하게 여김. 이전 상태의 파일을 새로 저장하지 않고 링크만 저장.
+
 ![](https://git-scm.com/book/en/v2/images/snapshots.png)
 
 ### 거의 모든 명령을 로컬에서 실행
@@ -57,6 +60,7 @@
 * Committed : 데이터가 로컬 DB에 안전하게 저장됨을 의미 (물건을 지른 상태)
 * Modified : 수정한 파일을 아직 로컬 DB에 커밋하지 않은 상태.
 * Staged : 수정한 파일을 commit할 것이라고 표시한 상태 (장바구니에 넣은 상태) - Index에 해당 정보 저장.
+
 ![](https://git-scm.com/book/en/v2/images/areas.png)
 
 * Git이 하는 일
@@ -71,19 +75,25 @@
 ## 1.5 시작하기 - Git 설치
 ### Linux에 설치
 * Fedora(RHEL, CentOS) 계열
+
 ```shell
 $ sudo dnf install git-all
 $ sudo yum install git
 ```
+
 * Debian(Ubuntu등) 계열
+
 ```shell
 $ sudo apt install git-all
 ```
+
 ### Mac에 설치
 * git을 실행하면 설치가 시작됨.
+
 ```shell
 $ git --version
 ```
+
 * http://git-scm.com/download/mac
 
 ### Windows에 설치
@@ -100,19 +110,23 @@ $ git --version
 ### 사용자 정보
 * 사용자 이름과 이메일 주소를 설정해야 함.
 * commit할 때 이 정보를 사용.
+
 ```console
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
+
 ### 편집기
 * Git은 기본적으로 시스템 편집기를 사용.
 * Emacs 같은 다른 편집기를 사용할 수 있음.
+
 ```shell
 $ git config --global core.editor emacs
 ```
 
 ### 설정 확인
 * git config --list 
+
 ```console
 $ git config --list
 user.name=John Doe
@@ -126,15 +140,20 @@ color.diff=auto
 
 ## 1.7 시작하기 - 도움말 보기
 * 도움말 보는 방법
+
 ```
 $ git help <verb>
 $ man git-<verb>
 ```
+
 * git config 도움말
+
 ```console
 $ git help config
 ```
+
 * 각 명령에서 사용할 수 있는 옵션(-h, --help)
+
 ```
 $ git add -h
 ```
