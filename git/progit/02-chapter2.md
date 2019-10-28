@@ -679,3 +679,369 @@ Changes to be committed:
 
 * Git으로 _커밋_ 한 모든 것은 언제나 복구가능
 * 커밋하지 않고 잃어버린 것은 절대로 되돌릴 수 없다!
+
+## 2.5 Git의 기초 - 리모트 저장소
+
+### 리모트 저장소
+* 인터넷이나 네트워크 어딘가에 있는 저장소.
+
+#### 리모트 저장소 확인하기
+* `git remote` 명령으로 현재 프로젝트에 등록된 리모트 저장소를 확인
+
+* 저장소를  clone 하면 origin이라는 remote 저장소가 자동으로 등록됨.
+```console
+$ git clone https://github.com/schacon/ticgit
+Cloning into 'ticgit'...
+remote: Reusing existing pack: 1857, done.
+remote: Total 1857 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (1857/1857), 374.35 KiB | 268.00 KiB/s, done.
+Resolving deltas: 100% (772/772), done.
+Checking connectivity... done.
+$ cd ticgit
+$ git remote
+origin
+```
+
+* `-v` 옵션을 주어 단축이름과 URL을 함께 볼 수 있음.
+
+```console
+$ git remote -v
+origin	https://github.com/schacon/ticgit (fetch)
+origin	https://github.com/schacon/ticgit (push)
+```
+
+* 리모트 저장소가 여러 개 있다면 이 명령은 등록된 전부를 보여줌.
+
+```console
+$ cd grit
+$ git remote -v
+bakkdoor  https://github.com/bakkdoor/grit (fetch)
+bakkdoor  https://github.com/bakkdoor/grit (push)
+cho45     https://github.com/cho45/grit (fetch)
+cho45     https://github.com/cho45/grit (push)
+defunkt   https://github.com/defunkt/grit (fetch)
+defunkt   https://github.com/defunkt/grit (push)
+koke      git://github.com/koke/grit.git (fetch)
+koke      git://github.com/koke/grit.git (push)
+origin    git@github.com:mojombo/grit.git (fetch)
+origin    git@github.com:mojombo/grit.git (push)
+```
+
+#### 리모트 저장소 추가하기
+
+* `git remote add <단축이름> <url>` 명령으로 리모트 저장소 추가.
+
+```console
+$ git remote
+origin
+$ git remote add pb https://github.com/paulboone/ticgit
+$ git remote -v
+origin	https://github.com/schacon/ticgit (fetch)
+origin	https://github.com/schacon/ticgit (push)
+pb	https://github.com/paulboone/ticgit (fetch)
+pb	https://github.com/paulboone/ticgit (push)
+```
+
+* 로컬에서 `pb/master` 가 Paul (저장소)의 master 브랜치
+
+#### 리모트 저장소를 Pull 하거나 Fetch 하기
+
+* 리모트 저장소에서 데이터를 가져오기
+
+```console
+$ git fetch <remote>
+```
+
+* 리모트 저장소에 있는 데이터를 모두 가져옴.
+* git fetch 명령은 리모트 저장소의 데이터를 모두 로컬로 가져오지만, 자동으로 merge하지 않음.
+* `git pull` 명령으로 리모트 저장소 브랜치에서 데이터를 가져올 뿐만 아니라 자동으로 로컬 브랜치와 Merge시킬 수 있음.
+
+#### 리모트 저장소에 Push 하기
+* 프로젝트를 공유하고 싶을 때 Upstream 저장소에 Push 가능.
+
+```console
+$ git push origin master
+```
+
+* 다른 사람이 push 한 후 내가 push 하려고 하면 불가능.
+* 먼저 다른 사람이 작업한 내용을 pull(fetch+merge)한 후에 push 가능.
+
+#### 리모트 저장소 살펴보기
+* `git remote show <리모트 저장소 이름>` 명령으로 리모트 저장소의 구체적인 정보를 확인가능.
+	- 다수의 branch를 사용하는 내용도 확인 가능.
+
+```console
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/schacon/ticgit
+  Push  URL: https://github.com/schacon/ticgit
+  HEAD branch: master
+  Remote branches:
+    master                               tracked
+    dev-branch                           tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+```
+
+#### 리모트 저장소 이름을 바꾸거나 리모트 저장소를 삭제하기
+* `git remote rename` 명령으로 리모트 저장소의 이름을 변경
+
+```console
+$ git remote rename pb paul
+$ git remote
+origin
+paul
+```
+
+* 리모트 저장소를 삭제해야 한다면 `git remote remove` 나 `git remote rm` 명령을 사용
+
+```console
+$ git remote remove paul
+$ git remote
+origin
+```
+
+## 2.6 Git의 기초 - 태그
+
+### 태그
+* 보통 릴리즈할 때 사용한다(v1.0, 등등).
+
+#### 태그 조회하기
+* `git tag` 명령으로 (`-l`, `--list`는 옵션) 이미 만들어진 태그가 있는지 확인
+
+```console
+$ git tag
+v0.1
+v1.3
+```
+
+* Git 소스 저장소는 500여 개의 태그가 있음. 만약 1.8.5 버전의 태그들만 검색하고 싶으면 아래와 같이 실행
+
+```console
+$ git tag -l "v1.8.5*"
+v1.8.5
+v1.8.5-rc0
+v1.8.5-rc1
+v1.8.5-rc2
+v1.8.5-rc3
+v1.8.5.1
+v1.8.5.2
+v1.8.5.3
+v1.8.5.4
+v1.8.5.5
+```
+
+#### 태그 붙이기
+* Lightweight 태그 : 단순히 특정 커밋에 대한 포인터
+* Annotated 태그 : Git 데이터베이스에 태그를 만든 사람의 이름, 이메일과 태그를 만든 날짜, 그리고 태그 메시지도 저장함.
+
+#### Annotated 태그
+* `tag` 명령을 실행할 때 `-a` 옵션을 추가
+
+```console
+$ git tag -a v1.4 -m "my version 1.4"
+$ git tag
+v0.1
+v1.3
+v1.4
+```
+
+* `git show` 명령으로 태그 정보와 커밋 정보를 모두 확인
+
+```console
+$ git show v1.4
+tag v1.4
+Tagger: Ben Straub <ben@straub.cc>
+Date:   Sat May 3 20:19:12 2014 -0700
+
+my version 1.4
+
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon <schacon@gee-mail.com>
+Date:   Mon Mar 17 21:52:11 2008 -0700
+
+    changed the version number
+```
+
+#### Lightweight 태그
+* Lightweight 태그는 기본적으로 commit 체크섬을 저장
+
+```console
+$ git tag v1.4-lw
+$ git tag
+v0.1
+v1.3
+v1.4
+v1.4-lw
+v1.5
+```
+
+* 이 태그에 `git show` 를 실행하면 별도의 태그 정보를 확인 가능.
+
+```console
+$ git show v1.4-lw
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon <schacon@gee-mail.com>
+Date:   Mon Mar 17 21:52:11 2008 -0700
+
+    changed the version number
+```
+
+#### 나중에 태그하기
+* commit 히스토리 다음과 같다 가정.
+
+```console
+$ git log --pretty=oneline
+15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch 'experiment'
+a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support
+0d52aaab4479697da7686c15f77a3d64d9165190 one more thing
+6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch 'experiment'
+0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc added a commit function
+4682c3261057305bdd616e23b64b0857d832627b added a todo file
+166ae0c4d3f420721acbb115cc33848dfcc2121a started write support
+9fceb02d0ae598e95dc970b74767f19372d61af8 updated rakefile
+964f16d36dfccde844893cac5b347e7b3d44abbc commit the todo
+8a5cbc430f1a9c3d00faaeffd07798508422908a updated readme
+```
+
+* 특정 커밋에 태그하기 위해서 명령의 끝에 커밋 체크섬을 명시
+
+```console
+$ git tag -a v1.2 9fceb02
+```
+
+* 태그를 확인
+
+```console
+$ git tag
+v0.1
+v1.2
+v1.3
+v1.4
+v1.4-lw
+v1.5
+
+$ git show v1.2
+tag v1.2
+Tagger: Scott Chacon <schacon@gee-mail.com>
+Date:   Mon Feb 9 15:32:16 2009 -0800
+
+version 1.2
+commit 9fceb02d0ae598e95dc970b74767f19372d61af8
+Author: Magnus Chacon <mchacon@gee-mail.com>
+Date:   Sun Apr 27 20:43:35 2008 -0700
+
+    updated rakefile
+...
+```
+
+#### 태그 공유하기
+* `git push` 명령은 자동으로 리모트 서버에 태그를 전송하지 않음.
+* `git push origin <태그 이름>`을 실행
+
+```console
+$ git push origin v1.5
+Counting objects: 14, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, done.
+Total 14 (delta 3), reused 0 (delta 0)
+To git@github.com:schacon/simplegit.git
+ * [new tag]         v1.5 -> v1.5
+```
+
+* 한 번에 태그를 여러 개 Push 하고 싶으면 `--tags` 옵션을 추가하여 `git push` 명령을 실행
+
+```console
+$ git push origin --tags
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:schacon/simplegit.git
+ * [new tag]         v1.4 -> v1.4
+ * [new tag]         v1.4-lw -> v1.4-lw
+```
+
+#### 태그를 Checkout 하기
+* 태그를 체크아웃하면 "detached HEAD" 상태가 됨.
+
+```console
+$ git checkout 2.0.0
+Note: checking out '2.0.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch>
+
+HEAD is now at 99ada87... Merge pull request #89 from schacon/appendix-final
+```
+
+* 특정 태그의 상태에서 새로 작성한 커밋이 버그 픽스와 같이 의미있도록 하려면 반드시 브랜치를 만들어서 작업하는 것이 좋음.
+
+```console
+$ git checkout -b version2 v2.0.0
+Switched to a new branch 'version2'
+```
+
+* checkout 명령에 -b 옵션을 넣으면 브랜치 작성과 체크아웃을 한꺼번에 실행가능.
+* 브랜치를 만든 후에 `version2` 브랜치에 커밋하면 브랜치는 업데이트됨.
+
+## 2.7 Git의 기초 - Git Alias
+
+### Git Alias
+* `git config` 를 사용하여 각 명령의 Alias를 만드는 예시
+
+```console
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+```
+
+* `git commit` 대신 `git ci` 만으로도 커밋가능.
+
+* alias로 파일을 Unstaged 상태로 변경하는 명령 만들기 예시
+
+```console
+$ git config --global alias.unstage 'reset HEAD --'
+```
+
+* 아래 두 명령은 동일해 졌음.
+
+```console
+$ git unstage fileA
+$ git reset HEAD -- fileA
+```
+
+* 추가로 `last` 명령을 만들기
+
+```console
+$ git config --global alias.last 'log -1 HEAD'
+```
+
+* 최근 커밋을 좀 더 쉽게 확인가능
+
+```console
+$ git last
+commit 66938dae3329c7aebe598c2246a8e6af90d04646
+Author: Josh Goebel <dreamer3@example.com>
+Date:   Tue Aug 26 19:48:51 2008 +0800
+
+    test for current head
+
+    Signed-off-by: Scott Chacon <schacon@example.com>
+```
+
+* Git의 명령어뿐만 아니라 외부 명령어도 실행가능.
+* 아래 명령은 `git visual` 이라고 입력하면 `gitk` 가 실행
+
+```console
+$ git config --global alias.visual '!gitk'
+```
