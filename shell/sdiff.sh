@@ -2,7 +2,7 @@
 EXECUTE=`basename $0`
 SERVER=$1
 FILE=$2
-GROUP="10.101.32."  # 넘길서버의 동일한 부분의 도메인이나 IP를 GROUP 자리에 입력합니다.
+GROUP=""  # 넘길서버의 동일한 부분의 도메인이나 IP를 GROUP 자리에 입력합니다. 상황에 맞게 수정이 필요합니다.
 TARGET=`pwd`
 TARGET_PATH=$TARGET/$FILE
 
@@ -29,4 +29,4 @@ if [ -z "$FILE" ]; then
 fi
 
 echo "diff $FILE <(ssh $GROUP$SERVER \"cat $TARGET_PATH\")"
-diff $FILE <(ssh $GROUP$SERVER "cat $TARGET_PATH")
+diff $FILE <(ssh $GROUP$SERVER "cat $TARGET_PATH") | grep --color "."
