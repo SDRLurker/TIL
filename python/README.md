@@ -38,6 +38,13 @@ https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-imp
 
 * http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/ii.md
 
+##### zip2_6.md
+
+* "Python 2.7 코드를 Python 2.6에서도 작동하게 만들기" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/21268470/making-python-2-7-code-run-with-python-2-6/
+
+
 ### 프로그램 목록(program list)
 
 ##### mv.py {src} {desc}
