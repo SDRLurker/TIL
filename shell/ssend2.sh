@@ -1,11 +1,12 @@
-﻿YY=`date +%y`
+YY=`date +%y`
 MM=`date +%m`
 DD=`date +%d`
 
 EXECUTE=`basename $0`
 SERVER=$1
 CPBIN=$2
-CPPATH=$3
+TARGETPATH=$3
+SRCPATH=`pwd`
 GROUP="GROUP"        # 넘길서버의 동일한 부분의 도메인이나 IP를 GROUP 자리에 입력합니다.
 
 usage()
@@ -37,24 +38,25 @@ if [ -z "$CPBIN" ]; then
     exit 0
 fi
 
-if [ -z "$CPPATH" ]; then
+if [ -z "$TARGETPATH" ]; then
     echo "상태) PATH 지정하지 않아. 현 위치와 동일한 위치로 복사!!"
-    CPPATH=`pwd`
+    TARGETPATH=`pwd`
 fi
 
 echo "넘길서버 = [$SERVER]"
 echo "넘길파일 = [$CPBIN]"
-echo "넘길위치 = [$CPPATH]"
+echo "현재위치 = [$SRCPATH]"
+echo "넘길위치 = [$TARGETPATH]"
 
 IFS=','
 for x in $SERVER
 do
-    echo "ssh $GROUP$x [[ -e $CPPATH/$CPBIN ]] && echo \"1\" || echo \"0\""
-    RESULT=`ssh $GROUP$x [[ -e $CPPATH/$CPBIN ]] && echo "1" || echo "0"`
+    echo "ssh $GROUP$x [[ -e $TARGETPATH/$CPBIN ]] && echo \"1\" || echo \"0\""
+    RESULT=`ssh $GROUP$x [[ -e $TARGETPATH/$CPBIN ]] && echo "1" || echo "0"`
     if [ $RESULT -eq "1" ]; then
-        echo "ssh $GROUP$x \"cp -rp $CPPATH/$CPBIN /tmp/bak/.\""
-        ssh $GROUP$x "cp -rp $CPPATH/$CPBIN /tmp/bak/."
+        echo "ssh $GROUP$x \"cp -rp $TARGETPATH/$CPBIN /tmp/bak/.\""
+        ssh $GROUP$x "cp -rp $TARGETPATH/$CPBIN /tmp/bak/."
     fi
-    echo "scp -rp $CPPATH/$CPBIN $GROUP$x:$CPPATH/.\""
-    scp -rp $CPPATH/$CPBIN $GROUP$x:$CPPATH/.
+    echo "scp -rp $SRCPATH/$CPBIN $GROUP$x:$TARGETPATH/.\""
+    scp -rp $SRCPATH/$CPBIN $GROUP$x:$TARGETPATH/.
 done
