@@ -44,6 +44,12 @@ https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-imp
 
 * https://stackoverflow.com/questions/21268470/making-python-2-7-code-run-with-python-2-6/
 
+##### websockets_01.md
+
+* websockets 라이브러리 문서의 FAQ "어떻게 접속이 끊어졌을 때 자동으로 재접속할 수 있나요?" 글을 번역한 내용입니다.
+
+* https://websockets.readthedocs.io/en/stable/faq.html#client-side
+
 
 ### 프로그램 목록(program list)
 
