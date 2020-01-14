@@ -1,5 +1,6 @@
-)
-n에서 표준에러로 출력하는 방법?
+출처 : [https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python](https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python)
+
+# Python에서 표준에러로 출력하는 방법?
 
 표준 출력으로 쓰는 몇가지 방법이 있습니다.
 
@@ -15,9 +16,9 @@ from __future__ import print_function
 print("spam", file=sys.stderr)
 ```
 
-그것은 파이썬 #13†의 zen과 모순되는 것처럼 보입니다. 그래서 여기의 차이점은 무엇이며 어떤 방법을 사용하던 장단점이 있습니까? 어떤 방법을 사용해야합니까?
+그것은 파이썬 #13†의 zen과 모순되는 것처럼 보입니다. 그래서 여기의 차이점은 무엇이며 어떤 방법을 사용하던 장단점이 있습니까? 어떤 방법을 사용해야 합니까?
 
-† 명백한 방법이 있어야합니다.
+† 명백한 방법이 있어야 합니다.
 
 ### 15개의 답변 중 1개의 답변만 추려냄
 
