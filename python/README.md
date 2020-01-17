@@ -50,6 +50,12 @@ https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-imp
 
 * https://websockets.readthedocs.io/en/stable/faq.html#client-side
 
+##### stderr.md
+
+* "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
+
 
 ### 프로그램 목록(program list)
 
