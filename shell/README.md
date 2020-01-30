@@ -6,6 +6,18 @@
 
 http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-this-article-of-crontab-basics
 
+## cronjob.md
+
+"cronjob 문법에서 backtick(`)을 사용하려는데 무엇이 잘못되었습니까?"를 번역한 내용입니다.
+
+https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-trying-to-use-a-backtick
+
+## getops.md
+
+"Shell Script 튜토리얼 - 팁 Getopts"를 번역한 내용입니다.
+
+https://www.shellscript.sh/tips/getopts/
+
 # Ryan Shell Collection(쉘 모음)
  
 ## mrsh.sh
