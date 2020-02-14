@@ -6,6 +6,12 @@
 $ docker build --tag gcc5:centos6 .
 ```
 
+## docker run
+
+```
+$ docker -it --rm sdr1982/gcc5:centos6 bash
+```
+
 ## Reference 
 
 * https://superuser.com/questions/903254/how-to-install-gcc-5-on-centos
