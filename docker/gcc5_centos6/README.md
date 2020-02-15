@@ -9,8 +9,12 @@ $ docker build --tag gcc5:centos6 .
 ## docker run
 
 ```
-$ docker -it --rm sdr1982/gcc5:centos6 bash
+$ docker run -it --rm sdr1982/gcc5:centos6
 ```
+
+## docker hub
+
+* https://hub.docker.com/r/sdr1982/gcc5
 
 ## Reference 
 
