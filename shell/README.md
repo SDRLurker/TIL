@@ -20,6 +20,12 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://www.shellscript.sh/tips/getopts/
 
+## ssh.md
+
+"script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
+
 # Ryan Shell Collection(쉘 모음)
  
 ## mrsh.sh
