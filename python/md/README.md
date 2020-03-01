@@ -20,6 +20,12 @@ http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
 * https://stackoverflow.com/questions/375427/non-blocking-read-on-a-subprocess-pipe-in-python
 
+##### pytz.md
+
+* "Python에서 시간대(timezone) 이름으로 UTC 시차(offset) 구하기" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/5537876/get-utc-offset-from-time-zone-name-in-python
+
 ##### quickfix.md
 
 * "2개의 QuickFix initiator 세션을 구분하기"를 번역한 내용입니다.
