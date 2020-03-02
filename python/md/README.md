@@ -2,9 +2,9 @@
 
 ##### ctypes.md
 
-"ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
+* "ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
 
-http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
+* http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
 ##### ii.md
 
