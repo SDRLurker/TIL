@@ -13,3 +13,10 @@ Lotto Class with the summation of six random numbers between start and end.
 쓰레드 10개에서 1~10 까지 합계를 구해 각 결과의 합계를 구합니다.
 
 Each thread gets the sum of 1 to 10, and than this program gets the sum of the 10 threads.
+
+## MarkDown 문서
+
+### pipe.md
+
+* "파이프 글자로 문자열 분리하기("|")" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/21524642/splitting-string-with-pipe-character
