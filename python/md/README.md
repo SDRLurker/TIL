@@ -18,7 +18,7 @@
 
 * https://www.youtube.com/watch?v=Tk3PIpcppV0 
 
-* http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/ii.md
+* http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md
 
 ##### non_blocking.md
 
@@ -52,7 +52,7 @@
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
 
-https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
+* https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
 
 ##### tail.md
 
@@ -62,7 +62,7 @@ https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
 
 ##### thread_pool.md
 
-"Python 쓰레드 풀"을 번역한 내용입니다.
+* "Python 쓰레드 풀"을 번역한 내용입니다.
 
 * https://www.metachris.com/2016/04/python-threadpool/
 
