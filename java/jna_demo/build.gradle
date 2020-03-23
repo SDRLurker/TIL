@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
+repositories {
+ mavenCentral()
+}
+
+dependencies {
+  compile 'net.java.dev.jna:jna:4.1.0'
+  compile 'net.java.dev.jna:jna-platform:4.1.0'
+}
+
+jar {
+   finalizedBy shadowJar
+   manifest {
+      attributes 'Main-Class': 'hello.Foo',
+                 'Implementation-Title': 'Foo jna Project',
+                 'Implementation-Version': '1.0'
+   }
+}
