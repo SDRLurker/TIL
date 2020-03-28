@@ -8,6 +8,12 @@ http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-thi
 
 ※ 2>&1.md 파일을 윈도우즈에서는 생성할 수 없어서 파일명을 변경하였습니다.
 
+## contain.md
+
+"Bash에서 문자열이 부분 문자열을 포함하는지 확인하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+
 ## cronjob.md
 
 "cronjob 문법에서 backtick(`)을 사용하려는데 무엇이 잘못되었습니까?"를 번역한 내용입니다.
