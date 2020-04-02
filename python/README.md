@@ -79,6 +79,15 @@ IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
 * 참고주소 
   - https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
 
+##### cp_multi.py
+
+```
+cp_multi.py 수신IP 수신PORT 송신IP 송신 PORT
+```
+
+수신IP:수신PORT로부터 멀티캐스트 패킷을 수신받아 송신IP:송신PORT로 멀티캐스트 패킷을 송신합니다.
+
+
 ##### Lotto.py
 
 Lotto Class with the summation of six random numbers between start and end.
