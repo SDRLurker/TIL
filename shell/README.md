@@ -164,3 +164,9 @@ sdiff.sh 원격서버 비교할파일
 When you can log into B as b from A as a without password, you can diff a local file from a remote(host) file.
 
 A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 원격서버의 파일과 비교할 수 있습니다.
+
+## install_gradle_centos.sh
+
+CentOS6에서 Gradle 3.4.1을 설치할 수 있는 shell 스크립트입니다.
+
+출처 : https://gist.github.com/parzonka/9371885
