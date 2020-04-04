@@ -5,6 +5,7 @@
 ### jna_demo
 
 * JNA로 Java에서 C++ 클래스 호출하기
+* 출처 및 응용 : https://sdr1982.tistory.com/263
 
 ## 프로그램 목록(list)
 
