@@ -28,6 +28,12 @@ https://wiki.apache.org/hadoop/AmazonS3
 
 Spark Structured Streaming에서 window에 대해 간단히 실습한 내용입니다.
 
+## fold.md
+
+"스파크에서 fold action이 왜 필요합니까?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/34529953/why-is-the-fold-action-necessary-in-spark
+
 ## spark_20180526.ipynb
 
 http://nbviewer.jupyter.org/github/SDRLurker/TIL/blob/master/spark/spark_20180526.ipynb
