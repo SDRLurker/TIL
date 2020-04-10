@@ -82,7 +82,7 @@ IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
 ##### cp_multi.py
 
 ```
-cp_multi.py 수신IP 수신PORT 송신IP 송신 PORT
+cp_multi.py 수신IP 수신PORT 송신IP 송신 PORT (TTL)
 ```
 
 수신IP:수신PORT로부터 멀티캐스트 패킷을 수신받아 송신IP:송신PORT로 멀티캐스트 패킷을 송신합니다.
