@@ -12,6 +12,12 @@
 
 * https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
 
+##### group.md
+
+* "Python 튜플 리스트 그룹핑"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/2249036/grouping-python-tuple-list
+
 ##### ii.md
 
 * 다음 ```[지식in] 허수 i의 i제곱은 몇일까?``` Youtube를 보고 간단한 python 코드를 작성한 내용입니다.
