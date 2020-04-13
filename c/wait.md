@@ -20,10 +20,7 @@ for (int id=0; id<n; id++) {
 ## 3개의 답변 중 1개의 답변만 추려냄
 
 ```c
-string='My long string' 
-if [[ $string == *"My long"* ]]; then 
-  echo "It's there!" 
-fi pid_t child_pid, wpid; 
+pid_t child_pid, wpid; 
 int status = 0; 
 
 // 아버지 코드 (자식 프로세스가 시작하기 전에) 
