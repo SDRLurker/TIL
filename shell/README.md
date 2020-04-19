@@ -32,6 +32,12 @@ https://www.shellscript.sh/tips/getopts/
 
 https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
 
+## ssh_login.md
+
+"비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
+
+https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
+
 # Ryan Shell Collection(쉘 모음)
  
 ## mrsh.sh
