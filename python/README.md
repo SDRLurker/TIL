@@ -1,6 +1,12 @@
 # python
 
-### 프로그램 목록(program list)
+### 큰 프로그램 목록(program list)
+
+##### Baseball
+
+숫자야구 TDD 실습한 내용입니다.
+
+### 간단 프로그램 목록(simple program list)
 
 ##### mv.py {src} {desc}
 
