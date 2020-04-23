@@ -6,6 +6,10 @@
 
 숫자야구 TDD 실습한 내용입니다.
 
+##### recruit
+
+직사각형들이 차지하고 있는 총면적을 구하는 프로그램입니다.
+
 ### 간단 프로그램 목록(simple program list)
 
 ##### mv.py {src} {desc}
