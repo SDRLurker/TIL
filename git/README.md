@@ -1,6 +1,13 @@
 # Git
 
-## MarkDown 문서
+## MarkDown 문서 (디렉터리)
+
+### progit
+
+* "Pro Git" 책 내용을 정리한 내용입니다.
+* https://git-scm.com/book/ko/v2
+
+## MarkDown 문서 (파일)
 
 ### filter-branch.md
 
