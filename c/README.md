@@ -1,5 +1,20 @@
 # C
 
+## 프로그램 목록(directory)
+
+### brute
+
+* 임의의 개수의 변수들에 대해 각각의 특정 범위만큼 값을 대입하는 프로그램
+
+### exec_remote
+
+* 원격으로 리눅스 명령을 실행하는 서버 및 클라이언트 프로그램
+
+### soen_cpp
+
+* 혼자 연구하는 C/C++ 스터디 한 내용으로 구성
+* http://www.soen.kr/lecture/ccpp/cpp1/12-3-2.htm
+
 ## 프로그램 목록(program list)
 
 ### unique.c
