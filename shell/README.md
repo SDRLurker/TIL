@@ -176,3 +176,16 @@ A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 
 CentOS6에서 Gradle 3.4.1을 설치할 수 있는 shell 스크립트입니다.
 
 출처 : https://gist.github.com/parzonka/9371885
+
+## bring.sh
+**Usage - 사용법**
+
+bring.sh hosts file [path]
+
+bring.sh 원격서버 원격파일 [가져올위치]
+
+**Description - 설명**
+
+When you can log into B as b from A as a without password, you can use this script for bringing file via scp.
+
+A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 이 스크립트를 scp로 원격파일을 가져오는 데 사용할 수 있습니다.
