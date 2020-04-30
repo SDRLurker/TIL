@@ -1,3 +1,4 @@
+#!/bin/bash
 # installs to /opt/gradle
 # existing versions are not overwritten/deleted
 # seamless upgrades/downgrades

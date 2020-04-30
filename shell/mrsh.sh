@@ -1,3 +1,4 @@
+#!/bin/bash
 EXECUTE=`basename $0`
 SERVER=$1
 RUNIT=$2

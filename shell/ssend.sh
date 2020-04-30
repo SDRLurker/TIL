@@ -1,3 +1,4 @@
+#!/bin/bash
 YY=`date +%y`
 MM=`date +%m`
 DD=`date +%d`
