@@ -7,6 +7,10 @@
 * JNA로 Java에서 C++ 클래스 호출하기
 * 출처 및 응용 : https://sdr1982.tistory.com/263
 
+### recruit
+
+* 사용자로부터 N 값을 입력받아서, N x N 격자의 칸들을 위와 같은 순서로 방문한 결과를 출력하는 프로그램을 작성
+
 ## 프로그램 목록(list)
 
 ### Lotto.java
