@@ -78,6 +78,12 @@
 
 * https://www.metachris.com/2016/04/python-threadpool/
 
+##### udp.md
+
+* "UDP - 파이썬에서 클라이언트 서버 예제 프로그램"을 번역한 내용입니다.
+
+* https://pythontic.com/modules/socket/udp-client-server-example
+
 ##### websockets_01.md
 
 * websockets 라이브러리 문서의 FAQ "어떻게 접속이 끊어졌을 때 자동으로 재접속할 수 있나요?" 글을 번역한 내용입니다.
