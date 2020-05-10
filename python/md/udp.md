@@ -6,7 +6,7 @@
 
 UDP는 User Datagram Protocol의 약어입니다. UDP는 TCP/IP 슈트의 인터넷 프로토콜을 사용합니다. UDP를 사용한 통신에서 클라이언트 프로그램은 메시지 패킷을 대상 서버로 전송하며 대상 서버도 UDP에서 실행됩니다.
 
-![](udp1.PNG)
+![](udp1.png)
 
 ## UDP의 속성 
 
@@ -16,7 +16,7 @@ UDP는 User Datagram Protocol의 약어입니다. UDP는 TCP/IP 슈트의 인터
 * UDP 클라이언트는 "n"개의 별개의 패킷을 UDP 서버로 보낼 수 있으며 UDP 서버의 응답으로 "n"개의 별개의 패킷을 수신할 수도 있습니다.
 * UDP는 비 연결 프로토콜이므로 UDP와 관련된 오버 헤드는 TCP와 같은 연결 기반 프로토콜에 비해 적습니다.
 
-![](udp2.PNG)
+![](udp2.png)
 
 ## 예시: 파이썬을 사용한 UDP 서버
 
