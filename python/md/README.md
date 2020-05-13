@@ -90,6 +90,12 @@
 
 * https://websockets.readthedocs.io/en/stable/faq.html#client-side
 
+##### websockets_02.md
+
+* "python 3.7 websockets에서 비정상적으로 1006 접속 종료 오류" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/54101923/1006-connection-closed-abnormally-error-with-python-3-7-websockets
+
 ##### zip2_6.md
 
 * "Python 2.7 코드를 Python 2.6에서도 작동하게 만들기" 글을 번역한 내용입니다.
