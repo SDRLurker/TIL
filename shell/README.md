@@ -26,6 +26,14 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://www.shellscript.sh/tips/getopts/
 
+## not_work.md
+
+"비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
+
+https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
+
+
+
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
