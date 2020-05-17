@@ -128,6 +128,12 @@ Get the title of an tistory(blog) article ID.
 
 * 참고주소 
   - https://beomi.github.io/2017/07/05/HowToMakeWebCrawler-with-Multiprocess/
+  
+##### bithumb.py
+
+This is an example program  to receive Bithumb transactions via websockets.
+
+WebSocket을 이용한 방식으로 빗썸의 시세를 수신하는 예제 프로그램입니다.
 
 ### 배운 내용
 
