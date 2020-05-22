@@ -12,6 +12,12 @@
 
 * https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
 
+##### decode.md
+
+* "파이썬을 사용하여 TCP 패킷 decode하기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/2184181/decoding-tcp-packets-using-python
+
 ##### group.md
 
 * "Python 튜플 리스트 그룹핑"을 번역한 내용입니다.
