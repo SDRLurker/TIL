@@ -1,16 +1,22 @@
 ### MarkDown 문서
 
-##### ctypes.md
-
-* "ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
-
-* http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
-
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
+
+##### colab_upload.md
+
+* "시작하기: Colab에서 CSV 파일을 불러오는 3가지 방법"을 번역한 내용입니다.
+
+* https://towardsdatascience.com/3-ways-to-load-csv-files-into-colab-7c14fcbdcb92
+
+##### ctypes.md
+
+* "ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
+
+* http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
 ##### decode.md
 
