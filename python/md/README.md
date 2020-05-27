@@ -96,6 +96,12 @@
 
 * https://pythontic.com/modules/socket/udp-client-server-example
 
+##### url_param.md
+
+* "request.GET에서 URL 파라미터를 얻기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/150505/capturing-url-parameters-in-request-get
+
 ##### websockets_01.md
 
 * websockets 라이브러리 문서의 FAQ "어떻게 접속이 끊어졌을 때 자동으로 재접속할 수 있나요?" 글을 번역한 내용입니다.
