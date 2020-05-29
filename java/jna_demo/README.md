@@ -161,6 +161,18 @@ public class Foo {
 }
 ```
 
+gradle로 Java 소스를 build 합니다.
+
+```
+jna_demo$ gradle build
+```
+
+다음처럼 C++, Java 소스를 make로 한꺼번에 build 할 수 있습니다.
+
+```
+jna_demo$ make clean && make
+```
+
 다음은 실행 결과입니다.
 
 ```
