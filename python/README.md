@@ -65,6 +65,21 @@ This program is used to get more free hard disk space.
 
 이 프로그램은 하드 디스크의 여유 공간을 확보하는 데 사용됩니다.
 
+* 사용법 
+  - ./zip.py 디렉터리 (임계치)
+
+```shell
+TIL/python$ ./zip.py
+Usage) ./zip.py [dir] (thres(GB), #M(MB))
+```
+
+* 예시 : /tmp 디렉터리의 512M 파일은 모드 압축하고 삭제
+
+```shell
+TIL/python$ ./zip.py
+Usage) ./zip.py /tmp 512M
+```
+
 ##### mul_conn.py IP PORT (NUM)
 
 NUM client threads connect with IP:PORT.
