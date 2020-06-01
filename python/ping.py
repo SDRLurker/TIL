@@ -16,7 +16,7 @@ def pinghost(hostname):
 
 def ReadConf():
 	Config = ConfigParser.ConfigParser()
-	path = os.getenv("HOME") + "/conf/ping.conf"
+	path = "ping.conf"
 	Config.read(path)
 	return Config
 
