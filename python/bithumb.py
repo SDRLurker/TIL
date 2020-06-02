@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import asyncio
 import websockets
 import socket
@@ -15,7 +17,7 @@ async def subscribe_without_login(url, channels):
             # https://stackoverflow.com/questions/54101923/1006-connection-closed-abnormally-error-with-python-3-7-websockets
             async with websockets.connect(url, ping_interval=None) as ws:
                 await ws.send(sub_str)
-                print(f"send: {sub_str}")
+                #print(f"send: {sub_str}")
                 while True:
                     try:
                         res = await asyncio.wait_for(ws.recv(),
@@ -24,22 +26,22 @@ async def subscribe_without_login(url, channels):
                         try:
                             pong = await ws.ping()
                             await asyncio.wait_for(pong, timeout=PING_TIMEOUT)
-                            print(f'Ping OK, keeping connection alive...')
+                            print('Ping OK, keeping connection alive...')
                             continue
                         except:
-                            print(f'Ping error - retrying connection in {SLEEP_TIME} sec', e)
+                            print('Ping error - retrying connection in %d sec' % SLEEP_TIME, e)
                             await asyncio.sleep(SLEEP_TIME)
                             break
 
                     #res = inflate(res)
                     print("%s" % res)
         except socket.gaierror:
-            print(f'Socket error - retrying connection in {SLEEP_TIME} sec')
+            print('Socket error - retrying connection in %d sec' % SLEEP_TIME)
             await asyncio.sleep(SLEEP_TIME)
             continue
         except ConnectionRefusedError:
-            print(f'Nobody seems to listen to this endpoint. Please check the URL.')
-            print(f'Retrying connection in {SLEEP_TIME} sec.')
+            print('Nobody seems to listen to this endpoint. Please check the URL.')
+            print('Retrying connection in %d sec.' % SLEEP_TIME)
             await asyncio.sleep(SLEEP_TIME)
             continue
 
