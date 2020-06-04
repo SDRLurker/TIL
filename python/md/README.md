@@ -72,6 +72,12 @@
 
 * https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
 
+##### select.md
+
+* "soup.select로 beautiful soup에서 두번째 child 선택하기" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/24720442/selecting-second-child-in-beautiful-soup-with-soup-select
+
 ##### stderr.md
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
