@@ -12,6 +12,12 @@
 
 * https://towardsdatascience.com/3-ways-to-load-csv-files-into-colab-7c14fcbdcb92
 
+##### colab_webdriver.md
+
+* "colab.research.google.com에서 Selenium Webdriver를 사용하는 방법?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/51046454/how-can-we-use-selenium-webdriver-in-colab-research-google-com
+
 ##### ctypes.md
 
 * "ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
