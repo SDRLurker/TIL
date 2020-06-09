@@ -56,6 +56,12 @@
 
 * https://stackoverflow.com/questions/375427/non-blocking-read-on-a-subprocess-pipe-in-python
 
+##### pyopenssl.md
+
+* "파이썬 AttributeError: 'module' 객체는 'SSL_ST_INIT' 속성이 없습니다" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/43267157/python-attributeerror-module-object-has-no-attribute-ssl-st-init
+
 ##### pytz.md
 
 * "Python에서 시간대(timezone) 이름으로 UTC 시차(offset) 구하기" 글을 번역한 내용입니다.
