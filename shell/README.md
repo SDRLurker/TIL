@@ -8,6 +8,12 @@ http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-thi
 
 ※ 2>&1.md 파일을 윈도우즈에서는 생성할 수 없어서 파일명을 변경하였습니다.
 
+## boolean.md
+
+"Bash에서 Boolean 연산자( &&, -a, ||, -o )"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
+
 ## contain.md
 
 "Bash에서 문자열이 부분 문자열을 포함하는지 확인하는 방법"를 번역한 내용입니다.
@@ -31,8 +37,6 @@ https://www.shellscript.sh/tips/getopts/
 "비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
-
-
 
 ## ssh.md
 
