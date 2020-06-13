@@ -120,6 +120,12 @@
 
 * https://stackoverflow.com/questions/150505/capturing-url-parameters-in-request-get
 
+##### urlparse.md
+
+* "Python에서 URL의 query 문자열을 삭제하는 방법"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/7734569/how-do-i-remove-a-query-string-from-url-using-python
+
 ##### websockets_01.md
 
 * websockets 라이브러리 문서의 FAQ "어떻게 접속이 끊어졌을 때 자동으로 재접속할 수 있나요?" 글을 번역한 내용입니다.
