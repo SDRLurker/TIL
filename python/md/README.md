@@ -1,5 +1,11 @@
 ### MarkDown 문서
 
+##### assertRaises.md
+
+* "assertRaises - unittest에서 오류 테스트 하기"을 어떻게 합니까?"을 번역한 내용입니다.
+
+* https://ongspxm.github.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/
+
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
