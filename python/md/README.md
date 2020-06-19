@@ -56,6 +56,12 @@
 
 * http://stackoverflow.com/questions/16819222/how-to-return-dictionary-keys-as-a-list-in-python-3-3
 
+##### mysql.md
+
+* "Python 3과 MySQL"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/4960048/how-can-i-connect-to-mysql-in-python-3-on-windows
+
 ##### non_blocking.md
 
 * "python에서 subprocess.PIPE로 non-blocking 읽기"를 번역한 내용입니다.
