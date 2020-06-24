@@ -80,6 +80,12 @@
 
 * https://stackoverflow.com/questions/5537876/get-utc-offset-from-time-zone-name-in-python
 
+##### pytz_nyc.md
+
+* "뉴욕 도시 시간을 어떻게 얻을 수 있습니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/11873714/how-do-i-get-new-york-city-time
+
 ##### quickfix.md
 
 * "2개의 QuickFix initiator 세션을 구분하기"를 번역한 내용입니다.
