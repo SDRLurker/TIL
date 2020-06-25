@@ -144,6 +144,12 @@
 
 * https://stackoverflow.com/questions/7734569/how-do-i-remove-a-query-string-from-url-using-python
 
+##### switch.md
+
+* "파이썬에서 switch 구문을 대체하여 사용하는 방법"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/60208/replacements-for-switch-statement-in-python
+
 ##### websockets_01.md
 
 * websockets 라이브러리 문서의 FAQ "어떻게 접속이 끊어졌을 때 자동으로 재접속할 수 있나요?" 글을 번역한 내용입니다.
