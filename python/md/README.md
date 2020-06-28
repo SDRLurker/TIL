@@ -126,6 +126,12 @@
 
 * https://www.metachris.com/2016/04/python-threadpool/
 
+##### timeout.md
+
+* "파이썬 소켓 수신 메소드에서 timeout을 정하는 방법?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/2719017/how-to-set-timeout-on-pythons-socket-recv-method
+
 ##### udp.md
 
 * "UDP - 파이썬에서 클라이언트 서버 예제 프로그램"을 번역한 내용입니다.
