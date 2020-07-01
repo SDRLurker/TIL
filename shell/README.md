@@ -38,6 +38,12 @@ https://www.shellscript.sh/tips/getopts/
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
 
+## rsync.md
+
+"특정 디렉터리를 제외하고 'cp' 명령 사용하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/4585929/how-to-use-cp-command-to-exclude-a-specific-directory
+
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
