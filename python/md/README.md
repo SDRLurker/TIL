@@ -56,6 +56,12 @@
 
 * http://stackoverflow.com/questions/16819222/how-to-return-dictionary-keys-as-a-list-in-python-3-3
 
+##### list_sub.md
+
+* "파이썬 리스트 차집합 연산"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/3428536/python-list-subtraction-operation
+
 ##### mysql.md
 
 * "Python 3과 MySQL"를 번역한 내용입니다.
