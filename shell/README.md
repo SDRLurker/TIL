@@ -56,6 +56,12 @@ https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-sc
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
 
+## tr.md
+
+"tr을 사용하여 줄바꿈을 공백으로 바꾸기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/25826752/using-tr-to-replace-newline-with-space/25826920
+
 # Ryan Shell Collection(쉘 모음)
  
 ## mrsh.sh
