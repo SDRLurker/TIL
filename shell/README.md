@@ -44,6 +44,12 @@ https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-passwo
 
 https://stackoverflow.com/questions/4585929/how-to-use-cp-command-to-exclude-a-specific-directory
 
+## sed_even.md
+
+"sed에서 파일의 짝수 줄만 찾아 치환하는 명령"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-even-lines-of-a-file
+
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
