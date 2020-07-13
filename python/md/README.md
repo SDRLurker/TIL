@@ -74,6 +74,12 @@
 
 * https://stackoverflow.com/questions/375427/non-blocking-read-on-a-subprocess-pipe-in-python
 
+##### pandas_column.md
+
+* "For 루프로 Pandas 열 만들기" 글을 번역한 내용입니다.
+
+* https://chrisalbon.com/python/data_wrangling/pandas_create_column_with_loop/
+
 ##### pyopenssl.md
 
 * "파이썬 AttributeError: 'module' 객체는 'SSL_ST_INIT' 속성이 없습니다" 글을 번역한 내용입니다.
