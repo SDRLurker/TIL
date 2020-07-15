@@ -1,5 +1,7 @@
 출처 : [https://stackoverflow.com/questions/40286841/what-is-the-best-way-to-raise-request-errors](https://stackoverflow.com/questions/40286841/what-is-the-best-way-to-raise-request-errors)
 
+# request 오류를 발생하는 최고의 방법?
+
 저는 다음 방법으로 나쁜 요청(requests)에 대해 오류를 발생하는 소스 코드를 읽고 있습니다.
 
 ```python

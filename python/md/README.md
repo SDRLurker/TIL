@@ -104,6 +104,12 @@
 
 * https://stackoverflow.com/questions/29523954/distinguishing-between-two-quickfix-initiator-sessions
 
+##### requests_raise.md
+
+* "request 오류를 발생하는 최고의 방법?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/40286841/what-is-the-best-way-to-raise-request-errors
+
 ##### reload.md
 
 1. "Python 3.4에서 모듈 다시 불러오기"를 번역한 배용입니다.
