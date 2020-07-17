@@ -62,6 +62,12 @@
 
 * https://stackoverflow.com/questions/3428536/python-list-subtraction-operation
 
+##### multi_zombie.md
+
+* "많은 좀비 프로세스를 이끄는 파이썬 멀티프로세싱"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/30506489/python-multiprocessing-leading-to-many-zombie-processes/32442923
+
 ##### mysql.md
 
 * "Python 3과 MySQL"를 번역한 내용입니다.
