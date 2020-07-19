@@ -110,6 +110,12 @@
 
 * https://stackoverflow.com/questions/29523954/distinguishing-between-two-quickfix-initiator-sessions
 
+##### requests_login.md
+
+* "Python의 Requests 모듈을 사용하여 웹사이트에 '로그인'하는 방법"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/11892729/how-to-log-in-to-a-website-using-pythons-requests-module/
+
 ##### requests_raise.md
 
 * "request 오류를 발생하는 최고의 방법?"를 번역한 내용입니다.
