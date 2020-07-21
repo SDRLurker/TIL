@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">	
+<title>Pinger V0.1</title>	
+</head>
+<body>
+주소 : <input id="addr" type="text" size="50"> 
+<button id="add">추가</button>|
+호출 주기(1/1000초 단위) : <input id="timer" type="number" value="3000"/> |
+<button id="start">시작</button>
+<button id="end">종료</button>
+<br/>
+<span id='status'></span>
+<br/>
+<table id='pings'>
+<tr>
+<td>주소</td>
+<td>상태</td>
+<td>삭제</td>
+</tr>
+</table>
+<p id='err'></p>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	var timer;
+	var address_array = [];
+	var element_array = [];
+	var num = 0;
+	function padStr(i) {
+		return (i < 10) ? "0" + i : "" + i;
+	}
+	function getDateStr() {
+		var temp = new Date();
+		var dateStr = temp.getFullYear() + "/" +
+				padStr((1+temp.getMonth())) + "/" + 
+				padStr(temp.getDate()) + " " +
+				padStr(temp.getHours()) + ":" +
+				padStr(temp.getMinutes()) + ":" + 
+				padStr(temp.getSeconds());
+		return dateStr;
+	}
+	function updateRes(i, a, r)
+	{
+		var str = "#font_" + element_array[i];
+		if(r){
+			$(str).html("<font color='green'>■</font>");
+		}	
+		else{
+			$(str).html("<font color='red'>■</font>");
+			/* $("#err").prepend("[" + getDateStr() + "] " +
+                            		a + " - 핑 오류!<br/>"); */
+		}
+	}
+	function timerCall()
+	{
+       		external.ask_ping(address_array);
+		$("#status").html("[" + getDateStr() + "] 작동중!" + data );
+
+	}	
+
+	$("#add").mousedown(function(e){
+		if($("#addr").val().length > 0) {
+			if($.inArray($("#addr").val(), address_array) === -1) {
+				address_array.push($("#addr").val());
+				element_array.push("a" + num);
+				$("#pings").append("<tr id='a" + num + "'><td>" + $("#addr").val() +"</td>" + 
+					"<td id='font_a" + num + "'>&nbsp;</td>" + 
+					"<td><button id='del_a" + num + "'>삭제</button></td></tr>");
+			
+				(function(i) {
+					var str = "#del_a" + i;
+					$(str).mousedown(function(e) {
+						var index = $.inArray("a" + i, element_array);
+						$("#a" + i).remove();
+						
+						address_array.splice(index, 1);
+						element_array.splice(index, 1);
+					});  
+				})(num);
+
+				num++;
+			}
+		}
+	});
+
+	$("#start").mousedown(function(e){
+		var milisec = parseInt($("#timer").val()) || 0;
+		if(milisec < 1000)
+		{
+			alert('호출 주기의 값은 1000보다 커야 합니다.');
+			$("#timer").focus();
+			return;
+		}
+		if(address_array.length === 0)
+		{
+			alert('주소를 1개 이상 추가해야 합니다.');
+			return;
+		}
+		if($("#addr").val().length>0)
+		{
+			timer = setInterval(timerCall, milisec);
+		}
+	});	
+	$("#end").mousedown(function(e){
+		clearInterval(timer);
+		$("#status").html("[" + getDateStr() + "] 작동멈춤!" );
+	});	
+</script>
+</body>
+</html>
+
