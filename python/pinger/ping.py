@@ -7,6 +7,8 @@ import ctypes
 import threading
 
 from cefpython3 import cefpython as cef
+import asyncio
+import functools
 
 
 def main():
@@ -37,22 +39,32 @@ class External():
     target_dir_path = ''
     def __init__(self, browser):
         self.browser = browser
+        self.loop = asyncio.get_event_loop()
+        
+    def __del__(self):
+        self.loop.close()
+
+    async def pingpong(self, i, url):
+        r = await self.loop.run_in_executor(
+            None, functools.partial(ping, url, timeout=1))
+        if r is None:
+            r = 0
+        print(url, i, r)
+        await self.loop.run_in_executor(
+            None, self.browser.ExecuteFunction, 'updateRes', i, url, r)
+
+    async def main(self, arr):
+        futures = [asyncio.ensure_future(self.pingpong(i, url)) for i, url in enumerate(arr)]
+        result = await asyncio.gather(*futures)
 
     def ask_ping(self, arr):
-        # Ping Check
-        res = []
-        for i, a in enumerate(arr):
-            r = ping(a, timeout=1)  # IP Or Domain
-            if r is None:
-                r = 0
-            print(a, r)
-            res.append(a)
-            self.browser.ExecuteFunction('updateRes', i, a, r)
+        self.loop.run_until_complete(self.main(arr))
+
 
 def set_javascript_bindings(browser):
     external = External(browser)
     bindings = cef.JavascriptBindings(
-            bindToFrames=False, bindToPopups=False)
+        bindToFrames=False, bindToPopups=False)
     bindings.SetObject('external', external)
     browser.SetJavascriptBindings(bindings)
 
