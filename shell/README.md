@@ -14,6 +14,12 @@ http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-thi
 
 https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
 
+## conf.md
+
+"shell 스크립트에서 설정 파일 (*.conf) 파싱하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/22683269/how-to-parse-a-config-file-conf-in-shell-script
+
 ## contain.md
 
 "Bash에서 문자열이 부분 문자열을 포함하는지 확인하는 방법"를 번역한 내용입니다.
