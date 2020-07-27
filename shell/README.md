@@ -20,6 +20,12 @@ https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
 
 https://stackoverflow.com/questions/22683269/how-to-parse-a-config-file-conf-in-shell-script
 
+## conf2.md
+
+"shell 스크립트에서 INI 파일 설정값을 얻는 방법은?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/6318809/how-do-i-grab-an-ini-value-within-a-shell-script
+
 ## contain.md
 
 "Bash에서 문자열이 부분 문자열을 포함하는지 확인하는 방법"를 번역한 내용입니다.
