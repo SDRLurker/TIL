@@ -6,6 +6,12 @@
 
 * https://ongspxm.github.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/
 
+##### asyncio_get.md
+
+* "asyncio 작업(task)으로 실행한 함수에서 값 얻어오기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/32456881/getting-values-from-functions-that-run-as-asyncio-tasks
+
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
