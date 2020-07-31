@@ -9,6 +9,11 @@
 
 ## MarkDown 문서 (파일)
 
+### author.md
+
+* "Git에서 commit의 author(작가)를 변경하기" 글을 번역한 내용입니다.
+* http://stackoverflow.com/questions/750172/change-the-author-of-a-commit-in-git
+
 ### filter-branch.md
 
 * "모든 commit에서 파일 지우기" 글을 번역한 내용입니다.
