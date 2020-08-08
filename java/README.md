@@ -29,3 +29,8 @@
 
 * "파이프 글자로 문자열 분리하기("|")" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/21524642/splitting-string-with-pipe-character
+
+### uber.md
+
+* "uber jar는 무엇입니까?" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/11947037/what-is-an-uber-jar
