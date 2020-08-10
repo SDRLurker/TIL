@@ -1,3 +1,5 @@
+출처 : [https://stackoverflow.com/questions/43995886/gradle-could-not-target-platform-java-se-8-using-tool-chain-jdk-7-1-7/44000209](https://stackoverflow.com/questions/43995886/gradle-could-not-target-platform-java-se-8-using-tool-chain-jdk-7-1-7/44000209)
+
 # Gradle - Could not target platform: 'Java SE 8' using tool chain: 'JDK 7 (1.7)'
 
 저는 Intellij Idea에서 Gragle 프로젝트를 불러오려고(import) 시도하였고 다음과 같은 메세지가 나왔습니다. `Gradle - Could not target platform: 'Java SE 8' using tool chain: 'JDK 7 (1.7)'` 누구든지 이렇게 나온 이유가 무엇인지 설명해 주시겠습니까?
