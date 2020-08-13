@@ -12,6 +12,12 @@
 
 * https://stackoverflow.com/questions/32456881/getting-values-from-functions-that-run-as-asyncio-tasks
 
+##### buffer.md
+
+* "Python의 buffer 타입은 무엇을 위한 건가요?"을 번역한 내용입니다.
+
+* http://stackoverflow.com/questions/3422685/what-is-python-buffer-type-for
+
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
