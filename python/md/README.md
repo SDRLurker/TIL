@@ -192,6 +192,12 @@
 
 * https://stackoverflow.com/questions/7734569/how-do-i-remove-a-query-string-from-url-using-python
 
+##### utc_local.md
+
+* "파이썬 - UTC 날짜시간 문자열을 local 날짜시간으로 변환하기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/4770297/convert-utc-datetime-string-to-local-datetime
+
 ##### switch.md
 
 * "파이썬에서 switch 구문을 대체하여 사용하는 방법"을 번역한 내용입니다.
