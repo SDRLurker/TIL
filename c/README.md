@@ -27,6 +27,12 @@
 
 ## MarkDown 문서
 
+### min_max.md
+
+* "C언어에서 MIN과 MAX" 글을 번역한 내용입니다.
+
+* http://stackoverflow.com/questions/3437404/min-and-max-in-c
+
 ### unique.md
 
 * "C의 int 배열을 정렬하고 중복 제거하기" 글을 번역한 내용입니다.
