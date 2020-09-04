@@ -8,6 +8,12 @@ http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-thi
 
 ※ 2>&1.md 파일을 윈도우즈에서는 생성할 수 없어서 파일명을 변경하였습니다.
 
+## all_arguments.md
+
+"bash 쉘 스크립트에서 모든 인수를 전달"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/4824590/propagate-all-arguments-in-a-bash-shell-script
+
 ## boolean.md
 
 "Bash에서 Boolean 연산자( &&, -a, ||, -o )"를 번역한 내용입니다.
