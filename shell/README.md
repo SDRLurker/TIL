@@ -71,6 +71,11 @@ https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-eve
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
+https://serverfault.com/questions/59140/how-do-diff-over-ssh
+
+## ssh_diff.md
+
+"ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
 
 https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
 
