@@ -62,6 +62,12 @@
 
 * http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md
 
+##### jupyter_tensorflow.md
+
+* "Jupyter Notebook에서 TensorFlow 사용 문제"을 번역한 내용입니다.
+
+* http://stackoverflow.com/questions/37061089/trouble-with-tensorflow-in-jupyter-notebook
+
 ##### list_dic.md
 
 * "Python에서 dictionary 키를 list로 리턴하는 방법"을 번역한 내용입니다.
