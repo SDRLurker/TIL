@@ -104,6 +104,13 @@
 
 * https://chrisalbon.com/python/data_wrangling/pandas_create_column_with_loop/
 
+##### pip_user.md
+
+* "`"pip install --user ..."`의 목적은?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/42988977/what-is-the-purpose-of-pip-install-user
+
+
 ##### pyopenssl.md
 
 * "파이썬 AttributeError: 'module' 객체는 'SSL_ST_INIT' 속성이 없습니다" 글을 번역한 내용입니다.
