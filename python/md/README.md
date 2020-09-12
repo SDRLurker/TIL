@@ -110,6 +110,11 @@
 
 * https://stackoverflow.com/questions/42988977/what-is-the-purpose-of-pip-install-user
 
+##### pv_tensorflow.md
+
+* "tf.placeholder와 tf.Variable의 차이점은 무엇입니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/36693740/whats-the-difference-between-tf-placeholder-and-tf-variable
 
 ##### pyopenssl.md
 
