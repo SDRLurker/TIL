@@ -162,6 +162,12 @@
 
 * https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
 
+##### round.md
+
+* "파이썬에서 반올림 문제"를 번역한 내용입니다.
+
+* http://stackoverflow.com/questions/7515266/rounding-problem-with-python
+
 ##### select.md
 
 * "soup.select로 beautiful soup에서 두번째 child 선택하기" 글을 번역한 내용입니다.
