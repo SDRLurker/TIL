@@ -24,6 +24,12 @@
 
 * https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
 
+##### colab_env.md
+
+* "Google Colaboratory에서 환경 변수를 설정하는 것이 가능합니까?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/49684495/is-it-possible-to-set-environment-variables-in-googles-colaboratory
+
 ##### colab_upload.md
 
 * "시작하기: Colab에서 CSV 파일을 불러오는 3가지 방법"을 번역한 내용입니다.
