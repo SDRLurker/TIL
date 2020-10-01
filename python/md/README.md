@@ -180,6 +180,12 @@
 
 * https://stackoverflow.com/questions/24720442/selecting-second-child-in-beautiful-soup-with-soup-select
 
+##### show_columns.md
+
+* "python: MySQLdb. 의 큰 테이블에서 select * 없이 컬럼명을 얻는 방법" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/23786674/python-mysqldb-how-to-get-columns-name-without-executing-select-in-a-big-tab
+
 ##### stderr.md
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
