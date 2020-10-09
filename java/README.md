@@ -25,6 +25,10 @@
 
 ## MarkDown 문서
 
+### install_gradle.md
+
+* gradle을 설치 shell 스크립트에 대해 작성한 글입니다.
+
 ### intellij_ver.md
 
 * "Gradle - Could not target platform: 'Java SE 8' using tool chain: 'JDK 7 (1.7)'" 글을 번역한 내용입니다.
