@@ -19,6 +19,10 @@
 * "모든 commit에서 파일 지우기" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/35115585/remove-file-from-all-commits
 
+### orphan.md
+
+* "Git에서 새롭고 비어 있는 branch를 만드는 방법" 글을 번역한 내용입니다.
+
 ### push-error.md
 
 * "Git push 에러 '[원격 거부됨] master -> master (브랜치는 현재 체크 아웃되었습니다.)'" 글을 번역한 내용입니다.
