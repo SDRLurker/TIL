@@ -86,6 +86,12 @@
 
 * https://stackoverflow.com/questions/3428536/python-list-subtraction-operation
 
+##### multicast.md
+
+* "Python에서 UDP 멀티캐스트 하는 방법?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+
 ##### multi_zombie.md
 
 * "많은 좀비 프로세스를 이끄는 파이썬 멀티프로세싱"를 번역한 내용입니다.
