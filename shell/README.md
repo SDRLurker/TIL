@@ -91,6 +91,12 @@ https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-passwo
 
 https://stackoverflow.com/questions/25826752/using-tr-to-replace-newline-with-space/25826920
 
+## zgrep.md
+
+"압축해제 없이 tar.gz 파일을 grep 하기 [빠른 방법]"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/13983365/grep-from-tar-gz-without-extracting-faster-one
+
 # Ryan Shell Collection(쉘 모음)
  
 ## mrsh.sh
