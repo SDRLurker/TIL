@@ -23,3 +23,7 @@
 ##### Tensorflow1_야학.ipynb
 
 * [머신러닝야학](https://ml.yah.ac/) 의 [Tensorflow1 야학](https://yah.ac/tensorflow) 수업을 들으면서 정리한 내용입니다.
+
+##### 10분 코알라.ipynb
+
+* [코알라](https://github.com/databricks/koalas) 파이썬 모듈의 [10분 튜토리얼](https://mybinder.org/v2/gh/databricks/koalas/master?filepath=docs%2Fsource%2Fgetting_started%2F10min.ipynb)을 따라하면서 정리한 내용입니다.
