@@ -2,6 +2,12 @@
 
 ### MarkDown 문서
 
+##### decimal.md
+
+"Redshift의 나누기 결과는 소수점을 포함하지 않습니다."를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/50494508/redshift-division-result-does-not-include-decimals
+
 ##### float.md
 
 "mysql에서 문자열을 float으로 어떻게 형변환 할 수 있을까요?"를 번역한 내용입니다.
