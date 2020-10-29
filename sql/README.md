@@ -8,6 +8,12 @@
 
 https://stackoverflow.com/questions/50494508/redshift-division-result-does-not-include-decimals
 
+##### distinct_cond.md
+
+"조건과 함께 중복제거 개수 세기(COUNT DISTINCT with CONDITIONS)"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/14048098/count-distinct-with-conditions
+
 ##### float.md
 
 "mysql에서 문자열을 float으로 어떻게 형변환 할 수 있을까요?"를 번역한 내용입니다.
