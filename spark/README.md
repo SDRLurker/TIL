@@ -42,6 +42,12 @@ https://stackoverflow.com/questions/34529953/why-is-the-fold-action-necessary-in
 
 https://bitdatatechie.com/2019/09/13/spark-journal-return-multiple-dataframes-from-a-scala-method/
 
+### multi_stream.md
+
+"같은 Sink로 여러개의 Spark Structured Streaming WriteStreams하기"을 번역한 내용입니다.
+
+https://stackoverflow.com/questions/50791975/spark-structured-streaming-multiple-writestreams-to-same-sink
+
 ## Jupyter Notebook 문서
 
 ### spark_20180526.ipynb
