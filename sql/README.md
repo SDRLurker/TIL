@@ -37,3 +37,9 @@ https://stackoverflow.com/questions/17492167/group-query-results-by-month-and-ye
 "mysql 반올림(round) 함수 버그 및 해결방법"을 작성한 내용입니다.
 
 https://bugs.mysql.com/bug.php?id=9957
+
+##### yesterday.md
+
+"MySQL로 어제 날짜와 CURDATE() 얻기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/13572083/grab-where-curdate-and-the-day-before-with-mysql
