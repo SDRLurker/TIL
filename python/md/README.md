@@ -152,6 +152,12 @@
 
 * https://stackoverflow.com/questions/29523954/distinguishing-between-two-quickfix-initiator-sessions
 
+##### redshift_create.md
+
+* "Python으로 Redshift의 create table이 작동하지 않습니다."를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/48232367/redshift-create-table-not-working-via-python
+
 ##### requests_login.md
 
 * "Python의 Requests 모듈을 사용하여 웹사이트에 '로그인'하는 방법"를 번역한 내용입니다.
