@@ -20,6 +20,12 @@ https://stackoverflow.com/questions/14048098/count-distinct-with-conditions
 
 https://stackoverflow.com/questions/7368163/how-can-i-convert-a-string-to-a-float-in-mysql
 
+##### mariadb_gce.md
+
+"구글 클라우드 / Compute 인스턴스로부터 MariaDB에 접근할 수 없습니다."를 번역한 내용입니다.
+
+https://serverfault.com/questions/914476/cant-access-mariadb-from-google-cloud-compute-instance
+
 ##### mysql_upsert_select.md
 
 "INSERT INTO … SELECT FROM … ON DUPLICATE KEY UPDATE"를 번역한 내용입니다.
