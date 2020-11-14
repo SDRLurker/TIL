@@ -44,6 +44,12 @@ https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-s
 
 https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-trying-to-use-a-backtick
 
+## cronjob_1st_sun.md
+
+"매달 첫 번째 일요일에 crontab 스케쥴링 하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month
+
 ## getops.md
 
 "Shell Script 튜토리얼 - 팁 Getopts"를 번역한 내용입니다.

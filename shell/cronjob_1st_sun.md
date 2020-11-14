@@ -1,4 +1,4 @@
-출처 : [https://stackoverflow.com/questions/13572083/grab-where-curdate-and-the-day-before-with-mysql](https://stackoverflow.com/questions/13572083/grab-where-curdate-and-the-day-before-with-mysql)
+출처 : [https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month](https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month)
 
 # 매달 첫 번째 일요일에 crontab 스케쥴링 하는 방법
 
