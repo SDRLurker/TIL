@@ -50,6 +50,12 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month
 
+## get_ip.md
+
+"리눅스와 OS X에서 현재 컴퓨터의 중요 외부 IP를 알아내는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-of-the-local-machine-on-linux-and-os-x
+
 ## getops.md
 
 "Shell Script 튜토리얼 - 팁 Getopts"를 번역한 내용입니다.
