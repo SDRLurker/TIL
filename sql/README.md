@@ -32,6 +32,12 @@ https://serverfault.com/questions/914476/cant-access-mariadb-from-google-cloud-c
 
 https://stackoverflow.com/questions/2472229/insert-into-select-from-on-duplicate-key-update
 
+##### postgre_show.md
+
+"PostgreSQL에서 테이블 보기"을 작성한 내용입니다.
+
+https://stackoverflow.com/questions/769683/postgresql-show-tables-in-postgresql
+
 ##### postgre_ym.md
 
 "postgresql에서 년월로 결과 쿼리를 그룹화하기"을 작성한 내용입니다.
