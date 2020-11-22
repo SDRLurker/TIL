@@ -92,17 +92,17 @@
 
 * https://stackoverflow.com/questions/3428536/python-list-subtraction-operation
 
-##### multicast.md
-
-* "Python에서 UDP 멀티캐스트 하는 방법?"를 번역한 내용입니다.
-
-* https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
-
 ##### multi_zombie.md
 
 * "많은 좀비 프로세스를 이끄는 파이썬 멀티프로세싱"를 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/30506489/python-multiprocessing-leading-to-many-zombie-processes/32442923
+
+##### multicast.md
+
+* "Python에서 UDP 멀티캐스트 하는 방법?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
 
 ##### mysql.md
 
@@ -164,6 +164,16 @@
 
 * https://stackoverflow.com/questions/48232367/redshift-create-table-not-working-via-python
 
+##### reload.md
+
+1. "Python 3.4에서 모듈 다시 불러오기"를 번역한 배용입니다.
+
+* https://stackoverflow.com/questions/27387786/reload-a-module-in-python-3-4
+
+2. "“from <module> import *” 이후에 모듈 다시 불러오는 방법?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
+
 ##### requests_login.md
 
 * "Python의 Requests 모듈을 사용하여 웹사이트에 '로그인'하는 방법"를 번역한 내용입니다.
@@ -175,16 +185,6 @@
 * "request 오류를 발생하는 최고의 방법?"를 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/40286841/what-is-the-best-way-to-raise-request-errors
-
-##### reload.md
-
-1. "Python 3.4에서 모듈 다시 불러오기"를 번역한 배용입니다.
-
-* https://stackoverflow.com/questions/27387786/reload-a-module-in-python-3-4
-
-2. "“from <module> import *” 이후에 모듈 다시 불러오는 방법?"을 번역한 내용입니다.
-
-* https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
 
 ##### round.md
 
@@ -209,6 +209,12 @@
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
+
+##### switch.md
+
+* "파이썬에서 switch 구문을 대체하여 사용하는 방법"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/60208/replacements-for-switch-statement-in-python
 
 ##### tail.md
 
@@ -251,12 +257,6 @@
 * "파이썬 - UTC 날짜시간 문자열을 local 날짜시간으로 변환하기"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/4770297/convert-utc-datetime-string-to-local-datetime
-
-##### switch.md
-
-* "파이썬에서 switch 구문을 대체하여 사용하는 방법"을 번역한 내용입니다.
-
-* https://stackoverflow.com/questions/60208/replacements-for-switch-statement-in-python
 
 ##### websockets_01.md
 
