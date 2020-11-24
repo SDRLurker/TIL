@@ -26,6 +26,12 @@ https://stackoverflow.com/questions/7368163/how-can-i-convert-a-string-to-a-floa
 
 https://serverfault.com/questions/914476/cant-access-mariadb-from-google-cloud-compute-instance
 
+##### mysql_process.md
+
+"MySQL에서 'show processlist' 조건을 주는 방법?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/929612/how-to-customize-show-processlist-in-mysql
+
 ##### mysql_upsert_select.md
 
 "INSERT INTO … SELECT FROM … ON DUPLICATE KEY UPDATE"를 번역한 내용입니다.
