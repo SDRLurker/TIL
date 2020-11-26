@@ -62,6 +62,12 @@ https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-o
 
 https://www.shellscript.sh/tips/getopts/
 
+## lsof.md
+
+"lsof를 사용하여 공유메모리 사용자를 식별하기"를 번역한 내용입니다.
+
+https://github.com/SDRLurker/TIL/blob/master/shell/lsof.md
+
 ## not_work.md
 
 "비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
