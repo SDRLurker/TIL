@@ -16,6 +16,7 @@ async def subscribe_without_login(url, channels):
         try:
             # https://stackoverflow.com/questions/54101923/1006-connection-closed-abnormally-error-with-python-3-7-websockets
             async with websockets.connect(url, ping_interval=None) as ws:
+                print("remote address=%s:%s" % ws.remote_address)
                 await ws.send(sub_str)
                 #print(f"send: {sub_str}")
                 while True:
