@@ -154,6 +154,11 @@ This is an example program  to receive Bithumb transactions via websockets.
 
 WebSocket을 이용한 방식으로 빗썸의 시세를 수신하는 예제 프로그램입니다.
 
+* websockets 모듈 설치 필요
+```shell
+pip install websockets
+```
+
 ##### max_col.py
 
 This program counts the number of columns for each line in the file and gives you the maximum number of columns.
