@@ -74,6 +74,12 @@ https://github.com/SDRLurker/TIL/blob/master/shell/lsof.md
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
 
+## process_shm.md
+
+"리눅스에 공유메모리에 접근한 프로세스의 목록을 아는 방법?"를 번역한 내용입니다.
+
+http://stackoverflow.com/questions/5658568/how-to-list-processes-attached-to-a-shared-memory-segment-in-linux
+
 ## rsync.md
 
 "특정 디렉터리를 제외하고 'cp' 명령 사용하는 방법"를 번역한 내용입니다.
