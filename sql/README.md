@@ -50,6 +50,12 @@ https://stackoverflow.com/questions/769683/postgresql-show-tables-in-postgresql
 
 https://stackoverflow.com/questions/17492167/group-query-results-by-month-and-year-in-postgresql
 
+##### rename_db.md
+
+"MySQL 데이터베이스의 이름(스키마 이름 변경)을 빠르게 변경하는 방법?"을 작성한 내용입니다.
+
+https://stackoverflow.com/questions/67093/how-do-i-quickly-rename-a-mysql-database-change-schema-name
+
 ##### round.md
 
 "mysql 반올림(round) 함수 버그 및 해결방법"을 작성한 내용입니다.
