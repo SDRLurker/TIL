@@ -210,6 +210,12 @@
 
 * https://stackoverflow.com/questions/5574702/how-to-print-to-stderr-in-python
 
+##### subprocess_timeout.md
+
+* "timeout과 함께 'subprocess' 모듈 사용하기" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout
+
 ##### switch.md
 
 * "파이썬에서 switch 구문을 대체하여 사용하는 방법"을 번역한 내용입니다.
