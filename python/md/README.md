@@ -204,6 +204,12 @@
 
 * https://stackoverflow.com/questions/23786674/python-mysqldb-how-to-get-columns-name-without-executing-select-in-a-big-tab
 
+##### sort_dickey.md
+
+* "키로 dictionary를 어떻게 정렬할 수 있습니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/9001509/how-can-i-sort-a-dictionary-by-key
+
 ##### stderr.md
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
