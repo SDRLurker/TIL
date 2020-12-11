@@ -210,6 +210,12 @@
 
 * https://stackoverflow.com/questions/9001509/how-can-i-sort-a-dictionary-by-key
 
+##### split_nth_char.md
+
+* "n번째 문자마다 문자열을 나누는 방법?" 글을 번역한 내용입니다.
+
+* http://stackoverflow.com/questions/9475241/split-python-string-every-nth-character
+
 ##### stderr.md
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
