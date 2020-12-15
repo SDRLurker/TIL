@@ -246,6 +246,12 @@
 
 * https://stackoverflow.com/questions/12523044/how-can-i-tail-a-log-file-in-python
 
+##### template_mod.md
+
+* "Django Template의 나머지(%) 연산" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/8494209/modulus-in-django-template
+
 ##### thread_pool.md
 
 * "Python 쓰레드 풀"을 번역한 내용입니다.
