@@ -222,6 +222,12 @@
 
 * http://stackoverflow.com/questions/9475241/split-python-string-every-nth-character
 
+##### static_var.md
+
+* "Python에서 함수 안의 static 변수와 같은 것은 무엇입니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/279561/what-is-the-python-equivalent-of-static-variables-inside-a-function
+
 ##### stderr.md
 
 * "Python에서 표준에러로 출력하는 방법?" 글을 번역한 내용입니다.
