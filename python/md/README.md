@@ -24,6 +24,12 @@
 
 * http://stackoverflow.com/questions/3422685/what-is-python-buffer-type-for
 
+##### centos_6_pip.md
+
+* "CentOS 6.8에서 pip 설치하는 방법"을 번역한 내용입니다.
+
+* https://medium.com/back-to-basics-project/how-to-install-pip-on-centos-6-8-b7453fef63e3
+
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
