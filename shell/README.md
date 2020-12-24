@@ -109,6 +109,12 @@ https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-sc
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
 
+## stunnel.md
+
+"Stunnel"을 번역한 내용입니다.
+
+https://en.wikipedia.org/wiki/Stunnel
+
 ## tr.md
 
 "tr을 사용하여 줄바꿈을 공백으로 바꾸기"를 번역한 내용입니다.
