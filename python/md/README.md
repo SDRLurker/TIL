@@ -30,6 +30,13 @@
 
 * https://medium.com/back-to-basics-project/how-to-install-pip-on-centos-6-8-b7453fef63e3
 
+##### child_proc.md
+
+* "부모 프로세스가 죽을 때 subprocess.check_output()로 생성된 Python 자식 프로세스를 죽이는 방법?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/19447603/how-to-kill-a-python-child-process-created-with-subprocess-check-output-when-t
+
+
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
