@@ -103,6 +103,12 @@ https://serverfault.com/questions/59140/how-do-diff-over-ssh
 
 https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
 
+## ssh_key.md
+
+"비밀 SSH 키로부터 공개 SSH 키를 생성하기"를 번역한 내용입니다.
+
+https://blog.tinned-software.net/generate-public-ssh-key-from-private-ssh-key/
+
 ## ssh_login.md
 
 "비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
