@@ -62,11 +62,17 @@ https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-o
 
 https://www.shellscript.sh/tips/getopts/
 
+## keep.md
+
+"Spark 작업을 실행한 채 유지하기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/37201918/spark-job-keep-on-running
+
 ## lsof.md
 
 "lsof를 사용하여 공유메모리 사용자를 식별하기"를 번역한 내용입니다.
 
-https://github.com/SDRLurker/TIL/blob/master/shell/lsof.md
+https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-lsof/
 
 ## not_work.md
 
