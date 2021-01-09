@@ -61,6 +61,12 @@
 
 * https://stackoverflow.com/questions/51046454/how-can-we-use-selenium-webdriver-in-colab-research-google-com
 
+##### contains.md
+
+* "Pandas 데이터프레임에서 '포함되지 않은 것' 찾기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/17097643/search-for-does-not-contain-on-a-dataframe-in-pandas
+
 ##### ctypes.md
 
 * "ctypes로 Python에서 C++ 클래스 호출하기"을 번역한 내용입니다.
