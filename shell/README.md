@@ -40,7 +40,7 @@ https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-s
 
 ## cronjob.md
 
-"cronjob 문법에서 backtick(`)을 사용하려는데 무엇이 잘못되었습니까?"를 번역한 내용입니다.
+"cronjob 문법에서 backtick(\`)을 사용하려는데 무엇이 잘못되었습니까?"를 번역한 내용입니다.
 
 https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-trying-to-use-a-backtick
 
@@ -67,6 +67,12 @@ https://www.shellscript.sh/tips/getopts/
 "Spark 작업을 실행한 채 유지하기"를 번역한 내용입니다.
 
 https://stackoverflow.com/questions/37201918/spark-job-keep-on-running
+
+## last_day.md
+
+"shell 스크립트에서 지난 달의 마지막 날짜 구하기"를 번역한 내용입니다.
+
+https://unix.stackexchange.com/questions/223543/get-the-date-of-last-months-last-day-in-a-shell-script
 
 ## lsof.md
 
