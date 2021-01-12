@@ -80,12 +80,6 @@ https://unix.stackexchange.com/questions/223543/get-the-date-of-last-months-last
 
 https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-lsof/
 
-## not_work.md
-
-"비밀번호가 없는 SSH 로그인이 잘 안됩니다"를 번역한 내용입니다.
-
-https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
-
 ## process_shm.md
 
 "리눅스에 공유메모리에 접근한 프로세스의 목록을 아는 방법?"를 번역한 내용입니다.
