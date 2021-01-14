@@ -127,6 +127,12 @@ https://blog.tinned-software.net/generate-public-ssh-key-from-private-ssh-key/
 
 https://www.linuxquestions.org/questions/linux-newbie-8/ssh-login-without-password-not-working-4175561052/
 
+## ssh_no_pass.md
+
+"비밀번호 없이 SSH 로그인"를 번역한 내용입니다.
+
+http://www.linuxproblem.org/art_9.html
+
 ## stunnel.md
 
 "Stunnel"을 번역한 내용입니다.
