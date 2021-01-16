@@ -2,6 +2,12 @@
 
 ### MarkDown 문서
 
+##### columns.md
+
+"SELECT가 많은 칼럼 필드들을 가질 때 터미널에 최고의 방법으로 표시하는 방법은?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/924729/how-to-best-display-in-terminal-a-mysql-select-returning-too-many-fields
+
 ##### decimal.md
 
 "Redshift의 나누기 결과는 소수점을 포함하지 않습니다."를 번역한 내용입니다.
