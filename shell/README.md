@@ -92,12 +92,6 @@ http://stackoverflow.com/questions/5658568/how-to-list-processes-attached-to-a-s
 
 https://stackoverflow.com/questions/4585929/how-to-use-cp-command-to-exclude-a-specific-directory
 
-## sdiff.md
-
-"ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
-
-https://serverfault.com/questions/59140/how-do-diff-over-ssh
-
 ## sed_even.md
 
 "sed에서 파일의 짝수 줄만 찾아 치환하는 명령"를 번역한 내용입니다.
@@ -107,13 +101,15 @@ https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-eve
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
-https://serverfault.com/questions/59140/how-do-diff-over-ssh
+
+https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
 
 ## ssh_diff.md
 
 "ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
 
-https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
+https://serverfault.com/questions/59140/how-do-diff-over-ssh
+
 
 ## ssh_key.md
 
