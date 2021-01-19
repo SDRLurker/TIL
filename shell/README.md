@@ -86,6 +86,12 @@ https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-
 
 http://stackoverflow.com/questions/5658568/how-to-list-processes-attached-to-a-shared-memory-segment-in-linux
 
+## remote_file.md
+
+"ssh로 원격 호스트의 파일이 존재하는 지 확인"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/12845206/check-if-file-exists-on-remote-host-with-ssh
+
 ## rsync.md
 
 "특정 디렉터리를 제외하고 'cp' 명령 사용하는 방법"를 번역한 내용입니다.
@@ -109,7 +115,6 @@ https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-sc
 "ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
 
 https://serverfault.com/questions/59140/how-do-diff-over-ssh
-
 
 ## ssh_key.md
 
