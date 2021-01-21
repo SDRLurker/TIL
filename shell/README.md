@@ -80,6 +80,12 @@ https://unix.stackexchange.com/questions/223543/get-the-date-of-last-months-last
 
 https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-lsof/
 
+## newline.md
+
+"bash backtick(\`\`) 연산자로 출력의 개행을 어떻게 유지할 수 있을까요?"를 번역한 내용입니다.
+
+https://superuser.com/questions/403800/how-can-i-make-the-bash-backtick-operator-keep-newlines-in-output
+
 ## process_shm.md
 
 "리눅스에 공유메모리에 접근한 프로세스의 목록을 아는 방법?"를 번역한 내용입니다.
