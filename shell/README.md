@@ -50,6 +50,12 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month
 
+## du.md
+
+"크기로 du -h의 출력을 정렬할 수 있나요?"를 번역한 내용입니다.
+
+http://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size
+
 ## get_ip.md
 
 "리눅스와 OS X에서 현재 컴퓨터의 중요 외부 IP를 알아내는 방법"를 번역한 내용입니다.
