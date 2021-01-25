@@ -24,6 +24,11 @@
 * "모든 commit에서 파일 지우기" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/35115585/remove-file-from-all-commits
 
+### log.md
+
+* "git-log - commit history(커밋 히스토리)를 조회합니다." 글을 번역한 내용입니다.
+* http://git-scm.com/docs/git-log
+
 ### orphan.md
 
 * "Git에서 새롭고 비어 있는 branch를 만드는 방법" 글을 번역한 내용입니다.
