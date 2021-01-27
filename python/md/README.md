@@ -196,8 +196,14 @@
 * https://stackoverflow.com/questions/27387786/reload-a-module-in-python-3-4
 
 2. "“from <module> import *” 이후에 모듈 다시 불러오는 방법?"을 번역한 내용입니다.
-
+  
 * https://stackoverflow.com/questions/22442546/how-to-reload-after-from-module-import
+
+##### remote_file.md
+
+* "Python을 사용하여 원격 SSH 서버에서 파일 존재 확인"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/11892729/how-to-log-in-to-a-website-using-pythons-requests-module/
 
 ##### requests_login.md
 
