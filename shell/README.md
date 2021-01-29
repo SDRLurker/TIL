@@ -158,6 +158,12 @@ https://en.wikipedia.org/wiki/Stunnel
 
 https://stackoverflow.com/questions/25826752/using-tr-to-replace-newline-with-space/25826920
 
+## trap.md
+
+"trap"을 번역한 내용입니다.
+
+https://www.shellscript.sh/trap.html
+
 ## zgrep.md
 
 "압축해제 없이 tar.gz 파일을 grep 하기 [빠른 방법]"를 번역한 내용입니다.
