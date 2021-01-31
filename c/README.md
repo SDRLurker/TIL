@@ -27,6 +27,12 @@
 
 ## MarkDown 문서
 
+### abort.md
+
+* "언제 프로세스가 SIGABRT (시그널6)을 얻습니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/3413166/when-does-a-process-get-sigabrt-signal-6
+
 ### min_max.md
 
 * "C언어에서 MIN과 MAX" 글을 번역한 내용입니다.
