@@ -122,6 +122,12 @@ https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-eve
 
 https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-script
 
+## ssh_alias.md
+
+"alias가 ssh에서 왜 작동하지 않을까요?"를 번역한 내용입니다.
+
+https://askubuntu.com/questions/810098/why-doesnt-my-alias-work-over-ssh
+
 ## ssh_diff.md
 
 "ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
