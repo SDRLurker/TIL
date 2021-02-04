@@ -1,8 +1,4 @@
 #!/bin/bash
-YY=`date +%y`
-MM=`date +%m`
-DD=`date +%d`
-
 EXECUTE=`basename $0`
 SERVER=$1
 CPBIN=$2
