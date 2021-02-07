@@ -86,6 +86,12 @@ https://unix.stackexchange.com/questions/223543/get-the-date-of-last-months-last
 
 https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-lsof/
 
+## manual.md
+
+"man 페이지에 숫자들은 무엇입니까?"를 번역한 내용입니다.
+
+https://unix.stackexchange.com/questions/3586/what-do-the-numbers-in-a-man-page-mean
+
 ## newline.md
 
 "bash backtick(\`\`) 연산자로 출력의 개행을 어떻게 유지할 수 있을까요?"를 번역한 내용입니다.
