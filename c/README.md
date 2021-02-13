@@ -33,6 +33,12 @@
 
 * https://stackoverflow.com/questions/3413166/when-does-a-process-get-sigabrt-signal-6
 
+### export.md
+
+* "C 코드를 컴파일할 때 .so 라이브러리로 부터 특정함수만 export하는 방법?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/4466655/how-do-i-specify-what-function-to-export-from-so-library-when-compiling-the-c
+
 ### min_max.md
 
 * "C언어에서 MIN과 MAX" 글을 번역한 내용입니다.
