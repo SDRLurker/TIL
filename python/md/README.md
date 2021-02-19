@@ -61,6 +61,12 @@
 
 * https://stackoverflow.com/questions/51046454/how-can-we-use-selenium-webdriver-in-colab-research-google-com
 
+##### constant.md
+
+* "Python에서 상수를 만드는 방법"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python
+
 ##### contains.md
 
 * "Pandas 데이터프레임에서 '포함되지 않은 것' 찾기"을 번역한 내용입니다.
