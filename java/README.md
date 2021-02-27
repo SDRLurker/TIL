@@ -34,6 +34,11 @@
 * "Gradle - Could not target platform: 'Java SE 8' using tool chain: 'JDK 7 (1.7)'" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/43995886/gradle-could-not-target-platform-java-se-8-using-tool-chain-jdk-7-1-7/44000209
 
+### junit_cmd.md
+
+* "명령어 라인에서 JUnit test case를 실행하는 방법" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/2235276/how-to-run-junit-test-cases-from-the-command-line
+
 ### multiton.md
 
 * "Multiton 패턴" 글을 번역한 내용입니다.
