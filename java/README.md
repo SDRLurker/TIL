@@ -25,6 +25,11 @@
 
 ## MarkDown 문서
 
+### esper_eql.md
+
+* "Calendar 객체와 Esper의 EQL 관계에 관한 질문." 글을 번역한 내용입니다.
+* http://stackoverflow.com/questions/24671049/query-for-a-relation-between-calendar-object-and-espers-eql
+
 ### install_gradle.md
 
 * gradle을 설치 shell 스크립트에 대해 작성한 글입니다.
