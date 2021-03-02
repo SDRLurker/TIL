@@ -14,7 +14,7 @@
 java -jar junit-platform-console-standalone-<version>.jar <Options>
 ```
 
-Find a brief summary at [https://stackoverflow.com/a/52373592/1431016](https://stackoverflow.com/a/52373592/1431016) 에서 간단한 요약을 찾을 수 있고 [https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher](https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher) 에서 전체 세부사항을 볼 수 있습니다.
+[https://stackoverflow.com/a/52373592/1431016](https://stackoverflow.com/a/52373592/1431016) 에서 간단한 요약을 찾을 수 있고 [https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher](https://junit.org/junit5/docs/current/user-guide/#running-tests-console-launcher) 에서 전체 세부사항을 볼 수 있습니다.
 
 **JUnit 4.X**에서는
 
