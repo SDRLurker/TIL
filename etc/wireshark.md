@@ -57,7 +57,9 @@ eth0            1      224.0.23.60
 
 ## [http://tcpreplay.synfin.net/wiki/FAQ](http://tcpreplay.synfin.net/wiki/FAQ) 일부 발췌
 
-**tcpreplay를 같은 컴퓨터에서 실행하여 패킷을 보낼 수 있습니까?**일반적으로 안 됩니다. tcpreplay가 패킷을 보낼 때, 이 프로그램은 
+**tcpreplay를 같은 컴퓨터에서 실행하여 패킷을 보낼 수 있습니까?**
+
+일반적으로 안 됩니다. tcpreplay가 패킷을 보낼 때, 이 프로그램은 
 
 TCP/IP stack과 네트워크 카드의 장치 드라이버 사이에 패킷을 주입합니다. 그 결과, tcpreplay를 실행하는 TCP/IP 시스템은 패킷을 볼 수 없습니다.
 
