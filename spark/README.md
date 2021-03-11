@@ -40,9 +40,15 @@ https://stackoverflow.com/questions/50791975/spark-structured-streaming-multiple
 
 ### statistics.md
 
-기본 통계 - RDD 기반 API를 번역한 내용입니다.
+"기본 통계 - RDD 기반 API"를 번역한 내용입니다.
 
 https://spark.apache.org/docs/latest/mllib-statistics.html
+
+### stream.md
+
+"스파크 스트리밍에 관해 start(), awaitTermination(), stop()의 사용 사례는 무엇입니까?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/37791685/what-is-the-use-case-for-start-awaittermination-and-stop-with-regard-to-sp
 
 ### window.md
 
