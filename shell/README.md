@@ -14,6 +14,12 @@ http://unix.stackexchange.com/questions/163352/what-does-dev-null-21-mean-in-thi
 
 https://stackoverflow.com/questions/4824590/propagate-all-arguments-in-a-bash-shell-script
 
+## backslash.md
+
+"왜 쉘 명령어가 (백슬래시)로 시작하나요?"를 번역한 내용입니다.
+
+http://stackoverflow.com/questions/15691977/why-start-a-shell-command-with-a-backslash
+
 ## boolean.md
 
 "Bash에서 Boolean 연산자( &&, -a, ||, -o )"를 번역한 내용입니다.
