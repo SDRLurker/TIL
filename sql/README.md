@@ -32,6 +32,12 @@ https://stackoverflow.com/questions/7368163/how-can-i-convert-a-string-to-a-floa
 
 https://serverfault.com/questions/914476/cant-access-mariadb-from-google-cloud-compute-instance
 
+##### mysql_full_join.md
+
+"MySQL에서 FULL OUTER JOIN 하는 방법?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/4796872/how-to-do-a-full-outer-join-in-mysql
+
 ##### mysql_process.md
 
 "MySQL에서 'show processlist' 조건을 주는 방법?"를 번역한 내용입니다.
