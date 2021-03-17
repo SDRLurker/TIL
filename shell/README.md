@@ -74,6 +74,12 @@ https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-o
 
 https://www.shellscript.sh/tips/getopts/
 
+## heredoc.md
+
+"bash에서 어떻게 "cat << EOF"가 작동합니까?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+
 ## keep.md
 
 "Spark 작업을 실행한 채 유지하기"를 번역한 내용입니다.
