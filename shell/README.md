@@ -128,6 +128,12 @@ https://stackoverflow.com/questions/12845206/check-if-file-exists-on-remote-host
 
 https://stackoverflow.com/questions/4585929/how-to-use-cp-command-to-exclude-a-specific-directory
 
+## size.md
+
+"bash script 에서 파일의 크기를 어떻게 구할 수 있을까요?"를 번역한 내용입니다.
+
+https://unix.stackexchange.com/questions/16640/how-can-i-get-the-size-of-a-file-in-a-bash-script
+
 ## sed_even.md
 
 "sed에서 파일의 짝수 줄만 찾아 치환하는 명령"를 번역한 내용입니다.
