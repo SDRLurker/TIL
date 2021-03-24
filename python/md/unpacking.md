@@ -70,3 +70,100 @@ ValueError: not enough values to unpack (expected 3, got 2)
 ```
 
 튜플 unpacking 연산에서 다른 수의 변수와 값을 사용하면 `ValueError`가 발생합니다. 파이썬은 어떤 값이 어떤 변수에 들어가는 지 모호하지 않게 알아야 하기 때문에 그에 따라 할당을 수행할 수 있습니다.
+
+## Unpacking Iterables
+
+튜플 unpacking 특징은 매우 인기가 많아서 iterable 객체와 함께 작동하도록 구문이 확장되었습니다. 유일한 요구 사항은 iterable이 수신 튜플 (또는 목록)의 변수당 정확히 하나의 item을 생성한다는 것입니다.
+
+Python에서 iterable unpacking 작동 방식에 대한 다음 예제를 확인하십시오.
+
+```python
+>>> # Unpacking strings
+>>> a, b, c = '123'
+>>> a
+'1'
+>>> b
+'2'
+>>> c
+'3'
+>>> # Unpacking lists
+>>> a, b, c = [1, 2, 3]
+>>> a
+1
+>>> b
+2
+>>> c
+3
+>>> # Unpacking generators
+>>> gen = (i ** 2 for i in range(3))
+>>> a, b, c = gen
+>>> a
+0
+>>> b
+1
+>>> c
+4
+>>> # Unpacking dictionaries (keys, values, and items)
+>>> my_dict = {'one': 1, 'two':2, 'three': 3}
+>>> a, b, c = my_dict  # Unpack keys
+>>> a
+'one'
+>>> b
+'two'
+>>> c
+'three'
+>>> a, b, c = my_dict.values()  # Unpack values
+>>> a
+1
+>>> b
+2
+>>> c
+3
+>>> a, b, c = my_dict.items()  # Unpacking key-value pairs
+>>> a
+('one', 1)
+>>> b
+('two', 2)
+>>> c
+('three', 3)
+```
+
+파이썬에서 unpacking할 때 할당 연산자의 오른쪽에 모든 iterable을 사용할 수 있습니다. 왼쪽은 `튜플(tuple)`이나 변수 `리스트(list)`으로 채울 수 있습니다. 대입문의 오른쪽에 `튜플(tuple)`을 사용하는 다음 예제를 확인하십시오.
+
+```python
+>>> [a, b, c] = 1, 2, 3
+>>> a
+1
+>>> b
+2
+>>> c
+3
+```
+
+`range()` iterator를 사용한다면 같은 방법으로 작동합니다.
+
+```python
+>>> x, y, z = range(3)
+>>> x
+0
+>>> y
+1
+>>> z
+2
+```
+
+유효한 파이썬 구문일지라도 실제 코드에서는 일반적으로 사용되지 않으며 초보 파이썬 개발자에게는 약간 혼란스러울 수 있습니다.
+
+마지막으로, unpacking 작업에서 `set` 객체를 사용할 수도 있습니다. 그러나 `set`는 순서가 지정되지 않은 컬렉션이므로 할당 순서가 일관성이 없고 미묘한 버그가 발생할 수 있습니다. 다음 예를 확인하십시오.
+
+```python
+>>> a, b, c = {'a', 'b', 'c'}
+>>> a
+'c'
+>>> b
+'b'
+>>> c
+'a'
+```
+
+set을 unpacking 연산에서 사용한다면 대입문의 마지막 순서는 우리가 원하거나 기대했던 거와는 많이 다릅니다. 따라서 할당 순서가 중요하지 않은 경우가 아니면 unpacking 작업에서 set을 사용하지 않는 것이 가장 좋습니다.
