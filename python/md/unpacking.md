@@ -262,3 +262,40 @@ SyntaxError: starred assignment target must be in a list or tuple
 ```
 
 `*` 연산자를 사용하여 여러 값을 단일 변수로 packing 경우 단일 `튜플(tuple)` 구문을 사용해야 합니다. 예를 들어, 위의 예제가 작동하도록 하려면 `*r, = range(10)` 에서와 같이 변수 `r` 뒤에 쉼표를 추가하면 됩니다.
+
+# 실제로 Packing 과 Unpacking 사용하기
+
+실제로 Packing 과 Unpacking 연산은 매우 유용합니다. 이는 코드를 깔끔하고 가독성있고 pythonic하게 만듧니다. 파이썬에서 packing과 unpacking의 몇가지 공통 사용 예시를 살펴봅시다.
+
+## 병렬로 대입
+
+파이썬에서 unpacking의 가장 일반적인 사용 사례 중 하나는 병렬 할당 입니다. 병렬 할당을 사용하면 반복 가능한 값을 하나의 우아한 문장으로 변수의 `튜플(tuple)` (또는 `목록(list)`)에 할당 할 수 있습니다.
+
+예를 들어 회사의 직원에 대한 데이터베이스가 있고 목록의 각 항목을 변수에 할당해야 한다고 가정해 보겠습니다. 파이썬에서 반복 가능한 unpacking이 작동하는 방식을 무시하면 다음과 같은 코드를 직접 작성할 수 있습니다.
+
+```python
+>>> employee = ["John Doe", "40", "Software Engineer"]
+>>> name = employee[0]
+>>> age = employee[1]
+>>> job = employee[2]
+>>> name
+'John Doe'
+>>> age
+'40'
+>>> job
+'Software Engineer'
+```
+
+이 코드는 작동하지만 index 처리는 서투르고 입력하기 어렵고 혼란스러울 수 있습니다. 더 깨끗하고 읽기 쉽고 pythonic한 해결책은 다음과 같이 코딩할 수 있습니다.
+
+```python
+>>> name, age, job = ["John Doe", "40", "Software Engineer"]
+>>> name
+'John Doe'
+>>> age
+40
+>>> job
+'Software Engineer'
+```
+
+Python에서 unpacking를 사용하면 하나의 간단하고 우아한 문장으로 이전 예제의 문제를 해결할 수 있습니다. 이 작은 변경으로 인해 신규 개발자가 코드를 더 쉽게 읽고 이해할 수 있습니다.
