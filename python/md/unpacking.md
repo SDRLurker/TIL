@@ -427,3 +427,57 @@ sys.version_info(major=3, minor=8, micro=1, releaselevel='final', serial=0)
 이제 필요한 정보가 포함 된 세 가지 새로운 변수가 있습니다. 나머지 정보는 프로그램에서 무시할 수있는 더미 변수 `_`에 저장됩니다. 이것은 우리가 `_`에 저장된 정보를 사용하고 싶지 않거나 사용할 필요가 없다는 것을 신규 개발자에게 분명하게 할 수 있습니다. 이 문자는 명백한 의미가 없기 때문입니다.
 
 **참고:** 기본적으로 밑줄 문자 `_`는 파이썬 인터프리터에서 대화형 세션에서 실행하는 명령문의 결과 값을 저장하는 데 사용됩니다. 따라서 이 컨텍스트에서 더미 변수를 식별하기 위해 이 문자를 사용하는 것은 모호할 수 있습니다.
+
+## 함수로 튜플 리턴하기
+
+Python 함수는 쉼표로 구분된 여러 값을 리턴할 수 있습니다. 괄호를 사용하지 않고 `tuple(튜플)` 객체를 정의할 수 있기 때문에 이런 종류의 연산은 `tuple(튜플)` 값을 리턴하는 것으로 해석될 수 있습니다. 여러 값을 반환하는 함수를 코딩하면 리턴된 값을 사용하여 iterable packing 및 unpacking 작업을 수행할 수 있습니다.
+
+주어진 숫자의 정사각형과 정육면체를 계산하는 함수를 정의하는 다음 예제를 확인하십시오.
+
+```python
+>>> def powers(number):
+...     return number, number ** 2, number ** 3
+...
+>>> # Packing returned values in a tuple
+>>> result = powers(2)
+>>> result
+(2, 4, 8)
+>>> # Unpacking returned values to multiple variables
+>>> number, square, cube = powers(2)
+>>> number
+2
+>>> square
+4
+>>> cube
+8
+>>> *_, cube = powers(2)
+>>> cube
+8
+```
+
+쉼표로 구분된 값을 리턴하는 함수를 정의하면 이러한 값에 대해 packing 또는 unpacking 작업을 수행할 수 있습니다.
+
+## `*` 연산자로 iterable 병합
+
+unpacking 연산자 `*`의 또 다른 흥미로운 사용 사례는 iterable을 최종 시퀀스로 병합하는 기능입니다. 이 기능은 list, 튜플 및 set에 대해 작동합니다. 다음 예를 살펴보십시오.
+
+```python
+>>> my_tuple = (1, 2, 3)
+>>> (0, *my_tuple, 4)
+(0, 1, 2, 3, 4)
+>>> my_list = [1, 2, 3]
+>>> [0, *my_list, 4]
+[0, 1, 2, 3, 4]
+>>> my_set = {1, 2, 3}
+>>> {0, *my_set, 4}
+{0, 1, 2, 3, 4}
+>>> [*my_set, *my_list, *my_tuple, *range(1, 4)]
+[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+>>> my_str = "123"
+>>> [*my_set, *my_list, *my_tuple, *range(1, 4), *my_str]
+[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, '1', '2', '3']
+```
+
+시퀀스를 정의할 때 iterable unpacking 연산자 `*`를 사용하여 하위 시퀀스 (또는 반복 가능)의 요소를 최종 시퀀스로 unpacking할 수 있습니다. 이렇게하면 `append()`, `insert()` 등과 같은 메서드를 호출하지 않고도 다른 기존 시퀀스에서 즉시 시퀀스를 만들 수 있습니다.
+
+마지막 두 가지 예는 이것이 iterable을 연결하는 더 읽기 쉽고 효율적인 방법임을 보여줍니다. `list (my_set) + my_list + list (my_tuple) + list (range (1, 4)) + list (my_str)` 을 쓰는 대신 `[* my_set, * my_list, * my_tuple, * range (1, 4), * my_str]`로 작성할 수 있습니다.
