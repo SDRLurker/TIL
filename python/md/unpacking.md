@@ -481,3 +481,30 @@ unpacking 연산자 `*`의 또 다른 흥미로운 사용 사례는 iterable을 
 시퀀스를 정의할 때 iterable unpacking 연산자 `*`를 사용하여 하위 시퀀스 (또는 반복 가능)의 요소를 최종 시퀀스로 unpacking할 수 있습니다. 이렇게하면 `append()`, `insert()` 등과 같은 메서드를 호출하지 않고도 다른 기존 시퀀스에서 즉시 시퀀스를 만들 수 있습니다.
 
 마지막 두 가지 예는 이것이 iterable을 연결하는 더 읽기 쉽고 효율적인 방법임을 보여줍니다. `list (my_set) + my_list + list (my_tuple) + list (range (1, 4)) + list (my_str)` 을 쓰는 대신 `[* my_set, * my_list, * my_tuple, * range (1, 4), * my_str]`로 작성할 수 있습니다.
+
+## `**` 연산자로 딕셔너리(dictionary) unpacking
+
+파이썬에서 unpacking할 때, `**`는 [dictionary unpacking 연산자](https://docs.python.org/3/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations)라 부릅니다. 이 연산자의 사용은 [PEP 448](https://www.python.org/dev/peps/pep-0448/)에 의해 확장되었습니다. 이제 함수 호출, comprehesion, generator 표현식, [dictionary display](https://docs.python.org/3/reference/expressions.html#dictionary-displays)에서 그것을 사용할 수 있습니다. 
+
+dictionary unpacking 연산자의 기본적인 사용 예시는 단일 표현식으로 여러 dictionary를 하나의 최종 dictionary로 병합 합니다. 이것이 어떻게 작동하는지 봅시다.
+
+```python
+>>> numbers = {"one": 1, "two": 2, "three": 3}
+>>> letters = {"a": "A", "b": "B", "c": "C"}
+>>> combination = {**numbers, **letters}
+>>> combination
+{'one': 1, 'two': 2, 'three': 3, 'a': 'A', 'b': 'B', 'c': 'C'}
+```
+
+dictionary display 내에서 dictionary unpacking 연산자를 사용하면 위의 코드에서 했던 것처럼 dictionary의 unpack하고 결합하여 원래 dictionary의 키-값 쌍을 포함하는 최종 dictionary를 만들 수 있습니다.
+
+유의해야 할 중요한 점은 병합하려는 dictionary에 반복되거나 공통된 키가 있는 경우 맨 오른쪽 dictionary의 값이 맨 왼쪽 dictionary의 값을 재정의 한다는 것입니다. 예를 들면 다음과 같습니다.
+
+```python
+>>> letters = {"a": "A", "b": "B", "c": "C"}
+>>> vowels = {"a": "a", "e": "e", "i": "i", "o": "o", "u": "u"}
+>>> {**letters, **vowels}
+{'a': 'a', 'b': 'B', 'c': 'C', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u'}
+```
+
+키가 두 dictionary 모두에 있기 때문에 가장 오른쪽에 있는 모음에서 값이 나옵니다. 이것은 파이썬이 왼쪽에서 오른쪽으로 키-값 쌍을 추가하기 시작하기 때문에 발생합니다. 프로세스에서 파이썬이 이미 종료된 키를 찾으면 인터프리터는 해당 키를 새 값으로 업데이트 합니다. 이것 이 위의 예에서 키 값이 소문자로 된 이유입니다.
