@@ -508,3 +508,78 @@ dictionary display 내에서 dictionary unpacking 연산자를 사용하면 위�
 ```
 
 키가 두 dictionary 모두에 있기 때문에 가장 오른쪽에 있는 모음에서 값이 나옵니다. 이것은 파이썬이 왼쪽에서 오른쪽으로 키-값 쌍을 추가하기 시작하기 때문에 발생합니다. 프로세스에서 파이썬이 이미 종료된 키를 찾으면 인터프리터는 해당 키를 새 값으로 업데이트 합니다. 이것 이 위의 예에서 키 값이 소문자로 된 이유입니다.
+
+## For 루프에서 unpacking
+
+우리는 `for` 루프에서 iterable unpacking을 사용할 수 있습니다. 우리가 `for` 루프를 실행할 때 루프는 각 iteration 에서 iterable의 하나의 아이템을 타겟 변수로 대입합니다. 대입할 아이템이 iterable이면 우리는 타겟 변수의 튜플을 사용할 수 있습니다. 루프는 타겟 변수의 튜플로 iterable을 unpack할 것입니다.
+
+예를 들어, 다음과 같은 회사 판매 데이터가 포함된 파일이 있다고 가정해 보겠습니다.
+
+|**Product**|**Price**|**Sold Units**|
+|-|-|-|
+|Pencil|0.25|1500|
+|Notebook|1.30|550|
+|Eraser|0.75|1000|
+|...|...|...|
+
+이 테이블에서 두 요소 튜플 `리스트(list)`를 작성할 수 있습니다. 각 `튜플(tuple)`에는 제품 이름, 가격 및 판매된 단위가 포함됩니다. 이 정보를 사용하여 각 제품의 수입을 계산하려고 합니다. 이를 위해 다음과 같은 `for` 루프를 사용할 수 있습니다.
+
+```python
+>>> sales = [("Pencil", 0.22, 1500), ("Notebook", 1.30, 550), ("Eraser", 0.75, 1000)]
+>>> for item in sales:
+...     print(f"Income for {item[0]} is: {item[1] * item[2]}")
+...
+Income for Pencil is: 330.0
+Income for Notebook is: 715.0
+Income for Eraser is: 750.0
+```
+
+
+이 코드는 예상대로 작동합니다. 그러나 각 `튜플(tuple)`의 개별 요소에 액세스하기 위해 인덱스를 사용하고 있습니다. 이것은 초보 개발자가 읽고 이해하기 어려울 수 있습니다.
+
+파이썬에서 unpacking를 사용하는 대체 가능한 구현을 살펴 보겠습니다.
+
+```python
+>>> for product, price, sold_units in sales:
+...     print(f"Income for {product} is: {price * sold_units}")
+...
+Income for Pencil is: 330.0
+Income for Notebook is: 715.0
+Income for Eraser is: 750.0
+```
+
+이제 `for` 루프에서 반복 가능한 unpacking을 사용하고 있습니다. 이것은 각 `튜플(tuple)`의 요소를 식별하기 위해 설명을 잘 하는 이름을 사용하기 때문에 코드를 더 읽기 쉽고 유지 관리하기 쉽게 만듭니다. 이 작은 변화를 통해 초보 개발자는 코드의 논리를 빠르게 이해할 수 있습니다.
+
+`for` 루프에서 `*` 연산자를 사용하여 단일 대상 변수에 여러 항목을 packing할 수도 있습니다.
+
+```python
+>>> for first, *rest in [(1, 2, 3), (4, 5, 6, 7)]:
+...     print("First:", first)
+...     print("Rest:", rest)
+...
+First: 1
+Rest: [2, 3]
+First: 4
+Rest: [5, 6, 7]
+```
+
+이 `for` 루프에서 우리는 먼저 각 시퀀스의 `첫번째` 요소를 잡습니다. 그런 다음 `*` 연산자는 대상 변수 나머지에서 값의 `리스트(list)`를 포착합니다.
+
+마지막으로 타겟 변수의 구조는 iterable의 구조와 일치해야합니다. 그렇지 않으면 오류가 발생합니다. 다음 예를 살펴보십시오.
+
+```python
+>>> data = [((1, 2), 2), ((2, 3), 3)]
+>>> for (a, b), c in data:
+...     print(a, b, c)
+...
+1 2 2
+2 3 3
+>>> for a, b, c in data:
+...     print(a, b, c)
+...
+Traceback (most recent call last):
+  ...
+ValueError: not enough values to unpack (expected 3, got 2)
+```
+
+첫 번째 루프에서 타겟 변수 `(a, b), c`의 구조는 반복 가능한 항목의 구조 `((1, 2), 2)`와 일치합니다. 이 경우 루프가 예상대로 작동합니다. 반대로 두 번째 루프는 반복 가능한 항목의 구조와 일치하지 않는 대상 변수의 구조를 사용하므로 루프가 실패하고 `ValueError`가 발생합니다.
