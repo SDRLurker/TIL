@@ -583,3 +583,33 @@ ValueError: not enough values to unpack (expected 3, got 2)
 ```
 
 첫 번째 루프에서 타겟 변수 `(a, b), c`의 구조는 반복 가능한 항목의 구조 `((1, 2), 2)`와 일치합니다. 이 경우 루프가 예상대로 작동합니다. 반대로 두 번째 루프는 반복 가능한 항목의 구조와 일치하지 않는 대상 변수의 구조를 사용하므로 루프가 실패하고 `ValueError`가 발생합니다.
+
+## 함수에서 Packing 과 Unpacking
+
+우리는 함수를 정의하고 호출할 때 파이썬의 packing과 unpacking을 사용할 수 있습니다. 이는 매우 유용하며 파이썬에서 packing 과 unpacking의 유명한 사용 사례입니다.
+
+이 섹션에서 우리는 함수 정의 또는 함수 호출에서 파이썬 함수에서 packing과 unpacking을 사용하는 방법의 기초에 대해 알아볼 것입니다.
+
+Note: For a more insightful and detailed material on these topics, check out Variable-Length Arguments in Python with *args and **kwargs.
+
+**참고:** 이 주제에 대한보다 통찰력 있고 자세한 자료는 `*args` 및 `**kwargs`를 사용하는 Python의 가변 길이 인수를 확인하십시오.
+
+## `*`와 `**`로 함수 정의하기
+
+파이썬 함수의 서명에 대해 `*` 및 `**` 연산자를 사용할 수 있습니다. 이렇게하면 가변 개수의 위치 인수 (`*`) 또는 가변 개수의 키워드 인수 또는 둘 다를 사용하여 함수를 호출 할 수 있습니다. 다음 함수를 고려해 봅시다.
+
+```python
+>>> def func(required, *args, **kwargs):
+...     print(required)
+...     print(args)
+...     print(kwargs)
+...
+>>> func("Welcome to...", 1, 2, 3, site='StackAbuse.com')
+Welcome to...
+(1, 2, 3)
+{'site': 'StackAbuse.com'}
+```
+
+위의 함수에는 `required` 라는 인수가 하나 이상 필요합니다. 가변 개수의 위치 및 키워드 인수도 허용할 수 있습니다. 이 경우 `*` 연산자는 `args`라는 튜플에서 추가 위치 인수를 수집하거나 pack하고 `**` 연산자는 `kwargs`라는 dictionary에서 추가 키워드 인수를 수집하거나 pack합니다. `args`와 `kwargs`는 모두 선택 사항이며 기본값은 각각 `()` 및 `{}`입니다.
+
+`args` 및 `kwargs`라는 이름은 파이썬 커뮤니티에서 널리 사용되지만 이러한 기술이 작동하는 데 필요한 것은 아닙니다. 구문에는 `*` 또는 `**` 뒤에 유효한 식별자가 필요합니다. 따라서 이러한 인수에 의미있는 이름을 부여할 수 있다면 그렇게 하십시오. 그것은 확실히 코드의 가독성을 향상시킬 것입니다.
