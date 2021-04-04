@@ -319,6 +319,12 @@
 
 * https://stackoverflow.com/questions/32234156/how-to-unimport-a-python-module-which-is-already-imported
 
+##### unpacking.md
+
+* "파이썬으로 unpacking : 병렬 대입을 넘어서"을 번역한 내용입니다.
+
+* https://stackabuse.com/unpacking-in-python-beyond-parallel-assignment/
+
 ##### url_param.md
 
 * "request.GET에서 URL 파라미터를 얻기"을 번역한 내용입니다.
