@@ -30,6 +30,11 @@
 * "Calendar 객체와 Esper의 EQL 관계에 관한 질문." 글을 번역한 내용입니다.
 * http://stackoverflow.com/questions/24671049/query-for-a-relation-between-calendar-object-and-espers-eql
 
+### foreach.md
+
+* "어떻게 자바의 'for each' 루프가 작동하나요?" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/85190/how-does-the-java-for-each-loop-work
+
 ### install_gradle.md
 
 * gradle을 설치 shell 스크립트에 대해 작성한 글입니다.
