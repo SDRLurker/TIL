@@ -307,6 +307,12 @@
 
 * https://stackoverflow.com/questions/2719017/how-to-set-timeout-on-pythons-socket-recv-method
 
+##### torch_view_reshape.md
+
+* "pytorch에서 reshape와 view 간에 차이점은 무엇입니까?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/49643225/whats-the-difference-between-reshape-and-view-in-pytorch
+
 ##### udp.md
 
 * "이미 import된 python 모듈을 unimport 하는 방법?"을 번역한 내용입니다.
