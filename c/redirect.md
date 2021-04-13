@@ -66,3 +66,49 @@ q
 ```shell
 $ gdb -p 14560 -x gdb_redirect
 ```
+
+## 3. 모든 쓰기 호출을 검사하는 *strace* 사용하기
+
+우리는 시스템 콜(호출)을 검사하는 *strace*를 사용할 수도 있습니다. 이 방법은 원래 출력을 중단하지 않습니다. 대신 다른 위치로 복사합니다.
+PID 14560의 표준 오류로 쓰는 모든 쓰기를 검사합시다.
+
+```shell
+$ strace -etrace=write -s 100000 -p 14560 2>&1 | grep --line-buffered '^write(2,'
+write(2, "\r", 1)                       = 1
+write(2, "17243001856 bytes (17 GB, 16 GiB) copied, 1185 s, 14.6 MB/s", 59) = 59
+write(2, "\r", 1)                       = 1
+write(2, "17249965568 bytes (17 GB, 16 GiB) copied, 1186 s, 14.5 MB/s", 59) = 59
+```
+
+이 파라미터로 *strace*는 *쓰기* 호출과 최대 문자열 크기를 10만으로 설정하여 PID 14560에 접근합니다. 그리고 우리는 파일 descriptor 2로 쓰는 것만 출력하기 위해 [grep](https://www.baeldung.com/linux/common-text-search#the-grep-command) 으로 사용합니다.
+우리는 /tmp/process_stderr라 불리는 파일로 이를 redirect할 수 있습니다.
+
+```shell
+$ strace -etrace=write -s 100000 -p 14560 2>&1 | grep --line-buffered '^write(2,' > /tmp/process_stderr
+```
+
+만약 *strace* 출력 포멧을 좋아하지 않는다면 문자열만 출력하기 위해 [sed](https://www.baeldung.com/linux/redirect-output-of-running-process)를 사용할 수 있습니다.
+
+```shell
+$ strace -etrace=write -s 100000 -p 14560 2>&1 | sed -n -r 's/^write\(2,\s*"(.+)",\s*[[:digit:]]+\)\s*=\s*[[:digit:]]+$/\1/p'
+\r
+25754656256 bytes (26 GB, 24 GiB) copied, 1710 s, 15.1 MB/s
+\r
+25761747456 bytes (26 GB, 24 GiB) copied, 1711 s, 15.1 MB/s
+```
+
+또한 ** *strace*는 16진수와 파일 descriptor로 쓰여진 아스키코드로 출력할 수 있습니다.** 우리는 이를 -ewrite=fd 옵션을 사용하여 할 수 있습니다.
+
+```shell
+$ strace -ewrite=2 -etrace=write -p 14560 2>&1 | grep  --line-buffered '^ |'
+ | 00000  0d                                                .                |
+ | 00000  33 33 30 31 32 30 32 37  39 30 34 20 62 79 74 65  33012027904 byte |
+ | 00010  73 20 28 33 33 20 47 42  2c 20 33 31 20 47 69 42  s (33 GB, 31 GiB |
+ | 00020  29 20 63 6f 70 69 65 64  2c 20 32 31 36 32 20 73  ) copied, 2162 s |
+ | 00030  2c 20 31 35 2e 33 20 4d  42 2f 73                 , 15.3 MB/s      |
+ | 00000  0d                                                .                |
+ | 00000  33 33 30 31 39 36 32 31  38 38 38 20 62 79 74 65  33019621888 byte |
+ | 00010  73 20 28 33 33 20 47 42  2c 20 33 31 20 47 69 42  s (33 GB, 31 GiB |
+ | 00020  29 20 63 6f 70 69 65 64  2c 20 32 31 36 33 20 73  ) copied, 2163 s |
+ | 00030  2c 20 31 35 2e 33 20 4d  42 2f 73                 , 15.3 MB/s      |
+```
