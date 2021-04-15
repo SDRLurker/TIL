@@ -45,6 +45,12 @@
 
 * http://stackoverflow.com/questions/3437404/min-and-max-in-c
 
+### redirect.md
+
+* "이미 실행중인 프로세스의 출력을 redirecting 하기" 글을 번역한 내용입니다.
+
+* https://www.baeldung.com/linux/redirect-output-of-running-process
+
 ### unique.md
 
 * "C의 int 배열을 정렬하고 중복 제거하기" 글을 번역한 내용입니다.
