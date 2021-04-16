@@ -315,13 +315,13 @@
 
 ##### udp.md
 
-* "이미 import된 python 모듈을 unimport 하는 방법?"을 번역한 내용입니다.
+* "UDP - 파이썬에서 클라이언트 서버 예제 프로그램"을 번역한 내용입니다.
 
 * https://pythontic.com/modules/socket/udp-client-server-example
 
 ##### unimport.md
 
-* "UDP - 파이썬에서 클라이언트 서버 예제 프로그램"을 번역한 내용입니다.
+* "이미 import된 python 모듈을 unimport 하는 방법?"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/32234156/how-to-unimport-a-python-module-which-is-already-imported
 
