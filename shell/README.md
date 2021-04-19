@@ -152,6 +152,12 @@ https://stackoverflow.com/questions/4936807/how-to-do-ssh-with-a-timeout-in-a-sc
 
 https://askubuntu.com/questions/810098/why-doesnt-my-alias-work-over-ssh
 
+## ssh_cmd.md
+
+"ssh를 사용하여 원격 컴퓨터의 shell script를 실행하는 방법?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/305035/how-to-use-ssh-to-run-a-local-shell-script-on-a-remote-machine
+
 ## ssh_diff.md
 
 "ssh로 원격 diff 하는 방법"를 번역한 내용입니다.
