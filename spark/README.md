@@ -14,6 +14,12 @@ Spark SQL, DataFrames 및 Datasets 프로그래밍 가이드를 번역한 내용
 
 https://spark.apache.org/docs/latest/sql-programming-guide.html
 
+### drop_row.md
+
+"PySpark에서 행 버리기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/24718697/pyspark-drop-rows
+
 ### RDD.md
 
 RDD 프로그래밍 가이드를 번역한 내용입니다.
