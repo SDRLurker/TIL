@@ -20,6 +20,12 @@ https://spark.apache.org/docs/latest/sql-programming-guide.html
 
 https://stackoverflow.com/questions/24718697/pyspark-drop-rows
 
+### empty.md
+
+"Spark - 비어있는 Dataset을 만드는 방법"를 번역한 내용입니다.
+
+https://sparkbyexamples.com/spark/spark-how-to-create-an-empty-dataset/
+
 ### RDD.md
 
 RDD 프로그래밍 가이드를 번역한 내용입니다.
