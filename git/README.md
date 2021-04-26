@@ -19,6 +19,11 @@
 * "Git diff를 HTML에 색칠하여 표시하기" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/2013091/coloured-git-diff-to-html
 
+### force-branch.md
+
+* "Git: branch 포인터를 특정 commit으로 이동하게 하기." 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/5471174/move-branch-pointer-to-different-commit-without-checkout
+
 ### filter-branch.md
 
 * "모든 commit에서 파일 지우기" 글을 번역한 내용입니다.
