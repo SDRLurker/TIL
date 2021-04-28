@@ -44,6 +44,11 @@
 * "Gradle - Could not target platform: 'Java SE 8' using tool chain: 'JDK 7 (1.7)'" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/43995886/gradle-could-not-target-platform-java-se-8-using-tool-chain-jdk-7-1-7/44000209
 
+### javac_d.md
+
+* "소스 파일을 다른 디렉터리로 컴파일?" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/18431857/compile-source-file-to-a-different-directory
+
 ### junit_cmd.md
 
 * "명령어 라인에서 JUnit test case를 실행하는 방법" 글을 번역한 내용입니다.
