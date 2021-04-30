@@ -49,6 +49,11 @@
 * "소스 파일을 다른 디렉터리로 컴파일?" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/18431857/compile-source-file-to-a-different-directory
 
+### javac_p.md
+
+* "javac를 사용하여 자바 패키지 구조를 컴파일 하는 방법" 글을 번역한 내용입니다.
+* https://stackoverflow.com/questions/19382593/how-to-compile-java-package-structures-using-javac
+
 ### junit_cmd.md
 
 * "명령어 라인에서 JUnit test case를 실행하는 방법" 글을 번역한 내용입니다.
