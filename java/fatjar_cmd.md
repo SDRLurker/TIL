@@ -92,3 +92,75 @@ Main Class Start
 ```
 
 잘 했습니다! 파트 2로 이동하겠습니다.
+
+## 파트 2: 추가적인 패키지와 함께 ExecutableOne.jar 컴파일
+
+이 섹션의 주요 목표는 추가적인 패키지를 포함하여 실행 가능한 JAR 파일을 컴파일 아는 방법을 보여드리겠습니다. 이러한 목적을 위해, 우리는 MagicService를 만들 것입니다. 이 서비스는 우리에게 getMessage() 메소드를 우리에게 제공하며 표준 출력으로 메세지를 출력합니다.
+
+명령줄을 열어 새로운 폴더 *SERVICE*와 파일 MagicService.java를 만듭니다.
+
+```shell
+$mkdir src/main/java/com/exec/one/service
+$vi src/main/java/com/exec/one/service/MagicService.java
+```
+
+새롭게 만들어진 MagicService는 다음 예제에서 사용될 수 있습니다.
+
+```java
+package com.exec.one.service;                                                                                                                                                          
+public class MagicService {                                                                                                                                                            
+  private final String message;                                       
+    public MagicService(){ 
+        this.message = "Magic Message";
+    }                    
+
+    public String getMessage(){                                                      
+         return message;                              
+    }
+}
+```
+
+MagicService는 Main 클래스보다 패키싲 구조에서 다른 위치에 있습니다. 이제 우리는 Main 클래스로 돌아가서 새롭게 만든 MagicService를 import 합니다. import하고 서비스 인스턴스를 만든 뒤에 Main 클래스는 getMessage() 메소드로 접근을 할 것입니다. Main 클래스는 다음 방법으로 변경될 것입니다.
+
+```java
+package com.exec.one;                                                                                                                                                                  
+import com.exec.one.service.MagicService;                                                                                                                                              
+public class Main {                                                                                                         
+    public static void main(String[] args){
+        System.out.println("Main Class Start");            
+        MagicService service = new MagicService();          
+        System.out.println("MESSAGE : " + service.getMessage());
+     }
+} 
+```
+
+이제 코드를 컴파일 할 준비가 된 지점에 도달했습니다. 명령줄로 돌아가 Executable-One 프로젝트의 루트 폴더로 이동하겠습니다. 첫 번째 단계는 Executable-One 프로젝트를 OUT 폴더로 컴파일 / 재컴파일하는 것입니다. 이를 위해 새로 생성된 MagicService.java 클래스의 위치를 추가해야 합니다.
+
+```shell
+javac -cp ./src/main/java ./src/main/java/com/exec/one/*.java ./src/main/java/com/exec/one/**/*.java -d ./out/
+```
+
+두 번째 단계는 컴파일된 클래스에서 실행 가능한 JAR 파일을 만드는 것입니다. JAR 파일 논리를 변경하지 않았으므로 명령을 변경할 필요가 없습니다. 이는 MANIFEST.FM 파일이 변경없이 그대로 유지됨을 의미합니다.
+
+```
+Manifest-Version: 1.0
+Class-Path: .                                                           
+Main-Class: com.exec.one.Main
+```
+
+이제 샘플 프로젝트의 루트 디렉토리에서 Part 1과 유사한 명령을 다시 실행할 수 있습니다.
+
+```shell
+jar cvfm ExecutableOne.jar ./src/main/resources/META-INF/MANIFEST.MF -C ./out/ .
+```
+
+생성된 JAR 파일을 실행하여 표준 출력에 인쇄된 메시지를 얻습니다.
+
+```shell
+$java -jar ExecutableOne.jar 
+output: 
+Main Class Start
+MESSAGE : Magic Message
+```
+
+축하합니다. 다시 잘 하셨습니다!
