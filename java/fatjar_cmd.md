@@ -164,3 +164,96 @@ MESSAGE : Magic Message
 ```
 
 축하합니다. 다시 잘 하셨습니다!
+
+## 파트 3: 실행 가능한 Fat JAR 생성하기 ([GitHub](https://github.com/mirage22/executable-two))
+
+이 파트의 목표는 개발된 프로그램에서 모든 필요한 의존성을 포함하는 fat JAR(Java Archive)를 생성하는 것입니다. 외부 라이브러리로 우리는 파트 2에서 생성된 JAR 파일을 사용할 필요가 있습니다. 파트 3에서 우리는 (위의 링크에서 다운로드 받을 수 있는) "Executable-Two"라고 불리는 샘플 프로젝트를 생성합니다.
+
+executable-two 프로젝트는 다음과 같은 폴더 구조를 가집니다.
+
+```
+./libs
+./libs/ExecutableOne.jar
+./out
+./README.md
+./src
+./src/main
+./src/main/java
+./src/main/java/com
+./src/main/java/com/exec
+./src/main/java/com/exec/two
+./src/main/java/com/exec/two/Main.java
+./src/main/resources
+./src/main/resources/META-INF
+./src/main/resources/META-INF/MANIFEST.MF
+```
+
+LIBS 폴더는 전에 생성된 "ExecutableOne.jar"를 포함합니다. "ExecutableOne.jar"는 우리가 ExecutableTwo 안에서 사용될 MagicService 클래스를 포함합니다. 우리는 클래스 MagicService를 인스턴스화 하여 public 메소드 getMessage()를 실행할 것입니다. 프로젝트 "ExecutableTwo"의 메인 클래스 안에서 이 모든 것이 발생할 것입니다.
+
+프로젝트 패키지 com.exec.two 에서 다음 메인 클래스를 생성합시다.
+
+```java
+package com.exec.two;                                                                                                                                                                  
+import com.exec.one.service.MagicService;                                                                                                                                              
+public class Main {
+    public static void main(String[] args){
+        System.out.println("Executable-Two Main");
+        MagicService service = new MagicService();                                                                                 System.out.println("MagicService from Executable-ONE");                                                                     System.out.println("MESSAGE: " + service.getMessage());
+     }
+}
+```
+
+이제 우리는 JAR 파일 생성의 모든 것이 준비 되었습니다. 이전에 생성한 getMessage() 메소드를 실행한 JAR 라이브러리에서 MagicService를 가져 왔습니다. 다음 몇 단계에서는 Java JDK에서 제공하는 javac 및 JAR 도구를 사용합니다. 명령 줄로 돌아가서 프로젝트를 컴파일해 보겠습니다. 명령에서 클래스 경로를 사용된 라이브러리로 확장해야 함을 컴파일러에 알려야합니다.
+
+```shell
+$javac -cp ./src/main/java 
+./src/main/java/com/exec/two/*.java -d ./out/ 
+-classpath ./libs/ExecutableOne.jar
+```
+
+"Executable-Two" 프로젝트가 OUT 디렉토리로 성공적으로 컴파일 되었습니다.
+
+이제 fat JAR 생성을 위해 OUT 디렉토리를 적절하게 준비할 때입니다. OUT 디렉토리 안에는 "Executable-Two"를 위해 만든 컴파일 된 클래스가 있습니다. 한편, JAR 도구는 파일 시스템에 물리적으로 위치한 파일만 읽습니다. 압축된 JAR 파일은 읽지 않습니다. 물론 이는 JAR 도구가 OUT 디렉토리에있는 \* .jar 파일의 압축을 풀거나 읽지 않음을 의미합니다.
+
+그 결과 ExecutableOne.jar을 OUT 디렉토리에 복사하더라도 JAR 도구는 ExecutableOne.jar 파일의 압축을 풀지 않고 라이브러리가 결과에 추가됩니다 (압축된 형태로). 물론 압축 되었기 때문에 무시됩니다.
+
+문제는 $java -jar 도구가 내부 패키지 \*.jar 아카이브 파일을 읽지 않는다는 것입니다!
+
+이는 이전에 생성된 Java 아카이브 (JAR) "_Executable-One.jar_"을 "Executable-Two" 프로젝트의 OUT 디렉토리에 압축 해제해야 함을 의미합니다. 명령 줄을 열고 다음을 입력합니다.
+
+```shell
+$cp libs/ExecutableOne.jar ./out/
+$cd ./out
+$tar xf ExecutableOne.jar
+$rm ExecutableOne.jar
+```
+
+이제 "Executable-Two" 프로젝트 출력 디렉토리를 새 JAR 파일의 소스 폴더로 사용할 준비가 되었습니다.
+
+**참고**: 모든 실행 가능한 JAR 파일에는 하나의 _MANIFEST.FM_ 파일만 사용할 수 있습니다.
+
+"Executable-Two"프로젝트를 JAR 아카이브 파일에 묶기 위해 ./src/main/resources/META-INF/ 폴더에 새로 생성된 매니페스트 파일을 사용합니다.
+
+```
+Manifest-Version: 1.0                              
+Class-Path: .                                      
+Main-Class: com.exec.two.Main
+```
+
+다음처럼 타이핑하여 이 모두를 묶을 수 있습니다..
+
+```shell
+$jar cvfm ExecutableTwo.jar ./src/main/resources/META-INF/MANIFEST.FM -C./out/ .
+```
+
+새로 생성된 fat JAR 파일인 "ExecutableTwo.jar"을 실행하면 다음과 같은 출력이 나타납니다.
+
+```shell
+$java -jar ./ExecutableTwo.jar
+output:
+Executable-Two Main
+MagicService from Executable-ONE
+MESSAGE: Magic Message
+```
+
+축하합니다! 당신은 fat JAR 파일을 실행했습니다!
