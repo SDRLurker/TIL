@@ -30,6 +30,11 @@
 * "Calendar 객체와 Esper의 EQL 관계에 관한 질문." 글을 번역한 내용입니다.
 * http://stackoverflow.com/questions/24671049/query-for-a-relation-between-calendar-object-and-espers-eql
 
+### fatjar_cmd.md
+
+* "명령줄로 실행 가능한 Fat JAR 생성하기" 글을 번역한 내용입니다.
+* https://dzone.com/articles/java-8-how-to-create-executable-fatjar-without-ide
+
 ### foreach.md
 
 * "어떻게 자바의 'for each' 루프가 작동하나요?" 글을 번역한 내용입니다.
