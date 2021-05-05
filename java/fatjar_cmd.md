@@ -41,7 +41,7 @@ public class Main {
 }
 ```
 
-_SRC/MAIN/RESOURCES_ 폴더 안에 META-INF 폴더를 만든 다음 그 안에 MANIFEST.FM 파일을 배치합니다. 새로 생성된 MANIFEST.FM 파일을 열고 기본 설명을 입력해 보겠습니다.
+_SRC/MAIN/RESOURCES_ 폴더 안에 META-INF 폴더를 만든 다음 그 안에 MANIFEST.MF 파일을 배치합니다. 새로 생성된 MANIFEST.MF 파일을 열고 기본 설명을 입력해 보겠습니다.
 
 ```
 Manifest-Version: 1.0   
@@ -49,9 +49,9 @@ Class-Path: .
 Main-Class: com.exec.one.Main
 ```
 
-**참고** : JAR 파일 당 하나의 MANIFEST.FM 파일만 있습니다.
+**참고** : JAR 파일 당 하나의 MANIFEST.MF 파일만 있습니다.
 
-MANIFEST.FM 파일에는 JAR 파일이 사용되는 방법에 대한 세부 사항이 포함되어 있습니다. 자세한 내용은 다루지 않습니다. 정의한 옵션에 집중하겠습니다.
+MANIFEST.MF 파일에는 JAR 파일이 사용되는 방법에 대한 세부 사항이 포함되어 있습니다. 자세한 내용은 다루지 않습니다. 정의한 옵션에 집중하겠습니다.
 
 1.  Manifest-Version : manifest 파일 버전입니다.
     
@@ -140,7 +140,7 @@ public class Main {
 javac -cp ./src/main/java ./src/main/java/com/exec/one/*.java ./src/main/java/com/exec/one/**/*.java -d ./out/
 ```
 
-두 번째 단계는 컴파일된 클래스에서 실행 가능한 JAR 파일을 만드는 것입니다. JAR 파일 논리를 변경하지 않았으므로 명령을 변경할 필요가 없습니다. 이는 MANIFEST.FM 파일이 변경없이 그대로 유지됨을 의미합니다.
+두 번째 단계는 컴파일된 클래스에서 실행 가능한 JAR 파일을 만드는 것입니다. JAR 파일 논리를 변경하지 않았으므로 명령을 변경할 필요가 없습니다. 이는 MANIFEST.MF 파일이 변경없이 그대로 유지됨을 의미합니다.
 
 ```
 Manifest-Version: 1.0
@@ -198,7 +198,9 @@ import com.exec.one.service.MagicService;
 public class Main {
     public static void main(String[] args){
         System.out.println("Executable-Two Main");
-        MagicService service = new MagicService();                                                                                 System.out.println("MagicService from Executable-ONE");                                                                     System.out.println("MESSAGE: " + service.getMessage());
+        MagicService service = new MagicService();
+        System.out.println("MagicService from Executable-ONE");
+        System.out.println("MESSAGE: " + service.getMessage());
      }
 }
 ```
@@ -224,13 +226,13 @@ $javac -cp ./src/main/java
 ```shell
 $cp libs/ExecutableOne.jar ./out/
 $cd ./out
-$tar xf ExecutableOne.jar
+$jar xf ExecutableOne.jar
 $rm ExecutableOne.jar
 ```
 
 이제 "Executable-Two" 프로젝트 출력 디렉토리를 새 JAR 파일의 소스 폴더로 사용할 준비가 되었습니다.
 
-**참고**: 모든 실행 가능한 JAR 파일에는 하나의 _MANIFEST.FM_ 파일만 사용할 수 있습니다.
+**참고**: 모든 실행 가능한 JAR 파일에는 하나의 _MANIFEST.MF_ 파일만 사용할 수 있습니다.
 
 "Executable-Two"프로젝트를 JAR 아카이브 파일에 묶기 위해 ./src/main/resources/META-INF/ 폴더에 새로 생성된 매니페스트 파일을 사용합니다.
 
@@ -243,7 +245,7 @@ Main-Class: com.exec.two.Main
 다음처럼 타이핑하여 이 모두를 묶을 수 있습니다..
 
 ```shell
-$jar cvfm ExecutableTwo.jar ./src/main/resources/META-INF/MANIFEST.FM -C./out/ .
+$jar cvfm ExecutableTwo.jar ./src/main/resources/META-INF/MANIFEST.MF -C ./out/ .
 ```
 
 새로 생성된 fat JAR 파일인 "ExecutableTwo.jar"을 실행하면 다음과 같은 출력이 나타납니다.
