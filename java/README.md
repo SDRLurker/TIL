@@ -78,3 +78,11 @@
 
 * "uber jar는 무엇입니까?" 글을 번역한 내용입니다.
 * https://stackoverflow.com/questions/11947037/what-is-an-uber-jar
+
+## jupyter notebook 문서
+
+### fatjar_cmd.ipynb
+
+* "명령줄로 실행 가능한 Fat JAR 생성하기" 글을 번역한 내용입니다.
+* https://dzone.com/articles/java-8-how-to-create-executable-fatjar-without-ide
+* https://nbviewer.jupyter.org/github/SDRLurker/TIL/blob/master/java/fatjar_cmd.ipynb
