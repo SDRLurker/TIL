@@ -140,6 +140,12 @@ https://unix.stackexchange.com/questions/16640/how-can-i-get-the-size-of-a-file-
 
 https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-even-lines-of-a-file
 
+## sed_match.md
+
+"수정할 라인을 grep으로 찾고, 내용을 sed로 바꾼 뒤 원래 파일에 적용하는 방법?"를 번역한 내용입니다.
+
+https://unix.stackexchange.com/questions/295274/grep-to-find-the-correct-line-sed-to-change-the-contents-then-putting-it-back
+
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
