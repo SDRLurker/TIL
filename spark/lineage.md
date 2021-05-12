@@ -57,3 +57,63 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 다음과 같은 RDD `val b=a.map()`이 있다고 합시다.
 
 RDD b는 부모 RDD a에 대한 참조를 유지해야 합니다. 이것이 RDD 계보 정보(리니지)의 종류입니다.
+
+## 4\. RDD 계보정보(리니지)의 논리적 실행 계획
+
+기본적으로, 논리적 실행 계획은 초기 RDD들과 함께 초기화 됩니다. 초기 RDD는 다른 RDD에 의존하지 않는 RDD 일뿐입니다. 매우 구체적으로 말하자면 이들은 참조 캐시 데이터와 독립적입니다. 또한 실행을 위해 호출된 작업의 결과를 생성하는 RDD로 끝납니다.
+
+Spark 작업을 실행하기 위해 [SparkContext](https://data-flair.training/blogs/learn-apache-spark-sparkcontext/)가 요청될 때 실행되는 DAG라고도 말할 수 있습니다.
+
+## 5\. Spark에서 RDD 계보정보(리니지) 그래프를 얻기 위한 ToDebugString 메소드
+
+Spark에서 RDD 계보정보(리니지) 그래프를 얻기 위한 몇가지 방법이 있지만, 메소드 중 하나는 toDebugString 메소드 입니다.
+
+**toDebugString: String**
+
+[Spark DStream 살펴보기](https://data-flair.training/blogs/apache-spark-dstream-discretized-streams/)
+
+기본적으로 이 방법을 사용하여 Spark RDD 계보정보(리니지) 그래프에 대해 배울 수 있습니다.
+
+```
+scala> val wordCount1 = sc.textFile(“README.md”).flatMap(_.split(“\\s+”)).map((_, 1)).reduceByKey(_ + _)
+wordCount1: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[21] at reduceByKey at <console>:24
+scala> wordCount1.toDebugString
+res13: String =
+(2) ShuffledRDD[21] at reduceByKey at <console>:24 []
++-(2) MapPartitionsRDD[20] at map at <console>:24 []
+|  MapPartitionsRDD[19] at flatMap at <console>:24 []
+|  README.md MapPartitionsRDD[18] at textFile at <console>:24 []
+|  README.md HadoopRDD[17] at textFile at <console>:24 []
+```
+
+기본적으로 여기에서 괄호() 안의 H는 각 단계에서 병렬 처리 수준을 나타내는 숫자를 나타냅니다.
+예를 들어, 위 출력에서 (2) 입니다.
+
+```
+scala> wordCount1.getNumPartitions
+res14: Int = 2
+```
+
+toDebugString 메서드는 action을 실행할 때 포함되며 spark.logLineage 속성이 활성화됩니다.
+
+```
+$ ./bin/spark-shell –conf spark.logLineage=true
+scala> sc.textFile(“README.md”, 4).count
+…
+15/10/17 14:46:42 INFO SparkContext: Starting job: count at <console>:25
+15/10/17 14:46:42 INFO SparkContext: RDD’s recursive dependencies:
+(4) MapPartitionsRDD[1] at textFile at <console>:25 []
+|  README.md HadoopRDD[0] at textFile at <console>:25 []
+```
+
+[Spark 성능 조정에 대해 읽어 보세요.](https://data-flair.training/blogs/spark-sql-performance-tuning/)
+
+그래서 이것은 Spark RDD Lineage Tutorial에 관한 것입니다. 우리의 설명이 마음에 드셨으면 좋겠습니다.
+
+## 6\. 결론
+
+따라서 이 블로그를 통해 Apache Spark RDD 계보정보(리니지) 그래프의 실제 의미를 배웠습니다. 또한 Apache Spark에서 논리적 실행 계획의 풍미를 맛 보았습니다. 그러나 toDebugString 메서드도 자세히 살펴 보았습니다. 또한 Apache Spark RDD에서 모든 계보정보(리니지) 그래프 개념을 다루었습니다.
+
+또한 궁금한 점이 있으시면 댓글란에 문의 해주세요.
+
+[Spark를 배우려면 인기 도서](https://data-flair.training/blogs/best-apache-spark-scala-books/)를 참조하십시오.
