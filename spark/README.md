@@ -26,6 +26,12 @@ https://stackoverflow.com/questions/24718697/pyspark-drop-rows
 
 https://sparkbyexamples.com/spark/spark-how-to-create-an-empty-dataset/
 
+### lineage.md
+
+"Spark에서 RDD 계보 정보(리니지): ToDebugString 메소드"를 번역한 내용입니다.
+
+https://data-flair.training/blogs/rdd-lineage/
+
 ### RDD.md
 
 RDD 프로그래밍 가이드를 번역한 내용입니다.
