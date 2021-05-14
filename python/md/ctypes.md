@@ -6,7 +6,7 @@ http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
 # ctypes로 Python에서 C++ 클래스 호출하기
 
-저는 파이썬에서 C++ 클래스를 호출하고 싶어서 최근에 스스로 방법을 찾았습니다. 저는 (Thrift를 사용하여 전에 했던 것처럼 - [Python과 C++을 위한 Apache Thrift 사용하기](http://www.auctoris.co.uk/2016/08/17/using-apache-thrift-for-python-c/)를 보세요.) 분리된 프로세스 를 호출하고 싶지 않았고 C++ 라이브러리를 직접 호출하고 싶었습니다.
+저는 파이썬에서 C++ 클래스를 호출하고 싶어서 최근에 스스로 방법을 찾았습니다. 저는 (Thrift를 사용하여 전에 했던 것처럼 - [Python과 C++을 위한 Apache Thrift 사용하기](http://www.auctoris.co.uk/2016/08/17/using-apache-thrift-for-python-c/)를 보세요.) 분리된 프로세스를 호출하고 싶지 않았고 C++ 라이브러리를 직접 호출하고 싶었습니다.
 
 저는 진행하기 전에 이를 파이썬으로 하기 위한 다양한 방법이 있다는 것을 말하고 싶습니다. 그리고 저는 작동한 것 중 하나를 선택하였습니다. 다른 기술도 사용 가능하며 어떤 기술이 '최상'인지에 대한 의견은 상당히 분분해 보입니다.
 
@@ -65,7 +65,7 @@ extern "C"
 
 ```shell
 $ g++ -c -fPIC foo.cpp -o foo.o
-$ g++ -shared -W1,-soname,libfoo.so -o libfoo.so foo.o 
+$ g++ -shared -Wl,-soname,libfoo.so -o libfoo.so foo.o 
 ```
 
 
