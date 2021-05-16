@@ -1,6 +1,6 @@
 ### 출처 및 응용
 
-[http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/#comments](http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/#comments)
+[http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/](http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/)
 
 [https://sdr1982.tistory.com/263](https://sdr1982.tistory.com/263)
 
@@ -62,7 +62,7 @@ extern "C"
 
 ```shell
 $ g++ -c -fPIC foo.cpp -o foo.o
-$ g++ -shared -W1,-soname,libfoo.so -o libfoo.so foo.o 
+$ g++ -shared -Wl,-soname,libfoo.so -o libfoo.so foo.o 
 ```
 
 gradle에서 JNA를 fat-jar로 컴파일하기 위해 빌드 스크립트를 만들었습니다.  
