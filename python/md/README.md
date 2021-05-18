@@ -307,6 +307,12 @@
 
 * https://stackoverflow.com/questions/2719017/how-to-set-timeout-on-pythons-socket-recv-method
 
+##### timestamp.md
+
+* "Unix 시간을 pandas dataframe에서 읽을 수 있는 날짜로 변환하기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/19231871/convert-unix-time-to-readable-date-in-pandas-dataframe
+
 ##### torch_view_reshape.md
 
 * "pytorch에서 reshape와 view 간에 차이점은 무엇입니까?"을 번역한 내용입니다.

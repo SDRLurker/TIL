@@ -8,7 +8,7 @@
 
 다음 구문에서 내가 작업 중인 코드와 이미 시도한 코드는 다음과 같습니다.
 
-```
+```python
 import json
 import urllib2
 from datetime import datetime
@@ -31,7 +31,7 @@ df.index = df.date
 
 다음은 epoch 이후 초단위로 보일 것입니다.
 
-```
+```python
 In [20]: df = DataFrame(data['values'])
 
 In [21]: df.columns = ["date","price"]
