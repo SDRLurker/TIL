@@ -12,7 +12,7 @@
 
 C++ 클래스로 시작하기 위해 평범하게 작성하였습니다.
 
-```
+```c++
 #include <iostream>
 
 // A simple class with a constuctor and some methods...
@@ -46,7 +46,7 @@ int Foo::foobar(int n)
 
 JNA에서는 C++을 사용할 수 없기 때문에 C++ 코드 주변에 C wrapper를 놓을 것입니다. 이를 하기 위해 파일 제일 밑에 다음 부분에 코드를 추가합니다.
 
-```
+```c++
 // ctypes는 C와만 대화할 수 있기 때문에 C++ 클래스를 위한 C 함수를 정의합니다.
 extern "C"
 {
@@ -163,19 +163,45 @@ public class Foo {
 
 gradle로 Java 소스를 build 합니다.
 
-```
+```shell
 jna_demo$ gradle build
+```
+
+빌드를 하면 build/libs 경로에 2개 파일이 생성됩니다.
+
+* content.jar: 원래 내 프로젝트
+* content-all.jar: JNA 라이브러리가 포함된 Fat-JAR 프로젝트
+
+다음처럼 Makefile을 생성합니다.
+
+```
+SRCS    = foo.cc
+OBJS    = foo.o
+
+CFLAGS = $(CFLAG) -D_REENTRANT -D_THREAD_SAFE -D$(_OSTYPE_)
+CPPFLAGS= $(CPPFLAG) -D_REENTRANT -D_THREAD_SAFE -D$(_OSTYPE_)
+
+all : libfoo.so
+
+libfoo.so :
+	g++ -fPIC -c $(SRCS)
+	g++ -shared -Wl,-soname,$@ -o $@ $(OBJS)
+	gradle build
+
+clean:
+	rm -f *.o core *.out .*list *.ln *.so
+	gradle clean
 ```
 
 다음처럼 C++, Java 소스를 make로 한꺼번에 build 할 수 있습니다.
 
-```
+```shell
 jna_demo$ make clean && make
 ```
 
 다음은 실행 결과입니다.
 
-```
+```shell
 jna_demo$ java -jar build/libs/jna_demo-all.jar
 /home/sdrlurker/jna_demo/libfoo.so
 Value is 5
