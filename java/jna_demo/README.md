@@ -169,8 +169,8 @@ jna_demo$ gradle build
 
 빌드를 하면 build/libs 경로에 2개 파일이 생성됩니다.
 
-* content.jar: 원래 내 프로젝트
-* content-all.jar: JNA 라이브러리가 포함된 Fat-JAR 프로젝트
+* jna_demo.jar: 원래 내 프로젝트
+* jna_demo-all.jar: JNA 라이브러리가 포함된 Fat-JAR 프로젝트
 
 다음처럼 Makefile을 생성합니다.
 
