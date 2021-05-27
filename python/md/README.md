@@ -79,6 +79,12 @@
 
 * http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
+##### date_range.md
+
+* "Python에서 날짜 범위를 반복하기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/1060279/iterating-through-a-range-of-dates-in-python
+
 ##### decode.md
 
 * "파이썬을 사용하여 TCP 패킷 decode하기"을 번역한 내용입니다.
