@@ -25,10 +25,11 @@ def multicast_socket(ttl=0):
     sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
     return sock
 
-def recv_one(rsock,ssock,stuple):
+def recv_one(rsock,ssock,stuple,filter_str):
     try:
         s = rsock.recv(10240)
-        r = ssock.sendto(s,stuple)
+        if not filter_str or s.find(filter_str) >=0:
+            r = ssock.sendto(s,stuple)
     except socket.error as e:
         err = e.args[0]
         if err == errno.EAGAIN or err == errno.EWOULDBLOCK:
@@ -38,21 +39,25 @@ def recv_one(rsock,ssock,stuple):
             print(e)
             sys.exit(1)
 
+
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) != 5 and len(sys.argv) != 6:
-        print("Usage) %s 멀티캐스트수신IP 수신PORT 송신IP 송신PORT (TTL)" % sys.argv[0])
+    if len(sys.argv) != 5 and len(sys.argv) != 6 and len(sys.argv) != 7:
+        print("Usage) %s 멀티캐스트수신IP 수신PORT 송신IP 송신PORT (TTL) (보낼문자열)" % sys.argv[0])
         sys.exit(-1)
     rip = sys.argv[1]
     rport = int(sys.argv[2])
     sip = sys.argv[3]
     sport = int(sys.argv[4])
     ttl = 0
+    filter_str = ""
     if len(sys.argv) == 6:
         ttl = int(sys.argv[5])
+    if len(sys.argv) == 7:
+        filter_str = sys.argv[6]
 
     rms = gen_multicast_sock(rip,rport)
     sms = multicast_socket(ttl)
 
     while True:
-        recv_one(rms,sms,(sip,sport))
+        recv_one(rms,sms,(sip,sport),filter_str)
