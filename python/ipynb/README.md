@@ -2,6 +2,10 @@
 
 ### Jupyter Notebook 문서
 
+##### list_dic.md
+* "Python에서 dictionary 키를 list로 리턴하는 방법"을 번역한 내용입니다.
+* http://stackoverflow.com/questions/16819222/how-to-return-dictionary-keys-as-a-list-in-python-3-3
+
 ##### network_programming_01.ipynb
 
 * (TCP/IP 소켓 프로그래밍) 1. 네트워크 프로그래밍과 소켓의 이해 - python 내용 추가.
