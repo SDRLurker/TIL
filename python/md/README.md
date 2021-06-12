@@ -121,7 +121,11 @@
 
 * "Python에서 dictionary 키를 list로 리턴하는 방법"을 번역한 내용입니다.
 
-* http://stackoverflow.com/questions/16819222/how-to-return-dictionary-keys-as-a-list-in-python-3-3
+* 출처 - http://stackoverflow.com/questions/16819222/how-to-return-dictionary-keys-as-a-list-in-python-3-3
+
+* Youtube - https://youtu.be/tnJqNEc9knk
+
+* Google Colab - https://colab.research.google.com/drive/1PZGbth0ZArjDPkzPBNpT4uCZjRDKPhQ0?usp=sharing
 
 ##### list_sub.md
 
