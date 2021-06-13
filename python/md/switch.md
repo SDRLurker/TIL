@@ -8,7 +8,33 @@
 
 ---
 
-## 30 개의 답변 중 1개의 답변만 추려냄.
+## 30 개의 답변 중 2개의 답변만 추려냄.
+
+원래 아래 답변은 2008년에 작성했습니다. 그 이후로 Python 3.10 (2021)은 Python에서 "switch"의 일류 구현을 제공하는 `match`-`case` 구문을 소개하였습니다. 예를 들면 다음처럼 작성가능합니다.
+
+```python
+def f(x):
+    match x:
+        case 'a':
+            return 1
+        case 'b':
+            return 2
+```
+
+
+`match`-`case` 문은 이 간단한 예제보다 훨씬 더 강력합니다.
+
+당신은 dictionary를 사용할 수 있습니다. 
+
+```python
+def f(x):
+    return {
+        'a': 1,
+        'b': 2,
+    }[x]
+```
+
+---
 
 만약 당신이 default를 사용하고 싶다면, dictionary의 get(key[, default]) 메소드를 사용할 수 있습니다.
 
