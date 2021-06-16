@@ -12,9 +12,9 @@
 
 ## 3 개의 답변 중 1개의 답변만 추려냄.
 
-내장된(build-in) django filter인 divisibleby가 필요합니다.
+내장된(build-in) django filter인 [divisibleby](https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs#divisibleby)가 필요합니다.
 
-```
+```HTML
 {% for p in posts %}
     <div class="post width1 height2 column {% if forloop.counter0|divisibleby:4 %}first{% endif %}">
         <div class="preview">
