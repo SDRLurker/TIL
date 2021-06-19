@@ -17,7 +17,40 @@ void foo()
 
 ---
 
-## 18 개의 답변 중 1 개의 답변만 추려냄.
+## 18 개의 답변 중 2 개의 답변만 추려냄.
+
+다음은 작동해야 합니다.
+
+```python
+def foo():
+    foo.counter += 1
+    print "Counter is %d" % foo.counter
+foo.counter = 0
+```
+
+counter의 초기화 코드를 제일 밑에 대신에 제일 위에 오도록 하고 싶다면 decorate를 만들 수 있습니다.
+
+```python
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
+```
+
+그리고 나서 다음처럼 코드를 사용합니다.
+
+```python
+@static_vars(counter=0)
+def foo():
+    foo.counter += 1
+    print "Counter is %d" % foo.counter
+```
+
+불행히도 접두사로는, 여전히 foo를 사용해야합니다. 
+
+---
 
 당신은 함수에 속성(attribute)을 추가할 수 있습니다. 그것을 static 변수로 사용하면 됩니다.
 
