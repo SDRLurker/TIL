@@ -2,7 +2,7 @@
 
 # Jupyter Notebook에서 TensorFlow 사용 문제
 
-저는 Ubuntu 14.04에서 Anaconda를 통해 Jupyter Notebook을 설치했고 바로 TensorFlow를 설치 하였습니다. 저는 TensorFlow가 Notebook에서나 간단히 스트립트를 작성하는 것과 상관 없이 작동하게 하고 싶습니다. 이를 이루기 위한 저의 시도에서, 저는 TensorFlow를 두 번 설치를 했는데 첫 번째는 Anaconda를 사용하였고 그 다음은 pip를 사용하였습니다. Anaconda 설치가 잘 되었지만 "source activate tensorflow"를 python에서 먼저 실행할 필요가 있었습니다. 만약 python을 (터미널에서) 일반적인 방법으로 시작하면 pip 설치는 작 작동하였고 tensorflow도 잘 불러 왔습니다.
+저는 Ubuntu 14.04에서 Anaconda를 통해 Jupyter Notebook을 설치했고 바로 TensorFlow를 설치 하였습니다. 저는 TensorFlow가 Notebook에서나 간단히 스트립트를 작성하는 것과 상관 없이 작동하게 하고 싶습니다. 이를 이루기 위한 저의 시도에서, 저는 TensorFlow를 두 번 설치를 했는데 첫 번째는 Anaconda를 사용하였고 그 다음은 pip를 사용하였습니다. Anaconda 설치가 잘 되었지만 "source activate tensorflow"를 python에서 먼저 실행할 필요가 있었습니다. 만약 python을 (터미널에서) 일반적인 방법으로 시작하면 pip 설치는 잘 작동하였고 tensorflow도 잘 불러 왔습니다.
 
 저의 질문은 어떻게 Jupyter notebook에서 이를 잘 실행할 수 있을까요? 입니다.
 
@@ -11,6 +11,20 @@
 ---
 
 ## 4 개의 답변 중 1 개의 답변만 추려냄.
+
+### 업데이트
+
+TensorFlow 웹 사이트는 5 개의 설치를 지원합니다.
+
+제가 이해한 바로는 Pip 설치를 직접 사용하여 Jupyter Notebook에서 TensorFlow를 가져 오는 것이 좋습니다 (Jupyter Notebook이 설치되어 있고 다른 문제가 없는 한) b/z 가상 환경을 만들지 않았습니다.
+
+**virtualenv 설치 및 conda 설치를 사용하려면 새로 생성된 TensorFlow 환경에 jupyter를 설치하여 TensorFlow가 Jupyter Notebook에서 작동할 수 있도록 해야 합니다.** (자세한 내용은 다음 원본 게시물 섹션 참조).
+
+Docker 설치는 VirtualBox에 일부 포트 설정이 있어야 Jupyter Notebook에서 TensorFlow가 작동 할 수 있습니다 ([이 게시물 참조](https://stackoverflow.com/questions/33636925/how-do-i-start-tensorflow-docker-jupyter-notebook?rq=1])).
+
+소스에서 설치하는 경우 소스 코드가 빌드되고 설치된 환경에 따라 다릅니다. 새로 생성된 가상 환경 또는 Jupyter Notebook이 설치되지 않은 가상 환경에 설치된 경우 Jupyter Notebook에서 Tensorflow를 사용하려면 Jupyter Notebook도 가상 환경에 설치해야 합니다.
+
+### 원래 글
 
 Ipython 또는 Jupyter(Ipython) Notebook에서 TensorFlow를 사용하려면 tensorflow가 활성화된 환경에서 (tensorflow를 설치한 뒤에) Jupyter와 Ipython을 설치해야 합니다.
 
@@ -49,6 +63,3 @@ Ipython 또는 Jupyter Notebook에서 tensorflow를 사용하려면, 간단하�
 이들을 설치한 후, "jupyter"와 "ipython"은 envs/tensorflow/bin 디렉터리에서 보일 것입니다.
 
 알아두세요: jupyter notebook에서 tensorflow 모듈을 import하기 전에, notebook을 먼저 닫으세요. 그리고 "source deactivate tensorflow"를 먼저 하고 "같은 페이지"에서 이들의 실행을 보장하기 위해 다시 그것을 ("source activate tensorflow") 활성화 하세요. 그리고 notebook을 다시 열어 import tensorflow 해보세요. 성공적으로 import 될 것입니다. (적어도 저는 작동했습니다.)
-
-
-
