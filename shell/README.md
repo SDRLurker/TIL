@@ -56,6 +56,12 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month
 
+## curl.md
+
+"bash 스크립트에서 curl 호출시 변수를 어떻게 사용할 수 있을까요?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/40852784/how-can-i-use-a-variable-in-curl-call-within-bash-script
+
 ## du.md
 
 "크기로 du -h의 출력을 정렬할 수 있나요?"를 번역한 내용입니다.
