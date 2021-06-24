@@ -10,13 +10,13 @@
 def decode(data):
   while True:
     start = data.find(STX)
-    if start == -1: #no stx in message
+    if start == -1: #메세지에 STX가 없다면
         pkt = ''
         data = ''
         break
-    #stx found , next byte is the length
+    #stx 발견 , 다음 바이트는 길이
     pktlen = ord(data[1])
-    #check message ends in ETX (pktken -1) or checksum invalid
+    #ETX로 메세지가 끝나는 지 체크 또는 checksum이 유효하지 않을 때
     if pktlen < 5 or data[pktlen-1] != ETX or checksum_valid(data[start:pktlen]) == False:
         print "Invalid Pkt"
         data = data[start+1:]
@@ -30,6 +30,18 @@ return data , pkt
 ```
 
 저는 이것을 다음처럼 사용했습니다.
+
+```python
+#process reports
+try:
+    data = sock.recv(256) 
+except: continue 
+else:
+    while data:
+        data, pkt = decode(data) 
+        if pkt:
+           process(pkt)
+```
 
 데이터 스트림에서 여러 개의 패킷이 있다면 리스트의 모음으로 패킷을 리턴하거나 첫 번째 패킷만 리턴하는 것이 최선입니다.
 
