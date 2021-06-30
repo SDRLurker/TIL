@@ -286,6 +286,12 @@
 * "timeout과 함께 'subprocess' 모듈 사용하기" 글을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout
+  
+##### subprocess_unblock.md
+
+* "nonblocking 방법으로 subprocess의 출력을 읽는 방법" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/36476841/python-how-to-read-stdout-of-subprocess-in-a-nonblocking-way/36477512
 
 ##### switch.md
 
