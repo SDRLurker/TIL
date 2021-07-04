@@ -12,9 +12,21 @@ sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
 
 하지만, 이 기술은 Python 3 에서는 작동하지 않습니다. 그 이유는 `sys.stdout.write()`는 `str`를 예상하는데 인코딩의 결과는 `bytes`이고 `codecs`가 원래 `sys.stdout`로 인코딩된 바이트배열을 출력하려고 할 때 오류가 발생합니다.
 
+Python 3에서 이를 할 수 있는 올바른 방법은 무엇입니까?
+
 ---
 
-## 7개의 답변 중 1개의 답변만 추려냄.
+## 7개의 답변 중 2개의 답변만 추려냄.
+
+Python 3.7부터 당신은 `reconfigure()`로 표준 스트림의 인코딩을 변경할 수 있습니다.
+
+```python
+sys.stdout.reconfigure(encoding='utf-8')
+```
+
+당신은 `errors` 파라미터를 추가하여 인코딩 오류가 다뤄질 수 있도록 수정할 수 있습니다.
+
+---
 
 Python 3.1에 `io.TextIOBase.detach()`가 추가되었습니다. 다음은 [`sys.stdout`](https://docs.python.org/3/library/sys.html#sys.stdout)에 대한 문서 내용입니다.
 
@@ -26,7 +38,7 @@ def make_streams_binary():
     sys.stdout = sys.stdout.detach()
 ```
 
-그리하여, Python 3.1에 대응되는 구문은 다음과 같습니다.
+그리하여, Python 3.1 이상에서 대응되는 구문은 다음과 같습니다.
 
 ```python
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
