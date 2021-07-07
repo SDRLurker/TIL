@@ -27,7 +27,7 @@ while True:
     time.sleep(1)
 ```
 
-이는 새로운 데이터를 위한 출력 pipe를 poll하고 가능할 때 print 합니다. 일반적으로 `time.sleep(1)과 print `f.stdout.readline()` 은 유용한 코드로 대체될 수 있습니다.
+이는 새로운 데이터를 위한 출력 pipe를 poll하고 가능할 때 print 합니다. 일반적으로 `time.sleep(1)`과 `print f.stdout.readline()` 은 유용한 코드로 대체될 수 있습니다.
 
 ### Blocking
 
