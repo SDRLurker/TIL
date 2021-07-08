@@ -2,14 +2,15 @@
 
 # colab.research.google.com에서 Selenium Webdriver를 사용하는 방법?
 
-저는 빠른 처리를 위해 colab.research.google.com 에서 Selenium Webdriver를 사용하고 싶습니다. 저는 `pip install selenium`을 사용하여 Selenium을 설치할 수 있었지만 크롬의 웹 드라이버는 webdriverChrome.exe의 경로를 요구합니다. 그것을 사용하려면 어떻게 합니까?
+저는 빠른 처리를 위해 colab.research.google.com 에서 Selenium Webdriver를 사용하고 싶습니다. 저는 `!pip install selenium`을 사용하여 Selenium을 설치할 수 있었지만 크롬의 웹 드라이버는 webdriverChrome.exe의 경로를 요구합니다. 그것을 사용하려면 어떻게 합니까?
 
 추신 - colab.research.google.com은 딥러닝과 관련된 빠른 연산 문제를 위해 GPU를 제공하는 온라인 플랫폼입니다. webdriver.Chrome(path)와 같은 솔루션을 삼가해 주세요.
 
-## 3개의 답변 중 1개의 답변만 추려냄
+---
 
+## 4개의 답변 중 1개의 답변만 추려냄
 
-크롬 웹 드라이버를 설치하고 Google colab에서 충돌하지 않도록 몇 가지 옵션을 조정하여 수행 할 수 있습니다.
+크롬 웹 드라이버를 설치하고 Google Colab에서 충돌하지 않도록 몇 가지 옵션을 조정하여 수행할 수 있습니다.
 
 ```python
 !pip install selenium
