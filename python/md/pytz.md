@@ -25,7 +25,7 @@ svr_time = datetime.datetime.strptime(svr_str, "%H:%M:%S %d.%m.%y") - datetime.t
 
 ## 3개의 답변 중 2개의 답변만 추려냄
 
-pytz 프로젝트와 `utcoffset` 메소드 사용을 시도하신 적 있으신가요?
+[pytz](http://pytz.sourceforge.net/) 프로젝트와 [`utcoffset` 메소드](http://pytz.sourceforge.net/#tzinfo-api) 사용을 시도하신 적 있으신가요?
 
 예시
 
