@@ -13,10 +13,10 @@ output_str = p.stdout.readline()
 
 ---
 
-### 27개의 답변 중 1개의 답변만 추려냄
+### 29개의 답변 중 1개의 답변만 추려냄
 
-fcntl, select, asyncproc는 이 경우 도움이 되지 않을 것입니다.  
-운영체제에 관계없이 blocking 없이 스트림을 읽는 신뢰성 있는 방법은 [Queue.get\_nowait()](https://docs.python.org/3/library/queue.html#queue.Queue.get_nowait)를 사용하는 것입니다.
+[`fcntl`](https://stackoverflow.com/questions/375427/a-non-blocking-read-on-a-subprocess-pipe-in-python/4025909#4025909), [`select`](https://stackoverflow.com/questions/375427/a-non-blocking-read-on-a-subprocess-pipe-in-python/375511#375511), [`asyncproc`](https://stackoverflow.com/questions/375427/a-non-blocking-read-on-a-subprocess-pipe-in-python/437888#437888)는 이 경우 도움이 되지 않을 것입니다.  
+운영체제에 관계없이 blocking 없이 스트림을 읽는 신뢰성 있는 방법은 [`Queue.get_nowait()`](https://docs.python.org/3/library/queue.html#queue.Queue.get_nowait)를 사용하는 것입니다.
 
 ```python
 import sys
