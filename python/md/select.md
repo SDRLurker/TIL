@@ -26,7 +26,7 @@ NotImplementedError: Only the following pseudo-classes are implemented: nth-of-t
 
 soup.select() 함수로 nth-child를 선택하는 방법이 있습니까?
 
-**편집:**: 트릭같지만 nth-of-type로 nth-child를 대체합니다. 수정한 내용은:
+**편집:** 트릭같지만 nth-of-type로 nth-child를 대체합니다. 수정한 내용은:
 
 ```python
 soup.select("#names > p:nth-of-type(1)")
@@ -34,7 +34,7 @@ soup.select("#names > p:nth-of-type(1)")
 
 nth-child를 받아들이지 않는 이유가 확실하지 않지만 nth-child와 nth-of-type는 같은 결과를 리턴하는 거 같습니다.
 
-## 2개의 답변 중 1개의 답변만 추려냄
+## 3개의 답변 중 1개의 답변만 추려냄
 
 다른 사람이 더 쉽게 찾을 수 있도록 수정 사항을 답변으로 추가 :
 
