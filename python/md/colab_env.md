@@ -3,16 +3,15 @@
 
 ## Google Colaboratory에서 환경 변수를 설정하는 것이 가능합니까?
 
-저는 Google Colaboratory 플랫폼에서 파이썬 스크립트를 실행하고 있습니다. 이제, 저는 다음처럼 시스템의 환경 변수를 세팅하야 합니다.
+저는 Google [Colaboratory](https://colab.research.google.com/) 플랫폼에서 파이썬 스크립트를 실행하고 있습니다. 이제, 저는 다음처럼 시스템의 환경 변수를 세팅하야 합니다.
 
-```
+```shell
 !export PATH=drive/app/tf-models-fork/research;drive/app/tf-models-fork/research/object_detection;drive/app/tf-models-fork/research/slim;$PATH
 ```
 
-I tried to add the location to the variable PATH. However, I am getting the following errors:  
 저는 PATH 변수를 추가하는 것을 시도했습니다. 하지만 다음과 같은 오류가 발생하였습니다.
 
-```
+```shell
 /bin/sh: 1: drive/app/tf-models-fork/research/object_detection: Permission denied
 /bin/sh: 1: drive/app/tf-models-fork/research/slim: Permission denied
 /bin/sh: 1: drive/app/tf-models-fork/research: Permission denied
@@ -24,9 +23,9 @@ I tried to add the location to the variable PATH. However, I am getting the foll
 
 ### 2개의 답변 중 1개의 답변만 추려냄
 
-저는 os.environ으로 PATH를 다음처럼 설정합니다.
+저는 다음처럼 `os.environ`으로 `PATH`를 다음처럼 설정합니다.
 
-```
+```python
 import os
 os.environ['PATH'] += ":/usr/local/go/bin"
 ```
