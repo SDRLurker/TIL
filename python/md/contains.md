@@ -10,27 +10,27 @@
 
 ## 6개의 답변
 
-(불리언 데이터에서 not처럼 실행하는) 반전(invert) 연산자를 사용할 수 있습니다.
+(불리언 데이터에서 not처럼 실행하는) 반전(invert, ~) 연산자를 사용할 수 있습니다.
 
-```
+```python
 new_df = df[~df["col"].str.contains(word)]
 ```
 
 `new_df`는 RHS에 의해 복사되는 곳입니다.
 
-contains는 정규 표현식도 받아 들입니다.
+*contains는 정규 표현식도 받아 들입니다.*
 
 ---
 
 만약 위에서 ValueError가 발생하면 그 이유는 여러 타입이 섞인 데이터 타입이라 그렇고 `na=False`를 사용합니다.
 
-```
+```python
 new_df = df[~df["col"].str.contains(word, na=False)]
 ```
 
 또는
 
-```
+```python
 new_df = df[df["col"].str.contains(word) == False]
 ```
 
