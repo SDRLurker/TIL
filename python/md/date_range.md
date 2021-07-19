@@ -10,7 +10,7 @@ for single_date in [d for d in (start_date + timedelta(n) for n in range(day_cou
     print strftime("%Y-%m-%d", single_date.timetuple())
 ```
 
-## 메모
+## Notes
 
 - 나는 실제로 이것을 출력하는 데 사용하지 않습니다. 그냥 이는 데모 용입니다.
 - `start_date` 및 `end_date` 변수는 타임 스탬프가 필요하지 않기 때문에 `datetime.date` 개체입니다. (보고서를 생성하는 데 사용됩니다).
@@ -65,7 +65,7 @@ for single_date in daterange(start_date, end_date):
     print(single_date.strftime("%Y-%m-%d"))
 ```
 
-주의: 내장 range() 함수와의 일관성을 위해 이 반복은 `end_date`에 도달하기 전에 중지됩니다. 따라서 포괄적인 반복을 위해서는 `range()`에서와 같이 다음 날을 사용하십시오.
+주의: 내장 range() 함수와의 일관성을 위해 이 반복은 `end_date`에 도달하기 **전에** 중지됩니다. 따라서 포괄적인 반복을 위해서는 `range()`에서와 같이 다음 날을 사용하십시오.
 
 ```python
     for n in range(int ((end_date - start_date).days+1)):
