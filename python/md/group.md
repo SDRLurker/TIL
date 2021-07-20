@@ -33,13 +33,13 @@ def group(l):
     return result
 ```
 
-하지만, 이것보다 더 Pythonic / 우아하고 / 효율적인 방법이 있을까요?
+하지만, 이것보다 더 Pythonic 하고 / 우아하고 / 효율적인 방법이 있을까요?
 
 ---
 
 ### 7개의 답변 중 2개의 답변만 추려냄
 
-`itertools.groupby`는 당신이 원하는 것을 할 수 있습니다.
+[`itertools.groupby`](https://docs.python.org/3.7/library/itertools.html#itertools.groupby) 는 당신이 원하는 것을 할 수 있습니다.
 
 ```python
 import itertools
@@ -53,9 +53,8 @@ def accumulate(l):
     for key, subiter in it:
        yield key, sum(item[1] for item in subiter) 
 
->>> print list(accumulate(L))
-[('grape', 103), ('apple', 29), ('banana', 3)]
->>> 
+print(list(accumulate(L)))
+# [('grape', 103), ('apple', 29), ('banana', 3)]
 ```
 
 #### 댓글
