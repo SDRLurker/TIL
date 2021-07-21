@@ -26,10 +26,10 @@ Stackoverflow에서 [멀티프로세싱 모듈에 의해 생성된 좀비 프로
 ```python
 def main1((param1, param2, param3)):
     try:
-       resout.append(some_data) //resout in case of no error
+       resout.append(some_data) # 오류가 없는 경우 resout
     except:
         print traceback.format_exc()
-        resout = []  //sending empty resout in case of error
+        resout = []  # 오류가 발생한 경우 비어 있는 resout 리턴
     return resout
 ```
 
@@ -52,7 +52,7 @@ finally:
     pool.join()
 ```
 
-`multiprocessing`과 싸우고 싶지 않다면, 저는 제 인생(잠재적으로 당신의 인생도) 더 쉽게 멀티프로세싱을 wrapping 한`parmap`이라 불리는 간단한 패키지를 작성하였습니다.
+`multiprocessing`과 싸우고 싶지 않다면, 저는 제 인생(잠재적으로 당신의 인생도)을 더 쉽게 멀티프로세싱을 wrapping 한 `parmap`이라 불리는 간단한 패키지를 작성하였습니다.
 
 `pip install parmap`
 
@@ -75,12 +75,12 @@ y1 == y2
 * 튜플의 리스트를 순회하기
 
 ```python
-# You want to do:
+# 당신이 원하는 것:
 z = [myfunction(x, y, argument1, argument2) for (x,y) in mylist]
 z = parmap.starmap(myfunction, mylist, argument1, argument2)
 
 
-# You want to do:
+# 당신이 원하는 것:
 listx = [1, 2, 3, 4, 5, 6]
 listy = [2, 3, 4, 5, 6, 7]
 param = 3.14
@@ -88,6 +88,6 @@ param2 = 42
 listz = []
 for (x, y) in zip(listx, listy):
     listz.append(myfunction(x, y, param1, param2))
-# In parallel:
+# 병렬로 실행:
 listz = parmap.starmap(myfunction, zip(listx, listy), param1, param2)
 ```
