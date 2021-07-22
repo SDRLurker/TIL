@@ -21,16 +21,16 @@ for info in crs:
 
 ---
 
-## 4개 답변중 1개의 답변만 추려냄.
+## 5개 답변중 1개의 답변만 추려냄.
 
-당신은 SHOW columns을 사용할 수 있습니다.
+당신은 [`SHOW columns`](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html)을 사용할 수 있습니다.
 
 ```python
 cursor.execute("SHOW columns FROM table_name")
 print [column[0] for column in cursor.fetchall()]
 ```
 
-참고 바람니다. 이는 본질적으로 desc를 사용하는 것과 같습니다.
+참고 바람니다. 이는 본질적으로 [`desc`](https://dev.mysql.com/doc/refman/8.0/en/describe.html)를 사용하는 것과 같습니다.
 
 ```python
 cursor.execute("desc table_name")
