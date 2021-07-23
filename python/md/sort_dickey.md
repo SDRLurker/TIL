@@ -6,11 +6,11 @@
 
 ----
 
-## 28 개의 답변 중 1개의 답변만 추려냄.
+## 30 개의 답변 중 1개의 답변만 추려냄.
 
 표준 파이썬 dictionary들은 정렬되지 않습니다. (key, value) 쌍으로 정렬할 지라도 순서를 보전하면서 `dict`의 내용을 보관할 수는 없습니다.
 
-가장 쉬운 방법은 값(element)이 추가되는 순서를 기억하는 `OrderedDict`를 사용하는 것입니다.
+가장 쉬운 방법은 값(element)이 추가되는 순서를 기억하는 [`OrderedDict`](https://docs.python.org/3/library/collections.html#collections.OrderedDict)를 사용하는 것입니다.
 
 ```python
 In [1]: import collections
