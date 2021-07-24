@@ -18,13 +18,43 @@ n번째 문자마다 파이썬 문자열을 나누는 것이 가능한가요?
 
 ----
 
-## 8 개의 답변 중 2개의 답변만 추려냄.
+## 17 개의 답변 중 3개의 답변만 추려냄.
 
 ```python
 >>> line = '1234567890'
 >>> n = 2
 >>> [line[i:i+n] for i in range(0, len(line), n)]
 ['12', '34', '56', '78', '90']
+```
+
+----
+
+파이썬에 내장 함수로 이를 구현한 것이 이미 있습니다.
+
+```python
+>>> from textwrap import wrap
+>>> s = '1234567890'
+>>> wrap(s, 2)
+['12', '34', '56', '78', '90']
+```
+
+docstring이 wrap에 대해 말하는 내용 입니다.
+
+```python
+>>> help(wrap)
+'''
+Help on function wrap in module textwrap:
+
+wrap(text, width=70, **kwargs)
+    Wrap a single paragraph of text, returning a list of wrapped lines.
+
+    Reformat the single paragraph in 'text' so it fits in lines of no
+    more than 'width' columns, and return a list of wrapped lines.  By
+    default, tabs in 'text' are expanded with string.expandtabs(), and
+    all other whitespace characters (including newline) are converted to
+    space.  See TextWrapper class for available keyword args to customize
+    wrapping behaviour.
+'''
 ```
 
 ----
