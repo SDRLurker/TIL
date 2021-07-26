@@ -9,22 +9,27 @@
 ## 2개의 답변 중 1개의 답변만 추려냄
 
 당신이 import한 것을 unload 하는 방법은 없습니다. 파이썬은 cache에 모듈의 복사본을 유지하기 때문에 다음에 reload와 다시 초기화하지 않고 그것을 (그대로) import합니다.
-만약 당신이 필요한 게 그것으로 접근하지 않도록 하려면 del을 사용할 수 있습니다.
+
+만약 당신이 필요한 게 그것으로 접근하지 않도록 하려면 `del`을 사용할 수 있습니다.
 
 ```python
 import package
 del package
 ```
 
+그런 다음 패키지를 다시 import하면 모듈의 캐시된 복사본이 사용됩니다.
+
+다시 가져올 때 코드를 다시 실행할 수 있도록 모듈의 캐시된 복사본을 무효화하려면 @DeepSOIC의 답변에 따라 대신 `sys.modules.pop`을 사용할 수 있습니다.
+
 당신이 패키지를 변경했고 갱신된 내용을 보고 싶다면, 당신은 그것을 `reload` 할 수 있습니다. 이는 몇가지 경우 작동하지 않을 수 있는데 import된 패키지가 그것에 의존적인 패키지를 reload할 필요가 있을 때입니다. 이것에 의존적인 것 이전에 관련된 문서를 읽어봐야 합니다.
 
-Python 버전 2.7까지는 build-in 함수인 reload 를 사용합니다.
+Python 버전 2.7까지는 build-in 함수인 [`reload`](https://docs.python.org/2/library/functions.html#reload) 를 사용합니다.
 
 ```python
 reload(package)
 ```
 
-Python 3.0부터 3.3까지는 당신은 imp.reload 를 사용할 수 있습니다.
+Python 3.0부터 3.3까지는 당신은 [`imp.reload`](https://docs.python.org/3.3/library/imp.html#imp.reload) 를 사용할 수 있습니다.
 
 ```python
 import imp
