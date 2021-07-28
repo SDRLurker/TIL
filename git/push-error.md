@@ -2,12 +2,12 @@
 
 # Git push 에러 '\[원격 거부됨\] master -> master (브랜치는 현재 체크 아웃되었습니다.)'
 
-어제, 저는 한 머신에서 다른 머신으로 [Git](https://en.wikipedia.org/wiki/Git) 저장소를 성공적으로 복제하는 방법 저는 [git clone'을 다른 머신에서 어떻게 할 수 있나요?](https://stackoverflow.com/questions/2808177/how-can-i-git-clone-from-another-machine/2809612#2809612) 에 대한 질문을 작성하였습니다.
+어제, 저는 한 머신에서 다른 머신으로 [Git](https://en.wikipedia.org/wiki/Git) 저장소를 성공적으로 복제하는 방법 저는 ['git clone'을 다른 머신에서 어떻게 할 수 있나요?](https://stackoverflow.com/questions/2808177/how-can-i-git-clone-from-another-machine/2809612#2809612) 에 대한 질문을 작성하였습니다.
 
 저는 성공적으로 제 원본(192.168.1.2)에서 목적지(192.168.1.1)로 Git 저장소를 성공적으로 복제하였습니다.  
 하지만 파일을 편집을 하였고 `git commit -a -m "test"`와 `git push`를 하였는데 목적지에서 이 오류가 나왔습니다.
 
-```
+```shell
 git push                                                
 hap@192.168.1.2's password: 
 Counting objects: 21, done.
@@ -35,13 +35,13 @@ error: failed to push some refs to 'git+ssh://hap@192.168.1.2/media/LINUXDATA/wo
 
 저는 Git(원격에서는 1.7 로컬 머신에서는 1.5)의 2가지 버전을 사용하고 있습니다. 이것이 가능한 이유일까요?
 
-## 30개의 답변 중 1개의 답변만 추려냄
+## 31개의 답변 중 1개의 답변만 추려냄
 
 당신은 간단하게 원격 저장소를 bare 저장소로 변경하면 됩니다. (bare 저장소에는 작업 복사본이 없습니다. - 폴더에는 실제 저장소 데이터만 포함됩니다)
 
 당신의 원격 저장소 폴더에서 다음 명령어를 실행합니다.
 
-```
+```shell
 git config --bool core.bare true
 ```
 
