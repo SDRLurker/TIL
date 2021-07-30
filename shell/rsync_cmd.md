@@ -38,3 +38,97 @@
 # yum install rsync (Red Hat 기반 시스템에서)
 # apt-get install rsync (On Debian 기반 시스템에서)
 ```
+
+# 1. 로컬에서 파일과 디렉터리 복사/동기화 하기
+
+## 로컬 컴퓨터에서 파일 복사/동기화 하기
+
+다음 명령어는 로컬에서 한 위치에서 다른 위치로 하나의 파일을 동기화할 것입니다. 여기 이 예시에서 파일 이름 **backup.tar**는 **/tmp/backups** 폴더로 복사되거나 동기화될 것입니다.
+
+```shell
+[root@tecmint]# rsync -zvh backup.tar /tmp/backups/
+
+created directory /tmp/backups
+
+backup.tar
+```
+
+위 예시에서 목적지(/tmp/backups)가 아직 없다면 rsync는 자동으로 목적지에 디렉터리를 만들 것입니다.
+
+## 로컬 컴퓨터에서 디렉터리 복사/동기화 하기
+
+다음 명령어는 같은 머신에서 한 디렉터리에서 다른 디렉터리로 모든 파일을 동기화하거나 전송할 것입니다. 여기 이 예시에서 **/root/rpmpkgs**는 몇 개의 rpm 패키지 파일을 포함하며 **/tmp/backups** 폴더로 복사될 것입니다.
+
+```shell
+[root@tecmint]# rsync -avzh /root/rpmpkgs /tmp/backups/
+
+sending incremental file list
+
+rpmpkgs/
+
+rpmpkgs/httpd-2.2.3-82.el5.centos.i386.rpm
+
+rpmpkgs/mod_ssl-2.2.3-82.el5.centos.i386.rpm
+
+rpmpkgs/nagios-3.5.0.tar.gz
+
+rpmpkgs/nagios-plugins-1.4.16.tar.gz
+
+sent 4.99M bytes  received 92 bytes  3.33M bytes/sec
+
+total size is 4.99M  speedup is 1.00
+```
+
+# 2. 서버에서 또는 서버로 파일과 디렉터리 복사/동기화 하기
+
+## 로컬 서버에서 원격 서버로 디렉터리 복사하기
+
+이 명령은 로컬 머신에서 원격 머신으로 디렉터리를 동기화 합니다. **예시:** 로컬 컴퓨터에 몇개의 **RPM** 패키지를 포함하는 **"rpmpkg"** 폴더가 있습니다. 로컬 디렉터리의 내용을 원격서버로 보내고 싶으시면, 다음 명령을 사용할 수 있습니다.
+
+```shell
+[root@tecmint]$ rsync -avz rpmpkgs/ root@192.168.0.101:/home/
+
+root@192.168.0.101's password:
+
+sending incremental file list
+
+./
+
+httpd-2.2.3-82.el5.centos.i386.rpm
+
+mod_ssl-2.2.3-82.el5.centos.i386.rpm
+
+nagios-3.5.0.tar.gz
+
+nagios-plugins-1.4.16.tar.gz
+
+sent 4993369 bytes  received 91 bytes  399476.80 bytes/sec
+```
+
+## 원격 디렉터리를 로컬 머신으로 복사/동기화 하기
+
+이 명령은 당신이 원격 디렉터리를 로컬 디렉터리로 동기화 하도록 도움을 줄 것입니다. 여기 예시로 원격서버에 있는 디렉터리 **/home/tarunika/rmpkgs**는 당신의 로컬 컴퓨터의 **/tmp/myrpms**로 복사될 것입니다.
+
+```shell
+[root@tecmint]# rsync -avzh root@192.168.0.100:/home/tarunika/rpmpkgs /tmp/myrpms
+
+root@192.168.0.100's password:
+
+receiving incremental file list
+
+created directory /tmp/myrpms
+
+rpmpkgs/
+
+rpmpkgs/httpd-2.2.3-82.el5.centos.i386.rpm
+
+rpmpkgs/mod_ssl-2.2.3-82.el5.centos.i386.rpm
+
+rpmpkgs/nagios-3.5.0.tar.gz
+
+rpmpkgs/nagios-plugins-1.4.16.tar.gz
+
+sent 91 bytes  received 4.99M bytes  322.16K bytes/sec
+
+total size is 4.99M  speedup is 1.00
+```
