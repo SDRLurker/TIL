@@ -132,3 +132,81 @@ sent 91 bytes  received 4.99M bytes  322.16K bytes/sec
 
 total size is 4.99M  speedup is 1.00
 ```
+
+# 3. SSH를 통한 RSync
+
+rsync로 우리는 데이터 전송을 위해 **SSH (Secure Shell)** 을 사용할 수 있습니다. SSH 프로토콜을 사용하면 데이터가 전송되는 동안 아무도 읽을 수 없도록 암호화된 보안 연결로 데이터가 인터넷의 유선을 통해 전송되고 있음을 확인할 수 있습니다.
+
+또한 우리가 rsync를 사용할 때 특정한 작업을 성공하기 위해 **user/root** 비밀번호를 제공할 필요가 있습니다. **SSH** 옵션을 사용하여 암호화된 방법으로 로그인하여 전송할 수 있고 당신의 **비밀번호**는 안전할 것입니다.
+
+## SSH로 원격 서버에서 로컬 서버로 파일 복사하기
+
+**rsync**로 프로토콜을 지정하기 위해 **"-e"** 옵션을 당신이 사용하기 원하는 프로토콜 이름을 함께 제공할 필요가 있습니다. 여기 예시에서 **"-e"** 옵션으로 **"ssh"** 를 사용하여 데이터 전송을 수행할 것입니다.
+
+```shell
+[root@tecmint]# rsync -avzhe ssh root@192.168.0.100:/root/install.log /tmp/
+
+root@192.168.0.100's password:
+
+receiving incremental file list
+
+install.log
+
+sent 30 bytes  received 8.12K bytes  1.48K bytes/sec
+
+total size is 30.74K  speedup is 3.77
+```
+
+## SSH로 로컬 서버에서 원격 서버로 파일 복사하기
+
+```shell
+[root@tecmint]# rsync -avzhe ssh backup.tar root@192.168.0.100:/backups/
+
+root@192.168.0.100's password:
+
+sending incremental file list
+
+backup.tar
+
+sent 14.71M bytes  received 31 bytes  1.28M bytes/sec
+
+total size is 16.18M  speedup is 1.10
+```
+
+> [추천 읽기: 리눅스에서 새로운 또는 변경/수정된 파일을 동기화하기 위해 Rsync 사용하기](https://www.tecmint.com/sync-new-changed-modified-files-rsync-linux/)
+
+# 4. rsync로 데이터 전송하는 동안 진행상태 보기
+
+하나의 머신에서 다른 머신으로 데이터가 전송되는 동안 진행상태를 보기 위해 우리는 **'--progress'** 옵션을 사용할 수 있습니다. 이것은 파일과 전송을 완료하는 데 남은 시간을 표시합니다.
+
+```shell
+[root@tecmint]# rsync -avzhe ssh --progress /home/rpmpkgs root@192.168.0.100:/root/rpmpkgs
+
+root@192.168.0.100's password:
+
+sending incremental file list
+
+created directory /root/rpmpkgs
+
+rpmpkgs/
+
+rpmpkgs/httpd-2.2.3-82.el5.centos.i386.rpm
+
+           1.02M 100%        2.72MB/s        0:00:00 (xfer#1, to-check=3/5)
+
+rpmpkgs/mod_ssl-2.2.3-82.el5.centos.i386.rpm
+
+          99.04K 100%  241.19kB/s        0:00:00 (xfer#2, to-check=2/5)
+
+rpmpkgs/nagios-3.5.0.tar.gz
+
+           1.79M 100%        1.56MB/s        0:00:01 (xfer#3, to-check=1/5)
+
+rpmpkgs/nagios-plugins-1.4.16.tar.gz
+
+           2.09M 100%        1.47MB/s        0:00:01 (xfer#4, to-check=0/5)
+
+sent 4.99M bytes  received 92 bytes  475.56K bytes/sec
+
+total size is 4.99M  speedup is 1.00
+```
