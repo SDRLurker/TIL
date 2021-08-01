@@ -210,3 +210,50 @@ sent 4.99M bytes  received 92 bytes  475.56K bytes/sec
 
 total size is 4.99M  speedup is 1.00
 ```
+
+# 5. --include 와 --exclude 옵션 사용하기
+
+이 두 가지 옵션을 사용하면 매개변수를 지정하여 파일을 **포함** 및 **제외**할 수 있습니다. 이 옵션은 동기화에 포함할 파일 또는 디렉터리를 지정하고 전송을 원하지 않는 파일 및 폴더를 제외하는 데 도움이 됩니다.
+
+여기 예시로 rsync 명령은 **'R'** 로 시작하는 파일이나 디렉터리를 포함하며 모든 다른 파일과 디렉터리는 제외될 것입니다.
+
+```shell
+[root@tecmint]# rsync -avze ssh --include 'R*' --exclude '*' root@192.168.0.101:/var/lib/rpm/ /root/rpm
+
+root@192.168.0.101's password:
+
+receiving incremental file list
+
+created directory /root/rpm
+
+./
+
+Requirename
+
+Requireversion
+
+sent 67 bytes  received 167289 bytes  7438.04 bytes/sec
+
+total size is 434176  speedup is 2.59
+```
+
+# 6. --delete 옵션 사용하기
+
+파일 또는 디렉토리가 원본에 없지만 대상에는 이미 존재하는 경우 동기화하는 동안 대상에서 기존 파일/디렉토리를 삭제할 수 있습니다.
+
+**'-delete'** 옵션을 사용하여 원본 디렉토리에 없는 파일을 삭제할 수 있습니다.
+
+원본와 대상은 동기화 됩니다. 이제 대상에서 새 파일 **test.txt**가 만들어 집니다.
+
+```shell
+[root@tecmint]# touch test.txt
+[root@tecmint]# rsync -avz --delete root@192.168.0.100:/var/lib/rpm/ .
+Password:
+receiving file list ... done
+deleting test.txt
+./
+sent 26 bytes  received 390 bytes  48.94 bytes/sec
+total size is 45305958  speedup is 108908.55
+```
+
+대상에는 **test.txt((라는 새 파일이 있으며 **'–delete'** 옵션으로 소스와 동기화하면 **test.txt** 파일이 제거됩니다.
