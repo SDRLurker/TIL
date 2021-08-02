@@ -257,3 +257,65 @@ total size is 45305958  speedup is 108908.55
 ```
 
 대상에는 **test.txt((라는 새 파일이 있으며 **'–delete'** 옵션으로 소스와 동기화하면 **test.txt** 파일이 제거됩니다.
+
+# 7. 전송될 파일의 최대 크기 설정
+
+전송되거나 동기화될 파일의 **(최대)** 크기를 지정할 수 있습니다. **"--max-size"** 옵션과 함께 최대 크기를 지정할 수 있습니다. 여기 예시로 최대 파일 크기는 **200k** 이며, 이 명령은 **200k** 보다 같거나 작은 파일만 전송할 것입니다.
+
+```shell
+[root@tecmint]# rsync -avzhe ssh --max-size='200k' /var/lib/rpm/ root@192.168.0.100:/root/tmprpm
+
+root@192.168.0.100's password:
+
+sending incremental file list
+
+created directory /root/tmprpm
+
+./
+
+Conflictname
+
+Group
+
+Installtid
+
+Name
+
+Provideversion
+
+Pubkeys
+
+Requireversion
+
+Sha1header
+
+Sigmd5
+
+Triggername
+
+__db.001
+
+sent 189.79K bytes  received 224 bytes  13.10K bytes/sec
+
+total size is 38.08M  speedup is 200.43
+```
+
+# 8. 성공적인 전송 후에 원본 파일 자동으로 지우기
+
+메인 웹 서버와 데이터 백업 서버가 있다고 가정하면, 매일 백업을 생성하고 당신의 백업서버로 동기화 하면 이제 당신의 웹 서버에 있는 백업의 로컬 복제본은 유지하고 싶지 않을 것입니다.
+
+그럼, 파일 전송 완료될 때까지 기다렸다가 수동으로 이 로컬 백업을 삭제해야 할까요? 당연히 아닙니다. 이 자동 삭제는 **'--remove-source-files'** 옵션을 사용하여 할 수 있습니다.
+
+```shell
+[root@tecmint]# rsync --remove-source-files -zvh backup.tar /tmp/backups/
+
+backup.tar
+
+sent 14.71M bytes  received 31 bytes  4.20M bytes/sec
+
+total size is 16.18M  speedup is 1.10
+
+[root@tecmint]# ll backup.tar
+
+ls: backup.tar: No such file or directory
+```
