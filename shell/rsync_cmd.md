@@ -319,3 +319,44 @@ total size is 16.18M  speedup is 1.10
 
 ls: backup.tar: No such file or directory
 ```
+
+# 9. rsync로 모의테스트 하기
+
+당신이 초보자이고 rsync를 사용하고 있고 당신의 명령이 정확히 무엇을 하는지 모르는 경우 Rsync는 대상 폴더의 항목을 실제로 엉망으로 만들 수 있으며 실행 취소를 수행하는 것은 지루한 작업이 될 수 있습니다.
+
+> [추천 읽기: Rsync 사용하여 두 웹 서버/웹 사이트를 동기화 하는 방법](https://www.tecmint.com/sync-two-apache-websites-using-rsync/)
+
+이 옵션을 사용하면 아무 것도 변경되지 않고 명령의 테스트 실행만 수행하고 명령의 출력이 표시됩니다. 출력이 원하는 것과 정확히 일치하면 명령에서 **'-dry-run'** 옵션을 제거하고 명령의 출력을 표시할 수 있습니다. 터미널에서 실행합니다.
+
+```shell
+root@tecmint]# rsync --dry-run --remove-source-files -zvh backup.tar /tmp/backups/
+
+backup.tar
+
+sent 35 bytes  received 15 bytes  100.00 bytes/sec
+
+total size is 16.18M  speedup is 323584.00 (DRY RUN)
+```
+
+# 10. 대역폭 제한을 설정하고 파일 전송하기
+
+당신은 **'–bwlimit'** 옵션의 도움으로 한 머신에서 다른 머신으로 데이터를 전송하는 동안 대역폭을 설정할 수 있습니다. 이 옵션은 **입출력(I/O)** 대역폭을 제한하도록 우리에게 도움을 줍니다.
+
+```shell
+[root@tecmint]# rsync --bwlimit=100 -avzhe ssh  /var/lib/rpm/  root@192.168.0.100:/root/tmprpm/
+root@192.168.0.100's password:
+sending incremental file list
+sent 324 bytes  received 12 bytes  61.09 bytes/sec
+total size is 38.08M  speedup is 113347.05
+```
+
+또한 기본적으로 rsync는 변경된 블록과 바이트만 동기화합니다. 명시적으로 전체 파일을 동기화하려면 **'-W'** 옵션을 사용합니다.
+
+```shell
+[root@tecmint]# rsync -zvhW backup.tar /tmp/backups/backup.tar
+backup.tar
+sent 14.71M bytes  received 31 bytes  3.27M bytes/sec
+total size is 16.18M  speedup is 1.10
+```
+
+이제 rsync에 알아 보았고 더 많은 옵션에 대한 **매뉴얼 페이지**에서 볼 수 있습니다. 앞으로 더 흥미롭고 흥미로운 튜토리얼을 위해 **Tecmint**와 계속 연결하십시오. 귀하의 의견과 제안을 남겨주세요.
