@@ -105,6 +105,26 @@ nagios-plugins-1.4.16.tar.gz
 sent 4993369 bytes  received 91 bytes  399476.80 bytes/sec
 ```
 
+## 로컬 서버에서 원격 서버로 디렉터리의 특정 파일만 복사하기(역자추가)
+
+여기 예시로 로컬 컴퓨터에 몇개의 **RPM** 패키지를 포함하는 **"rpmpkg"** 폴더가 있습니다. 로컬 디렉터리의 확장자가 rpm인 파일만을 원격서버로 보내고 싶으시면, 다음 명령을 사용할 수 있습니다.
+
+```
+[root@tecmint]$ rsync -avz rpmpkgs/*.rpm root@192.168.0.101:/home/
+
+root@192.168.0.101's password:
+
+sending incremental file list
+
+./
+
+httpd-2.2.3-82.el5.centos.i386.rpm
+
+mod_ssl-2.2.3-82.el5.centos.i386.rpm
+
+sent ? bytes  received ? bytes  ? bytes/sec
+```
+
 ## 원격 디렉터리를 로컬 머신으로 복사/동기화 하기
 
 이 명령은 당신이 원격 디렉터리를 로컬 디렉터리로 동기화 하도록 도움을 줄 것입니다. 여기 예시로 원격서버에 있는 디렉터리 **/home/tarunika/rmpkgs**는 당신의 로컬 컴퓨터의 **/tmp/myrpms**로 복사될 것입니다.
