@@ -152,6 +152,12 @@ https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-eve
 
 https://unix.stackexchange.com/questions/295274/grep-to-find-the-correct-line-sed-to-change-the-contents-then-putting-it-back
 
+## sort.md
+
+"파일 자체를 정렬하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/29244351/how-to-sort-a-file-in-place/29244387
+
 ## ssh.md
 
 "script에서 ssh로 timeout을 주는 방법?"를 번역한 내용입니다.
