@@ -28,7 +28,24 @@ http.createServer(
 
 ---
 
-## 12개의 답변 중 1개의 답변만 추려냄.
+## 21개의 답변 중 3개의 답변
+
+
+이것은 [노드 eventEmitter 문서](https://nodejs.org/docs/latest/api/events.html#events_emitter_setmaxlisteners_n)에 설명되어 있습니다.
+
+노드의 버전은 무엇입니까? 어떤 다른 코드가 있습니까? 정상적인 행동이 아닙니다.
+
+간단히 말해서: `process.setMaxListeners(0);`
+
+또한 다음도 참조하세요: [node.js - 요청 - "emitter.setMaxListeners()" 방법](https://stackoverflow.com/questions/8313628/node-js-request-how-to-emitter-setmaxlisteners)?
+
+---
+
+경고가 있는 데는 이유가 있으며 올바른 수정이 제한을 늘리지 않고 동일한 이벤트에 그렇게 많은 리스너를 추가하는 이유를 알아내는 좋은 기회가 있음을 여기서 지적하고 싶습니다. 왜 그렇게 많은 리스너가 추가되고 있는지 알고 있고 그것이 정말로 원하는 것이라고 확신하는 경우에만 제한을 늘리십시오.
+
+이 경고를 받았기 때문에 이 페이지를 찾았고 제 경우에는 전역 개체를 EventEmitter로 바꾸는 버그가 사용 중이었기 때문에 이 페이지를 찾았습니다! 이러한 것들이 눈에 띄지 않게 하고 싶지 않기 때문에 전 세계적으로 한도를 늘리지 않는 것이 좋습니다.
+
+---
 
 기본으로 최대 10개의 listener가 하나의 이벤트마다 등록될 수 있습니다. 
 
@@ -37,7 +54,7 @@ http.createServer(
 ```javascript
 const emitter = new EventEmitter()
 emitter.setMaxListeners(100)
-// or 0 to turn off the limit
+// 0은 한계를 제한하지 않습니다.
 emitter.setMaxListeners(0)
 ```
 
