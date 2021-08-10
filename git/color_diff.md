@@ -10,7 +10,7 @@
 
 ---
 
-## 7개 답변 중 1개의 답변만 발췌
+## 9개 답변 중 1개의 답변만 발췌
 
 ```shell
 wget "http://www.pixelbeat.org/scripts/ansi2html.sh" -O /tmp/ansi2html.sh
@@ -19,8 +19,8 @@ git diff --color-words --no-index orig.txt edited.txt | \
 /tmp/ansi2html.sh > 2beshared.html
 ```
 
-제가 필요했던 것은 ANSI를 HTML로 변환하는 것(converter)이었습니다. 그리고 저는 매우 어지간한 것을 http://www.pixelbeat.org/ 에서 발견하였습니다.
+제가 필요했던 것은 [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code)를 HTML로 변환하는 것(converter)이었습니다. 그리고 저는 매우 어지간한 것을 http://www.pixelbeat.org/ 에서 발견하였습니다.
 
-참고 : `--color` 또는 `--color-words`를 포함시키지 않으면 색상이 표시되지 않을 수 있습니다. 이는 아마도 파이핑(|)으로 인해 git diff가 색상을 제외시키기 때문일 수 있습니다.
+참고 : `--color` 또는 `--color-words`를 포함시키지 않으면 색상이 표시되지 않을 수 있습니다. 이는 아마도 파이프(|)로 인해 git diff가 색상을 제외시키기 때문일 수 있습니다.
 
 참고 2 : 특히 Mac을 사용하는 경우 gnu sed 및 awk를 설치해야 할 수 있습니다. `brew install gnu-sed gawk`로 설치 하십시오. 경로에 수동으로 추가해야 할 수도 있습니다. 예 : `ln -s /usr/local/Cellar/gnu-sed/4.2.2/bin/gsed /usr/local/bin/` 을 사용하십시오.
