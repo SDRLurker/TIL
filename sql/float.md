@@ -10,7 +10,7 @@
 
 ---
 
-## 3개 답변 중 1개만 추려냄
+## 3개 답변 중 1개
 
 `CAST()` 설명에서 `DECIMAL` 부분을 놓쳤음을 알게 되었습니다.
 
@@ -19,7 +19,7 @@
 
 그러므로 다음 쿼리는 작동합니다.
 
-```
+```SQL
 UPDATE table SET
 latitude = CAST(old_latitude AS DECIMAL(10,6)),
 longitude = CAST(old_longitude AS DECIMAL(10,6));
