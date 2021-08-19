@@ -21,7 +21,7 @@
 $ git rebase --interactive 'bbc643cd^'
 ```
 
-당신이 수정하기 원하는 commit을 다시 rebase 하기 때문에 명령어 마지막에 캐럿 `^`을 주의하세요.
+당신이 [수정하기 원하는 commit의 *이전* commit](https://stackoverflow.com/questions/1955985/what-does-the-caret-character-mean)을 다시 rebase 하기 때문에 명령어 마지막에 캐럿 `^`을 주의하세요.
 
 기본 편집기로, 언급한 'bbc643cd' 줄에서 `pick`을 `edit`로 변경합니다. 
 
