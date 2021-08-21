@@ -238,6 +238,12 @@
 * "파이썬에서 반올림 문제"를 번역한 내용입니다.
 
 * http://stackoverflow.com/questions/7515266/rounding-problem-with-python
+  
+##### rsquared.md
+
+* "Python과 Numpy를 사용하여 r-제곱을 계산하는 방법?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/893657/how-do-i-calculate-r-squared-using-python-and-numpy
 
 ##### select.md
 
