@@ -34,14 +34,25 @@ du -h | sort -n -r
 1.1M    ./dir1
 ```
 
-크기로 du -h를 정렬하는 방법을 아시는 분이 계신가요?
+크기로 `du -h`를 정렬하는 방법을 아시는 분이 계신가요?
 
 ----
 
-## 34 개의 답변 중 1개의 답변만 추려냄.
+## 39 개의 답변 중 1개의 답변
 
-2009년 8월에 GNU coreutils 7.5 가 나오고 부터, du -h와 같은 종류의 접미사를 사용하는 -h파라미터를 쓸 수 있습니다.
+2009년 8월에 [GNU coreutils 7.5](http://article.gmane.org/gmane.comp.gnu.core-utils.announce/52) 가 나오고 부터, `du -h`와 같은 종류의 접미사를 사용하는 `-h` 파라미터를 `sort`에서 쓸 수 있습니다.
 
 ```shell
 du -hs * | sort -h
 ```
+
+만약 `-h`를 지원하지 않는 sort를 사용하신다면, GNU Coreutils를 설치할 수 있습니다. 다음은 오래된 Mac OS X 입니다.
+
+```shell
+brew install coreutils
+du -hs * | gsort -h
+```
+
+다음은 `sort` [매뉴얼](https://linux.die.net/man/1/sort) 내용입니다.
+
+`-h, --human-numeric-sort 사람이 읽을 수 있는 숫자를 비교한다 (예시, 2K 1G)`
