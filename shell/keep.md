@@ -16,11 +16,11 @@
 
 ---
 
-## 3개 답변 중 1개의 답변만 발췌
+## 4개 답변 중 1개의 답변
 
 몇 가지 방법으로 이를 이룰 수 있습니다.
 
-1) nohup을 사용하여 백그라운드(background)로 드라이버(driver) 프로세스를 spark-submit으로 실행할 수 있습니다.
+1) `nohup`을 사용하여 백그라운드(background)로 드라이버(driver) 프로세스를 spark-submit으로 실행할 수 있습니다.
 
 ```shell
 nohup  ./spark-submit --class  customer.core.classname \
