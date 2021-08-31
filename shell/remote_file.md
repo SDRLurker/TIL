@@ -11,7 +11,7 @@ $ if [ ssh reg@localhost -p 19999 -e /home/reg/Dropbox/New_semiosNET/Research_an
 
 ------
 
-## 9개의 답변 중 1 개의 답변만 추려냄.
+## 13개의 답변 중 1 개의 답변
 
 여러 답변에 근거하여 다음처럼 짧게 사용하는 방법이 있습니다.
 
@@ -21,7 +21,7 @@ ssh -q $HOST [[ -f $FILE_PATH ]] && echo "File exists" || echo "File does not ex
 
 `-q`는 quiet 모드입니다. 이는 warning과 메세지를 덜 나오게 할 것입니다.
 
-@Mat님이 언급했듯이 이처럼 테스트하는 것의 이득은 `-f`를 `-nt`, `-d`, `-s`등과 같은 다른 테스트 연산자로 쉽게 바꿀 수 있기 때문에 좋습니다.
+@Mat님이 언급했듯이 이처럼 테스트하는 것의 이득은 `-f`를 `-nt`, `-d`, `-s`... 등과 같은 다른 테스트 연산자로 쉽게 바꿀 수 있기 때문에 좋습니다.
 
 **테스트 연산자:** [http://tldp.org/LDP/abs/html/fto.html](http://tldp.org/LDP/abs/html/fto.html)
 
