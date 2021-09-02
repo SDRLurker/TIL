@@ -16,7 +16,7 @@ grep 'firmware_revision' myfile.py | sed 's/test/production'
 
 이 방법으로 제가 원하는 라인을 선택하여 대체를 실행할 수 있겠지만, 이전 줄을 대체하기 위해 새 줄을 원본 파일로 적용하는 방법은 알 수 없습니다. 분명히 파일로 다시 redirection할 수는 없습니다. 어떻게 해야 할까요?
 
-임시 파일을 사용하더라도 grep을 사용하여 필요한 줄만 가져 오면 파일의 다른 모든 데이터가 손실되므로 더 이상 모든 데이터를 임시 파일로 리디렉션 한 다음 원본을 임시 파일로 바꿀 수 없습니다.
+임시 파일을 사용하더라도 `grep`을 사용하여 필요한 줄만 가져 오면 파일의 다른 모든 데이터가 손실되므로 더 이상 모든 데이터를 임시 파일로 리디렉션 한 다음 원본을 임시 파일로 바꿀 수 없습니다.
 
 편집-누군가가 추가 정보를 요청했습니다.
 
@@ -41,11 +41,11 @@ grep 'firmware_revision' myfile.py | sed 's/test/production'
 
 ---
 
-## 6개 답변 중 1개만 추림
+## 2개 답변 중 1개
 
 다음을 시도해 보세요.
 
-```
+```shell
 sed -i.bak '/firmware_revision/ s/test/production/' myfile.py
 ```
 
@@ -57,7 +57,7 @@ sed -i.bak '/firmware_revision/ s/test/production/' myfile.py
 
 명령이 작동한다고 결정하고 위험하게 백업을 생성하지 않으려면 GNU sed (Linux)를 사용하여 다음을 사용하십시오.
 
-```
+```shell
 sed -i '/firmware_revision/ s/test/production/' myfile.py
 ```
 
@@ -67,6 +67,6 @@ sed -i '/firmware_revision/ s/test/production/' myfile.py
 
 질문에 대한 편집에서 OP는 라인의 _모든_ `test` 발생이 `production`으로 대체 되도록 요청합니다. 이 경우 전역 (해당 행) 대체를 위해 대체 명령에 `g` 옵션을 추가합니다.
 
-```
+```shell
 sed -i.bak '/firmware_revision/ s/test/production/g' myfile.py
 ```
