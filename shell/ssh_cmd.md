@@ -2,15 +2,19 @@
 
 # ssh를 사용하여 원격 컴퓨터의 shell script를 실행하는 방법?
 
-원격 컴퓨터에서 shell script를 실행하는 방법을 저에게 제안해주실 수 있나요?
+저는 원격 컴퓨터에서 로컬 shell script(윈도우즈/리눅스)를 실행해야 합니다.
 
 A 컴퓨터와 B컴퓨터 모두에서 설정된 ssh가 있습니다. 저의 스크립트는 B컴퓨터에서 수행할 내용이 A컴퓨터에 있습니다.
 
+로컬과 원격 컴퓨터는 윈도우즈나 유닉스 기반의 시스템일 수 있습니다.
+
+plink/ssh를 사용하여 이를 실행할 수 있는 방법이 있을까요?
+
 ----
 
-## 9개의 답변 중 1개의 답변만 추려냄.
+## 20개의 답변 중 1개의 답변
 
-만약 A 컴퓨터가 Windows box라면 -m 파라미터와 함께 Plink(의 일부)를 사용하실 수 있고 원격 서버에 로컬(내 컴퓨터의) 스크립트를 실행할 것입니다.
+만약 A 컴퓨터가 Windows box라면 -m 파라미터와 함께 Plink([PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)의 일부)를 사용하실 수 있고 원격 서버에 로컬(내 컴퓨터의) 스크립트를 실행할 것입니다.
 
 ```shell
 plink root@MachineB -m local_script.sh
@@ -32,7 +36,7 @@ ssh 뿐만이 아니라 rsh도 똑같은 방법으로 실행이 가능합니다.
 
 ssh root@MachineB 'bash -s' < local_script.sh
 
-ssh  계정명@원격호스트(IP)  수행할명령어 < 로컬_스크립트.sh
+ssh 계정명@원격호스트(IP)  수행할명령어 < 로컬_스크립트.sh
 
 만약 원격 컴퓨터의 프로그램이 수행이 되지 않는다면 
 
