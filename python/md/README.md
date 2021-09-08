@@ -36,7 +36,6 @@
 
 * https://stackoverflow.com/questions/19447603/how-to-kill-a-python-child-process-created-with-subprocess-check-output-when-t
 
-
 ##### chmod.md
 
 * "python에서 간단하게 "chmod +x"을 어떻게 합니까?"을 번역한 내용입니다.
@@ -90,6 +89,12 @@
 * "파이썬을 사용하여 TCP 패킷 decode하기"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/2184181/decoding-tcp-packets-using-python
+
+##### enumerate_zip.md
+
+* "Python에서 enumerate()와 zip() 함께 사용하기"을 번역한 내용입니다.
+
+* https://note.nkmk.me/en/python-for-enumerate-zip/
 
 ##### group.md
 
