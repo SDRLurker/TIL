@@ -1,4 +1,4 @@
-출처 : [https://note.nkmk.me/en/python-for-enumerate-zip/](https://stackoverflow.com/questions/893657/how-do-i-calculate-r-squared-using-python-and-numpy)
+출처 : [https://note.nkmk.me/en/python-for-enumerate-zip/](https://note.nkmk.me/en/python-for-enumerate-zip/)
 
 # Python에서 enumerate()와 zip() 함께 사용하기
 
