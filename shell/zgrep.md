@@ -17,9 +17,10 @@ done
 
 ---
 
-## 8개의 답변 중 1개를 추려냄
+## 8개의 답변 중 1개
 
 `zgrep`이 있다면 다음처럼 사용할 수 있습니다.
+
 ```shell
 zgrep -a string file.tar.gz
 ```
