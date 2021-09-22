@@ -5,7 +5,7 @@
 
 [IAM 역할 자격 증명을 사용하는 Python에서 S3로 unload하기](https://stackoverflow.com/questions/48177244/unload-to-s3-with-python-using-iam-role-credentials)글을 참조하여 unload 문이 완벽하게 작동했습니다. COPY 및 SELECT 문과 같은 다른 명령도 시도했습니다.
 
-하지만, 저는 테이블을 생성하는 쿼리를 실행하였습니다. CREATE TABLE 쿼리는 오류없이 실행되었지만, select 구문에 도달했을 때 `relation "public.test"가 존재하지 않는다는" 오류가 발생하였습니다.
+하지만, 저는 테이블을 생성하는 쿼리를 실행하였습니다. CREATE TABLE 쿼리는 오류없이 실행되었지만, select 구문에 도달했을 때 `relation "public.test"가 존재하지 않는다는` 오류가 발생하였습니다.
 
 왜 테이블이 적절히 만들어지지 않았는지 알 수 있을까요? 쿼리는 아래 있습니다.
 
