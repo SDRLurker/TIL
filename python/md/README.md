@@ -273,6 +273,12 @@
 * "n번째 문자마다 문자열을 나누는 방법?" 글을 번역한 내용입니다.
 
 * http://stackoverflow.com/questions/9475241/split-python-string-every-nth-character
+  
+##### star.md
+
+* "함수 호출에서 별(*)과 쌍별(**) 연산자의 의미는 무엇입니까?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/2921847/what-does-the-star-and-doublestar-operator-mean-in-a-function-call
 
 ##### static_var.md
 
