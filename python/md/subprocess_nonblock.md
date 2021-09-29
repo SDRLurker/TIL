@@ -2,9 +2,7 @@
 
 # nonblocking 방법으로 subprocess의 출력을 읽는 방법
 
-저는 subprocess를 시작하고 표준 출력을 확인하는 간단한 python script를 작성하려고 합니다.
-
-여기에 코드의 스니펫이 있습니다.
+저는 subprocess를 시작하고 표준 출력을 확인하는 간단한 python script를 작성하려고 합니다. 여기에 코드의 스니펫이 있습니다.
 
 ```python
 process = subprocess.Popen([path_to_exe, os.path.join(temp_dir,temp_file)], stdout=subprocess.PIPE)
@@ -23,7 +21,7 @@ subprocess가 종료되는 것을 기다리지 않고 표준 출력을 읽어 �
 
 ---
 
-2개의 답변 중 1 개의 답변만 추려냄.
+2개의 답변 중 1 개의 답변
 
 [select](https://docs.python.org/2/library/select.html) 모듈을 확인하세요.
 
