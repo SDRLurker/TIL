@@ -168,6 +168,12 @@
 
 * https://chrisalbon.com/python/data_wrangling/pandas_create_column_with_loop/
 
+##### pickle.md
+
+* "피클(Pickle) - 만약 존재하면 불러오고 그렇지 않으면 생성하여 저장하기" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/26835477/pickle-load-variable-if-exists-or-create-and-save-it
+
 ##### pip_user.md
 
 * "`"pip install --user ..."`의 목적은?" 글을 번역한 내용입니다.
