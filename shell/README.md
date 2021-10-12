@@ -56,6 +56,12 @@ https://serverfault.com/questions/84430/whats-wrong-with-my-cronjob-syntax-im-tr
 
 https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-of-every-month
 
+## crontab_env.md
+
+"crontab이 사용할 환경 변수를 어디에서 설정할 수 있습니까?"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/2229825/where-can-i-set-environment-variables-that-crontab-will-use
+
 ## curl.md
 
 "bash 스크립트에서 curl 호출시 변수를 어떻게 사용할 수 있을까요?"를 번역한 내용입니다.
