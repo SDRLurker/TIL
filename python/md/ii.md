@@ -1,5 +1,7 @@
 # [지식in] 허수 i의 i제곱은 몇일까?
-[https://www.youtube.com/watch?v=Tk3PIpcppV0](https://www.youtube.com/watch?v=Tk3PIpcppV0)
+
+* [https://www.youtube.com/watch?v=Tk3PIpcppV0](https://www.youtube.com/watch?v=Tk3PIpcppV0)
+* [http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md](http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md)
 
 $$e^{i\pi} = -1$$
 
