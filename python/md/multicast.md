@@ -6,9 +6,9 @@
 
 ---
 
-## 8개의 답변 중 1개를 추려냄
+## 9개의 답변 중 1개
 
-제가 실행했을 때 다음 코드는 잘 됩니다.
+이 코드는 잘 작동합니다.
 
 수신
 
@@ -57,7 +57,6 @@ sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
 # msg 파라미터는 "바이트 류 객체가 필요합니다" (https://stackoverflow.com/a/42612820)
 sock.sendto("robot", (MCAST_GRP, MCAST_PORT))
 ```
-
 
 작동하지 않는 [https://wiki.python.org/moin/UdpCommunication](http://wiki.python.org/moin/UdpCommunication)의 예제를 기반으로합니다.
 
