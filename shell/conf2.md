@@ -22,9 +22,9 @@ PHP app/console doctrine:migrations:migrate $DATEBASE_VERSION
 
 ---
 
-## 26개의 답변 중 1개의 답변만 추려냄
+## 31개의 답변 중 1개
 
-awk를 사용하여 해당 라인의 값을 grep하는 것은 어떨까요?
+해당 라인의 값을 grep 하고난 뒤 awk를 사용하는 것은 어떨까요?
 
 ```shell
 version=$(awk -F "=" '/database_version/ {print $2}' parameters.ini)
