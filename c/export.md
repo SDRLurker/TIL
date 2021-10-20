@@ -8,11 +8,11 @@
 
 -------------
 
-## 2개의 답변 중 1개의 답변만 추려냄.
+## 2개의 답변 중 1개의 답변
 
-.so 파일을 언급하셨기 때문에, gcc나 gcc같은 컴파일러를 사용하신다고 가정합니다.
+`.so` 파일을 언급하셨기 때문에, `gcc`나 gcc같은 컴파일러를 사용하신다고 가정합니다.
 
-기본적으로 모든 extern 함수들은 연결된 object에서 보실 수 있습니다. 당신은 함수와 (전역변수를) `hidden` 속성을 사용하여 각 경우에 대해 (같은 라이브러리의 다른 소스 파일로부터 사용되는 함수를 `extern`으로 나둔 채로) 숨기실 수 있습니다.
+기본적으로 모든 `extern` 함수들은 연결된 object에서 보실 수 있습니다. 당신은 함수와 (전역변수를) `hidden` 속성을 사용하여 각 경우에 대해 (같은 라이브러리의 다른 소스 파일로부터 사용되는 함수를 `extern`으로 나둔 채로) 숨기실 수 있습니다.
 
 ```c
 int __attribute__((visibility("hidden"))) foo(void)
@@ -21,7 +21,7 @@ int __attribute__((visibility("hidden"))) foo(void)
 }
 ```
 
-다른 방법으로 당신은 gcc로 `-fvisibility=hidden` 옵션을 보냄으로서 default를 `hidden`으로 바꿀 수 있습니다. 다음을 사용하여 export할 특별한 표시를 할 수 있습니다.
+다른 방법으로 당신은 `gcc`로 `-fvisibility=hidden` 옵션을 보냄으로서 default를 `hidden`으로 바꿀 수 있습니다. 다음을 사용하여 export할 특별한 표시를 할 수 있습니다.
 
 ```c
 __attribute__((visibility("default")))
