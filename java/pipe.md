@@ -24,7 +24,7 @@ String[] value_split = rat_values.split("|");
 > Atmosphere 3  
 > Value for money 1
 
-## 5개의 답변 중 1개의 답변만 추려냄
+## 5개의 답변 중 1개의 답변
 
 `|`는 정규식에서 메타글자입니다. 당신은 파이프를 escape 할 필요가 있습니다.
 
