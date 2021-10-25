@@ -2,7 +2,7 @@
 
 ## 이름
 
-git-log - commit history(커밋 히스토리)를 조회합니다.
+git-log - commit log를 보여줍니다.
 
 ## 요약
 
@@ -12,9 +12,28 @@ git log [<옵션들> [revision range] [[\--] <경로>...]
 
 ## 설명
 
-commit history(커밋 히스토리) 로그를 조회합니다.
+commit log를 보여줍니다.
 
-이 명령은 커밋에 관해 보여주는 방법에 대해 제어하는 git rev-list와 각 commit이 어떻게 변했는지 제어하는 git diff-* 명령에 적용될 수 있는 옵션을 사용합니다.
+주어진 commit에서 `부모(parent)` 링크를 따라 도달할 수 있는 commit을 나열하지만 앞에 ^가 있는 commit에서 도달 가능한 commit은 제외합니다. 출력은 기본적으로 시간 역순으로 제공됩니다.
+
+이것을 집합 연산으로 생각할 수 있습니다. 명령줄에 지정된 commit에서 도달할 수 있는 commit은 집합을 형성한 다음 앞에 ^가 표시된 커밋에서 도달할 수 있는 커밋을 해당 집합에서 뺍니다. 나머지 커밋은 명령의 출력으로 나오는 것입니다. 다양한 기타 옵션 및 경로 매개변수를 사용하여 결과를 추가로 제한할 수 있습니다.
+
+다음 명령이 이 예시입니다.
+
+```shell
+$ git log foo bar ^baz
+```
+
+위 명령어는 "foo 또는 bar에서는 도달할 수 있지만 baz에서는 도달할 수 없는 모든 커밋을 나열"을 의미합니다.
+
+특수 표기법 "<commit1>..<commit2>"는 "^<commit1> <commit2>"의 약어로 사용할 수 있습니다. 예를 들어 다음 중 하나를 서로 바꿔서 사용할 수 있습니다.
+ 
+```shell
+$ git log A B --not $(git merge-base --all A B)
+$ git log A...B
+```
+ 
+이 명령은 [git-rev-list[1]](http://git-scm.com/docs/git-rev-list) 명령에 적용 가능한 옵션을 사용하여 표시되는 내용과 방법을 제어하고 [git-diff[1]](http://git-scm.com/docs/git-diff) 명령에 적용 가능한 옵션을 사용하여 각 이 도입하는 변경 사항이 표시되는 방법을 제어합니다.
 
 ## 옵션
 
