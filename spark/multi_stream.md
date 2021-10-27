@@ -2,7 +2,7 @@
 
 # 같은 Sink로 여러개의 Spark Structured Streaming WriteStreams하기
 
-Spark Structured Streaming 2.2.1에서 순서대로 같은 데이터베이스 sink로 두 개의 Writestream하는 것이 안 됩니다. 이 2개의 Writestream이 순서대로 실행하는 방법을 제안해주세요.
+Spark Structured Streaming 2.2.1에서 순서대로 같은 데이터베이스 sink로 두 개의 `Writestream` 하는 것이 안 됩니다. 이 2개의 Writestream이 순서대로 실행하는 방법을 제안해주세요.
 
 ```scala
 val deleteSink = ds1.writestream
@@ -21,11 +21,9 @@ UpsertSink.awaitTermination()
 
 위의 코드에서 사용한대로 `deleteSink`는 `UpsertSink` 뒤에 실행됩니다.
 
-하지만 다음 Python 응용프로그램은 패킷을 찾을 수 없습니다.
-
 ---
 
-## 1개의 답변만 발췌
+## 1개의 답변
 
 만약 당신이 병렬로 두개의 stream을 실행하고 싶으시면 다음을 사용해야 합니다.
 
