@@ -33,7 +33,7 @@ case class Name(firstName: String, lastName: String, middleName:String)
 
 ## emptyDataset() – 컬럼이 없는 비어있는 Dataset 생성
 
-SparkSession은 스키마 없이 빈 Dataset을 반환하는 emptyDataset() 메서드를 제공하지만 이것은 우리가 원하는 것이 아닙니다. 다음 예제는 스키마로 생성하는 방법을 보여줍니다.
+SparkSession은 스키마 없이 빈 Dataset을 반환하는 `emptyDataset()` 메서드를 제공하지만 이것은 우리가 원하는 것이 아닙니다. 다음 예제는 스키마로 생성하는 방법을 보여줍니다.
 
 ```scala
 case class Empty()
