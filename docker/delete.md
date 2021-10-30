@@ -29,7 +29,7 @@ Error: failed to remove images: [training/webapp]
 
 ---
 
-## 9개 답변 중 1개만 추려냄
+## 11개 답변 중 1
 
 docker image와 docker container에는 차이가 있습니다. 이 [질문](https://stackoverflow.com/questions/23735149/what-is-the-difference-between-a-docker-image-and-a-container)을 확인하세요.
 
