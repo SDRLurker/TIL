@@ -1,3 +1,5 @@
+출처 : [https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3](https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3)
+
 # 아파치 하둡에서 S3 지원
 
 아파치 하둡은 URL 접두사로 "s3a:"의 "S3A"라 불리는 S3로 접속 Connector를 제공합니다. 이전 connector "s3"와 "s3n"은 현재 하둡 버전에서는 더 이상 사용되지 않거나 삭제되었습니다.
