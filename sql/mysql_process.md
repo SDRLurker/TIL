@@ -67,11 +67,11 @@ mysql> show processlist;
 
 ---
 
-## 6개의 답변 중 1개를 추려냄
+## 7개의 답변 중 1개
 
 SQL의 새 버전은 information\_schema 에서 프로세스 리스트를 지원합니다.
 
-```
+```SQL
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
 ```
 
@@ -79,6 +79,6 @@ SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
 
 INFORMATION\_SCHEMA.PROCESSLIST는 MySQL 5.1.7에 추가되었습니다. 당신이 사용하는 버전을 다음처럼 알 수 있습니다.
 
-```
+```SQL
 SELECT VERSION()
 ```
