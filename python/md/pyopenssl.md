@@ -37,7 +37,7 @@ Traceback (most recent call last):
 AttributeError: 'module' object has no attribute 'SSL_ST_INIT'
 ```
 
-## 20개의 답변 중 1개의 답변만 추려냄
+## 21개의 답변 중 1개의 답변
 
 저는 pip로 `pyopenssl` 업그레이드 하는 것이 `pip`와 관련된 명령어 중에서는 작동하는 것이 없었습니다. `easy_install`로 `pyopenssl`을 업그레이드 함으로써, 위의 문제는 해결될 수 있습니다.
 
