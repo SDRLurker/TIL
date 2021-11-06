@@ -33,7 +33,7 @@ def polyfit(x, y, degree):
 
 ---
 
-## 11개 중 1개의 답변
+## 12개 중 2개의 답변
 
 [numpy.polyfit](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html) 문서로부터 이는 선형 회귀에 적합(fit) 합니다. 특히, 차수가 'd'인 numpy.polyfit은 평균 함수를 사용하여 선형 회귀에 맞춥니다. 
 
@@ -71,4 +71,16 @@ def polyfit(x, y, degree):
     results['determination'] = ssreg / sstot
 
     return results
+```
+
+---
+
+매우 늦은 답변이지만, 이를 위해 준비된 함수가 누군가는 필요할 것입니다.
+
+[scipy.stats.linregress](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html)
+
+예시
+
+```python
+slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(x, y)
 ```
