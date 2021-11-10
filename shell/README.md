@@ -26,6 +26,10 @@ http://stackoverflow.com/questions/15691977/why-start-a-shell-command-with-a-bac
 
 https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
 
+## ca-certificates.md
+
+"CentOS 6 ca-certificates 패키지 수동 설치"를 작성한 내용입니다.
+
 ## conf.md
 
 "shell 스크립트에서 설정 파일 (*.conf) 파싱하는 방법"를 번역한 내용입니다.
