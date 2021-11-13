@@ -14,7 +14,7 @@ http://example.com/?q=text&q3=text3
 
 ----
 
-## 8 개의 답변 중 1 개의 답변만 추려냄.
+## 8 개의 답변 중 1 개의 답변
 
 ```python
 import sys
