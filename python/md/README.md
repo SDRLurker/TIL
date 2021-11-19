@@ -358,6 +358,12 @@
 
 * https://stackoverflow.com/questions/49643225/whats-the-difference-between-reshape-and-view-in-pytorch
 
+##### transpose.md
+
+* "리스트의 리스트를 transpose(전치행렬)"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/6473679/transpose-list-of-lists
+
 ##### udp.md
 
 * "UDP - 파이썬에서 클라이언트 서버 예제 프로그램"을 번역한 내용입니다.
