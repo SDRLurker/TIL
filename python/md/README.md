@@ -96,6 +96,12 @@
 
 * https://note.nkmk.me/en/python-for-enumerate-zip/
 
+##### flask_201.md
+
+* "Flask에서 HTTP 상태 코드 201 리턴하기"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/7824101/return-http-status-code-201-in-flask
+
 ##### group.md
 
 * "Python 튜플 리스트 그룹핑"을 번역한 내용입니다.
