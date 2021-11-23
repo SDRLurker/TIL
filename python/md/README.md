@@ -6,6 +6,13 @@
 
 * https://stackoverflow.com/questions/8689964/why-do-some-functions-have-underscores-before-and-after-the-function-name
 
+##### anti_join.md
+
+* "Pandas에서 "안티조인, Anti-merge" (Python)"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/38242368/anti-merge-in-pandas-python
+* https://gist.github.com/sainathadapa/eb3303975196d15c73bac5b92d8a210f
+
 ##### assertRaises.md
 
 * "assertRaises - unittest에서 오류 테스트 하기"을 어떻게 합니까?"을 번역한 내용입니다.
