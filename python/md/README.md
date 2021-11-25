@@ -49,6 +49,12 @@
 
 * https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
 
+##### clear_cache.md
+
+* "Python Requests로 캐시를 지우려면 어떻게 하나요?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/20198274/how-do-i-clear-cache-with-python-requests
+
 ##### colab_env.md
 
 * "Google Colaboratory에서 환경 변수를 설정하는 것이 가능합니까?"을 번역한 내용입니다.
