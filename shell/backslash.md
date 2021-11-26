@@ -6,7 +6,7 @@
 \curl -L https://get.rvm.io | bash -s stable
 ```
 
-왜 이 명령어가 '\'로 시작하나요 ? [여기를 클릭하면 제가 본 사이트입니다.](https://www.digitalocean.com/community/articles/how-to-install-ruby-on-rails-on-ubuntu-12-04-lts-precise-pangolin-with-rvm)
+왜 이 명령어가 `\`로 시작하나요 ? [여기를 클릭하면 제가 본 사이트입니다.](https://www.digitalocean.com/community/articles/how-to-install-ruby-on-rails-on-ubuntu-12-04-lts-precise-pangolin-with-rvm)
 
 ---
 
@@ -36,3 +36,5 @@ alias curl='curl --some --default --options'
  ```
  
 `\curl` 를 사용하는 것은 가장 보편적이고 읽기 쉬운 방법입니다. 이는 표준화된 특징이기 때문에 모든 Bourne 쉘에서 잘 작동할 수 있습니다.
+
+`\curl`은 약간 TeX 명령처럼 보이지 않습니까? :-)
