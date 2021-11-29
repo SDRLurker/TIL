@@ -17,7 +17,7 @@ curl -X POST -H 'Content-type: application/json' --data '{"text": "${message}"}'
 
 ---
 
-## 2개 답변 중 1개만 추림
+## 2개 답변 중 1개
 
 변수는 작음 따옴표 안에서 확장될 수 없습니다. 큰 따옴표로 다음처럼 다시 작성할 수 있습니다.
 
