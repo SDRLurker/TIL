@@ -2,14 +2,14 @@
 
 # For 루프로 Pandas 열 만들기
 
-**사전준비**
+## 사전준비
 
 ```python
 import pandas as pd
 import numpy as np
 ```
 
-**데이터프레임 예시 만들기**
+## 데이터프레임 예시 만들기
 
 ```python
 raw_data = {'student_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze', 'Jacon', 'Ryaner', 'Sone', 'Sloan', 'Piger', 'Riani', 'Ali'], 
@@ -17,7 +17,7 @@ raw_data = {'student_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze', 'Ja
 df = pd.DataFrame(raw_data, columns = ['student_name', 'test_score'])
 ```
 
-**학점을 할당하기 위한 함수 만들기**
+## 학점을 할당하기 위한 함수 만들기
 
 ```python
 # 데이터를 저장할 list(리스트)를 만듭니다.
