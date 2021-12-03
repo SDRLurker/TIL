@@ -16,7 +16,7 @@
 
 다음은 CallPackage.java 입니다.
 
-```
+```java
 /// CallPackage.java
 import importpackage.subpackage.*;
 class CallPackage{
@@ -29,7 +29,7 @@ class CallPackage{
 
 그리도 다음은 HelloWorld.java 입니다.
 
-```
+```java
 ///HelloWorld.java
 
 package importpackage.subpackage;
@@ -48,7 +48,7 @@ public class HelloWorld {
 
 이는 마지막 명령에서 다음과 같은 오류를 저에게 제공하였습니다.
 
-```
+```shell
 CallPackage.java:1: package importpackage.subpackage does not exist
 import importpackage.subpackage.*;
 ^
@@ -69,7 +69,7 @@ location: class CallPackage
 
 ---
 
-## 6개 답변 중 1개만 추림
+## 6개 답변 중 1개
 
 문제는 각 명령 (javac 및 java)에 대해 클래스 경로를 설정해야 한다는 것입니다.
 
@@ -93,6 +93,6 @@ $ javac -cp . CallPackage.java
 $ java -cp . CallPackage
 ```
 
-참고 : "$ java CallPackage"를 실행하면 "오류 : 주 클래스 CallPackage를 찾거나 로드 할 수 없습니다" 오류가 발생합니다.
+참고 : "$java CallPackage"를 실행하면 "오류 : 주 클래스 CallPackage를 찾거나 로드 할 수 없습니다" 오류가 발생합니다.
 
 요약하면 각 단계에서 클래스 경로를 지정해야 합니다. 그렇게 실행한 후에 작동했습니다.
