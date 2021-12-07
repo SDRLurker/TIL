@@ -91,6 +91,12 @@
 
 * http://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
 
+##### date.md
+
+* "datetime을 date로 변환하는 방법?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/3743222/how-do-i-convert-a-datetime-to-date
+
 ##### date_range.md
 
 * "Python에서 날짜 범위를 반복하기"을 번역한 내용입니다.
