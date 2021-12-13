@@ -25,9 +25,9 @@ select cast(1701 / 84936 as numeric (10,10));
 
 ---
 
-## 2개의 답변 중 1개를 추려냄
+## 2개의 답변 중 1개
 
-위는 정수 나누기입니다. 하나의 값이 적어도 숫자(정확한 데이터 타입)나 FLOAT(주의: 이는 근사의 데이터 타입) 타입임을 보장해야 합니다.
+위는 정수 나누기입니다. 하나의 값이 적어도 `NUMERIC`(정확한 데이터 타입)나 `FLOAT`(주의: 이는 근사의 데이터 타입) 타입임을 보장해야 합니다.
 
 It is integer division. Make sure that at least one argument is: NUMERIC(accurate data type)/FLOAT(caution: it's approximate data type):
 
@@ -35,9 +35,9 @@ It is integer division. Make sure that at least one argument is: NUMERIC(accurat
 
 ```SQL
 select 1701.0 / 84936;
--- or
+-- 또는
 SELECT 1.0 * 1701 / 84936;
--- or
+-- 또는
 SELECT CAST(1701 AS NUMERIC(10,4))/84936;
 ```
 
