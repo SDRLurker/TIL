@@ -14,9 +14,9 @@ CURDATE()는 오늘을 얻지만, 어제 값에 대한 주문도 얻고 싶습�
 
 ---
 
-## 4개의 답변 중 1개를 추려냄
+## 4개의 답변 중 1개
 
-CURDATE를 interval(예시 어제) 값으로 빼기 혹은 더하기를 사용하기 위해 당신은 함수를 [DATE_ADD](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-add)사용할 수 있습니다.
+CURDATE를 interval(예시 어제) 값으로 빼기 혹은 더하기를 사용하기 위해 당신은 [DATE_ADD](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-add) 함수를 사용할 수 있습니다.
 
 ```SQL
 SELECT DATE_ADD(CURDATE(), INTERVAL -1 DAY);
