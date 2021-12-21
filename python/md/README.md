@@ -115,6 +115,12 @@
 
 * https://stackoverflow.com/questions/2184181/decoding-tcp-packets-using-python
 
+##### del_key.md
+
+* "Python dictionary에서 키를 어떻게 없앨 수 있을까요?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/11277432/how-can-i-remove-a-key-from-a-python-dictionary
+
 ##### enumerate_zip.md
 
 * "Python에서 enumerate()와 zip() 함께 사용하기"을 번역한 내용입니다.
