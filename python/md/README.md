@@ -187,6 +187,12 @@
 
 * https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
 
+##### multipart.md
+
+* "파이썬에서 요청과 함께 "multipart/form-data"를 보내는 방법은 무엇입니까?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python
+
 ##### mysql.md
 
 * "Python 3과 MySQL"를 번역한 내용입니다.
