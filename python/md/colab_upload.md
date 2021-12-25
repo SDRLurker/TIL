@@ -19,7 +19,9 @@ CSV 파일을 업로드하는 가장 쉬운 방법은 GitHub 저장소를 사용
 
 ```python
 url = '복사한_raw_GitHub_링크'
+
 df1 = pd.read_csv(url)
+
 # 데이터 세트는 Pandas Dataframe에 이제 저장됩니다.
 ```
 
@@ -37,7 +39,9 @@ uploaded = files.upload()
 
 ```python
 import io
+
 df2 = pd.read_csv(io.BytesIO(uploaded['Filename.csv']))
+
 # 데이터 세트는 Pandas Dataframe에 이제 저장됩니다.
 ```
 
@@ -46,11 +50,13 @@ df2 = pd.read_csv(io.BytesIO(uploaded['Filename.csv']))
 
 ```python
 # Colaboratory에서 csv 파일을 읽기 위한 코드:
+
 !pip install -U -q PyDrive
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 from google.colab import auth
 from oauth2client.client import GoogleCredentials
+
 # PyDrive 클라이언트를 생성하고 인증하기
 auth.authenticate_user()
 gauth = GoogleAuth()
@@ -70,6 +76,7 @@ link = 'https://drive.google.com/open?id=1DPZZQ43w8brRhbEMolgLqOWKbZbE-IQu' # �
 
 ```python
 fluff, id = link.split('=')
+
 print (id) # '=' 뒤에 모든 부분이 있는지 확인
 ```
 
@@ -79,6 +86,7 @@ print (id) # '=' 뒤에 모든 부분이 있는지 확인
 downloaded = drive.CreateFile({'id':id}) 
 downloaded.GetContentFile('Filename.csv')  
 df3 = pd.read_csv('Filename.csv')
+
 # 데이터 세트는 Pandas Dataframe에 이제 저장됩니다.
 ```
 
@@ -106,6 +114,7 @@ drive.mount('/content/drive')
 ```python
 path = "copied path"
 df_bonus = pd.read_csv(path)
+
 # 데이터 세트는 Pandas Dataframe에 이제 저장됩니다.
 ```
 
