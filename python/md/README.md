@@ -6,6 +6,12 @@
 
 * https://stackoverflow.com/questions/44882063/replace-all-values-with-nan-in-the-dataframe-in-pandas
 
+##### SVD.md
+
+* "raise LinAlgError("SVD가 수렴하지 않았습니다.") LinAlgError: SVD가 matplotlib pca 결정에서 수렴하지 않았습니다."을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/21827594/raise-linalgerrorsvd-did-not-converge-linalgerror-svd-did-not-converge-in-m
+
 ##### `__pep8__.md`
 
 * "파이썬 : 왜 함수 이름 앞과 뒤에 "__"를 가진 함수들이 있을까요?"을 번역한 내용입니다.
