@@ -1,4 +1,4 @@
-출처 : [https://bitdatatechie.com/2019/09/13/spark-journal-return-multiple-dataframes-from-a-scala-method/](https://bitdatatechie.com/2019/09/13/spark-journal-return-multiple-dataframes-from-a-scala-method/)
+출처 : [https://web.archive.org/web/20201025213055/https://bitdatatechie.com/2019/09/13/spark-journal-return-multiple-dataframes-from-a-scala-method/](https://web.archive.org/web/20201025213055/https://bitdatatechie.com/2019/09/13/spark-journal-return-multiple-dataframes-from-a-scala-method/)
 
 # Spark Journal: Scala 메소드로부터 여러 개의 dataframe을 리턴
 
@@ -10,6 +10,7 @@
 더 읽기 전에 StackOverflow의 이 게시물을 살펴 보는 것이 좋습니다. 이 방법은 **Scala에서 List와 Tuple의 개념적 차이**를 분명히 하는 데 도움이 됩니다.
 
 **접근 1**  
+
 _리턴 값으로 List를 사용_
 
 ```scala
@@ -40,7 +41,8 @@ dataFrame2.show
 +---+----+----+
 ```
 
-**접근 2**  
+**접근 2**
+
 _리턴 값으로 Tuple을 사용_
 
 ```scala
@@ -69,3 +71,5 @@ df2.show
 |  4| jkl|ctrl|
 +---+----+----+
 ```
+
+개인적으로 접근 2를 선호합니다. Tuple을 사용하는 자체 장점이 있고 List와 비교할 때 더 유연하기 때문입니다.
