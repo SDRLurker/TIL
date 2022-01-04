@@ -68,6 +68,12 @@ https://spark.apache.org/docs/latest/mllib-statistics.html
 
 https://stackoverflow.com/questions/37791685/what-is-the-use-case-for-start-awaittermination-and-stop-with-regard-to-sp
 
+### time.md
+
+"Spark에서 쿼리의 실행 시간을 측정하는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/50791975/spark-structured-streaming-multiple-writestreams-to-same-sink
+
 ### window.md
 
 Spark Structured Streaming에서 window에 대해 간단히 실습한 내용입니다.
