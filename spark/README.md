@@ -44,6 +44,12 @@ https://spark.apache.org/docs/latest/rdd-programming-guide.html
 
 https://stackoverflow.com/questions/34529953/why-is-the-fold-action-necessary-in-spark
 
+### mul_col.md
+
+"Spark SQL에서 여러 개의 열로 파티셔닝(Partitioning)"을 번역한 내용입니다.
+
+https://stackoverflow.com/questions/37795488/partitioning-by-multiple-columns-in-spark-sql
+
 ### multi.md
 
 "Spark Journal: Scala 메소드로부터 여러 개의 dataframe을 리턴"을 번역한 내용입니다.
