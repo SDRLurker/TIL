@@ -30,7 +30,7 @@ EOF
 
 ---
 
-## 9 Answers
+## 10개의 답변 중 1개의 답변
 
 이는 표준입력으로 문자열을 제공하는 *heredoc* 포멧으로 불립니다. 더 자세한 내용은 [https://en.wikipedia.org/wiki/Here_document#Unix_shells](https://en.wikipedia.org/wiki/Here_document#Unix_shells) 를 보시면 됩니다.
 
