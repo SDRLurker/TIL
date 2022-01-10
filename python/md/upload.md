@@ -10,7 +10,6 @@ Python은 HTTP를 통한 데이터 전송을 단순화하는 많은 라이브러
 
 ## Python requests 라이브러리로 하나의 파일 업로드
 
-
 이 튜토리얼은 파일을 보내는 방법을 다루며 파일이 어떻게 만들어지는지는 신경 쓰지 않습니다. 따라하기 위해 `my_file.txt`, `my_file_2.txt` 및 `my_file_3.txt`라는 세 개의 파일을 만듭니다.
 
 가장 먼저 해야 할 일은 작업 공간에 `requests` 라이브러리를 설치하는 것입니다. 필수는 아니지만 가상 환경에 라이브러리를 설치하는 것이 좋습니다.
@@ -106,3 +105,83 @@ Upload completed successfully!
 ```
 
 온전성 검사로 `form_field_name` 값이 파일에 있는 것과 일치하는지 확인할 수 있습니다.
+
+## Python requests 라이브러리로 여러개의 파일 업로드
+
+requests를 사용하여 여러 파일을 업로드하는 것은 단일 파일과 매우 유사하지만 주요 차이점은 list를 사용한다는 것입니다. `multi_uploader.py`라는 새 파일과 다음 설정 코드를 만듭니다.
+
+```python
+import requests
+
+test_url = "http://httpbin.org/post"
+```
+
+이제 여러 이름과 파일이 있는 사전인 `test_files`라는 변수를 만듭니다.
+
+```python
+test_files = {
+    "test_file_1": open("my_file.txt", "rb"),
+    "test_file_2": open("my_file_2.txt", "rb"),
+    "test_file_3": open("my_file_3.txt", "rb")
+}
+```
+
+이전과 마찬가지로 키는 양식 필드의 이름이고 값은 바이트 단위의 파일입니다.
+
+파일 변수를 튜플 목록으로 만들 수도 있습니다. 각 튜플에는 파일을 수락하는 양식 필드의 이름이 포함되며 그 뒤에 파일 내용이 바이트 단위로 표시됩니다.
+
+```python
+test_files = [("test_file_1", open("my_file.txt", "rb")),
+              ("test_file_2", open("my_file_2.txt", "rb")),
+              ("test_file_3", open("my_file_3.txt", "rb"))]
+```
+
+둘 중 하나가 작동하므로 원하는 것을 선택하십시오!
+
+파일 목록이 준비되면 이전과 같이 요청을 보내고 응답을 확인할 수 있습니다.
+
+```python
+test_response = requests.post(test_url, files = test_files)
+
+if test_response.ok:
+    print("Upload completed successfully!")
+    print(test_response.text)
+else:
+    print("Something went wrong!")
+```
+
+이 스트립트를 `python` 명령으로 실행합니다.
+
+```shell
+python multi_uploader.py
+```
+
+당신은 이 출력을 볼 것입니다.
+
+```
+Upload completed successfully!
+{
+  "args": {}, 
+  "data": "", 
+  "files": {
+    "test_file_1": "This is my file\nI like my file\n", 
+    "test_file_2": "All your base are belong to us\n", 
+    "test_file_3": "It's-a me, Mario!\n"
+  }, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "470", 
+    "Content-Type": "multipart/form-data; boundary=4111c551fb8c61fd14af07bd5df5bb76", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.25.0", 
+    "X-Amzn-Trace-Id": "Root=1-5fc3c744-30404a8b186cf91c7d239034"
+  }, 
+  "json": null, 
+  "origin": "102.5.105.200", 
+  "url": "http://httpbin.org/post"
+}
+```
+
+잘 했습니다! 당신은 `requests`로 하나와 여러개의 파일을 업로드할 수 있습니다!
