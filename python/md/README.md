@@ -430,7 +430,13 @@
 * "파이썬으로 unpacking : 병렬 대입을 넘어서"을 번역한 내용입니다.
 
 * https://stackabuse.com/unpacking-in-python-beyond-parallel-assignment/
+  
+##### upload.md
 
+* "Python requests 라이브러리로 파일 업로드하는 방법"을 번역한 내용입니다.
+
+* https://stackabuse.com/how-to-upload-files-with-pythons-requests-library/
+  
 ##### url_param.md
 
 * "request.GET에서 URL 파라미터를 얻기"을 번역한 내용입니다.
