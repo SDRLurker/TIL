@@ -8,58 +8,64 @@
 
 ## execserv
 
-1. 실행법 
+### 1. 실행법 
 
-  execserv port
+```
+execserv port
+```
 
-  port 번호로 서버 프로그램이 구동됩니다.
+port 번호로 서버 프로그램이 구동됩니다.
 
-2. 설정파일
+### 2. 설정파일
   
-  $HOME/conf/mon/ip.dat
+$HOME/conf/mon/ip.dat
   
-  허용할 클라이언트의 ip주소를 입력합니다. 화이트리스트 기반입니다.
+허용할 클라이언트의 ip주소를 입력합니다. 화이트리스트 기반입니다.
   
-  예시)
+예시)
+
+```
+1
+127.0.0.1
+```
   
-  1
+1은 개수, 다음 줄 부터는 허용할 ip주소를 입력하여 위 $HOME/conf/mon/ip.dat에 저장합니다.
   
-  127.0.0.1
+$HOME/conf/mon/cmd.dat
   
-  1은 개수, 다음 줄 부터는 허용할 ip주소를 입력하여 위 $HOME/conf/mon/ip.dat에 저장합니다.
+클라이언트에게 허용할 명령어를 저장합니다. 화이트리스트 기반입니다.
   
-  $HOME/conf/mon/cmd.dat
+예시)
+
+```
+1 
+ls
+```
   
-  클라이언트에게 허용할 명령어를 저장합니다. 화이트리스트 기반입니다.
-  
-  예시)
-  
-  1
-  
-  ls
-  
-  클라이언트에게 ls라는 명령어를 실행할 수 있도록 허용합니다.
-  
+클라이언트에게 ls라는 명령어를 실행할 수 있도록 허용합니다.
   
 ## execclnt
 
-1. 실행법 
+### 1. 실행법 
 
-  execclnt ip port 실행할명령어 ~~SUN~~
+```shell
+execclnt ip port 실행할명령어
+```
 
-  ip, port 로 접속하여 서버에게 '실행할 명령어'를 요청하고 응답을 받습니다.
+ip, port 로 접속하여 서버에게 '실행할 명령어'를 요청하고 응답을 받습니다.
   
-  서버가 SUN 계열일 경우 뒤에 마지막 인자에 'SUN'을 붙여서 실행합니다.
+서버가 SUN 계열일 경우 뒤에 마지막 인자에 'SUN'을 붙여서 실행합니다.
   
   
 ## 예시
 
+```shell
 ./execserv 30000 &
-
 ./execclnt 127.0.0.1 30000 ls
+```
 
-execclnt.c
+## 구성 소스파일
 
-execserv.c
-
-Makefile
+* execclnt.c
+* execserv.c
+* Makefile
