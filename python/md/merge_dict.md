@@ -52,3 +52,51 @@ def merge_two_dicts(x, y):
 ```python
 z = merge_two_dicts(x, y)
 ```
+
+### 설명
+
+두 개의 딕셔너리가 있고 원래 딕셔너리를 변경하지 않고 새로운 딕셔너리를 합치기를 원합니다.
+
+```python
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'c': 4}
+```
+
+원하는 결과는 합쳐진 값을 가진 새로운 딕셔너리(`z`)를 얻는 것이고 두 번째 딕셔너리의 값을 첫 번째로부터 덮어쓰는 것입니다.
+
+```python
+>>> z
+{'a': 1, 'b': 3, 'c': 4}
+```
+
+이것을 위한 새로운 문법은 [PEP 448](https://www.python.org/dev/peps/pep-0448/)에서 제안되었고 [Python 3.5부터 가능합니다](https://mail.python.org/pipermail/python-dev/2015-February/138564.html)
+
+```python
+z = {**x, **y}
+```
+
+이는 실제로 하나의 표현식입니다.
+
+우리는 리터럴 표기법으로도 합칠 수 있습니다.
+
+```python
+z = {**x, 'foo': 1, 'bar': 2, **y}
+```
+
+결과는 이제 이렇게 나옵니다.
+
+```python
+>>> z
+{'a': 1, 'b': 3, 'foo': 1, 'bar': 2, 'c': 4}
+```
+
+이제 [3.5, PEP 478의 릴리스 일정](https://www.python.org/dev/peps/pep-0478/#features-for-3-5)에 구현된 것으로 표시되며 이제 [Python 3.5의 새로운 기능](https://docs.python.org/dev/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations) 문서에 포함되었습니다.
+
+그러나 많은 조직이 여전히 Python 2를 사용하고 있으므로 이전 버전과 호환되는 방식으로 이 작업을 수행할 수 있습니다. Python 2 및 Python 3.0-3.4에서 사용할 수 있는 고전적인 Python 방식은 이 작업을 2단계 프로세스로 수행하는 것입니다.
+
+```python
+z = x.copy()
+z.update(y) # z를 변경하기 때문에 None을 반환합니다.
+```
+
+두 접근 방식 모두에서 `y`가 두 번째로 오고 그 값이 `x`의 값을 대체하므로 `b`는 최종 결과에서 `3`을 가리킵니다.
