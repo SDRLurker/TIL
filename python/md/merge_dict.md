@@ -100,3 +100,43 @@ z.update(y) # z를 변경하기 때문에 None을 반환합니다.
 ```
 
 두 접근 방식 모두에서 `y`가 두 번째로 오고 그 값이 `x`의 값을 대체하므로 `b`는 최종 결과에서 `3`을 가리킵니다.
+
+### Python 3.5가 아니자만 *하나의 표현식*을 원할 때
+
+아직 Python 3.5를 사용하지 않거나 이전 버전과 호환되는 코드를 작성해야 하고 이를 *하나의 표현식*으로 원할 경우 가장 성능이 좋고 올바른 접근 방식은 이를 함수에 넣는 것입니다.
+
+```python
+def merge_two_dicts(x, y):
+    """Given two dictionaries, merge them into a new dict as a shallow copy."""
+    z = x.copy()
+    z.update(y)
+    return z
+```
+
+다음과 같은 하나의 표현식이 있습니다.
+
+```python
+z = merge_two_dicts(x, y)
+```
+
+0에서 매우 큰 숫자까지 임의의 수의 딕셔너리를 합치는 함수를 만들 수도 있습니다.
+
+```python
+def merge_dicts(*dict_args):
+    """
+    Given any number of dictionaries, shallow copy and merge into a new dict,
+    precedence goes to key-value pairs in latter dictionaries.
+    """
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
+```
+
+이 함수는 모든 딕셔너리에 대해 Python 2 및 3에서 작동합니다. 예를 들어 `a`부터 `g`까지 딕셔너리가 있습니다.
+
+```python
+z = merge_dicts(a, b, c, d, e, f, g) 
+```
+
+g의 키-값 쌍은 딕셔너리에서 `a`부터 f까지 우선 적용됩니다.
