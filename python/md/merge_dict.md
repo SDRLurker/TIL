@@ -140,3 +140,86 @@ z = merge_dicts(a, b, c, d, e, f, g)
 ```
 
 g의 키-값 쌍은 딕셔너리에서 `a`부터 f까지 우선 적용됩니다.
+
+### 다른 답변에 대한 비판
+
+이전에 채택된 답변에 표시된 내용을 사용하지 마세요.
+
+```python
+z = dict(x.items() + y.items())
+```
+
+Python 2에서는 각 딕셔너리에 대해 메모리에 두 개의 list 만들고 처음 두 개를 합친 길이와 동일한 길이로 메모리에 세 번째 list를 만든 다음 세 개의 list를 모두 버려 딕셔너리을 만듭니다. **Python 3에서는** 두 개의 list가 아닌 두 개의 `dict_items` 객체를 함께 추가하기 때문에 **실패합니다.**
+
+```python
+>>> c = dict(a.items() + b.items())
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'dict_items' and 'dict_items'
+```
+
+예를 들어, list로 명시적으로 생성해야 합니다. `z = dict(list(x.items()) + list(y.items()))`. 이것은 자원과 계산 능력의 낭비입니다.
+
+마찬가지로, 값이 해시할 수 없는 객체(예: list)인 경우 Python 3(Python 2.7의 `viewitems()`)에서 `items()`의 합집합을 취하는 것도 실패합니다. 값이 해시 가능하더라도 **집합은 의미적으로 순서가 지정되지 않으므로 우선 순위와 관련하여 동작이 정의되지 않습니다. 따라서 다음과 같이 하지 마십시오.**
+
+```python
+>>> c = dict(a.items() | b.items())
+```
+
+이 예는 값이 해시 불가능할 때 어떤 일이 발생하는지 보여줍니다.
+
+```python
+>>> x = {'a': []}
+>>> y = {'b': []}
+>>> dict(x.items() | y.items())
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+```
+
+다음은 `y`가 우선 순위를 가져야 하는 예입니다. 대신 임의의 집합 순서로 인해 `x`의 값이 유지됩니다.
+
+```python
+>>> x = {'a': 2}
+>>> y = {'a': 1}
+>>> dict(x.items() | y.items())
+{'a': 2}
+```
+
+당신이 사용하지 말아야 할 다른 예시입니다.
+
+```python
+z = dict(x, **y)
+```
+
+이것은 `dict` 생성자를 사용하며 매우 빠르고 메모리 효율적입니다(2단계 프로세스보다 약간 더 높음). 그러나 여기서 무슨 일이 일어나고 있는지 정확히 알지 못한다면(즉, 두 번째 dict는 dict에 키워드 인수로 전달됩니다) 생성자), 읽기 어렵고 의도한 사용법이 아니므로 Pythonic하지 않습니다.
+
+다음은 [django에서 수정되는](https://code.djangoproject.com/attachment/ticket/13357/django-pypy.2.diff) 사용법의 예입니다.
+
+딕셔너리는 해시 가능한 키(예: `frozensets` 또는 tuples)를 사용하기 위한 것이지만 **키가 문자열이 아닌 경우 Python 3에서는 이 방법이 실패합니다.**
+
+```python
+>>> c = dict(a, **b)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: keyword arguments must be strings
+```
+
+[메일링 리스트](https://mail.python.org/pipermail/python-dev/2010-April/099459.html)에서 파이썬 언어의 창시자인 Guido van Rossum은 다음과 같이 썼습니다.
+
+> 결국 ** 메커니즘을 남용하기 때문에 dict({}, **{1:3})를 불법으로 선언한 것입니다.
+
+그리고
+
+> 분명히 dict(x, **y)는 "x.update(y) 호출 및 x 반환"에 대한 "멋진 해킹"으로 돌아갑니다. 개인적인 생각으로는 멋있다기 보다는 촌스럽습니다.
+
+`dict(**y)` 의 의도된 사용법은 가독성을 위해 딕셔너리을 만드는 것입니다. 예를 들어, 
+
+`{'a': 1, 'b': 10, 'c': 11}`
+
+대신에
+
+`dict(a=1, b=10, c=11)`로 이해가 됩니다.
+
+
+
