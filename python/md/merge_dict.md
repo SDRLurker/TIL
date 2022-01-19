@@ -221,5 +221,59 @@ TypeError: keyword arguments must be strings
 
 `dict(a=1, b=10, c=11)`로 이해가 됩니다.
 
+### 댓글에 대한 응답
 
+> Guido가 말한 것에도 불구하고 `dict(x, **y)`는 btw인 dict 사양과 일치합니다. Python 2와 3 모두에서 작동합니다. 이것이 문자열 키에만 작동한다는 사실은 dict의 단점이 아니라 키워드 매개변수가 작동하는 방식의 직접적인 결과입니다. 여기에서 ** 연산자를 사용하는 것도 메커니즘을 남용하는 것이 아닙니다. 실제로 **는 딕셔너리를 키워드로 정확하게 전달하도록 설계되었습니다.
 
+다시 말하지만 키가 문자열이 아닌 경우 3에서는 작동하지 않습니다. 암시적 호출 규약은 네임스페이스가 일반 사전을 사용하는 반면 사용자는 문자열인 키워드 인수만 전달해야 한다는 것입니다. 다른 모든 호출 가능 항목은 이를 적용했습니다. `dict`는 Python 2에서 이 일관성을 깨뜨렸습니다.
+
+```python
+>>> foo(**{('a', 'b'): None})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: foo() keywords must be strings
+>>> dict(**{('a', 'b'): None})
+{('a', 'b'): None}
+```
+
+이 불일치는 Python의 다른 구현(PyPy, Jython, IronPython)을 고려할 때 좋지 않았습니다. 따라서 이 사용법은 주요 변경 사항이 될 수 있으므로 Python 3에서 수정되었습니다.
+
+한 가지 버전의 언어에서만 작동하거나 임의의 특정 제약 조건이 주어졌을 때만 작동하는 코드를 의도적으로 작성하는 것은 악의적인 무능력자라는 점을 알려드립니다.
+
+다른 댓글:
+
+> `dict(x.items() + y.items())`는 여전히 Python 2에서 가장 읽기 쉬운 해결책입니다. 가독성이 중요합니다.
+
+내 응답: `merge_two_dicts(x, y)` 실제로 가독성에 대해 우려한다면 실제로 훨씬 더 명확해 보입니다. 그리고 Python 2가 점점 더 사용되지 않으므로 앞으로 호환되지 않습니다.
+
+> `{**x, **y}`는 중첩된 딕셔너리를 처리하지 않는 것 같습니다. 중첩된 키의 내용은 병합되지 않고 단순히 덮어쓰여집니다. [...] 나는 재귀적으로 병합되지 않는 이러한 답변으로 인해 화상을 입었고 아무도 언급하지 않았다는 사실에 놀랐습니다. "병합"이라는 단어에 대한 내 해석에서 이러한 답변은 병합이 아닌 "한 딕셔너리을 다른 딕셔너리로 업데이트"를 설명합니다.
+
+예. 단일 표현식에서 첫 번째 값이 두 번째 값으로 덮어쓰여진 상태에서 **두개의** 딕셔너리를 얕은 병합을 요구하는 질문으로 다시 안내해 드리겠습니다.
+
+두 개의 딕셔너리을 가정하면 하나는 단일 함수에서 재귀적으로 병합할 수 있지만 어느 소스에서 딕셔너리를 수정하지 않도록 주의해야 하며 이를 방지하는 가장 확실한 방법은 값을 할당할 때 복사본을 만드는 것입니다. 키는 해시 가능해야 하고 일반적으로 변경할 수 없으므로 복사하는 것은 무의미합니다.
+
+```python
+from copy import deepcopy
+
+def dict_of_dicts_merge(x, y):
+    z = {}
+    overlapping_keys = x.keys() & y.keys()
+    for key in overlapping_keys:
+        z[key] = dict_of_dicts_merge(x[key], y[key])
+    for key in x.keys() - overlapping_keys:
+        z[key] = deepcopy(x[key])
+    for key in y.keys() - overlapping_keys:
+        z[key] = deepcopy(y[key])
+    return z
+```
+
+사용법:
+
+```python
+>>> x = {'a':{1:{}}, 'b': {2:{}}}
+>>> y = {'b':{10:{}}, 'c': {11:{}}}
+>>> dict_of_dicts_merge(x, y)
+{'b': {2: {}, 10: {}}, 'a': {1: {}}, 'c': {11: {}}}
+```
+
+다른 값 유형에 대한 우연성을 생각해 내는 것은 이 질문의 범위를 훨씬 넘어서므로 ["딕셔너리 병합"에 대한 표준 질문에 대한 답변](https://stackoverflow.com/questions/7204805/how-to-merge-dictionaries-of-dictionaries/24088493#24088493)을 알려드리겠습니다.
