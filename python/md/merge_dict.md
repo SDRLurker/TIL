@@ -277,3 +277,26 @@ def dict_of_dicts_merge(x, y):
 ```
 
 다른 값 유형에 대한 우연성을 생각해 내는 것은 이 질문의 범위를 훨씬 넘어서므로 ["딕셔너리 병합"에 대한 표준 질문에 대한 답변](https://stackoverflow.com/questions/7204805/how-to-merge-dictionaries-of-dictionaries/24088493#24088493)을 알려드리겠습니다.
+
+### 성능은 떨어지지만 올바른 Ad-hocs
+
+이러한 접근 방식은 성능이 떨어지지만 올바른 동작을 제공합니다. 더 높은 수준의 추상화에서 각 키-값 쌍을 반복하기 때문에 `copy` 및 `update` 또는 새로운 unpacking보다 성능이 *훨씬 떨어지지만* 우선 순위를 존중합니다(후자의 딕셔너리가 우선합니다).
+
+또한 [딕셔너리 comprehension](https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-take-union-of-dictionari) 내에서 딕셔너리를 수동으로 연결할 수도 있습니다.
+
+```python
+{k: v for d in dicts for k, v in d.items()} # iteritems in Python 2.7
+```
+
+또는 Python 2.6(과 generator 표현식이 소개된 2.4 이전 버젼)은 다음처럼 작성합니다.
+
+```python
+dict((k, v) for d in dicts for k, v in d.items()) # iteritems in Python 2
+```
+
+`itertools.chain`은 올바른 순서로 키-값 쌍에 대한 이터레이터를 연결합니다.
+
+```python
+from itertools import chain
+z = dict(chain(x.items(), y.items())) # iteritems in Python 2
+```
