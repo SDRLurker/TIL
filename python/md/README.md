@@ -181,6 +181,12 @@
 
 * https://stackoverflow.com/questions/3428536/python-list-subtraction-operation
 
+##### merge_dict.md
+
+* "하나의 표현식으로 (딕셔너리의 합집합을 취하도록) 두 개의 딕셔너리를 어떻게 합치나요?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-take-union-of-dictionari
+
 ##### multi_zombie.md
 
 * "많은 좀비 프로세스를 이끄는 파이썬 멀티프로세싱"를 번역한 내용입니다.
