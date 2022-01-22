@@ -300,3 +300,55 @@ dict((k, v) for d in dicts for k, v in d.items()) # iteritems in Python 2
 from itertools import chain
 z = dict(chain(x.items(), y.items())) # iteritems in Python 2
 ```
+
+### 성능 분석
+
+저는 정확하게 작동하는 지 알려진 사용법의 성능 분석을 진행할 것입니다. (자체 포함되어 있으므로 직접 복사하여 붙여넣을 수 있습니다.)
+
+```python
+from timeit import repeat
+from itertools import chain
+
+x = dict.fromkeys('abcdefg')
+y = dict.fromkeys('efghijk')
+
+def merge_two_dicts(x, y):
+    z = x.copy()
+    z.update(y)
+    return z
+
+min(repeat(lambda: {**x, **y}))
+min(repeat(lambda: merge_two_dicts(x, y)))
+min(repeat(lambda: {k: v for d in (x, y) for k, v in d.items()}))
+min(repeat(lambda: dict(chain(x.items(), y.items()))))
+min(repeat(lambda: dict(item for d in (x, y) for item in d.items())))
+```
+
+Python 3.8.1 NixOS에서
+
+```python
+>>> min(repeat(lambda: {**x, **y}))
+1.0804965235292912
+>>> min(repeat(lambda: merge_two_dicts(x, y)))
+1.636518670246005
+>>> min(repeat(lambda: {k: v for d in (x, y) for k, v in d.items()}))
+3.1779992282390594
+>>> min(repeat(lambda: dict(chain(x.items(), y.items()))))
+2.740647904574871
+>>> min(repeat(lambda: dict(item for d in (x, y) for item in d.items())))
+4.266070580109954
+```
+
+```shell
+$ uname -a
+Linux nixos 4.19.113 #1-NixOS SMP Wed Mar 25 07:06:15 UTC 2020 x86_64 GNU/Linux
+```
+
+### 딕셔너리에 관한 리소스
+
+* [Python 3.6으로 업데이트된 **딕셔너리 구현**에 관한 설명](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented/44509302#44509302)
+* [새로운 키를 딕셔너리로 추가하는 방법에 대한 답변](https://stackoverflow.com/questions/1024847/how-can-i-add-new-keys-to-a-dictionary-in-python/27208535#27208535)
+* [2 개의 리스트를 딕셔너리로 맵핑](https://stackoverflow.com/questions/209840/how-do-i-convert-two-lists-into-a-dictionary/33737067#33737067)
+* [딕셔너리에 대한 파이썬 공식 문서](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
+* [더 강력한 딕셔너리](https://www.youtube.com/watch?v=66P5FMkWoVU) - Pycon 2017에서 Brandon Rhode의 강연
+* [현대의 파이썬 딕셔너리, A Confluence of Great Ideas](https://www.youtube.com/watch?v=npw4s1QTmPg) - Pycon 2017에서 Raymond Hettinger의 강연
