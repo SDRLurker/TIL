@@ -20,7 +20,7 @@ fmt = '%Y-%m-%d %H:%M:%S %Z%z'
 loc_dt.strftime(fmt)
 ```
 
-## 4개의 답변 중 1개의 답변만 추려냄
+## 4개의 답변 중 1개의 답변
 
 `datetime` 대신에 `datetime.datetime`으로 작성하세요:
 
@@ -36,4 +36,4 @@ fmt = '%Y-%m-%d %H:%M:%S %Z%z'
 loc_dt.strftime(fmt)
 ```
 
-모듈 [datetime](https://docs.python.org/3/library/datetime.html)은 클래스 [datetime.datetime](https://docs.python.org/3/library/datetime.html#datetime.datetime)을 포함하고 있기 때문입니다.
+모듈 [datetime](https://docs.python.org/3/library/datetime.html)은 클래스 [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime.datetime)을 포함하고 있기 때문입니다.
