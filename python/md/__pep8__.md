@@ -10,10 +10,12 @@
 
 ----
 
-## 6 개의 답변 중 1개의 답변만 추려냄.
+## 6 개의 답변 중 1개의 답변
 
-Python PEP 8로부터 -- 파이썬 코드의 스타일 가이드 (https://www.python.org/dev/peps/pep-0008/) :
+[Python PEP 8 -- 파이썬 코드의 스타일 가이드](https://www.python.org/dev/peps/pep-0008/)로 부터:
 
+> ### [이름 스타일 설명](https://www.python.org/dev/peps/pep-0008/#descriptive-naming-styles)
+>
 > the following special forms using leading or trailing underscores are recognized (these can generally be combined with any case convention):
 >
 > 앞이나 뒤에 밑줄표기(_)를 사용하는 다음 특별한 형태는 다음처럼 인식될 수 있습니다. (이들은 일반적으로 어떤 경우의 convention과 결합될 수 있습니다.)
