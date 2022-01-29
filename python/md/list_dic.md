@@ -12,37 +12,39 @@
 
 # Python에서 dictionary 키를 list로 리턴하는 방법
 
-저는 뭔가 매우 이상하다는 것을 알았습니다. Python 2.7과 Python 3의 오래된 버전에서 뭔가 많이 다른 것이 있습니다.
-
-이전에, dictionary에서 key 값, value 값, item 값을 list로 쉽게 얻을 수 있었습니다.
-
-* Python 2.7
+*Python 2.7*에서 딕셔너리의 키와 값, 또는 아이템을 list로 얻을 수 있었습니다.
 
 ```python
 >>> newdict = {1:0, 2:0, 3:0} 
->>> newdict
-{1: 0, 2: 0, 3: 0} 
 >>> newdict.keys()
 [1, 2, 3]
 ```
-
-하지만 Python 3에서는 다음처럼 이렇게 나옵니다.
-
-* PYTHON 3.3.0 
+이제, *Python >= 3.3*에서는 이것처럼 뭔가 얻게 됩니다.
 
 ```python
 >>> newdict.keys() 
 dict_keys([1, 2, 3])
 ```
 
+그래서 list를 얻기 위해 이것처럼 해야 합니다.
+
+```python
+newlist = list()
+for i in newdict.keys():
+    newlist.append(i)
+```
+
+*Python 3*에서 list를 리턴하는 더 좋은 방법이 있는지 궁금합니다.
+
 ---
 
-## 3 개의 답변 중 1 개의 답변만 추려냄.
+## 10 개의 답변 중 1 개의 답변
 
 `list(newdict.keys())` 를 시도해 보세요.
 
-이는 dict\_keys 객체를 list로 변환할 것입니다.  
-반면, 당신은 이것이 문제가 되는지 아닌지 스스로에게 물어봐야 합니다. 코드를 Python의 방법으로 작성하는 것은 [duck typing](https://ko.wikipedia.org/wiki/%EB%8D%95_%ED%83%80%EC%9D%B4%ED%95%91)(만약 그것이 오리처럼 생겼고, 오리처럼 꽥꽥 운다면 그것은 오리입니다.) 이라 가정합니다. dict\_keys 객체는 대부분 list처럼 행동합니다. 예를 들면, 다음 소스처럼 list처럼 작동합니다.
+이는 dict\_keys 객체를 list로 변환할 것입니다.
+
+반면, 당신은 이것이 문제가 되는지 아닌지 스스로에게 물어봐야 합니다. 코드를 Python의 방법으로 작성하는 것은 [duck typing](https://ko.wikipedia.org/wiki/%EB%8D%95_%ED%83%80%EC%9D%B4%ED%95%91)(만약 그것이 오리처럼 생겼고, 오리처럼 꽥꽥 운다면 그것은 오리입니다.) 이라 가정합니다. `dict_keys` 객체는 대부분 list처럼 행동합니다. 예를 들면, 다음 소스처럼 list처럼 작동합니다.
 
 ```python
 for key in newdict.keys():
