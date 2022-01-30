@@ -15,7 +15,7 @@ C++ 클래스로 시작하기 위해 평범하게 작성하였습니다.
 ```c++
 #include <iostream>
 
-// A simple class with a constuctor and some methods...
+// 몇 개의 메소드와 하나의 생성자를 가지는 간단한 클래스...
 
 class Foo
 {
@@ -44,7 +44,7 @@ int Foo::foobar(int n)
 ```
 
 
-다음 ctypes 시스템은 C++을 사용할 수 없기 때문에 C++ 코드 주변에 C wrapper를 놓을 것입니다. 이를 하기 위해 파일 제일 밑에 다음 부분에 코드를 추가합니다.
+다음 `ctypes` 시스템은 C++을 사용할 수 없기 때문에 C++ 코드 주변에 C wrapper를 놓을 것입니다. 이를 하기 위해 파일 제일 밑에 다음 부분에 코드를 추가합니다.
 
 ```c++
 // ctypes는 C와만 대화할 수 있기 때문에 C++ 클래스를 위한 C 함수를 정의합니다.
@@ -71,7 +71,7 @@ $ g++ -shared -Wl,-soname,libfoo.so -o libfoo.so foo.o
 
 또는 CMake를 사용할 수 있습니다.
 
-다음은 foo.cpp를 빌드하기 위한 CMakeLists.txt 입니다.
+다음은 `foo.cpp`를 빌드하기 위한 `CMakeLists.txt` 입니다.
 
 ```
 cmake_minimum_required(VERSION 2.8.9)
@@ -113,8 +113,9 @@ class Foo(object):
         return lib.Foo_foobar(self.obj, val)
 ```
 
-리턴 값의 타입과 argument 타입을 정의하는 요구사항을 적으세요. (하나도 리턴하지 않으면 예시로 void를 리턴합니다.) 이것이 없으면 segmentation fault(등)를 얻을 것입니다.
-이제 모든 것을 다 하였고 모듈을 빌드해야 합니다. 파이썬에서 간단히 그것을 import할 수 있습니다.
+리턴 값의 타입과 argument 타입을 정의하는 요구사항을 적으세요. (하나도 리턴하지 않으면 예시로 `void`를 리턴합니다.) 이것이 없으면 segmentation fault(등)를 얻을 것입니다.
+이제 모든 것을 다 하였고 모듈을 빌드해야 합니다. 파이썬에서 간단히 그것을 `import`할 수 있습니다.
+
 예를 들어
 
 ```python
