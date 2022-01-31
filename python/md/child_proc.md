@@ -2,9 +2,7 @@
 
 # 부모 프로세스가 죽을 때 subprocess.check_output()로 생성된 Python 자식 프로세스를 죽이는 방법?
 
-저는 subprocess를 시작하고 표준 출력을 확인하는 간단한 python script를 작성하려고 합니다.
-
-여기에 코드의 스니펫이 있습니다.
+저는 다음처럼 subprocess를 시작하고 표준 출력을 확인하는 간단한 python script를 작성하려고 합니다.
 
 ```python
 subprocess.check_output(["ls", "-l"], stderr=subprocess.STDOUT)
@@ -51,7 +49,7 @@ atexit.register(kill_child)
 
 ---
 
-당신은 두가지 방법으로 이를 할 수 있습니다. 그들은 `check_output` 대신에 `Popen`을 사용해야 합니다. 첫 번째는 다음처럼 try..finally 를 사용하는 더 간단한 방법입니다.
+당신은 두 개의 방법으로 이를 할 수 있습니다. 그들은 `check_output` 대신에 `Popen`을 사용해야 합니다. 첫 번째는 다음처럼 try..finally 를 사용하는 더 간단한 방법입니다.
 
 ```python
 from contextlib import contextmanager
