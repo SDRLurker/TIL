@@ -8,7 +8,7 @@
 
 ------
 
-## 14개의 답변 중 1 개의 답변만 추려냄.
+## 14개의 답변 중 1 개의 답변
 
 간단히, 당신의 모델에서 가중치(W, weights)와 편향(B, Bias) 처럼 학습 가능한 변수를 위해 `tf.Variable`를 사용합니다.
 
@@ -20,7 +20,7 @@ weights = tf.Variable(
 biases = tf.Variable(tf.zeros([hidden1_units]), name='biases')
 ```
 
-tf.placeholder는 실제 학습 예시를 공급(feed)하는 데 사용됩니다.
+`tf.placeholder`는 실제 학습 예시를 공급(feed)하는 데 사용됩니다.
 
 ```python
 images_placeholder = tf.placeholder(tf.float32, shape=(batch_size, IMAGE_PIXELS))
