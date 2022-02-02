@@ -35,7 +35,7 @@ for single_date in [d for d in (start_date + timedelta(n) for n in range(day_cou
 
 ---
 
-## 24 개의 답변 중 1 개의 답변만 추려냄.
+## 24 개의 답변 중 1 개의 답변
 
 왜 이중 for문을 반복하시나요? 저는 하나의 반복문으로 데이터의 같은 list를 생산합니다.
 
@@ -65,8 +65,4 @@ for single_date in daterange(start_date, end_date):
     print(single_date.strftime("%Y-%m-%d"))
 ```
 
-주의: 내장 range() 함수와의 일관성을 위해 이 반복은 `end_date`에 도달하기 **전에** 중지됩니다. 따라서 포괄적인 반복을 위해서는 `range()`에서와 같이 다음 날을 사용하십시오.
-
-```python
-    for n in range(int ((end_date - start_date).days+1)):
-```
+주의: 내장 `range()` 함수와의 일관성을 위해 이 반복은 `end_date`에 도달하기 **전에** 중지됩니다. 따라서 포괄적인 반복을 위해서는 `range()`에서와 같이 다음 날을 사용하십시오.
