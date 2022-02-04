@@ -15,7 +15,7 @@ Python에서 `enumerate()`와 `zip()`은 `for` 루프에서 iterable(`list`, `tu
 
 ## enumerate()와 zip() 함께 사용할 때 참고 사항
 
-여러개의 리스트와 인덱스의 요소를 얻고 싶을 때 와 를 함께 사용할 수 있습니다.
+여러개의 리스트와 인덱스의 요소를 얻고 싶을 때 `enumerate()`와 `zip()`를 함께 사용할 수 있습니다.
 
 이 경우, `for i, (a, b, ...) in enumerate(zip( ... ))`처럼 괄호로 `zip()`의 요소들을 둘러쌓을 필요가 있습니다.
 
@@ -47,3 +47,7 @@ for i, t in enumerate(zip(names, ages)):
 # 1 Bob 50
 # 2 Charlie 18
 ```
+
+표준 라이브러리의 itertools 모듈의 `count()`와 `zip()` 함수는 `(i, a, b)` 처럼 nested되지 않은 형태를 생성하는 데 사용될 수 있습니다.
+
+* [Python에서 무한 이터레이터(itertools.count, cycle, repeat)](https://note.nkmk.me/en/python-itertools-count-cycle-repeat/)
