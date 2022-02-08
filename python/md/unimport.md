@@ -6,7 +6,7 @@
 
 간단한 계산을 위해 스크립트를 작성하는 것보다 interactive 모드에서 이를 실행합니다. 이러한 경우 이미 import한 모듈을 unimport하는 방법이 있을까요? unimport는 제가 파이썬 프로그램을 작성할 때는 필요 없겠지만, interactive 모듈에서는 필요합니다.
 
-## 2개의 답변 중 1개의 답변만 추려냄
+## 4개의 답변 중 1개의 답변
 
 당신이 import한 것을 unload 하는 방법은 없습니다. 파이썬은 cache에 모듈의 복사본을 유지하기 때문에 다음에 reload와 다시 초기화하지 않고 그것을 (그대로) import합니다.
 
@@ -23,7 +23,7 @@ del package
 
 당신이 패키지를 변경했고 갱신된 내용을 보고 싶다면, 당신은 그것을 `reload` 할 수 있습니다. 이는 몇가지 경우 작동하지 않을 수 있는데 import된 패키지가 그것에 의존적인 패키지를 reload할 필요가 있을 때입니다. 이것에 의존적인 것 이전에 관련된 문서를 읽어봐야 합니다.
 
-Python 버전 2.7까지는 build-in 함수인 [`reload`](https://docs.python.org/2/library/functions.html#reload) 를 사용합니다.
+Python 버전 2.7까지는 build-in 함수인 [`reload`](https://docs.python.org/ko/2/library/functions.html#reload) 를 사용합니다.
 
 ```python
 reload(package)
@@ -36,11 +36,9 @@ import imp
 imp.reload(package)
 ```
 
-Python 3.4 이상이라면 당신은 importlib.reload 를 사용할 수 있습니다.
+Python 3.4 이상이라면 당신은 [`importlib.reload`](https://docs.python.org/ko/3/library/importlib.html#importlib.reload) 를 사용할 수 있습니다.
 
 ```python
 import importlib
 importlib.reload(package)
 ```
-
-출처: https://sdr1982.tistory.com/242?category=637927 [라이언(Ryan)의 블로그]
