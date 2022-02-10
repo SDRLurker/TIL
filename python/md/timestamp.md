@@ -27,9 +27,9 @@ df.index = df.date
 
 ---
 
-## 4 개의 답변 중 1 개의 답변만 추려냄.
+## 5 개의 답변 중 1 개의 답변
 
-다음은 epoch 이후 초단위로 보일 것입니다.
+다음은 epoch 이후 초 단위로 보일 것입니다.
 
 ```python
 In [20]: df = DataFrame(data['values'])
