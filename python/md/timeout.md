@@ -4,9 +4,9 @@
 
 저는 파이썬의 소켓 수신 메소드에서 timeout을 정하고 싶습니다. 어떻게 할 수 있을까요?
 
-## 11개의 답변 중 1개의 답변만 추려냄
+## 11개의 답변 중 1개의 답변
 
-일반적인 접근은 timeout이 발생할 때까지 데이터가 접근 가능할 때까지 [select()](https://docs.python.org/3/library/select.html#select.select)를 사용하는 것입니다. 데이터가 실제로 가능할 때만 `recv()`를 호출합니다. 안전을 위해, 우리는 `recv`가 무한으로 block하지 않는 것을 보장하기 위해 non-blocking 모드로 소켓을 설정할 수 있습니다. `select()`는 한번에 하나 이상의 소켓을 기다리도록 하는데 사용될 수 있습니다.
+일반적인 접근은 timeout이 발생할 때까지 데이터가 접근 가능할 때까지 [select()](https://docs.python.org/3/library/select.html#select.select)를 사용하는 것입니다. 데이터가 실제로 가능할 때만 `recv()`를 호출합니다. 안전을 위해, 우리는 `recv()`가 무한으로 block하지 않는 것을 보장하기 위해 non-blocking 모드로 소켓을 설정할 수 있습니다. `select()`는 한번에 하나 이상의 소켓을 기다리도록 하는데 사용될 수 있습니다.
 
 ```python
 import select
