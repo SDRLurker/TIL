@@ -47,7 +47,7 @@ else:
 
 저는 C는 익숙하지만 파이썬에 익숙하지 않습니다. 이 방법이 괜찮나요? 어떠한 충고도 감사합니다.
 
-## 5 개의 답변 중 1 개의 답변만 추려냄.
+## 5 개의 답변 중 1 개의 답변
 
 저는 이것처럼 스트림에서부터 패킷을 decoding에 대응하는 클래스를 만들었습니다.
 
@@ -65,7 +65,7 @@ class PacketDecoder(object):
 
     def decode(self):
         '''
-        Yields packets from the current stream.
+        Yields packets from the current stream. 현재 스트림에서 packet을 yield 처리
         '''
         while len(self._stream) > 2:
             end = self._stream.find(self.ETX)
