@@ -37,7 +37,7 @@ def group(l):
 
 ---
 
-### 7개의 답변 중 2개의 답변만 추려냄
+### 7개의 답변 중 2개의 답변
 
 [`itertools.groupby`](https://docs.python.org/3.7/library/itertools.html#itertools.groupby) 는 당신이 원하는 것을 할 수 있습니다.
 
@@ -59,9 +59,9 @@ print(list(accumulate(L)))
 
 #### 댓글
 
--   `lambda` 대신에 `operator.itemgetter`를 사용하는 것이 좋습니다. – [jathanism](https://stackoverflow.com/users/194311/jathanism) [Feb 12 '10 at 1:48](https://stackoverflow.com/questions/2249036/grouping-python-tuple-list#comment2207439_2249060)
+- `lambda` 대신에 `operator.itemgetter`를 사용하는 것이 좋습니다. – [jathanism](https://stackoverflow.com/users/194311/jathanism) [Feb 12 '10 at 1:48](https://stackoverflow.com/questions/2249036/grouping-python-tuple-list#comment2207439_2249060)
     
--   이 방법은 첫번째 키로 정렬된 리스트가 필요합니다. 이미 정렬이 되지 않았다면, ghostdog74 님의 접근이 훨씬 좋은 해결책입니다. – [Martijn Pieters♦](https://stackoverflow.com/users/100297/martijn-pieters) [Oct 10 '16 at 21:05](https://stackoverflow.com/questions/2249036/grouping-python-tuple-list#comment67213367_2249060)
+- 이 방법은 첫번째 키로 정렬된 리스트가 필요합니다. 이미 정렬이 되지 않았다면, ghostdog74 님의 접근이 훨씬 좋은 해결책입니다. – [Martijn Pieters♦](https://stackoverflow.com/users/100297/martijn-pieters) [Oct 10 '16 at 21:05](https://stackoverflow.com/questions/2249036/grouping-python-tuple-list#comment67213367_2249060)
     
 
 ---
@@ -82,7 +82,7 @@ for f in a:
 
 결과
 
-```
+```shell
 $ ./python.py
 ('grape', 103)
 ('banana', 3)
