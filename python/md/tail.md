@@ -6,7 +6,7 @@
 
 저는 더 많은 데이터를 원할때마다 호출할 수 있는 `tail.getNewData()`처럼 뭔가 있으면 합니다.
 
-## 12개의 답변 중 1개의 답변만 추려냄
+## 13개의 답변 중 1개의 답변
 
 ### Non Blocking
 
@@ -42,4 +42,4 @@ while True:
     print line
 ```
 
-이는 추가될 때 새로운 line이 출력될 것이지만, tail program이 `f.kill`에 의해 닫힐 때까지 blocking 될 것입니다.
+이는 추가될 때 새로운 line이 출력될 것이지만, tail program이 `f.kill()`에 의해 닫힐 때까지 blocking 될 것입니다.
