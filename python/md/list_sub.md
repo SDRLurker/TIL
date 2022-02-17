@@ -16,7 +16,7 @@
 
 이 방법은 파이썬 리스트에서 지원되지 않습니다. 이를 할 수 있는 최고의 방법은 무엇입니까?
 
-## 12개의 답변 중 2개의 답변만 추려냄
+## 12개의 답변 중 2개의 답변
 
 리스트 내포(comprehension)을 사용합니다.
 
@@ -47,7 +47,7 @@ z = x - y
 
 ---
 
-[set difference](https://docs.python.org/3/library/stdtypes.html#set.difference) 를 사용합니다.
+[set difference](https://docs.python.org/ko/3/library/stdtypes.html#set.difference) 를 사용합니다.
 
 ```python
 >>> z = list(set(x) - set(y))
