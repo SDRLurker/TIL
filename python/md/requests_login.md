@@ -39,13 +39,20 @@ print title
 
 저는 잘하고 있다고 생각하지만, 출력은 아직 "Locationary.com"입니다.
 
+```HTML
+</td><td><img src="http://www.locationary.com/img/LocationaryImgs/icons/txt_email.gif">    </td>
+<td><input class="Data_Entry_Field_Login" type="text" name="inUserName" id="inUserName"  size="25"></td>
+<td><img src="http://www.locationary.com/img/LocationaryImgs/icons/txt_password.gif"> </td>
+<td><input  class="Data_Entry_Field_Login"  type="password" name="inUserPass"     id="inUserPass"></td>
+```
+
 2번째 편집:
 
 저는 그 도메인의 페이지를 요청할 때마다 오래동안 로그인을 유지할 수 있기를 원합니다. 제가 로그인을 했다면 나타날 그 내용이 나타나기를 원합니다.
 
 ---
 
-### 6개의 답변 중 1 개의 답변만 추려냄.
+### 6개의 답변 중 1 개의 답변
 
 저는 당신이 다른 해결책을 찾았다는 것을 알고 있지만 저처럼 이 질문의 해결책 혹은 같은 질문을 찾기 원하는 사람들을 위해 다음처럼 requests를 사용하여 할 수 있습니다.
 
