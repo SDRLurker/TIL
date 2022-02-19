@@ -4,11 +4,11 @@
 
 # 파이썬에서 요청과 함께 "multipart/form-data"를 보내는 방법은 무엇입니까?
 
-파이썬에서 요청과 함께 `multipart/form-data`를 보내는 방법은 무엇입니까? 파일을 보내는 방법은 알겠는데 이 방법으로 폼(form) 데이터를 보내는 방법을 모르겠습니다.
+파이썬에서 `requests`와 함께 `multipart/form-data`를 보내는 방법은 무엇입니까? 파일을 보내는 방법은 알겠는데 이 방법으로 폼(form) 데이터를 보내는 방법을 모르겠습니다.
 
 ---
 
-## 12 개의 답변 중 1 개의 답변
+## 13 개의 답변 중 1 개의 답변
 
 기본적으로 `files` 매개변수(dictionary)를 지정하면 요청은 `application/x-www-form-urlencoded` POST 대신 `multipart/form-data` POST를 보냅니다. 그러나 해당 dictionary에서 실제 파일을 사용하는 것으로 제한되지는 않습니다.
 
