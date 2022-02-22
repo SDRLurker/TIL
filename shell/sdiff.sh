@@ -28,5 +28,5 @@ if [ -z "$FILE" ]; then
     exit 0
 fi
 
-echo "diff $FILE <(ssh $GROUP$SERVER \"cat $TARGET_PATH\")"
-diff $FILE <(ssh $GROUP$SERVER "cat $TARGET_PATH") | grep --color "."
+echo "diff $FILE <(ssh $GROUP$SERVER \"cat $TARGET_PATH\" 2>/dev/null)"
+diff $FILE <(ssh $GROUP$SERVER "cat $TARGET_PATH" 2>/dev/null) | grep --color "."
