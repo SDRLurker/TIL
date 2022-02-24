@@ -4,13 +4,13 @@
 
 입력 index의 값을 기본으로 하여 다른 고정된 값을 리턴하는 파이썬의 함수를 작성하고 싶습니다.
 
-다른 언어에서 저는 switch 또는 case 구문을 사용하고 싶지만 파이썬은 구문을 가지고 있는 것처럼 보이지 않습니다. 이러한 경우 파이썬에서 추천할만한 해결책은 무엇이 있습니까?
+다른 언어에서 저는 `switch` 또는 `case` 구문을 사용하고 싶지만 파이썬은 `switch` 구문을 가지고 있는 것처럼 보이지 않습니다. 이러한 경우 파이썬에서 추천할 해결책은 무엇이 있습니까?
 
 ---
 
-## 30 개의 답변 중 2개의 답변만 추려냄.
+## 30 개의 답변 중 2개의 답변
 
-원래 아래 답변은 2008년에 작성했습니다. 그 이후로 Python 3.10 (2021)은 Python에서 "switch"의 일류 구현을 제공하는 `match`-`case` 구문을 소개하였습니다. 예를 들면 다음처럼 작성가능합니다.
+원래 아래 답변은 2008년에 작성했습니다. 그 이후로 Python 3.10 (2021)은 Python에서 "switch"의 일류 구현을 제공하는 [`match`-`case`](https://www.python.org/dev/peps/pep-0634/)구문을 소개하였습니다. 예를 들면 다음처럼 작성가능합니다.
 
 ```python
 def f(x):
@@ -36,14 +36,14 @@ def f(x):
 
 ---
 
-만약 당신이 default를 사용하고 싶다면, dictionary의 get(key[, default]) 메소드를 사용할 수 있습니다.
+만약 당신이 default를 사용하고 싶다면, dictionary의 [`get(key[, default])`](https://docs.python.org/ko/3/library/stdtypes.html#dict.get) 메소드를 사용할 수 있습니다.
 
 ```python
 def f(x):
     return {
         'a': 1,
         'b': 2,
-    }.get(x, 9)    # 9 is default if x not found
+    }.get(x, 9)    # x를 못 찼았다면 9값이 기본(디폴트)입니다. 
 ```
 
 ---
