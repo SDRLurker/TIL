@@ -21,7 +21,7 @@ for info in crs:
 
 ---
 
-## 5개 답변중 1개의 답변만 추려냄.
+## 5개 답변중 1개의 답변
 
 당신은 [`SHOW columns`](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html)을 사용할 수 있습니다.
 
