@@ -45,9 +45,9 @@ requests.exceptions.MissingSchema: Invalid URL 'www.google.com': No schema suppl
 
 ### 1개의 답변
 
-`response.raise_for_status()`는 응답의 상태 코드가 200이 아닌 응답일 때만 예외(Exception)를 발생합니다. 두 번째 경우인 `response.json()['status'] != 'success'`가 만족할 경우, 커버하지 않습니다.
+`response.raise_for_status()`는 응답의 상태 코드가 200이 아닌 응답일 때만 예외(Exception)를 발생합니다. 두 번째 경우인 `response.json()['status'] != 'success'`가 만족할 경우, *커버하지 않습니다.*
 
-하지만 **다른** 오류가 있습니다. `requests.get()` 호출에 의해 예외가 발생하므로 `if` 테스트에 도달하지 않습니다. 스키마를 전달하지 못했습니다 (문자열 앞에 `http://` 또는 `https://` 없음). requests.get() 표현식에서 예외가 발생하므로 다음 행은 절대로 실행되지 않습니다. 요청도 전송되지 않으므로 응답에 대한 assertion도 만들 수 없습니다.
+하지만 **다른** 오류가 있습니다. `requests.get()` 호출에 의해 예외가 발생하므로 `if` 테스트에 도달하지 않습니다. 스키마를 전달하지 못했습니다 (문자열 앞에 `http://` 또는 `https://` 없음). `requests.get()` 표현식에서 예외가 발생하므로 다음 행은 절대로 실행되지 않습니다. 요청도 전송되지 않으므로 응답에 대한 assertion도 만들 수 없습니다.
 
 테스트는 더 많은 문제가 있습니다.
 
