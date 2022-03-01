@@ -17,9 +17,9 @@ void foo()
 
 ---
 
-## 18 개의 답변 중 2 개의 답변만 추려냄.
+## 27 개의 답변 중 2 개의 답변
 
-다음은 작동해야 합니다.
+약간 반전되었지만 다음과 같이 작동해야 합니다.
 
 ```python
 def foo():
@@ -48,7 +48,7 @@ def foo():
     print "Counter is %d" % foo.counter
 ```
 
-불행히도 접두사로는, 여전히 foo를 사용해야합니다. 
+불행히도 접두사로는, 여전히 `foo`를 사용해야합니다. 
 
 ---
 
@@ -63,12 +63,12 @@ def myfunc():
 myfunc.counter = 0
 ```
 
-다른 대안으로 함수 밖에 변수를 설정하길 원하지 않는다면, 당신은 AttributeError exception을 피하기 위해 hasattr()를 사용할 수 있습니다.
+다른 대안으로 함수 밖에 변수를 설정하길 원하지 않는다면, 당신은 `AttributeError` exception을 피하기 위해 `hasattr()`를 사용할 수 있습니다.
 
 ```python
 def myfunc():
   if not hasattr(myfunc, "counter"):
-     myfunc.counter = 0  # it doesn't exist yet, so initialize it
+     myfunc.counter = 0  # 아직 존재하지 않기에, 초기화를 합니다.
   myfunc.counter += 1
 ```
 
