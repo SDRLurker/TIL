@@ -6,11 +6,11 @@
 
 ---
 
-## 7 개의 답변 중 1 개의 답변만 추려냄.
-
+## 13 개의 답변 중 1 개의 답변
 저는 이렇게 해결 하였습니다. (Intellij Idea 2018.1.2)
 
 1) 파일-> 설정-> 빌드, 실행, 배포-> 빌드 도구-> Gradle로 이동합니다.
+
 File -> Settings -> Build, Execution, Deployment -> Build Tools -> Gradle
 
 2) Gradle JVM : 버전 1.8로 변경
