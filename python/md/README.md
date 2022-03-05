@@ -265,6 +265,12 @@
 
 * https://stackoverflow.com/questions/29523954/distinguishing-between-two-quickfix-initiator-sessions
 
+##### quickfix_add.md
+
+* "QuickFix에서 로그온 메세지에 비밀번호 추가하기"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/49774027/adding-password-to-logon-message-with-quickfix
+
 ##### redshift_create.md
 
 * "Python으로 Redshift의 create table이 작동하지 않습니다."를 번역한 내용입니다.
