@@ -4,9 +4,9 @@
 
 저는 MySQL에서 [*Full Outer Join*](https://en.wikipedia.org/wiki/Join_(SQL)#Full_outer_join)을 하고 싶습니다. 이것이 가능할까요? MySQL에 의해 *Full Outer Join*이 지원되나요?
 
-### 14개의 답변 중 1개의 답변
+### 15개의 답변 중 1개의 답변
 
-MySQL에 *full join* 구문을 없습니다만 확실히 [full join을 똑같이 할 수 있습니다](https://dev.mysql.com/doc/refman/8.0/en/outer-join-simplification.html).
+MySQL에 *full join* 구문을 없습니다만 확실히 [full join을 모방할 수 있습니다](https://dev.mysql.com/doc/refman/8.0/en/outer-join-simplification.html).
 
 다음 코드 *샘플*은 두개의 테이블 t1, t2에 대해 [당신이 질문한 내용](https://stackoverflow.com/questions/2384298/why-does-mysql-report-a-syntax-error-on-full-outer-join)을 작성한 내용입니다.
 
