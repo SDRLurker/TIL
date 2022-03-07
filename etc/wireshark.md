@@ -4,11 +4,11 @@
 
 ---
 
-# [](https://github.com/SDRLurker/TIL/new/master/python#python-%EC%93%B0%EB%A0%88%EB%93%9C-%ED%92%80)Wireshark에서 tcpreplay의 멀티캐스트가 보이지만 응용프로그램에서는 안 보입니다.
+# Wireshark에서 tcpreplay의 멀티캐스트가 보이지만 응용프로그램에서는 안 보입니다.
 
 저는 tcpreplay로 진행할 멀티캐스트 패킷 캡쳐를 얻었습니다.
 
-```
+```shell
 sysctl net.ipv4.conf.all.rp_filter=0
 sysctl net.ipv4.conf.eth0.rp_filter=0
 tcpreplay -i eth0 --loop=100 new.pcap
@@ -27,8 +27,8 @@ MCAST_PORT = 4937
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-sock.bind((MCAST_GRP, MCAST_PORT))  # use MCAST_GRP instead of '' to listen only
-                         # to MCAST_GRP, not all groups on MCAST_PORT
+sock.bind((MCAST_GRP, MCAST_PORT))  # listen만 하려면 '' 대신에 MCAST_GRP를 사용하세요.
+                         # MCAST_PORT의 모든 그룹이 아닌 MCAST_GRP로
 mreq = struct.pack("4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
 
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
@@ -63,4 +63,5 @@ eth0            1      224.0.23.60
 
 TCP/IP stack과 네트워크 카드의 장치 드라이버 사이에 패킷을 주입합니다. 그 결과, tcpreplay를 실행하는 TCP/IP 시스템은 패킷을 볼 수 없습니다.
 
-한 가지 제안할 수 있는 것은[​VMWare](http://www.vmware.com/), [​Parallels](http://www.parallels.com/) 또는 [​Xen](http://www.xensource.com/) 같은 것을 사용하는 것입니다. 가상 머신(guest)에서 tcpreplay를 실행하는 것은 호스트 운영체제에서 패킷을 볼 수 있게 합니다.
+한 가지 제안할 수 있는 것은[VMWare](http://www.vmware.com/), [Parallels](http://www.parallels.com/) 또는 [Xen](http://www.xensource.com/) 같은 것을 사용하는 것입니다. 가상 머신(guest)에서 tcpreplay를 실행하는 것은 호스트 운영체제에서 패킷을 볼 수 있게 합니다.
+
