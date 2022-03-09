@@ -20,11 +20,12 @@ print("spam", file=sys.stderr)
 
 † 문제를 해결할 하나의 - 바람직하고 유일한 - 명백한 방법이 있을 것이다.
 
-### 15개의 답변 중 1개의 답변만 추려냄
+### 16개의 답변 중 1개의 답변
 
 저는 짧고 유연하고 이식하기 좋고 읽기 좋은 유일한 방법을 찾았습니다.
 
 ```python
+# 이 줄은 Python2에 관해 다룰 때만 있으면 됩니다.
 from __future__ import print_function
 import sys
 
