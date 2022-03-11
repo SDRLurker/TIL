@@ -42,9 +42,9 @@ asyncio.async(a = func_infinite())
 
 ---
 
-## 3개의 답변 중 1개를 추려냄
+## 3개의 답변 중 1개
 
-코루틴은 기존처럼 작동합니다. `loop.run_until_complete()`로부터 리턴 값을 바로 사용하시면 되고 [여러개의 결과를 모으기 위해 `asyncio.gather()`를 호출](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) 합니다.
+코루틴은 기존처럼 작동합니다. `loop.run_until_complete()`로부터 리턴 값을 바로 사용하시면 되고 [여러개의 결과를 모으기 위해 `asyncio.gather()`를 호출](https://docs.python.org/ko/3/library/asyncio-task.html#asyncio.gather) 합니다.
 
 ```python
 #!/usr/bin/env python3
