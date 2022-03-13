@@ -17,7 +17,7 @@ for (int id=0; id<n; id++) {
 }
 ```
 
-## 3개의 답변 중 1개의 답변
+## 4개의 답변 중 1개의 답변
 
 ```c
 pid_t child_pid, wpid; 
