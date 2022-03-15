@@ -271,6 +271,12 @@
 
 * https://stackoverflow.com/questions/49774027/adding-password-to-logon-message-with-quickfix
 
+##### quickfix_logout.md
+
+* "fix 세션을 로그아웃하는 방법?"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/24157767/how-to-logout-fix-session
+
 ##### redshift_create.md
 
 * "Python으로 Redshift의 create table이 작동하지 않습니다."를 번역한 내용입니다.
