@@ -1,8 +1,8 @@
-출처 : [https://ongspxm.github.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/](https://ongspxm.github.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/)
+출처 : [https://web.archive.org/web/20210404233204/https://ongspxm.gitlab.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/](https://web.archive.org/web/20210404233204/https://ongspxm.gitlab.io/blog/2016/11/assertraises-testing-for-errors-in-unittest/)
 
 # assertRaises - unittest에서 오류 테스트 하기
 
-이 글에서, 저는 파이썬의 빌트인 unittest 모듈을 사용하였습니다.
+이 글에서, 저는 파이썬의 빌트인 [unittest](https://docs.python.org/ko/2/library/unittest.html) 모듈을 사용하였습니다.
 
 갑자기 프레임워크에 대한 (잘못된 데이터가 입력되면 예외가 발생해야 하는) 새로운 요구가 생겼을 때 저는 제 프로젝트에서 몇 가지 테스트 작업을 하고 있었습니다.
 
