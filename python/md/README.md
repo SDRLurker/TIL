@@ -133,6 +133,12 @@
 
 * https://note.nkmk.me/en/python-for-enumerate-zip/
 
+##### exception.md
+
+* "파이썬 2.7 예외 처리 구문"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/32613375/python-2-7-exception-handling-syntax
+
 ##### flask_201.md
 
 * "Flask에서 HTTP 상태 코드 201 리턴하기"을 번역한 내용입니다.
