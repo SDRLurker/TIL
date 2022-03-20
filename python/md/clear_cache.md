@@ -17,7 +17,7 @@ resp = requests.get('https://some website')
 
 ---
 
-## 4 개의 답변 중 2 개의 답변
+## 5 개의 답변 중 2 개의 답변
 
 `'Cache-Control: no-cache'` 헤더를 추가합니다.
 
@@ -43,17 +43,17 @@ r = requests.get("url", headers=h)
 ...
 ```
 
-[HTTP/Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+[HTTP/Headers](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers)
 
-> [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+> [`Cache-Control`](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Cache-Control)
 > Cache-Control 일반 헤더 필드는 요청과 응답 모두에서 캐싱 메커니즘에 대한 지시문을 지정하는 데 사용됩니다. 캐싱 지시문은 단방향입니다. 즉, 요청에 지정된 지시문이 응답에 동일한 지시문이 제공되어야 함을 의미하지 않습니다.
 
-> [`Pragma`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma)
+> [`Pragma`](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Pragma)
 > 요청-응답 체인을 따라 다양한 영향을 미칠 수 있는 구현별 헤더입니다. Cache-Control 헤더가 아직 존재하지 않는 HTTP/1.0 캐시와의 하위 호환성을 위해 사용됩니다.
 
 **지시자**
 
-> [`no-cache`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#directives)
+> [`no-cache`](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Cache-Control#directives)
 > 캐시된 복사본을 응답(배포)하기 전에 유효성 검사를 위해 원본 서버에 요청을 제출하도록 캐시를 (사용하지 않도록) 강제합니다.
 
 `Pragma`에 대한 참고 사항:
