@@ -37,7 +37,7 @@ Traceback (most recent call last):
 AttributeError: 'module' object has no attribute 'SSL_ST_INIT'
 ```
 
-## 21개의 답변 중 1개의 답변
+## 22개의 답변 중 1개의 답변
 
 저는 pip로 `pyopenssl` 업그레이드 하는 것이 `pip`와 관련된 명령어 중에서는 작동하는 것이 없었습니다. `easy_install`로 `pyopenssl`을 업그레이드 함으로써, 위의 문제는 해결될 수 있습니다.
 
@@ -46,3 +46,7 @@ sudo python -m easy_install --upgrade pyOpenSSL
 ```
 
 credit @delimiter ([Answer](https://stackoverflow.com/questions/45188413/python-pip-install-is-failing-with-attributeerror-module-object-has-no-att#answer-46475845))
+
+이것은 (xenial의 stock python-openssl) 버전 0.15.1?로 업그레이드한 버전 17.3.0을 설치했습니다. 이후 버전에서 앞에 0을 삭제했을 수 있는 버전의 대규모 변경에 유의하십시오.
+
+어쨌든 그 후 pip와 ansible이 다시 작동하기 시작했습니다.
