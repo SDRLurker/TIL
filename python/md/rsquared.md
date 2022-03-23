@@ -35,7 +35,9 @@ def polyfit(x, y, degree):
 
 ## 12개 중 2개의 답변
 
-[numpy.polyfit](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html) 문서로부터 이는 선형 회귀에 적합(fit) 합니다. 특히, 차수가 'd'인 numpy.polyfit은 평균 함수를 사용하여 선형 회귀에 맞춥니다. 
+[numpy.polyfit](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html) 문서로부터 이는 선형 회귀에 적합(fit) 합니다. 특히, 차수가 'd'인 numpy.polyfit은 평균 함수를 사용하여 선형 회귀에 맞춥니다.
+
+E(y|x) = p_d * x**d + p_{d-1} * x **(d-1) + ... + p_1 * x + p_0
 
 따라서 해당 회귀에 적합(fit)하도록 R-제곱을 계산하기만 하면 됩니다. [선형 회귀](https://en.wikipedia.org/wiki/Linear_regression)에 대한 wikipedia 페이지는 자세한 내용을 제공합니다. 당신은 몇 가지 방법으로 계산할 수 있는 R^2에 관심이 있습니다. 가장 쉬운 것은 아마도
 
