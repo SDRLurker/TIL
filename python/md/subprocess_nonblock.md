@@ -21,9 +21,9 @@ subprocess가 종료되는 것을 기다리지 않고 표준 출력을 읽어 �
 
 ---
 
-2개의 답변 중 1 개의 답변
+## 2개의 답변 중 1 개의 답변
 
-[select](https://docs.python.org/2/library/select.html) 모듈을 확인하세요.
+[select](https://docs.python.org/ko/2/library/select.html) 모듈을 확인하세요.
 
 ```python
 import subprocess
