@@ -30,6 +30,12 @@ https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
 
 "CentOS 6 ca-certificates 패키지 수동 설치"를 작성한 내용입니다.
 
+## concat.md
+
+"Bash에서 문자열 변수 합치는 방법"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/4181703/how-to-concatenate-string-variables-in-bash
+
 ## conf.md
 
 "shell 스크립트에서 설정 파일 (*.conf) 파싱하는 방법"를 번역한 내용입니다.
