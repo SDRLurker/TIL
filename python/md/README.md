@@ -478,6 +478,12 @@
 * "파이썬 - UTC 날짜시간 문자열을 local 날짜시간으로 변환하기"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/4770297/convert-utc-datetime-string-to-local-datetime
+
+##### var_exists.md
+
+* "어떻게 변수가 존재하는 지 체크하나요?"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/843277/how-do-i-check-if-a-variable-exists
   
 ##### vlookup.md
 
