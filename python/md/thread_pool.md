@@ -10,7 +10,7 @@ https://www.metachris.com/2016/04/python-threadpool/
 
 인터넷에서 문서 1000개를 다운로드하고 싶지만 한 번에 50개를 다운로드 할 수 있는 리소스 만 갖고 있다고 가정합니다. 해결책은 스레드 풀을 사용하여 고정된 수의 스레드를 생성하여 큐에서 모든 URL을 한 번에 50개씩 다운로드합니다.
 
-스레드 풀을 사용하기 위해 Python 3.x에는 [ThreadPoolExecutor](https://docs.python.org/dev/library/concurrent.futures.html#threadpoolexecutor) 클래스가 포함되어 있고 Python 2.x와 3.x에는 `multiprocessing.dummy.ThreadPool` 이 있습니다. [`multiprocessing.dummy`](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.dummy)는 [멀티프로세싱(multiprocessing)](https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing) API를 복제하지만 [threading](https://docs.python.org/3/library/threading.html#module-threading) 모듈 주변의 래퍼(wrapper)일 뿐입니다.
+스레드 풀을 사용하기 위해 Python 3.x에는 [ThreadPoolExecutor](https://docs.python.org/ko/dev/library/concurrent.futures.html#threadpoolexecutor) 클래스가 포함되어 있고 Python 2.x와 3.x에는 `multiprocessing.dummy.ThreadPool` 이 있습니다. [`multiprocessing.dummy`](https://docs.python.org/ko/3/library/multiprocessing.html#module-multiprocessing.dummy)는 [멀티프로세싱(multiprocessing)](https://docs.python.org/ko/3/library/multiprocessing.html#module-multiprocessing) API를 복제하지만 [threading](https://docs.python.org/ko/3/library/threading.html#module-threading) 모듈 주변의 래퍼(wrapper)일 뿐입니다.
 
 ```multiprocessing.dummy.ThreadPool``` 의 단점은 Python 2.x에서 대기열의 모든 작업이 스레드에 의해 완료되기 전에 프로그램을 종료 할 수 없다는 것입니다. 예를 들어 KeyboardInterrupt가 있습니다.  
 
