@@ -236,7 +236,7 @@ set을 unpacking 연산에서 사용한다면 대입문의 마지막 순서는 �
 ValueError: not enough values to unpack (expected at least 4, got 3)
 ```
 
-`*` 연산자를 사용하여 변수에 값을 packing하면 `list()` 함수를 사용하지 않고 단일 변수에서 generator의 요소를 수집해야 할 때 편리합니다. 다음 예제에서는 `*` 연산자를 사용하여 [generator 표현식](https://docs.python.org/3/glossary.html#term-generator)의 요소와 [range](https://docs.python.org/3/library/stdtypes.html#range) 객체를 개별 변수로 압축합니다.
+`*` 연산자를 사용하여 변수에 값을 packing하면 `list()` 함수를 사용하지 않고 단일 변수에서 generator의 요소를 수집해야 할 때 편리합니다. 다음 예제에서는 `*` 연산자를 사용하여 [generator 표현식](https://docs.python.org/ko/3/glossary.html#term-generator)의 요소와 [range](https://docs.python.org/ko/3/library/stdtypes.html#range) 객체를 개별 변수로 압축합니다.
 
 ```python
 >>> gen = (2 ** x for x in range(10))
@@ -332,7 +332,7 @@ Python에서 unpacking를 사용하면 하나의 간단하고 우아한 문장�
 
 ## `*`로 여러개의 값 모으기
 
-일부 알고리즘으로 작업할 때 추가 처리를 위해 반복 가능한 값 또는 시퀀스 값을 값 청크로 분할해야 하는 상황이 있을 수 있습니다. 다음 예는 이를 위해 `리스트(list)` 및 [slicing 연산](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)을 사용하는 방법을 보여줍니다.
+일부 알고리즘으로 작업할 때 추가 처리를 위해 반복 가능한 값 또는 시퀀스 값을 값 청크로 분할해야 하는 상황이 있을 수 있습니다. 다음 예는 이를 위해 `리스트(list)` 및 [slicing 연산](https://docs.python.org/ko/3/library/stdtypes.html#common-sequence-operations)을 사용하는 방법을 보여줍니다.
 
 ```python
 >>> seq = [1, 2, 3, 4]
@@ -484,7 +484,7 @@ unpacking 연산자 `*`의 또 다른 흥미로운 사용 사례는 iterable을 
 
 ## `**` 연산자로 딕셔너리(dictionary) unpacking
 
-파이썬에서 unpacking할 때, `**`는 [dictionary unpacking 연산자](https://docs.python.org/3/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations)라 부릅니다. 이 연산자의 사용은 [PEP 448](https://www.python.org/dev/peps/pep-0448/)에 의해 확장되었습니다. 이제 함수 호출, comprehesion, generator 표현식, [dictionary display](https://docs.python.org/3/reference/expressions.html#dictionary-displays)에서 그것을 사용할 수 있습니다. 
+파이썬에서 unpacking할 때, `**`는 [dictionary unpacking 연산자](https://docs.python.org/ko/3/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations)라 부릅니다. 이 연산자의 사용은 [PEP 448](https://www.python.org/dev/peps/pep-0448/)에 의해 확장되었습니다. 이제 함수 호출, comprehesion, generator 표현식, [dictionary display](https://docs.python.org/ko/3/reference/expressions.html#dictionary-displays)에서 그것을 사용할 수 있습니다. 
 
 dictionary unpacking 연산자의 기본적인 사용 예시는 단일 표현식으로 여러 dictionary를 하나의 최종 dictionary로 병합 합니다. 이것이 어떻게 작동하는지 봅시다.
 
