@@ -24,7 +24,7 @@ datetime.utcfromtimestamp(timestamp)
 
 ---
 
-## 15 개의 답변 중 1 개의 답변
+## 16 개의 답변 중 1 개의 답변
 
 당신이 `tzinfo` 객체를 제공하기 원하지 않으면 [python-dateutil](http://niemeyer.net/python-dateutil) 라이브러리를 확인하시면 됩니다. 시간대에 대한 표준명으로 시간대 규칙을 참조할 수 있도록 [zoneinfo (Olson) 데이터베이스](https://en.wikipedia.org/wiki/Tz_database) 위에 `tzinfo` 구현을 제공합니다.
 
