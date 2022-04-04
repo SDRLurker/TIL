@@ -39,7 +39,7 @@ Security   Value
 
 ## 2개의 답변 중 1개
 
-당신은 기본으로 inner join에 의해 [`merge`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html)를 사용할 수 있습니다. `how=inner`는 제외되고 두 DataFrames에서 공통 열만 있다면, 당신은 파라미터 `on=ISIN`을 제외할 수 있습니다.
+당신은 기본으로 inner join에 의해 [`merge`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html)를 사용할 수 있습니다. `how=inner`는 제외되고 두 `DataFrames`에서 공통 열만 있다면, 당신은 파라미터 `on=ISIN`을 제외할 수 있습니다.
 
 ```python
 df3 = pd.merge(df1, df2)
