@@ -25,7 +25,7 @@ AttributeError: ZipFile instance has no attribute '__exit__':
 
 ------
 
-## 2개의 답변 중 1 개의 답변만 추려냄.
+## 2개의 답변 중 1 개의 답변
 
 다음 코드는 어떻습니까?
 
