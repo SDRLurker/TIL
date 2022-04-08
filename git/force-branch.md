@@ -6,10 +6,12 @@ check-out된 branch의 포인터를 이동하기 위해 `git reset --hard` 명�
 
 ---
 
-3 개의 답변 중 1개의 답변만 추려냄.
+## 11 개의 답변 중 1개의 답변
 
 ```shell
 git branch -f <branch-name> [<new-tip-commit>]
 ```
 
 만약 `new-tip-commit` 이 생략되면 기본적으로 현재 commit을 가리킵니다.
+
+`new-tip-commit` 은 branch 이름이 될 수 있습니다 (예, master, origin/master).
