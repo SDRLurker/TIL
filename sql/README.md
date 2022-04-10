@@ -2,6 +2,12 @@
 
 ### MarkDown 문서
 
+##### case_group.md
+
+"group by와 count에서 CASE를 사용하는 SQL"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/24636412/sql-using-case-in-count-and-group-by
+
 ##### columns.md
 
 "SELECT가 많은 칼럼 필드들을 가질 때 터미널에 최고의 방법으로 표시하는 방법은?"를 번역한 내용입니다.
