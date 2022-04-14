@@ -283,6 +283,12 @@
 
 * https://stackoverflow.com/questions/24157767/how-to-logout-fix-session
 
+##### quickfix_reset.md
+
+* "quickfix에서 시퀀스 번호 리셋"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/33114855/reset-sequence-number-in-quickfix
+
 ##### redshift_create.md
 
 * "Python으로 Redshift의 create table이 작동하지 않습니다."를 번역한 내용입니다.
