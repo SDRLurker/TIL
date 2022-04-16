@@ -10,7 +10,7 @@
 
 저는 이렇게 해 보았습니다.
 
-```
+```shell
 grep 'firmware_revision' myfile.py | sed 's/test/production'
 ```
 
@@ -33,7 +33,7 @@ grep 'firmware_revision' myfile.py | sed 's/test/production'
 
 이제 'firmware\_revision'이 포함된 줄을 찾고 해당 줄에서 'test'라는 단어의 모든 인스턴스를 'production'으로 변경하는 스크립트 (이상적으로는 한 줄짜리)를 작성하고 싶습니다. '테스트'라는 단어는 해당 파일의 다른 위치에 있을 수 있으며 변경하지 않기를 바랍니다. 명확하게 하기 위해 위의 줄을 다음과 같이 변경하고 싶습니다.
 
-```
+```shell
 ('firmware_revision', str, 'my-firmware-name-production', 'Firmware revision name')
 ```
 
