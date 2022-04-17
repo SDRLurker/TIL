@@ -23,14 +23,14 @@ The key fingerprint is:
 3e:4f:05:79:3a:9f:96:7c:3b:ad:e9:58:37:bc:37:e4 a@A
 ```
 
-이제 호스트 B에서 b 사용자로 ssh 프로그램을 사용하여 ~/.ssh 디렉터리를 만듭니다. (디렉터리가 이미 있을지 모르지만 괜찮습니다.)
+이제 호스트 B에서 b 사용자로 ssh 프로그램을 사용하여 `~/.ssh` 디렉터리를 만듭니다. (디렉터리가 이미 있을지 모르지만 괜찮습니다.)
 
 ```ssh
 a@A:~> ssh b@B mkdir -p .ssh
 b@B's password: 
 ```
 
-마지막으로 a 사용자의 새로운 공개키를 b@B:.ssh/authorized_keys에 추가하고 마지막으로 b 사용자의 비밀번호를 입력합니다.
+마지막으로 a 사용자의 새로운 공개키를 `b@B:.ssh/authorized_keys`에 추가하고 마지막으로 b 사용자의 비밀번호를 입력합니다.
 
 ```shell
 a@A:~> cat .ssh/id_rsa.pub | ssh b@B 'cat >> .ssh/authorized_keys'
@@ -45,11 +45,11 @@ a@A:~> ssh b@B
 ```
 
 
-독자중 한명으로부터 당신의 SSH 버젼에 따라 당신은 다음 작업을 해야할 수 있습니다. 
+독자중 한명이 남긴 메모: SSH 버전에 따라 당신은 다음 작업을 해야할 수 있습니다. 
 
-* .ssh/authorized_keys2에 public key를 넣습니다.
-* .ssh 디렉터리 권한을 700으로 변경(chmod)합니다.
-* .ssh/authorized_keys2의 권한을 640으로 변경합니다.
+* `.ssh/authorized_keys2`에 public key를 넣습니다.
+* `.ssh` 디렉터리 권한을 `700`으로 변경(chmod)합니다.
+* `.ssh/authorized_keys`의 권한을 `640`으로 변경합니다.
 
 ---
 
@@ -66,4 +66,4 @@ chmod 644 ~/.ssh/known_hosts
 ```
 
 
-출처: https://sdr1982.tistory.com/204?category=275473 [라이언(Ryan)의 블로그]
+출처: https://sdr1982.tistory.com/204
