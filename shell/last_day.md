@@ -17,14 +17,14 @@
 
 GNU의 `date`로 
 
-몇 가지 shell은 날짜 조작 지원이 내장되어 있습니다.
-
 ```shell
 $ date +%d%b%Y
 16Aug2015
 $ date -d "$(date +%Y-%m-01) -1 day" +%d%b%Y
 31Jul2015
 ```
+
+몇 가지 shell은 날짜 조작 지원이 내장되어 있습니다.
 
 `ksh93`으로 
 
