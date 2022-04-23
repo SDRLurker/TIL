@@ -424,6 +424,12 @@
 * "파이썬 소켓 수신 메소드에서 timeout을 정하는 방법?"을 번역한 내용입니다.
 
 * https://stackoverflow.com/questions/2719017/how-to-set-timeout-on-pythons-socket-recv-method
+  
+##### timeout2.md
+
+* "소켓 파이썬 : recvfrom"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/31166594/socket-python-recvfrom
 
 ##### timestamp.md
 
