@@ -72,6 +72,12 @@ https://stackoverflow.com/questions/3241086/how-to-schedule-to-run-first-sunday-
 
 https://stackoverflow.com/questions/2229825/where-can-i-set-environment-variables-that-crontab-will-use
 
+## crontab_user.md
+
+"nobody로 스크립트 실행하기 위해 crontab 사용하는 방법"을 번역한 내용입니다.
+
+https://superuser.com/questions/98974/how-to-use-crontab-to-run-a-script-as-nobody
+
 ## curl.md
 
 "bash 스크립트에서 curl 호출시 변수를 어떻게 사용할 수 있을까요?"를 번역한 내용입니다.
