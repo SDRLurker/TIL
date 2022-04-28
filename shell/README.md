@@ -102,6 +102,12 @@ https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-o
 
 https://www.shellscript.sh/tips/getopts/
 
+## getops2.md
+
+"bash getops 여러 인자 또는 기본 값"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/22058316/bash-getopts-multiple-arguments-or-default-value
+
 ## heredoc.md
 
 "bash에서 어떻게 "cat << EOF"가 작동합니까?"를 번역한 내용입니다.
