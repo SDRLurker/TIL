@@ -39,5 +39,19 @@ SELECT * FROM sometable\G
 
 ```
 *************************** 1. row ***************************
-             id: 1
+                 Host: localhost
+                   Db: mydatabase1
+                 User: myuser1
+          Select_priv: Y
+          Insert_priv: Y
+          Update_priv: Y
+          ...
+*************************** 2. row ***************************
+                 Host: localhost
+                   Db: mydatabase2
+                 User: myuser2
+          Select_priv: Y
+          Insert_priv: Y
+          Update_priv: Y
+          ...           
 ```
