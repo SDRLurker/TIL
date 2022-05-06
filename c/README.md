@@ -51,6 +51,12 @@
 
 * https://www.baeldung.com/linux/redirect-output-of-running-process
 
+### select.md
+
+* "왜 sleep() 대신에 select()를 사용하나요?" 글을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/3125645/why-use-select-instead-of-sleep
+
 ### unique.md
 
 * "C의 int 배열을 정렬하고 중복 제거하기" 글을 번역한 내용입니다.
