@@ -22,7 +22,7 @@ PHP app/console doctrine:migrations:migrate $DATEBASE_VERSION
 
 ---
 
-## 31개의 답변 중 1개
+## 32개의 답변 중 1개
 
 해당 라인의 값을 grep 하고난 뒤 awk를 사용하는 것은 어떨까요?
 
