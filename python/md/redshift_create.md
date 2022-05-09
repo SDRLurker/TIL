@@ -21,7 +21,7 @@ USER = "user"
 PASSWORD = getattr(config, 'password') # David Bern의 답변을 보세요. https://stackoverflow.com/questions/43136925/create-a-config-file-to-hold-values-like-username-password-url-in-python-behave/43137301
 HOST = "host"
 PORT = "5439"
-SCHEMA = "public"      #default is "public"
+SCHEMA = "public"      #디폴트(기본) "public"
 
 ########## 접속 및 세션 생성 ##########
 connection_string = "redshift+psycopg2://%s:%s@%s:%s/%s" % (USER,PASSWORD,HOST,str(PORT),DATABASE)
