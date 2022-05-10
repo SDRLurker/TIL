@@ -27,7 +27,7 @@ fi
 저는 이 부분에 약간 서투른 것 같습니다.
 
 
-## 26개의 답변 중 1개의 답변
+## 28개의 답변 중 1개의 답변
 
 당신은 만약 이중 괄호를 사용한다면 case 구문 바깥에서 [Marcus의 답변(* 와일드 카드)](https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash/229585#229585) 를 사용할 수도 있습니다.
 
