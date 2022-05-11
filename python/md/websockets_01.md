@@ -33,7 +33,7 @@ async def listen_forever(self):
                             except:
                                 await asyncio.sleep(self.sleep_time)
                                 break  # 안쪽 loop
-                        # dreply 객체로 작업을 진행합니다.
+                        # reply 객체로 작업을 진행합니다.
             except socket.gaierror:
                 # 뭔가 로그를 남깁니다.
                 continue
@@ -42,7 +42,7 @@ async def listen_forever(self):
                 continue
 ```
 
-저는 (1)이것이 괜찮은지 궁금하고요. (2) `websockets`에 이미 반복적인 행위같은 것을 처리하기 위해 제공되는 지름길 같은 방법이 있는지도 궁금합니다. (맞다고 가정합니다!)
+저는 (1) 이것이 괜찮은지 궁금하고요. (2) `websockets`에 이미 반복적인 행위같은 것을 처리하기 위해 제공되는 지름길 같은 방법이 있는지도 궁금합니다. (맞다고 가정합니다!)
 
 ### aaugustin님 답변
 
