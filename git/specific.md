@@ -9,11 +9,11 @@
 3. `Commit2`
 4. `Commit1`
 
-저는 `git commit --amend`로 head commit을 수정할 수 있다는 걸 알지만, 어떻게 `HEAD` commit이 아닌 `Commit1`을 수정할 수 있을까요?
+...저는 `git commit --amend`로 head commit을 수정할 수 있다는 걸 알지만, 어떻게 `HEAD` commit이 아닌 `Commit1`을 수정할 수 있을까요?
 
 ----
 
-## 16 개의 답변 중 1개의 답변만 추려냄.
+## 17 개의 답변 중 1개의 답변
 
 당신은 [git rebase](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase)를 사용할 수 있습니다. 만약 commit `bbc643cd`으로 돌아가서 수정하고 싶으시면, 다음을 실행합니다.
 
