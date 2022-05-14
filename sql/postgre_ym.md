@@ -30,7 +30,7 @@ Jan    2014    4546     Bananas
 
 [data\_trunc](http://www.postgresql.org/docs/current/static/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC)로 이를 할 수 있는 올바른 방법입니다.
 
-```
+```SQL
    SELECT date_trunc('month', txn_date) AS txn_month, sum(amount) as monthly_sum
      FROM yourtable
  GROUP BY txn_month
@@ -38,12 +38,12 @@ Jan    2014    4546     Bananas
 
 간단한 쿼리에서는 나쁜 방법이지만 다음처럼 사용할 수도 있습니다.
 
-```
+```SQL
  GROUP BY 1
 ```
 
 만약 날짜를 select하지 않는다면 다음처럼 사용할 수 있습니다.
 
-```
+```SQL
  GROUP BY date_trunc('month', txn_date)
 ```
