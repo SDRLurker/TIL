@@ -1,7 +1,6 @@
 **출처**
 
 * [https://stackoverflow.com/questions/38242368/anti-merge-in-pandas-python](https://stackoverflow.com/questions/38242368/anti-merge-in-pandas-python)
-* [https://gist.github.com/sainathadapa/eb3303975196d15c73bac5b92d8a210f](https://gist.github.com/sainathadapa/eb3303975196d15c73bac5b92d8a210f)
 
 # Pandas에서 "안티조인, Anti-merge" (Python)
 
@@ -72,4 +71,26 @@ Out[5]:
 0  0
 1  1
 2  2
+```
+
+---
+
+* [https://gist.github.com/sainathadapa/eb3303975196d15c73bac5b92d8a210f](https://gist.github.com/sainathadapa/eb3303975196d15c73bac5b92d8a210f)
+
+**출처**
+
+```python
+import pandas as pd
+
+def anti_join(x, y, on):
+    """Return rows in x which are not present in y"""
+    ans = pd.merge(left=x, right=y, how='left', indicator=True, on=on)
+    ans = ans.loc[ans._merge == 'left_only', :].drop(columns='_merge')
+    return ans
+
+
+def anti_join_all_cols(x, y):
+    """Return rows in x which are not present in y"""
+    assert set(x.columns.values) == set(y.columns.values)
+    return anti_join(x, y, x.columns.tolist())
 ```
