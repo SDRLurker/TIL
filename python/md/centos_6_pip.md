@@ -21,9 +21,7 @@ Pip는 EPEL의 부분이기 때문에 우리는 EPEL 저장소를 먼저 설치�
 ```shell
 # EPEL 저장소를 먼저 설치합니다.
 $ sudo yum install epel-release
-```
 
-```shell
 # python-pip를 설치합니다.
 $ sudo yum -y install python-pip
 ```
@@ -35,9 +33,7 @@ $ sudo yum -y install python-pip
 ```shell
 # 파일을 다운로드 합니다.
 $ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-```
 
-```shell
 # pip를 설치하기 위해 get-pip.py 파이썬 실행 파일을 사용합니다.
 $ python get-pip.py
 ```
@@ -47,6 +43,7 @@ $ python get-pip.py
 
 ```shell
 $ pip — help
+
 $ pip -v
 ```
 
