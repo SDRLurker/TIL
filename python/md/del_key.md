@@ -11,11 +11,11 @@ if 'key' in my_dict:
     del my_dict['key']
 ```
 
-이를 할 수 있는 한 줄의 방법이 있습니까?
+이를 한 줄로 할 수 있는 방법이 있습니까?
 
 ---
 
-## 14 개의 답변 중 1 개의 답변
+## 16 개의 답변 중 1 개의 답변
 
 dictionary에 키가 있는지 상관없이 삭제하려면, [`dict.pop()`](https://docs.python.org/ko/3/library/stdtypes.html#dict.pop)에서 2개의 인자를 사용합니다.
 
