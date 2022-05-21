@@ -90,6 +90,12 @@ https://stackoverflow.com/questions/40852784/how-can-i-use-a-variable-in-curl-ca
 
 http://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size
 
+## fin_wait.md
+
+"FIN_WAIT1 상태를 소켓에서 어떻게 제거하나요?"를 번역한 내용입니다.
+
+http://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size
+
 ## get_ip.md
 
 "리눅스와 OS X에서 현재 컴퓨터의 중요 외부 IP를 알아내는 방법"를 번역한 내용입니다.
