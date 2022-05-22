@@ -8,7 +8,7 @@
 
 ---
 
-## 8 개의 답변 중 1 개의 답변
+## 9 개의 답변 중 1 개의 답변
 
 [`date()`](https://docs.python.org/ko/3/library/datetime.html#datetime.datetime.date) 메소드를 사용하세요.
 
