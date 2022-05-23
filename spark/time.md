@@ -1,4 +1,4 @@
-출처 : [https://stackoverflow.com/questions/50791975/spark-structured-streaming-multiple-writestreams-to-same-sink](https://stackoverflow.com/questions/50791975/spark-structured-streaming-multiple-writestreams-to-same-sink)
+출처 : [https://stackoverflow.com/questions/34629313/how-to-measure-the-execution-time-of-a-query-on-spark](https://stackoverflow.com/questions/34629313/how-to-measure-the-execution-time-of-a-query-on-spark)
 
 # Spark에서 쿼리의 실행 시간을 측정하는 방법
 
@@ -14,7 +14,7 @@ endTimeQuery = time.clock()
 runTimeQuery = endTimeQuery - startTimeQuery
 ```
 
-좋은 방법입니까?? 제가 얻은 시간은 테이블에서 보았을 때 상대적으로 너무 작은 거 같습니다..
+좋은 방법입니까? 제가 얻은 시간은 테이블에서 보았을 때 상대적으로 너무 작은 거 같습니다.
 
 ---
 
