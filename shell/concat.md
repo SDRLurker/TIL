@@ -15,7 +15,26 @@ Bash로 이를 어떻게 이룰 수 있을까요?
 
 ---
 
-### 30개의 답변 중 1개의 답변
+### 30개의 답변 중 2개의 답변
+
+```shell
+foo="Hello"
+foo="${foo} World"
+echo "${foo}"
+> Hello World
+```
+
+일반적으로 두 변수를 연결하려면 다음과 같이 하나씩 작성하면 됩니다.
+
+```shell
+a='Hello'
+b='World'
+c="${a} ${b}"
+echo "${c}"
+> Hello World
+```
+
+---
 
 Bash도 이 코드에서 보듯이 `+=` 연산자를 지원합니다.
 
