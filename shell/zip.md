@@ -190,3 +190,35 @@ $ls command
 
 * 파일명.zip // 압축된 파일
 * 파일_3.txt // 압축하는 동안 제외된 파일
+
+### 5) -r 옵션
+
+재귀적으로 zip을 그 안에 폴더까지 만들 것입니다.
+
+**문법:**
+
+```shell
+$zip –r 파일명.zip 디렉터리명
+```
+
+아래처럼 현재 디렉터리 (doc)에 다음 파일이 있다고 가정합니다.
+
+* a.pdf
+* b.pdf
+* c.pdf
+
+**명령:**
+
+```shell
+$zip –r filedir.zip doc
+```
+
+이 명령은 파일_3.txt 제외하고 모든 파일을 압축할 것입니다.
+
+
+**출력:**
+
+* adding: doc/                  // 디렉터리 압축
+* adding: doc/a.pdf    // 첫 번째 파일 압축
+* adding: doc/b.pdf // 두 번째 파일 압축
+* adding: doc/c.pdf  // 번째 파일 압축
