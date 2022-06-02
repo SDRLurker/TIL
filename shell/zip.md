@@ -222,3 +222,33 @@ $zip –r filedir.zip doc
 * adding: doc/a.pdf    // 첫 번째 파일 압축
 * adding: doc/b.pdf // 두 번째 파일 압축
 * adding: doc/c.pdf  // 번째 파일 압축
+
+### 6) -v 옵션
+
+자세히(Verbose) 모드 옵션을 사용하여 우리는 분석 정보를 출력할 것입니다. 이 옵션은 압축 도중에 진행상황 표시를 보여주며 zip 구조에 관한 자세한 정보를 요청합니다.
+
+**문법:**
+
+```shell
+$zip –v 파일명.zip 파일.txt
+```
+
+아래처럼 현재 디렉터리에 다음 파일이 있다고 가정합니다.
+
+파일_1.txt,파일_2.txt,파일_3.txt,파일_4.txt
+
+**명령:**
+
+```shell
+$zip -v file1.zip *.txt
+```
+
+**출력:**
+
+* adding: file_1.txt     (in=0) (out=0) (stored 0%)
+* adding: file_2.txt    (in=0) (out=0) (stored 0%)
+* adding: file_3.txt    (in=0) (out=0) (stored 0%)
+* adding: file_4.txt    (in=0) (out=0) (stored 0%)
+
+* total bytes=0, compressed=0 -> 0% savings
+
