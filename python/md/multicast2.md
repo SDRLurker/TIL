@@ -8,6 +8,8 @@
 * IPv4 멀티캐스트 주소
 * UDP 데이터그램 멀티캐스트
 * 프로그램 예시와 실험 환경
+  - 전송 프로그램 (mcastsend.py)
+  - 수신 프로그램 (mcastrecv.py)
 
 ## 소개
 
@@ -24,3 +26,117 @@ TCP/IP 프로토콜 스택에서 UDP는 데이터그램 멀티캐스트 서비�
 ## 프로그램 예시와 실험 환경
 
 여기 UDP 데이터그램 멀티캐스트 예시는 두개의 파이썬 프로그램으로 구성됩니다. *mcastsend.py*는 전송 프로그램이며 *mcastrecv.py*는 수신 프로그램 입니다. 우리는 4개의 가상 머신을 사용하여 멀티캐스트 개념을 시연하기 위해 프로그램을 실행합니다.
+
+### 전송 프로그램 (mcastsend.py)
+
+```python
+import socket
+import sys
+
+def help_and_exit(prog):
+    print('Usage: ' + prog + ' host_ip mcast_group_ip mcast_port_num message',
+        file=sys.stderr)
+    sys.exit(1)
+
+def mc_send(hostip, mcgrpip, mcport, msgbuf):
+    # UDP 소켓을 생성한다
+    sender = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM, \
+            proto=socket.IPPROTO_UDP, fileno=None)
+    # 멀티캐스트 (멀티캐스트 그룹 IP 주소, 전송할 포트 번호) 짝인 엔드 포인트를 정의한다.
+    mcgrp = (mcgrpip, mcport)
+
+    # 멀티캐스트 데이터그램이 얼마나 많은 홉(hop)을 여행할 수 있는지 정의한다.
+    # IP_MULTICAST_TTL를 따로 정의하지 않는다면 기본 값은 1이다. 
+    sender.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 1)
+
+    # 멀티캐스트 데이터그램 전송을 담당하는 네트워크 인터페이스(NIC)를 정의합니다.
+    # 그렇지 않으면 소켓은 기본 인터페이스를 사용합니다. (루프백이 0이면 ifindex = 1)
+    # 데이터그램을 여러 NIC로 전송하려면 각 NIC에 대한 소켓을 만들어야 합니다.
+    sender.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_IF, \
+         socket.inet_aton(hostip))
+
+    # 버퍼에서 데이터그램을 전송합니다
+    sender.sendto(msgbuf, mcgrp)
+
+    # 소켓 자원을 해제합니다 
+    sender.close()
+
+
+def main(argv):
+    if len(argv) < 5:
+        help_and_exit(argv[0])
+
+    hostipaddr = argv[1]
+    mcgrpipaddr = argv[2]
+    mcport = int(argv[3])
+    msg = argv[4]
+
+    mc_send(hostipaddr, mcgrpipaddr, mcport, msg.encode())
+
+if __name__=='__main__':
+    main(sys.argv)
+```
+
+### 수신 프로그램 (mcastrecv.py)
+
+```python
+import sys
+import socket
+import struct
+
+
+def help_and_exit(prog):
+    print('Usage: ' + prog + ' from_nic_by_host_ip mcast_group_ip mcast_port')
+    sys.exit(1)
+
+def mc_recv(fromnicip, mcgrpip, mcport):
+    bufsize = 1024
+
+    # UDP 소켓을 생성한다
+    receiver = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM, \
+            proto=socket.IPPROTO_UDP, fileno=None)
+
+    # 멀티캐스트 (멀티캐스트 그룹 IP 주소, 전송할 포트 번호) 짝인 엔드 포인트로부터 
+    # 전송된 데이터그램을 수신하기 위한 소켓을 설정한다.
+    # 이 소켓은 전송 프로그램의 짝과 매칭 되어야 한다.
+    bindaddr = (mcgrpip, mcport)
+    receiver.bind(bindaddr)
+
+    # 소켓을 의도한 멀티캐스트 그룹에 조인합니다. 그 의미는 두 가지입니다.
+    # 멀티캐스트 IP 주소에 의해 식별되는 의도된 멀티캐스트 그룹을 지정합니다.
+    # 또한 어떤 네트워크 인터페이스에서 (NIC) 소켓은 의도한 멀티캐스트 그룹에 대한 데이터그램을 수신합니다.
+    # socket.INADDR_ANY는 시스템의 인터페이스(ifindex = 루프백 인터페이스가 있는 경우 1)에서 
+    # 기본 네트워크를 의미한다는 점에 유의하는 것이 중요합니다.
+    # 여러 NIC에서 멀티캐스트 데이터그램을 수신하려면
+    # 각 NIC용 소켓을 생성해야 합니다. 또한 할당된 IP 주소로 NIC를 식별합니다.
+    if fromnicip == '0.0.0.0':
+        mreq = struct.pack("=4sl", socket.inet_aton(mcgrpip), socket.INADDR_ANY)
+    else:
+        mreq = struct.pack("=4s4s", \
+            socket.inet_aton(mcgrpip), socket.inet_aton(fromnicip))
+    receiver.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+
+    # 메세지를 수신한다
+    buf, senderaddr = receiver.recvfrom(1024)
+    msg = buf.decode()
+
+		# 자원을 해제한다
+		receiver.close()
+
+    return msg
+
+def main(argv):
+    if len(argv) < 4:
+        help_and_exit(argv[0])
+
+    fromnicip = argv[1] 
+    mcgrpip = argv[2]
+    mcport = int(argv[3])
+
+
+    msg = mc_recv(fromnicip, mcgrpip, mcport)
+    print(msg)
+    
+if __name__=='__main__':
+    main(sys.argv)
+```
