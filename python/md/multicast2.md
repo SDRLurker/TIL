@@ -171,3 +171,16 @@ if __name__=='__main__':
 |flatbush|mccastrecv.py|
 |bushwick|mccastrecv.py|
 
+#### 시연 실행하기
+
+우리는 다음처럼 프로그램을 실행합니다.
+
+1. 첫째, 우리는 다음처럼 eastny와 flatbush에서 *mcastrecv.py*를 실행합니다.
+
+```shell
+brooklyn@flatbush:~$ python mcastrecv.py 192.168.56.104 224.1.1.5 50001
+```
+
+```shell
+brooklyn@eastny:~$ python mcastrecv.py 192.168.56.101 224.1.1.5 50001
+```
