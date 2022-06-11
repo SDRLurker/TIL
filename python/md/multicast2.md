@@ -12,6 +12,8 @@
   - 수신 프로그램 (mcastrecv.py)
   - 시연
     + 가정
+    + 시연 실행하기
+    + 출력
 
 ## 소개
 
@@ -175,7 +177,7 @@ if __name__=='__main__':
 
 우리는 다음처럼 프로그램을 실행합니다.
 
-1. 첫째, 우리는 다음처럼 eastny와 flatbush에서 *mcastrecv.py*를 실행합니다.
+1. 첫째, 우리는 다음처럼 *eastny*와 *flatbush*에서 *mcastrecv.py*를 실행합니다.
 
 ```shell
 brooklyn@flatbush:~$ python mcastrecv.py 192.168.56.104 224.1.1.5 50001
@@ -183,4 +185,63 @@ brooklyn@flatbush:~$ python mcastrecv.py 192.168.56.104 224.1.1.5 50001
 
 ```shell
 brooklyn@eastny:~$ python mcastrecv.py 192.168.56.101 224.1.1.5 50001
+```
+
+2. 우리는 *bushwick*에서 *mcastrecv.py*와 *scapy3*를 두 개의 터미널에서 둘 다 실행합니다.
+
+```shell
+brooklyn@bushwick:~$ python mcastrecv.py 192.168.56.105 234.3.2.1 50001
+```
+
+```shell
+brooklyn@bushwick:~$ sudo scapy3
+>>> packets = sniff(prn=lambda p: p.summary(), filter='udp port 50001')
+```
+
+3. 마지막으로 우리는 *mcastsend.py*를 *midwood*에서 실행합니다.
+
+```shell
+brooklyn@midwood:~$ python mcastsend.py 192.168.56.103 224.1.1.5 50001 "Hello, World!"
+```
+
+#### 출력
+
+출력은 다음과 같습니다.
+
+*flatbush*에서 우리는 다음을 관찰합니다.
+
+```shell
+brooklyn@flatbush:~$ python mcastrecv.py 192.168.56.104 224.1.1.5 50001
+Hello, World!
+brooklyn@flatbush:~$
+```
+
+*eastny*에서 우리는 다음도 관찰합니다.
+
+```shell
+brooklyn@eastny:~$ python mcastrecv.py 192.168.56.101 224.1.1.5 50001
+Hello, World!
+brooklyn@eastny:~$
+```
+
+하지만, *bushwick*에서 *mcastrecv.py*는 IPv4 주소 192.168.56.101에 의해 식별되는 네트워크 인터페이스로부터 멀티캐스트 그룹 234.3.2.1로 데이터그램을 받지 못했기에 데이터를 아직 기다립니다. (글쎄, 우리는 이 데모에서 우리는 절대 그 그룹에 데이터그램을 보내지 않는다는 점에 주의해야 합니다.)
+
+```shell
+`brooklyn@bushwick:~$ python mcastrecv.py 192.168.56.105 234.3.2.1 50001
+
+
+```
+
+하지만, *scrapy3*은 *midwood*에서 *mcastsend.py*에 의해 보내진 패킷을 캡쳐했습니다.
+
+```python
+>>> packets = sniff(prn=lambda p: p.summary(), filter='udp port 50001')
+Ether / IP / UDP 192.168.56.103:52582 > 224.1.1.5:50001 / Raw / Padding
+
+^C>>> hexdump(packets[0])
+0000  01005E010105080027A133B408004500 ..^.....'.3...E.
+0010  00290DC74000011191E7C0A83867E001 .)..@.......8g..
+0020  0105CD66C351001553C948656C6C6F2C ...f.Q..S.Hello,
+0030  20576F726C64210000000000          World!.....
+>>>
 ```
