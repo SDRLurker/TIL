@@ -14,6 +14,7 @@
     + 가정
     + 시연 실행하기
     + 출력
+ * 연습과 탐색
 
 ## 소개
 
@@ -245,3 +246,36 @@ Ether / IP / UDP 192.168.56.103:52582 > 224.1.1.5:50001 / Raw / Padding
 0030  20576F726C64210000000000          World!.....
 >>>
 ```
+
+## 연습과 탐색
+
+다음 시나리오를 고려해 보겠습니다. 우리는 모든 네트워크 인터페이스로부터 멀티캐스트 데이터그램을 수신하기를 원합니다. `socket.INADDR_ANY`는 모든 주소를 나타뱀을 관찰할 수 있습니다. 우리는 *mcastrecv.py*의 간단한 수정으로 이 목표를 달성할 수 있다고 가정합다. 수정은 
+
+```python
+if fromnicip == '0.0.0.0':
+		mreq = struct.pack("=4sl", socket.inet_aton(mcgrpip), socket.INADDR_ANY)
+else:
+		mreq = struct.pack("=4s4s", \
+				socket.inet_aton(mcgrpip), socket.inet_aton(fromnicip))
+receiver.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+```
+
+에서 다음으로 대체합니다.
+
+```python
+mreq = struct.pack("=4sl", socket.inet_aton(mcgrpip), socket.INADDR_ANY)
+```
+
+우리는 *eastny* 또는 *flatbuash*에서 다음처럼 수정된 *mcastrecv.py*를 실행합니다.
+
+```shell
+brooklyn@flatbush:~$ python mcastrecv.py 192.168.56.104 224.1.1.5 50001
+```
+
+우리는 *midwood*에서 *mcastsend.py*를 실행합니다.
+
+```shell
+brooklyn@midwood:~$ python mcastsend.py 192.168.56.103 224.1.1.5 50001 "Hello, World!"
+```
+
+우리는 *mcastsend*가 완료할 동안 *mcastrecv.py*가 데이터를 아직 기다리고 있음을 관찰할 수 있습니다. `scapy3`를 사용하여 패킷을 캡처하고 캡처된 패킷을 사용하여 현상을 설명하는 실험을 설계합니다.
