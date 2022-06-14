@@ -46,4 +46,4 @@ except Exception:
 
 catch할 `Exception` 타입과 관련하여 정확한 유형의 예외를 포착하도록 주의하십시오. 일반적인 모든 예외의 catch를 작성하는 경우 `except Exception`을 사용하는 것이 정확할 수 있지만 귀하가 제공한 예제의 경우 실제로 `except ValueError` 오류를 직접 사용하도록 선택할 것입니다. 이렇게 하면 잠재적으로 다른 예외가 코드의 다른 수준에서 적절하게 처리될 수 있습니다. 요점은 처리할 준비가 되지 않은 예외를 catch하지 마십시오.
 
-원하는 경우 공식 문서에서 [python 2.7 예외 처리](https://docs.python.org/ko/2/tutorial/errors.html#handling-exceptions) 또는 사용 가능한 [python 2.7 예외](https://docs.python.org/ko/2/library/exceptions.html)에 대해 자세히 읽을 수 있습니다.
+원하는 경우 공식 문서에서 [python 2.7 예외 처리](https://docs.python.org/ko/2/tutorial/errors.html#handling-exceptions) 또는 [사용 가능한 python 2.7 예외](https://docs.python.org/ko/2/library/exceptions.html)에 대해 자세히 읽을 수 있습니다.
