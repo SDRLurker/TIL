@@ -2,7 +2,7 @@
 
 # 부모 프로세스가 죽을 때 subprocess.check_output()로 생성된 Python 자식 프로세스를 죽이는 방법?
 
-저는 다음처럼 subprocess를 시작하고 표준 출력을 확인하는 간단한 python script를 작성하려고 합니다.
+저는 다음처럼 subprocess.check_output()을 사용하는 자식 프로세스를 생성하는 python script를 리눅스 머신에서 실행하려고 합니다.
 
 ```python
 subprocess.check_output(["ls", "-l"], stderr=subprocess.STDOUT)
