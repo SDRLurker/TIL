@@ -101,9 +101,11 @@ Check(find) the disk space on remote hosts.
 
 ##### multicast.py
 
+* multicast.py IP PORT (NICIP)
+
 Print multicast packets from IP:PORT.
 
-IP:PORT로부터 멀티캐스트 패킷을 출력합니다.
+IP:PORT로부터 멀티캐스트 패킷을 출력합니다. (NICIP)가 있으면 해당 네트워크 인터페이스를 사용하여 멀티캐스트 패킷을 수신합니다.
 
 * 참고주소 
   - https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
