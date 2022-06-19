@@ -503,6 +503,12 @@
 
 * https://stackoverflow.com/questions/843277/how-do-i-check-if-a-variable-exists
   
+##### version.md
+
+* "파이썬 모듈의 버전 확인하는 방법"을 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/39993238/vlookup-between-2-pandas-dataframes
+  
 ##### vlookup.md
 
 * "2개의 Pandas 데이터프레임 간에 vlookup"을 번역한 내용입니다.
