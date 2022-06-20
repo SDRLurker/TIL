@@ -12,7 +12,7 @@
 
 이제 h2 태그가 이미 있으면 Peter를 얻기 위한 이제 가장 쉬운 방법은 무엇입니까? 다음을 시도하였습니다.
 
-```HTML
+```python
 soup.select("#names > p:nth-child(1)")
 ```
 
