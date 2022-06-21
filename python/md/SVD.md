@@ -4,7 +4,7 @@
 
 # raise LinAlgError("SVD가 수렴하지 않았습니다.") LinAlgError: SVD가 matplotlib pca 결정에서 수렴하지 않았습니다.
 
-코드
+코드 :
 
 ```python
 import numpy
@@ -18,7 +18,7 @@ result = PCA(ori_data)
 
 ---
 
-## 9 개의 답변 중 1 개의 답변
+## 10 개의 답변 중 1 개의 답변
 
 이는 데이터에 inf 또는 nan 값이 있을 때 발생할 수 있습니다.
 
