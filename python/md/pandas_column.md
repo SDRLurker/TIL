@@ -17,7 +17,7 @@ raw_data = {'student_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze', 'Ja
 df = pd.DataFrame(raw_data, columns = ['student_name', 'test_score'])
 ```
 
-## 학점을 할당하기 위한 함수 만들기
+## 학점(ABCDF)을 할당하기 위한 함수 만들기
 
 ```python
 # 데이터를 저장할 list(리스트)를 만듭니다.
