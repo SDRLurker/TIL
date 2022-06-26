@@ -84,4 +84,34 @@ CONST.FOO = 0
 2. setter 함수는 읽기 전용이기 때문에 TypeError를 발생시킵니다.
 3. 읽기 전용 properties를 정의하기 위한 decoration으로써 우리가 방금 생성한 함수 `constant`를 사용합니다.
 
-... 중략 ...
+그리고 좀 더 구식으로:
+
+(코드는 꽤 까다롭습니다. 아래에 더 많은 설명이 있습니다.)
+
+```python
+class _Const(object):
+    def FOO():
+        def fset(self, value):
+            raise TypeError
+        def fget(self):
+            return 0xBAADFACE
+        return property(**locals())
+    FOO = FOO()  # Define property.
+
+CONST = _Const()
+
+print(hex(CONST.FOO))  # -> '0xbaadfaceL'
+
+CONST.FOO = 0
+##Traceback (most recent call last):
+##  File "example2.py", line 16, in <module>
+##    CONST.FOO = 0
+##  File "example2.py", line 6, in fset
+##    raise TypeError
+##TypeError
+```
+
+1. 식별자 FOO를 정의하기 위해 먼저 두 개의 함수를 정의합니다(fset, fget - 이름은 내가 선택함).
+2. 그런 다음 내장 `property` 기능을 사용하여 "set" 또는 "get"가 가능한 개체를 구성합니다.
+3. `property` 함수의 처음 두 매개변수의 이름은 fset 및 fget입니다.
+4. 우리 고유의 getter 및 setter에 대해 바로 이 이름을 선택했다는 사실을 사용하고 `property` 함수에 매개변수를 전달하기 위해 해당 범위의 모든 로컬 정의에 적용된 **(이중 별표)를 사용하여 키워드 사전을 만듭니다.
