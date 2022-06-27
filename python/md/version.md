@@ -64,3 +64,4 @@ python -c "import lxml; print(lxml.__version__)"
   
 
 마지막으로 질문의 명령에 `sudo` 접두사가 붙기 때문에 전역 Python 환경에 설치하는 것으로 보입니다. 예를 들어 [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)와 같은 Python [가상 환경](https://pypi.org/project/virtualenv/) 관리자를 살펴보는 것이 좋습니다.
+
