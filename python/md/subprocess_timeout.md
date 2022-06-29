@@ -24,7 +24,7 @@ stdoutdata, stderrdata = proc.communicate()
 
 ----
 
-## 30 개의 답변 중 2개의 답변
+## 31 개의 답변 중 2개의 답변
 
 Python 3.3+ 에서
 
