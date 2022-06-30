@@ -39,7 +39,7 @@ def group(l):
 
 ### 7개의 답변 중 2개의 답변
 
-[`itertools.groupby`](https://docs.python.org/3.7/library/itertools.html#itertools.groupby) 는 당신이 원하는 것을 할 수 있습니다.
+[`itertools.groupby`](https://docs.python.org/ko/3.8/library/itertools.html#itertools.groupby) 는 당신이 원하는 것을 할 수 있습니다.
 
 ```python
 import itertools
