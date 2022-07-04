@@ -65,7 +65,7 @@ sed -i '/firmware_revision/ s/test/production/' myfile.py
 
 ## 편집
 
-질문에 대한 편집에서 OP는 라인의 _모든_ `test` 발생이 `production`으로 대체 되도록 요청합니다. 이 경우 전역 (해당 행) 대체를 위해 대체 명령에 `g` 옵션을 추가합니다.
+질문에 대한 편집에서 OP는 라인의 _모든_ `test` 발생이 `production`으로 대체 되도록 요청합니다. 이 경우 *전역* (해당 행) 대체를 위해 대체 명령에 `g` 옵션을 추가합니다.
 
 ```shell
 sed -i.bak '/firmware_revision/ s/test/production/g' myfile.py
