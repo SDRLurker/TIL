@@ -27,7 +27,7 @@ line two
 
 ## 3개의 답변 중 1개
 
-이는 backtick() 치환 문제가 아닌 `echo`; 의 문제입니다. 제어 문자가 작동하려면 변수에 따옴표를 사용해야 합니다.
+이는 backtick 치환 문제가 아닌 `echo`; 의 문제입니다. 제어 문자가 작동하려면 변수에 따옴표를 사용해야 합니다.
 
 ```
 $ var=`echo line one && echo line two`
