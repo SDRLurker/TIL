@@ -422,3 +422,7 @@ srun.sh 원격서버 원격명령 [실행위치]
 When you can log into B as b from A as a without password, you can use this script for executing command remotely.
 
 A 서버에서 비밀번호 입력 없이 B 서버로 접속할 수 있을 때, 이 스크립트를 명령어를 원격으로 실행하는 데 사용할 수 있습니다.
+
+## ca-certificates.sh
+
+"CentOS 6 ca-certificates 패키지 수동 설치"를 할 수 있는 shell 입니다.
