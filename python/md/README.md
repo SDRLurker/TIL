@@ -295,6 +295,12 @@
 
 * https://stackoverflow.com/questions/33114855/reset-sequence-number-in-quickfix
 
+##### quickfix_segmentation.md
+
+* "QuickFix 파이썬 플러그인 - 테스트 케이스 용도 - segmentation fault 오류"를 번역한 내용입니다.
+
+* https://stackoverflow.com/questions/59371973/quickfix-python-plugin-use-case-for-testing-segmentation-fault-error
+
 ##### redshift_create.md
 
 * "Python으로 Redshift의 create table이 작동하지 않습니다."를 번역한 내용입니다.
