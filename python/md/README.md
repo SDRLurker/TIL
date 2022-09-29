@@ -159,6 +159,12 @@
 
 * http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md
 
+##### is_displayed.md
+
+* "is_displayed() element 메소드 - 셀레니움 파이썬"을 번역한 내용입니다.
+
+* http://mdviewer01.herokuapp.com/github/SDRLurker/TIL/master/python/md/ii.md
+
 ##### jupyter_tensorflow.md
 
 * "Jupyter Notebook에서 TensorFlow 사용 문제"을 번역한 내용입니다.
