@@ -39,3 +39,13 @@
 * "Heroku 앱에서 타임 존(time zone) 변경하기" 글을 번역한 내용입니다.
 
 * https://dev.to/paulasantamaria/change-the-timezone-on-a-heroku-app-2b4
+
+## 기타
+
+### markdown
+
+#### heroku_tz.md
+
+* "AnyDesk ID 리셋하는 방법?" 글을 번역한 내용입니다.
+
+* https://tecsun.medium.com/how-to-reset-anydesk-id-1a6b517460b9
