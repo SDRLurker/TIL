@@ -144,6 +144,12 @@ https://tanelpoder.com/2009/01/22/identifying-shared-memory-segment-users-using-
 
 https://unix.stackexchange.com/questions/3586/what-do-the-numbers-in-a-man-page-mean
 
+## md5sum.md
+
+"모든 파일 md5sum 목록 보여주기"를 번역한 내용입니다.
+
+https://stackoverflow.com/questions/39604202/listing-md5sum-for-all-files
+
 ## newline.md
 
 "bash backtick(\`\`) 연산자로 출력의 개행을 어떻게 유지할 수 있을까요?"를 번역한 내용입니다.
