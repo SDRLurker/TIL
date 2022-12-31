@@ -44,7 +44,7 @@
 
 ### markdown
 
-#### heroku_tz.md
+#### anydesk.md
 
 * "AnyDesk ID 리셋하는 방법?" 글을 번역한 내용입니다.
 
