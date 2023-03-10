@@ -192,6 +192,10 @@ https://stackoverflow.com/questions/10856447/sed-command-find-and-replace-in-eve
 
 https://unix.stackexchange.com/questions/295274/grep-to-find-the-correct-line-sed-to-change-the-contents-then-putting-it-back
 
+## sed_multi.md
+
+"sed 에서 2개 이상 검색으로 찾고 제일 마지막 조건에 매칭되는 문자열로 변환하는 방법?"을 chatGPT가 답변한 내용입니다.
+
 ## sort.md
 
 "파일 자체를 정렬하는 방법"를 번역한 내용입니다.
