@@ -26,6 +26,12 @@ http://stackoverflow.com/questions/15691977/why-start-a-shell-command-with-a-bac
 
 https://stackoverflow.com/questions/20449680/boolean-operators-a-o-in-bash
 
+## ca.md
+
+"Redhat에서 cURL CA 번들 업데이트하는 방법?"를 번역한 내용입니다.
+
+https://serverfault.com/questions/394815/how-to-update-curl-ca-bundle-on-redhat
+
 ## ca-certificates.md
 
 "CentOS 6 ca-certificates 패키지 수동 설치"를 작성한 내용입니다.
