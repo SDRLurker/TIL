@@ -329,6 +329,12 @@
 
 * https://stackoverflow.com/questions/11892729/how-to-log-in-to-a-website-using-pythons-requests-module/
 
+##### req.md
+
+* "자동으로 requirements.txt 생성하기"를 번역한 내용입니다.
+
+* [https://stackoverflow.com/questions/11892729/how-to-log-in-to-a-website-using-pythons-requests-module/](https://stackoverflow.com/questions/31684375/automatically-create-requirements-txt)
+  
 ##### requests_login.md
 
 * "Python의 Requests 모듈을 사용하여 웹사이트에 '로그인'하는 방법"를 번역한 내용입니다.
